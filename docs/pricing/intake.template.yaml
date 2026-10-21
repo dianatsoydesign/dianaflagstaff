@@ -1,0 +1,19 @@
+product_id: null
+name: ""
+category: ""
+what_is_sold: ""
+units_per_sku: 1
+unit_label: ""  # e.g. coaster, wine bottle holder, hotpad
+size_options: []
+yarn_line: bobbiny-premium-5mm
+skeins_used: null
+waste_factor: null
+bobbiny_spool_fraction: null
+materials_usd_estimate: null
+hours_guesstimate: null
+hours_per_unit: null
+hours_source: null
+hourly_floor_usd: null
+current_price: null
+comp_search_phrases: []
+notes: ""

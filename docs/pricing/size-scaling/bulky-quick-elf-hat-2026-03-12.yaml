@@ -1,0 +1,28 @@
+source: https://www.mjsoffthehookdesigns.com/bulky-quick-elf-hat-free-crochet-pattern/
+unit: yards
+fixed_usd: 12
+anchor:
+  size: Ladies
+  price_usd: 40
+yarn_by_size:
+  - size: Baby
+    amount: 125
+    note: "A 20 + B 40 + C 65"
+  - size: Toddler
+    amount: 155
+    note: "A 30 + B 50 + C 75"
+  - size: Child
+    amount: 185
+    note: "A 40 + B 60 + C 85"
+  - size: Ladies
+    amount: 215
+    note: "A 50 + B 70 + C 95"
+  - size: Men's
+    amount: 255
+    note: "A 60 + B 80 + C 115 (pattern lists 105 and 115 for largest; used 115)"
+prices:
+  Baby: 28
+  Toddler: 32
+  Child: 36
+  Ladies: 40
+  Men's: 45

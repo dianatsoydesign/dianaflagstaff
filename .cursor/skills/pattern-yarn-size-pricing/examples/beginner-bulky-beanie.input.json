@@ -1,0 +1,13 @@
+{
+  "source": "https://www.mjsoffthehookdesigns.com/beginner-bulky-beanie-free-crochet-pattern/#h-the-yarn-used-for-the-beginner-crochet-hat",
+  "unit": "yards",
+  "fixedUsd": 12,
+  "anchor": { "size": "Adult", "priceUsd": 25 },
+  "yarnBySize": [
+    { "size": "Baby", "amount": 50 },
+    { "size": "Toddler", "amount": 70 },
+    { "size": "Child", "amount": 80 },
+    { "size": "Teen", "amount": 90 },
+    { "size": "Adult", "amount": 100 }
+  ]
+}

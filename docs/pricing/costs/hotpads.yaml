@@ -1,0 +1,9 @@
+product_id: hotpads
+yarn_line: bobbiny-premium-5mm
+bobbiny_spool_fraction: 0.28
+hours_guesstimate: 3
+hours_source: agent_estimate
+notes: "Tied with hats; one dense square."
+
+units_per_sku: 1
+unit_label: "hotpad"

@@ -1,0 +1,27 @@
+name: Refresh Bobbiny stock
+
+on:
+  schedule:
+    - cron: "0 * * * *"   # every hour on the hour
+  workflow_dispatch:        # also allow manual "Run workflow" button in GitHub UI
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping refresh endpoint
+        run: |
+          response=$(curl -s -w "\n%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "${{ vars.SITE_URL }}/api/cron/refresh-bobbiny")
+
+          body=$(echo "$response" | head -n -1)
+          code=$(echo "$response" | tail -n 1)
+
+          echo "HTTP $code — $body"
+
+          if [ "$code" != "200" ]; then
+            echo "Refresh failed!" >&2
+            exit 1
+          fi

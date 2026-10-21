@@ -1,0 +1,32 @@
+---
+description: Persist agent skills and context in this repo, not Cursor account or home folder
+alwaysApply: true
+---
+
+# Save context in the repo
+
+Diana may lose Cursor account access at any time. **Do not rely on** personal Cursor skills (`~/.cursor/skills/`), the personal agent store, or chat-only memory for anything this project needs again.
+
+## Where to write
+
+| Kind | Location |
+| --- | --- |
+| Reusable workflows | `.cursor/skills/<name>/SKILL.md` (+ scripts/reference alongside) |
+| Standing conventions | `.cursor/rules/*.mdc` |
+| Brand, pricing, ops notes | `docs/` (e.g. `docs/pricing/`) |
+| Index for agents | `.cursor/README.md` |
+
+## When to save
+
+- After a new workflow, decision, or convention emerges in chat → add or update a skill, rule, or doc in the repo in the same session when practical.
+- When copying from `~/.cursor/skills/` → put the full copy in `.cursor/skills/` and point scripts/docs at **repo-relative paths** (from project root).
+- When creating skills that only live in the personal folder → copy into this repo before treating the work as done.
+
+## Do not
+
+- Tell Diana to “check your personal skill at ~/.cursor/…” as the source of truth.
+- Leave important context only in Cursor cloud or a single chat thread.
+
+## Scripts
+
+Prefer paths under this repo (e.g. `.cursor/skills/.../scripts/`). A fallback to `~/.cursor/skills/` is acceptable only for backward compatibility on her Mac, not as the primary documentation path.

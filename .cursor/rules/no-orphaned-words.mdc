@@ -1,0 +1,32 @@
+---
+description: No single word left alone on the last line of site copy
+alwaysApply: true
+---
+
+# No orphaned words
+
+Do not leave a single word alone on the last line of a paragraph, heading, blurb, or label.
+
+This covers page copy, product and pattern text, wrapping button labels, and any other customer-facing block.
+
+## How the site prevents it
+
+`body` in `src/app/globals.css` sets `text-wrap: pretty`, which asks the browser to avoid a one-word last line. Leave that in place.
+
+Short headings that should even out can use the `text-balance` utility (`text-wrap: balance`).
+
+## When pretty is not enough
+
+`text-wrap: pretty` is a hint. A narrow column, a bold phrase, or an inline icon can still strand one word. The about page stranded "local" this way.
+
+When that happens, join the last two words with a non-breaking space so they wrap together:
+
+- In JSX text: `are&nbsp;local`
+- In a JS string: `"are\u00A0local"`
+
+Check the block at phone, tablet, and desktop widths. One width looking fine is not enough.
+
+## Examples
+
+- Bad: the last line is only "local."
+- Good: "are local." stays on one line together.

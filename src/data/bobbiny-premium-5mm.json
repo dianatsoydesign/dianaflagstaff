@@ -1,0 +1,625 @@
+{
+  "syncedAt": "2026-10-11T04:02:48.313Z",
+  "collectionUrl": "https://bobbinycords.us/collections/premium-5mm",
+  "yarns": [
+    {
+      "id": "bobbiny-5mm-natural",
+      "name": "Natural",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/natural_f9f832c2-e553-494a-a5a1-25cc4c26a57f.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/natural_f9f832c2-e553-494a-a5a1-25cc4c26a57f.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/natural_f9f832c2-e553-494a-a5a1-25cc4c26a57f.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/natural.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/2020.04.30natural5mmcordpatternmacrame.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-natural",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-jeans",
+      "name": "Jeans",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/jeans_2ace9c36-b498-4668-8c27-8dfb2f8fd7bf.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/jeans_2ace9c36-b498-4668-8c27-8dfb2f8fd7bf.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/jeans_2ace9c36-b498-4668-8c27-8dfb2f8fd7bf.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/jeans.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-jeans",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-eucalyptus-green",
+      "name": "Eucalyptus Green",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/eucalyptus-green_a0ef96c3-e48b-4e2a-a389-6aec5d188ee8.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/eucalyptus-green_a0ef96c3-e48b-4e2a-a389-6aec5d188ee8.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/eucalyptus-green_a0ef96c3-e48b-4e2a-a389-6aec5d188ee8.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/eucalyptus-green.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-eucalyptus-green",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-laurel",
+      "name": "Laurel",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/laurel_dc4aa076-b9d8-4a15-b199-ed6ffc5c9561.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/laurel_dc4aa076-b9d8-4a15-b199-ed6ffc5c9561.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/laurel_dc4aa076-b9d8-4a15-b199-ed6ffc5c9561.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_37.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/20190312_125854.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/20190315_142954.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-laurel",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-beige",
+      "name": "Beige",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/beige-5mm-100m.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/beige-5mm-100m.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/beige-5mm-100m.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/beige-5mm-100m_05707947-ddfd-47a0-b2bc-e93fbfdecdaa.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/20190909_082127-2.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-beige",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-terracotta",
+      "name": "Terracotta",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/terracotta-5mm-100m_3041a6d1-91e5-4b55-8478-e47219ec4c0a.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/terracotta-5mm-100m_3041a6d1-91e5-4b55-8478-e47219ec4c0a.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/terracotta-5mm-100m_3041a6d1-91e5-4b55-8478-e47219ec4c0a.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_9.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/20190829_094414-2.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-terracotta",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-coffee",
+      "name": "Coffee",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/coffee-5mm-braided-CU.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/coffee-5mm-braided-CU.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/coffee-5mm-braided-CU.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/coffee-5mm-Braided-indi.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-coffee",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-sand",
+      "name": "Sand",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/sand-5mm-100m_d644f142-0d2c-483c-ae42-209eb1627751.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/sand-5mm-100m_d644f142-0d2c-483c-ae42-209eb1627751.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/sand-5mm-100m_d644f142-0d2c-483c-ae42-209eb1627751.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_20_92f8f79b-e004-4c01-a97a-bc317fb18e9f.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/28.10.19sandpremiumknitted.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/sand-5mm-100m_3442bec8-ab47-44d9-9c79-9794dd5c46e6.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/7.10.19Sandpremiumknit.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-sand",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-black",
+      "name": "Black",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/black_4c0b7fb9-f38b-4ff4-9106-0375f4f21b12.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/black_4c0b7fb9-f38b-4ff4-9106-0375f4f21b12.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/black_4c0b7fb9-f38b-4ff4-9106-0375f4f21b12.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_64.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-black",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-peacock-blue",
+      "name": "Peacock Blue",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/peacock-blue_cd463532-b5bb-4f01-a096-db1faad65750.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/peacock-blue_cd463532-b5bb-4f01-a096-db1faad65750.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/peacock-blue_cd463532-b5bb-4f01-a096-db1faad65750.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_7.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-peacock-blue",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-caramel",
+      "name": "Caramel",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/caramel-CU-5mm.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/caramel-CU-5mm.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/caramel-CU-5mm.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_61.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/Caramel.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-caramel",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-nude",
+      "name": "Nude",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Nude.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Nude.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Nude.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/20210830_134037.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-nude",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-misty",
+      "name": "Misty",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/misty_a96bbe16-e849-4860-9c5b-66ac63f7451f.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/misty_a96bbe16-e849-4860-9c5b-66ac63f7451f.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/misty_a96bbe16-e849-4860-9c5b-66ac63f7451f.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_11.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/2020.03.09Misty.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/2020.03.13mistyknitted_kopia_kopia.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-misty",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-avocado",
+      "name": "Avocado",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/avocado-5mm-100m_7bc0e7e3-a521-49a2-b4c0-387205692f7f.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/avocado-5mm-100m_7bc0e7e3-a521-49a2-b4c0-387205692f7f.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/avocado-5mm-100m_7bc0e7e3-a521-49a2-b4c0-387205692f7f.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_8.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/20190924_155002.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/20190918_111355-3.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/28.10.19avocadopremiummacrame-donutknots.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-avocado",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-wine-red",
+      "name": "Wine Red",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_7_7f29c09a-5012-44e8-a3c2-071bb50b84fd.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_7_7f29c09a-5012-44e8-a3c2-071bb50b84fd.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_7_7f29c09a-5012-44e8-a3c2-071bb50b84fd.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-wine-red",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-mustard",
+      "name": "Mustard",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/mustard_839f2b07-f8ca-428d-b37e-5f420f7a15fb.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/mustard_839f2b07-f8ca-428d-b37e-5f420f7a15fb.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/mustard_839f2b07-f8ca-428d-b37e-5f420f7a15fb.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/mustard.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/dywanikmusztarda.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-mustard",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-blush",
+      "name": "Blush",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/blush_6dea0002-171d-4aac-84d0-f7e66bb01b06.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/blush_6dea0002-171d-4aac-84d0-f7e66bb01b06.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/blush_6dea0002-171d-4aac-84d0-f7e66bb01b06.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_34.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-blush",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-blossom",
+      "name": "Blossom",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/blossom_954b703c-b3bc-4c38-904a-291f4c8cbd78.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/blossom_954b703c-b3bc-4c38-904a-291f4c8cbd78.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/blossom_954b703c-b3bc-4c38-904a-291f4c8cbd78.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/blossom.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/blossom_83451efb-fc7c-4301-8111-2c96194ca93c.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-blossom",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-off-white",
+      "name": "Off White",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/off-whiteXX.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/off-whiteXX.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/off-whiteXX.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_54_efa22c6e-fa40-415a-b533-06e3077077b2.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-off-white",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-golden-natural",
+      "name": "Golden Natural",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/golden-natural_6692e71e-65ab-42e2-8a32-9b3aef4d0807.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/golden-natural_6692e71e-65ab-42e2-8a32-9b3aef4d0807.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/golden-natural_6692e71e-65ab-42e2-8a32-9b3aef4d0807.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/golden-natural.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-golden-natural",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-light-grey",
+      "name": "Light Grey",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/light-grey_eca11085-ead9-499c-a242-882cdef32003.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/light-grey_eca11085-ead9-499c-a242-882cdef32003.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/light-grey_eca11085-ead9-499c-a242-882cdef32003.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_12.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-light-grey",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-steel",
+      "name": "Steel",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/steel_3a26bd91-020b-4034-a325-a688be21cccd.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/steel_3a26bd91-020b-4034-a325-a688be21cccd.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/steel_3a26bd91-020b-4034-a325-a688be21cccd.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/steel.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-steel",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-charcoal",
+      "name": "Charcoal",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/charcoal_b8e6e756-cdd2-4847-bc70-c39a2055e516.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/charcoal_b8e6e756-cdd2-4847-bc70-c39a2055e516.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/charcoal_b8e6e756-cdd2-4847-bc70-c39a2055e516.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_14.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-charcoal",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-aloe",
+      "name": "Aloe",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/XX-E4075.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/XX-E4075.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/XX-E4075.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-aloe",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-pastel-pink",
+      "name": "Pastel Pink",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pine-green_fdc671aa-eb3e-4748-b6af-9b914400b175.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pine-green_fdc671aa-eb3e-4748-b6af-9b914400b175.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pine-green_fdc671aa-eb3e-4748-b6af-9b914400b175.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_63.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pastel-pink-braided-5mm-II.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-pastel-pink",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-teal",
+      "name": "Teal",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/teal_608d57e2-c345-4902-ba94-dea934e66200.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/teal_608d57e2-c345-4902-ba94-dea934e66200.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/teal_608d57e2-c345-4902-ba94-dea934e66200.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_65.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-teal",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-pine-green",
+      "name": "Pine Green",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pine-green-cu-5mm.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pine-green-cu-5mm.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pine-green-cu-5mm.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_66.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-pine-green",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-white",
+      "name": "White",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/white_6dbaf614-53b9-4f69-a9ff-7a12d3bd82ca.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/white_6dbaf614-53b9-4f69-a9ff-7a12d3bd82ca.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/white_6dbaf614-53b9-4f69-a9ff-7a12d3bd82ca.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/white.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-white",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-pearl",
+      "name": "Pearl",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pearl_ffafbb1a-3a7f-4650-a3a9-201e8648b293.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pearl_ffafbb1a-3a7f-4650-a3a9-201e8648b293.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/pearl_ffafbb1a-3a7f-4650-a3a9-201e8648b293.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_19.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/1970-01-0101.00.007.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-pearl",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-classic-red",
+      "name": "Classic Red",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/5mm-CU-braided.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/5mm-CU-braided.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/5mm-CU-braided.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYFRPHOTOCROPPINGCORRECTION_74.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-classic-red",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-warm-beige",
+      "name": "Warm Beige",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Warm_Beige_5mm_Braided_Cord.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Warm_Beige_5mm_Braided_Cord.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Warm_Beige_5mm_Braided_Cord.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX-E4102.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-warm-beige",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-mauve",
+      "name": "Mauve",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/mauvexx.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/mauvexx.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/mauvexx.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_72_e10fc932-a28c-477b-8645-32410f5ba97a.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/mauve-5mm-braided.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-mauve",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-duck-egg-blue",
+      "name": "Duck Egg Blue",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/DuckEggBlue5mmBraidedCord.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/DuckEggBlue5mmBraidedCord.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/DuckEggBlue5mmBraidedCord.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-duck-egg-blue",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-leopard",
+      "name": "Leopard",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Leopard_Braided_Cord_5mm.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Leopard_Braided_Cord_5mm.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Leopard_Braided_Cord_5mm.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:leopard-braided-5mm",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-nut-brown",
+      "name": "Nut Brown",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/NutBrownBraidedCord5mm.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/NutBrownBraidedCord5mm.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/NutBrownBraidedCord5mm.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:nut-brown-5mm-braided",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-100m-spicy-yellow",
+      "name": "Spicy Yellow",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/spicy-yellowXX.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/spicy-yellowXX.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/spicy-yellowXX.jpg?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/products/BOBBINYUK-PhotoCropping_83_d27813a2-338a-4599-8fe7-1c33c54a47ca.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-100m-spicy-yellow",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-ink-blue",
+      "name": "Ink Blue",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/InkBlueBraidedCord5mm.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/InkBlueBraidedCord5mm.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/InkBlueBraidedCord5mm.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:ink-blue-5mm-braided",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-moss-green",
+      "name": "Moss Green",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/MossGreenBraidedCord5mm.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/MossGreenBraidedCord5mm.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/MossGreenBraidedCord5mm.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:moss-green-5mm-braided",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-aubergine",
+      "name": "Aubergine",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Aubergine.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Aubergine.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Aubergine.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/aubergine.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-aubergine",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-pale-olive",
+      "name": "Pale Olive",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Pale_Olive_Braided_Cord_5mm_1.jpg?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Pale_Olive_Braided_Cord_5mm_1.jpg?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Pale_Olive_Braided_Cord_5mm_1.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:pale-olive-braided-5mm",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-cashmere-beige",
+      "name": "Cashmere Beige",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XXCashmereBeige.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XXCashmereBeige.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XXCashmereBeige.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-cashmere-beige",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-midnight-dust",
+      "name": "Midnight Dust",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Please_note_there_are_fine_speckles_of_red_green_blue_and_yellow_throughout..png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Please_note_there_are_fine_speckles_of_red_green_blue_and_yellow_throughout..png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Please_note_there_are_fine_speckles_of_red_green_blue_and_yellow_throughout..png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Midnight_Dust_1.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-midnight-dust",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-canary-yellow",
+      "name": "Canary Yellow",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Canary_Yellow.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Canary_Yellow.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Canary_Yellow.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/canary-yellow.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-canary-yellow",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-dusty-rose",
+      "name": "Dusty Rose",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XXDustyRose.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XXDustyRose.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XXDustyRose.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-dusty-rose",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-red-velvet",
+      "name": "Red Velvet",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Red_Velvet.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Red_Velvet.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Red_Velvet.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/red-velvet.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-red-velvet",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-jelly-mint",
+      "name": "Jelly Mint",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/JellyMintXX.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/JellyMintXX.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/JellyMintXX.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-jelly-mint",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-jade-green",
+      "name": "Jade Green",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Jade_Green.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Jade_Green.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Jade_Green.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/jade-green.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-jade-green",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-bubblegum-pink",
+      "name": "Bubblegum Pink",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Bubblegum_Pink.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Bubblegum_Pink.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Bubblegum_Pink.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/bubblegum-pink.jpg?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-bubblegum-pink",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-shiny-cashmere-beige",
+      "name": "Shiny Cashmere Beige",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Cashmere_Beige.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Cashmere_Beige.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Cashmere_Beige.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/ShinyCashmereBeige.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-shiny-cashmere-beige",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-shiny-jade-green",
+      "name": "Shiny Jade Green",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Jade_Green.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Jade_Green.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Jade_Green.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-shiny-jade-green",
+      "stockStatus": "in_stock"
+    },
+    {
+      "id": "bobbiny-5mm-shiny-chocolate-brown",
+      "name": "Shiny Chocolate Brown",
+      "swatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Chocolate_Brown.png?width=240",
+      "detailSwatchSrc": "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Chocolate_Brown.png?width=1400",
+      "colorImages": [
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/XX_Shiny_Chocolate_Brown.png?width=1400",
+        "https://cdn.shopify.com/s/files/1/0683/5149/2390/files/Shiny_Chocolate_Brown.png?width=1400"
+      ],
+      "supplierSku": "bobbiny:bobbiny-premium-5mm-braided-rope-shiny-chocolate-brown",
+      "stockStatus": "in_stock"
+    }
+  ]
+}

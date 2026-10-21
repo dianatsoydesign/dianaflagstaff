@@ -1,0 +1,15 @@
+---
+description: Product photos are never cropped and always keep their aspect ratio
+alwaysApply: true
+---
+
+# Product images: fit, never crop
+
+Every product photo must show the whole image, scaled to fit its box, with the original aspect ratio kept.
+
+This covers the product page gallery and its thumbnails, the shop grid and "You might also like" cards, the cart drawer, and the featured products on the welcome page. It also covers any new place product photos appear.
+
+- Use `object-contain` on product `<Image>`s, never `object-cover`.
+- Don't stretch images or set both width and height in a way that distorts them.
+- Don't add hover zoom (`scale-*`) inside an `overflow-hidden` box, since it crops the edges.
+- Leftover space around the photo shows the box's background color.

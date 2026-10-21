@@ -1,0 +1,28 @@
+---
+description: Sentence case for all website copy, product names, and yarn colors
+alwaysApply: true
+---
+
+# Sentence case everywhere
+
+Write all website copy in sentence case unless Diana says otherwise. Capitalize only the first word and proper nouns.
+
+This covers page titles, headings, nav links, buttons, labels, form fields, alt text, product names, and messages.
+
+- Good: "Shop crochet", "Add to cart", "Your cart", "Elf hat", "Wine bottle holders"
+- Bad: "Shop Crochet", "Add To Cart", "Your Cart", "Elf Hat", "Wine Bottle Holders"
+
+Product names: `name` in `src/data/products.ts` and `title` in `src/data/pattern-requests.ts` follow this too.
+
+## Yarn color names
+
+Show yarn colors in lowercase, except proper nouns: "Color: off white", "Italian cream".
+
+- Keep the supplier's spelling in the data (`src/data/charisma.json`, `src/data/bobbiny-premium-5mm.json`, `name` on yarns in `src/data/products.ts`). Stock sync matches on those names.
+- Wherever a color name is shown, wrap it in `colorName()` from `src/lib/color-name.ts`. Add new proper nouns to its `PROPER_WORDS` list.
+- In hand-written copy (like product descriptions), type colors in lowercase.
+
+## Exceptions
+
+- Brand and proper names keep their own spelling: "Diana's art", "Flagstaff", "Charisma", "Loops & Threads", "Bobbiny", "Venmo", "Mountainaire General Store".
+- Anything Diana asks to style differently.

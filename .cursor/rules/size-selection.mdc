@@ -1,0 +1,32 @@
+---
+description: Size selection UI — always use SizePicker, match color/tag label style
+alwaysApply: true
+---
+
+# Size selection
+
+Whenever the shop lets someone pick a size (product page, pattern request, future flows), use the shared **`SizePicker`** in `src/components/size-picker.tsx`. Do not build one-off size buttons, legends, or labels.
+
+## Product catalog
+
+- Sizes live on each product in `src/data/products.ts` (`sizes: { id, label }[]`, optional `price` per size).
+- Optional **`defaultSizeId`**: initial chip on the PDP (e.g. hats → `adult`). `defaultCatalogSizeId` in `src/lib/custom-size.ts` also picks the first adult-like preset when no id is set.
+- If size is not meaningful to show (e.g. one implicit size like a single stocking), set **`hideSizePicker: true`** on the product. Orders still use `sizes[0]`; cart copy omits size via `hideSizePicker` in `src/lib/line-options.ts`.
+
+## Label style (must match color and tag pickers)
+
+- Legend: `mb-3`, `text-[calc(0.875rem*1.5)]`, `leading-snug`, `text-muted-foreground`.
+- Pattern: **`Size:`** (muted) + selected value in **`font-medium text-foreground`** (sentence case labels from data).
+- Single-size read-only line uses the same typography (no separate small `text-sm` style).
+
+## Option chips
+
+- Pill buttons: `rounded-full`, `min-h-11`, **`w-fit`** / `inline-flex` so borders hug content (no full-width stretch in grids).
+- Selected: `border-2 border-ink`, `bg-card/80`, `font-medium` — not inverted fill (same as tag/size; distinct from Add to cart CTA).
+- Unselected: `border-border`, `bg-card/80`.
+
+## Wiring
+
+- **`ProductPurchaseForm`**: `<SizePicker />` unless `product.hideSizePicker`.
+- **Pattern requests**: `<SizePicker sizes={item.sizes} … />` in `pattern-request-panel.tsx`.
+- New surfaces: import `SizePicker` only; extend that component if behavior must change for everyone.

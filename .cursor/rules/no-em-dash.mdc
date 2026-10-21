@@ -1,0 +1,28 @@
+---
+description: No em dashes in website copy or customer-facing strings
+alwaysApply: true
+---
+
+# No em dashes
+
+Do not use the Unicode em dash (`—`, U+2014) anywhere in this project.
+
+This covers all **customer-facing** text: page copy, headings, buttons, labels, form messages, metadata descriptions, alt text, product and pattern blurbs in `src/data/`, and any other string shown on the site.
+
+Also avoid em dashes in **new** repo prose (docs, skills, rules, comments) when you write or edit those files.
+
+## Use instead
+
+- Two sentences: period, then the next thought.
+- A comma or colon when a short pause is enough.
+- Parentheses for a quick aside.
+- A middle dot (`·`) only when the design already uses it for separators (e.g. cart line details).
+
+## Examples
+
+- Good: "Local pickup only. Venmo when we meet."
+- Bad: "Local pickup only — Venmo when we meet."
+- Good: "Free pattern: link coming once Diana confirms the source."
+- Bad: "Free pattern — link coming once Diana confirms the source."
+
+Do not substitute `--` or `–` (en dash) where an em dash would go in copy. Rephrase with plain punctuation.

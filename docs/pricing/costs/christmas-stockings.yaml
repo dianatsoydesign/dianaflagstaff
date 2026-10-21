@@ -1,0 +1,9 @@
+product_id: christmas-stockings
+yarn_line: charisma
+skeins_used: 1.15
+hours_guesstimate: 6
+hours_source: agent_estimate
+notes: "Longest make; ribbed cuff and tassel."
+
+units_per_sku: 1
+unit_label: "Christmas stocking"

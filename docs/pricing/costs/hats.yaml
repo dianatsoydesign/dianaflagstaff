@@ -1,0 +1,9 @@
+product_id: hats
+yarn_line: charisma
+skeins_used: 1.4
+hours_guesstimate: 3
+hours_source: agent_estimate
+notes: "Beginner Bulky Beanie yardage; per-size retail in products.ts (Baby–Adult, anchor Adult $25, fixed $12 scaling)."
+
+units_per_sku: 1
+unit_label: "hat"

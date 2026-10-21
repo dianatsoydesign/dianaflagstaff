@@ -1,0 +1,10 @@
+product_id: elf-hat
+yarn_line: charisma
+skeins_used: 0.9
+waste_factor: 1.1
+hours_guesstimate: 4
+hours_source: agent_estimate
+notes: "MJ Bulky & Quick Elf Hat; per-size retail in products.ts (Baby–Men's, anchor Ladies $40, fixed $12 scaling, total yds A+B+C)."
+
+units_per_sku: 1
+unit_label: "elf hat"

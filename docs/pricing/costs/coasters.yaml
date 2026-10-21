@@ -1,0 +1,12 @@
+product_id: coasters
+what_is_sold: Set of 4 coasters
+yarn_line: bobbiny-premium-5mm
+bobbiny_spool_fraction: 0.32
+hours_guesstimate: 2
+hours_per_unit: 0.5
+hours_unit_label: "per coaster (4 coasters = 2 h total)"
+hours_source: user_provided
+notes: "Diana: ~30 min per coaster."
+
+units_per_sku: 4
+unit_label: "coaster"

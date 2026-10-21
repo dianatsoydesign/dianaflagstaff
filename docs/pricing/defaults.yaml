@@ -1,0 +1,9 @@
+hourly_floor_usd: 18
+tag_usd_per_product: 0.90
+flagstaff_combined_sales_tax_rate: 0.09181
+flagstaff_tax_fallback_source: "https://azdor.gov/transaction-privilege-tax/tpt-rates"
+waste_factor_multi_color: 1.1
+comp_counts:
+  etsy: 5
+  flagstaff_local: 4
+  peer_town: 3

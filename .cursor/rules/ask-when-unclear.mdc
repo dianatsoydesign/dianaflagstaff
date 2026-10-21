@@ -1,0 +1,16 @@
+---
+description: Ask which thing the user means before changing it
+alwaysApply: true
+---
+
+# Ask before guessing a reference
+
+When a request could match more than one thing in the project, ask which one they mean before editing.
+
+This includes UI parts, pages, components, copy, images, and data that share a name or sit near each other.
+
+- Name the candidates in plain language.
+- Wait for the answer.
+- Do not pick the closest match and change it.
+
+Example: "thumbnails" could mean the product photo strip or the yarn color swatches. Ask which one, then change only that.

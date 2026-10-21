@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-label="Forest Heather yarn swatch">
+  <defs>
+    <pattern id="fibers" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
+      <rect width="12" height="12" fill="#3d5a45"/>
+      <rect x="0" y="0" width="3" height="12" fill="#2a3f30" opacity="0.55"/>
+      <rect x="6" y="0" width="2" height="12" fill="#5a7a62" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="240" height="240" fill="url(#fibers)"/>
+  <g fill="none" stroke="#2a3f30" stroke-width="10" stroke-linecap="round" opacity="0.35">
+    <path d="M40 70 C80 40, 160 40, 200 70"/>
+    <path d="M35 110 C90 80, 150 140, 205 110"/>
+    <path d="M40 150 C85 180, 155 120, 200 155"/>
+  </g>
+</svg>

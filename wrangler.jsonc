@@ -1,0 +1,47 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "diana-flagstaff",
+  // Wraps .open-next/worker.js and adds the hourly scheduled handler.
+  "main": "custom-worker.ts",
+  "compatibility_date": "2026-10-09",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "dianaflagstaff.com", "custom_domain": true },
+    { "pattern": "www.dianaflagstaff.com", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "images": {
+    "binding": "IMAGES"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "MAKER_PASSWORD": "DianasOrders!"
+    // CRON_SECRET: set this in the Cloudflare dashboard (Workers → Settings → Variables)
+    // to secure the /api/cron/* endpoints. Required for the Mac → site Charisma stock push.
+  },
+  "kv_namespaces": [
+    {
+      "binding": "ORDERS_KV",
+      "id": "acce3fd056324a398d6d079fbb4774b4",
+      "preview_id": "c18e85c4493d499090ba650523cc91cb"
+    },
+    {
+      // Yarn stock cache for Bobbiny and Michaels (Charisma); keys are prefixed per supplier.
+      "binding": "BOBBINY_STOCK",
+      "id": "191c98d028e34244b24344c5c7fdce75",
+      "preview_id": "15edd3bb46bf49a2beb5d95658c2240c"
+    }
+  ],
+  "triggers": {
+    // Every hour at :00 → `scheduled` in custom-worker.ts refreshes Bobbiny stock.
+    // Charisma stock is pushed hourly from Diana's Mac (Michaels blocks Cloudflare).
+    "crons": ["0 * * * *"]
+  }
+}
