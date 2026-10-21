@@ -234,6 +234,7 @@ export const products: Product[] = [
       { src: "/products/hotpads/4-studio-v2.jpg", alt: "Side view of stacked terracotta crochet hot pads" },
       { src: "/products/hotpads/hotpad-with-product-1-studio-v1.jpg", alt: "Warm beige crochet hotpad with a glass candle" },
       { src: "/products/hotpads/hotpad-with-product-2-studio-v1.jpg", alt: "Warm beige crochet hotpad under a stainless steel saucepan" },
+      { src: "/products/hotpads/hotpad-with-product-3-studio-v2.jpg", alt: "Warm beige crochet hotpad hanging by its leather loop on a wall hook" },
     ],
     sizes: [
       { id: "one", label: '7.5" × 7"' },

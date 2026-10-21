@@ -194,15 +194,15 @@
   }
 }
 
-/* Page frame matching Ventura (Squarespace Fluid): 6vw gutter on phones, 4vw from 768px, content capped at 1800px. */
+/* Page frame: 3vw side gutters on phones, 2vw from 768px, content capped at 1800px. */
 @layer components {
   .site-gutter {
-    padding-inline: 6vw;
+    padding-inline: 3vw;
   }
 
   @media (width >= 48rem) {
     .site-gutter {
-      padding-inline: 4vw;
+      padding-inline: 2vw;
     }
   }
 

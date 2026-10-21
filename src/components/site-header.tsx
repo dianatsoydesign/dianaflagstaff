@@ -77,7 +77,7 @@ export function SiteHeader() {
             : "sticky top-0 bg-background"
         )}
       >
-        <div className="px-[6vw] py-[3.25vw] min-[800px]:px-[4vw] min-[800px]:py-[1.5vw]">
+        <div className="px-[3vw] py-[3.25vw] min-[800px]:px-[2vw] min-[800px]:py-[1.5vw]">
         <div className="site-width grid grid-cols-[1fr_auto_1fr] items-center min-[800px]:flex min-[800px]:justify-between">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
