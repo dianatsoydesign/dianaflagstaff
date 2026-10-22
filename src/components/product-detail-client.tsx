@@ -106,7 +106,7 @@ export function ProductDetailClient({ product, related }: Props) {
   return (
     <div className="site-gutter bg-background pb-20 pt-8">
       <div className="site-width">
-        <div className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[2.75px] md:gap-y-[11px]">
+        <div className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px]">
           <ProductDetailGallery
             slides={slides}
             activeIndex={Math.min(activeIndex, slides.length - 1)}
@@ -115,7 +115,7 @@ export function ProductDetailClient({ product, related }: Props) {
             className="order-3 md:order-none md:col-start-1 md:row-start-1"
           />
 
-          <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-8 md:self-start md:sticky md:top-20 md:py-2 md:pl-[1vw] lg:pl-[1.5vw]">
+          <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-8 md:self-start md:sticky md:top-20 md:py-2 md:pl-[2vw] lg:pl-[3vw]">
             <ProductNamePrice
               name={product.name}
               price={displayUnitPrice}

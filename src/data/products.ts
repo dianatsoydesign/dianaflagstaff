@@ -223,6 +223,33 @@ export const products: Product[] = [
     ],
   },
   {
+    id: "mushroom-hat",
+    name: "Mushroom hat",
+    price: 55,
+    category: "Holiday",
+    imageSrc: "/products/mushroom hat/mushroom-hat-1-ai-upscaled-2048-v1.jpg",
+    imageAlt: "Man wearing a red crochet mushroom hat with white spots and brim",
+    galleryImages: [
+      { src: "/products/mushroom hat/mushroom-hat-2-ai-upscaled-2048-v1.jpg", alt: "Side view of a red crochet mushroom hat with white spots and a leather tag" },
+      { src: "/products/mushroom hat/mushroom-hat-3-ai-upscaled-2048-v1.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
+    ],
+    sizes: [
+      { id: "baby", label: "Baby", price: 34 },
+      { id: "toddler", label: "Toddler", price: 39 },
+      { id: "child", label: "Child", price: 44 },
+      { id: "adult", label: "Adult", price: 55 },
+    ],
+    defaultSizeId: "adult",
+    yarns: [
+      {
+        id: "mushroom-hat-multi",
+        name: "Red and white",
+        swatchSrc: "/yarn-swatches/mushroom-hat-multi.svg",
+        stockStatus: "in_stock",
+      },
+    ],
+  },
+  {
     id: "hotpads",
     name: "Hotpads",
     price: 12,

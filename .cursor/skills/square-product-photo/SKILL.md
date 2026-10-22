@@ -41,7 +41,7 @@ Standardize image exposure, background appearance, and white balance across all 
 
 ### Preserve Material Texture & Grounded Shadows
 
-* **Detail Preservation & Slight Sharpening**: Retain sharp definition of the Bobbiny Premium 5mm cotton stitch-work, natural knit patterns, ribbed edges, and pom-pom textures by applying a gentle, uniform overall sharpening filter to the final image.
+* **Detail Preservation & Slight Sharpening**: Retain sharp definition of the Bobbiny Premium 5mm cotton stitch-work, natural knit patterns, ribbed edges, and pom-pom textures with gentle crochet-only sharpening during web export (see section 5).
 
 * **Prop Polish & Defect Removal**: Automatically detect secondary lifestyle props (such as plates, forks, spoons, cooking pots, or candles). Digitally smooth out, polish, and remove heavy scratches, fingerprints, blemishes, or unappealing surface scuffs from these objects so they look pristine and clean.
 
@@ -113,7 +113,16 @@ When nail polish is visible in the frame, recolor **only the polish pixels** to 
 
 ---
 
-## 5. File Operations & Catalog State Preservation
+## 5. AI Edit & Web Upscale
+
+* **Source & Edit**: Use the highest-resolution original for the AI lighting, background, color, and cleanup edit. Retain the AI master and original; follow the user’s framing instructions.
+* **Web Upscale**: After approving the AI edit visually, locally resize to a 2,048 px longest edge with Lanczos (preserve aspect ratio). If already larger, downsample for the web copy. Save a separate version; never overwrite the master. This local export step is authorized by this workflow and requires no paid API.
+* **Crochet Detail First**: Prioritize yarn fibers, stitch boundaries, ribs, and product edges. Apply gentle unsharp masking only through a softly feathered crochet-product mask (starting point: radius 0.9 px, amount 45%, threshold 3 at 2,048 px). Exclude skin, faces, hands, hair, props, tags, and background from sharpening. Keep human features natural; do not invent yarn texture or use aggressive clarity. Reduce sharpening if halos, ringing, or brittle fibers appear.
+* **Export & Check**: JPEG quality 88–90, optimized; roughly 250–900 KB is a guideline, not a requirement. Inspect crochet at full size, check masked edges, and report dimensions/file size. Upscaling improves presentation but does not recover original camera detail. Do not reject the approved AI look solely because its native output is smaller. Preserve any user-set resolution or budget limits.
+
+---
+
+## 6. File Operations & Catalog State Preservation
 
 * **Strict No-Overwrite Rule**: Always write a new versioned file. Do not overwrite the current file. Save the result under `public/products/<product>/` with the next version suffix `-vN`). 
 
