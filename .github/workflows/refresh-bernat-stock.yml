@@ -1,0 +1,48 @@
+name: Refresh Flagstaff cat cave yarn stock
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/refresh-bernat-stock.yml'
+      - 'scripts/push-bernat-stock.mjs'
+      - 'scripts/bernat-inventory.test.mjs'
+      - 'src/lib/bernat-inventory.mjs'
+      - 'src/data/bernat-blanket-big.json'
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      check_only:
+        description: 'Verify Michaels access without publishing stock'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flagstaff-bernat-stock
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test stock rules
+        run: node --test scripts/bernat-inventory.test.mjs
+      - name: Verify Flagstaff pickup counts and save stock
+        env:
+          SITE_URL: https://dianaflagstaff.com
+          BERNAT_STOCK_SECRET: ${{ github.event_name != 'pull_request' && secrets.BERNAT_STOCK_SECRET || '' }}
+          CHECK_ONLY: ${{ github.event_name == 'pull_request' || inputs.check_only }}
+        run: |
+          if [ "$CHECK_ONLY" = "true" ]; then
+            node scripts/push-bernat-stock.mjs --check-only
+          else
+            node scripts/push-bernat-stock.mjs
+          fi

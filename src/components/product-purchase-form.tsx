@@ -95,6 +95,11 @@ export function ProductPurchaseForm({
   const [tagId, setTagId] = useState<ProductTagId>(DEFAULT_PRODUCT_TAG_ID);
   const [pomPomId, setPomPomId] = useState<HatPomPomId>(DEFAULT_HAT_POM_POM_ID);
   const [liveStock, setLiveStock] = useState<Record<string, StockStatus>>({});
+  const isCatCave = product.id === "cat-cave";
+  const [stockExpiresAt, setStockExpiresAt] = useState(0);
+  const [stockMessage, setStockMessage] = useState("Checking yarn availability…");
+  const yarnIdRef = useRef(yarnId);
+  useEffect(() => { yarnIdRef.current = yarnId; }, [yarnId]);
   const [message, setMessage] = useState<string | null>(null);
   const qtyConfig = product.quantityPicker;
   const [quantity, setQuantity] = useState(qtyConfig?.min ?? 1);
@@ -163,35 +168,72 @@ export function ProductPurchaseForm({
   useEffect(() => {
     let cancelled = false;
     async function load() {
-      const res = await fetch(`/api/yarn-stock?productId=${product.id}`);
-      if (!res.ok) return;
-      const data = (await res.json()) as {
-        results: { yarnId: string; status: StockStatus }[];
-      };
-      if (cancelled) return;
-      const map: Record<string, StockStatus> = {};
-      for (const r of data.results) map[r.yarnId] = r.status;
-      setLiveStock(map);
-      const pickDefault = () => {
-        const candidates = product.defaultYarnId
-          ? [
-              product.yarns.find((y) => y.id === product.defaultYarnId),
-              ...product.yarns,
-            ]
-          : product.yarns;
-        return candidates.find(
-          (y): y is (typeof product.yarns)[number] =>
-            !!y && isSelectable(map[y.id] ?? y.stockStatus)
-        );
-      };
-      const first = pickDefault();
-      const firstId = first?.id ?? null;
-      setYarnId(firstId);
-      onYarnChangeRef.current?.(first ?? null, false);
+      try {
+        const res = await fetch(`/api/yarn-stock?productId=${product.id}`, { cache: "no-store" });
+        if (!res.ok) throw new Error("Stock unavailable");
+        const data = (await res.json()) as {
+          results: { yarnId: string; status: StockStatus; checkedAt?: string; message?: string }[];
+        };
+        if (cancelled) return;
+        const map: Record<string, StockStatus> = {};
+        for (const r of data.results) map[r.yarnId] = r.status;
+        if (isCatCave) {
+          const checkedAt = Date.parse(data.results[0]?.checkedAt ?? "");
+          const expiresAt = checkedAt + 2 * 60 * 60 * 1000;
+          if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
+            setLiveStock({});
+            setStockExpiresAt(0);
+            setStockMessage("Yarn availability is being updated.");
+            setYarnId(null);
+            onYarnChangeRef.current?.(null, false);
+            return;
+          }
+          setStockExpiresAt(expiresAt);
+          setStockMessage(data.results.some(r => isSelectable(r.status)) ? "" : "No yarn colors currently have enough stock at Michaels in Flagstaff.");
+        }
+        setLiveStock(map);
+        const pickDefault = () => {
+          const candidates = product.defaultYarnId
+            ? [
+                product.yarns.find((y) => y.id === product.defaultYarnId),
+                ...product.yarns,
+              ]
+            : product.yarns;
+          return candidates.find(
+            (y): y is (typeof product.yarns)[number] =>
+              !!y && isSelectable(map[y.id] ?? (isCatCave ? "out_of_stock" : y.stockStatus))
+          );
+        };
+        if (isCatCave && yarnIdRef.current && isSelectable(map[yarnIdRef.current] ?? "out_of_stock")) return;
+        const first = pickDefault();
+        const firstId = first?.id ?? null;
+        setYarnId(firstId);
+        onYarnChangeRef.current?.(first ?? null, false);
+      } catch {
+        if (!cancelled && isCatCave) {
+          setLiveStock({});
+          setStockExpiresAt(0);
+          setStockMessage("Yarn availability is being updated.");
+          setYarnId(null);
+          onYarnChangeRef.current?.(null, false);
+        }
+      }
     }
     void load();
-    return () => { cancelled = true; };
-  }, [product]); // stable: product doesn't change on this page
+    const timer = isCatCave ? window.setInterval(() => void load(), 60000) : null;
+    return () => { cancelled = true; if (timer !== null) window.clearInterval(timer); };
+  }, [product, isCatCave]); // stable: product doesn't change on this page
+
+  useEffect(() => {
+    if (!isCatCave || !stockExpiresAt) return;
+    const timer = window.setTimeout(() => {
+      setLiveStock({});
+      setYarnId(null);
+      setStockMessage("Yarn availability is being updated.");
+      onYarnChangeRef.current?.(null, false);
+    }, Math.max(0, stockExpiresAt - Date.now()));
+    return () => window.clearTimeout(timer);
+  }, [isCatCave, stockExpiresAt]);
 
   const showHolidayPizza = charismaHasHolidayYarns(product.yarns);
   const showSoftPalette =
@@ -199,10 +241,10 @@ export function ProductPurchaseForm({
   const showWarmPalette =
     showHolidayPizza && charismaHasWarmPaletteYarns(product.yarns);
 
-  const yarns = useMemo(() => {
+  const yarns = (() => {
     const withStatus = product.yarns.map((y) => ({
       ...y,
-      liveStatus: liveStock[y.id],
+      liveStatus: liveStock[y.id] ?? (isCatCave ? "out_of_stock" as const : undefined),
     }));
     const inStock = hasLiveStock
       ? withStatus.filter((y) => isSelectable(y.liveStatus ?? y.stockStatus))
@@ -218,14 +260,7 @@ export function ProductPurchaseForm({
       extra.push({ ...charismaWarmPaletteYarn(), liveStatus: "in_stock" });
     }
     return extra.length ? [...inStock, ...extra] : inStock;
-  }, [
-    product.yarns,
-    liveStock,
-    hasLiveStock,
-    showHolidayPizza,
-    showSoftPalette,
-    showWarmPalette,
-  ]);
+  })();
 
   function resolveYarn(id: string | null): YarnColor | null {
     if (!id) return null;
@@ -242,6 +277,10 @@ export function ProductPurchaseForm({
 
   function add() {
     setMessage(null);
+    if (isCatCave && stockExpiresAt <= Date.now()) {
+      setMessage("Yarn availability is being updated.");
+      return;
+    }
     const customSize =
       sizeId != null && isRequestDifferentSizeId(sizeId);
     const size = customSize
@@ -337,6 +376,7 @@ export function ProductPurchaseForm({
       {product.showPomPomPicker ? (
         <PomPomPicker value={pomPomId} onChange={setPomPomId} />
       ) : null}
+      {isCatCave && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
       <YarnSwatchPicker
         allowHolidayFilter={product.id === "christmas-stockings"}
         keyboardNavigation
@@ -369,6 +409,7 @@ export function ProductPurchaseForm({
         type="button"
         className="h-12 w-full justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
         onClick={add}
+        disabled={isCatCave && (!yarnId || !yarns.length || !stockExpiresAt)}
       >
         <span>Add to cart</span>
         <span className="tabular-nums">

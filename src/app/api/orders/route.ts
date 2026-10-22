@@ -1,3 +1,5 @@
+import { readBernatStock } from "@/lib/bernat-stock";
+import { availableForCatCave, MIN_SKEINS } from "@/lib/bernat-inventory.mjs";
 import { NextResponse } from "next/server";
 import { getProduct } from "@/data/products";
 import { createOrder } from "@/lib/orders";
@@ -76,6 +78,25 @@ export async function POST(request: Request) {
           { error: customSizeRangeMessage(limits) },
           { status: 400 }
         );
+      }
+    }
+
+    const catLines = lines.filter(line => line.productId === "cat-cave");
+    if (catLines.length) {
+      const snapshot = await readBernatStock();
+      const requested = new Map<string, number>();
+      for (const line of catLines) {
+        const yarn = getProduct("cat-cave")?.yarns.find(yarn => yarn.id === line.yarnId);
+        const sku = yarn?.supplierSku?.split(":")[1];
+        if (!sku || !Number.isSafeInteger(line.quantity) || !availableForCatCave(snapshot, sku)) {
+          return NextResponse.json({ error: "That cat cave yarn is no longer available. Please choose another color." }, { status: 409 });
+        }
+        requested.set(sku, (requested.get(sku) ?? 0) + line.quantity * MIN_SKEINS);
+      }
+      for (const [sku, needed] of requested) {
+        if ((snapshot?.quantities[sku] ?? 0) < needed) {
+          return NextResponse.json({ error: "There is not enough yarn for that many cat caves. Please reduce the quantity or choose another color." }, { status: 409 });
+        }
       }
     }
 
