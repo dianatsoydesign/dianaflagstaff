@@ -1,3 +1,4 @@
+import { charismaFlagstaffAvailability } from "@/lib/charisma-flagstaff-stock";
 /**
  * Yarn availability for the shop UI.
  *
@@ -14,6 +15,7 @@ import { bernatAvailability } from "@/lib/bernat-stock";
 import { products, type StockStatus, type YarnColor } from "@/data/products";
 import { getAllYarns, getYarnById } from "@/data/yarns";
 import {
+  bobbinyAvailability,
   getBobbinyAvailabilityByHandle,
   parseBobbinyHandle,
 } from "@/lib/bobbiny-stock";
@@ -143,6 +145,9 @@ export async function getProductYarnStock(
   const product = products.find((p) => p.id === productId);
   if (!product) return [];
   if (productId === "cat-cave") return bernatAvailability();
+  if (productId === "hats") return charismaFlagstaffAvailability(2);
+  if (productId === "christmas-stockings") return charismaFlagstaffAvailability(3);
+  if (product.yarns.some(yarn => yarn.supplierSku?.startsWith("bobbiny:"))) return bobbinyAvailability();
 
   const supplier = product.yarns
     .map((y) => liveSupplierFor(y.supplierSku)?.supplier)

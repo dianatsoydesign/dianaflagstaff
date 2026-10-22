@@ -1,3 +1,8 @@
+import { readBobbinyStock } from "@/lib/bobbiny-stock";
+import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
+import { readCharismaFlagstaffStock } from "@/lib/charisma-flagstaff-stock";
+import { charismaRecipe } from "@/lib/charisma-stock-options";
+import { availableForCharisma } from "@/lib/charisma-inventory.mjs";
 import { readBernatStock } from "@/lib/bernat-stock";
 import { availableForCatCave, MIN_SKEINS } from "@/lib/bernat-inventory.mjs";
 import { NextResponse } from "next/server";
@@ -63,6 +68,9 @@ export async function POST(request: Request) {
     }));
 
     for (const line of lines) {
+      if (line.kind === "catalog" && !getProduct(line.productId)) {
+        return NextResponse.json({ error: "This product is no longer available." }, { status: 400 });
+      }
       if (!isRequestDifferentSizeId(line.sizeId)) continue;
       const limits = getProduct(line.productId)?.customSizeLimits;
       if (!limits) continue;
@@ -96,6 +104,44 @@ export async function POST(request: Request) {
       for (const [sku, needed] of requested) {
         if ((snapshot?.quantities[sku] ?? 0) < needed) {
           return NextResponse.json({ error: "There is not enough yarn for that many cat caves. Please reduce the quantity or choose another color." }, { status: 409 });
+        }
+      }
+    }
+
+    const charismaLines = lines.filter(line => line.productId === "hats" || line.productId === "christmas-stockings");
+    if (charismaLines.length) {
+      const snapshot = await readCharismaFlagstaffStock();
+      const requested = new Map<string, number>();
+      for (const line of charismaLines) {
+        const minimum = line.productId === "hats" ? 2 : 3;
+        const colors = charismaRecipe(line.yarnId);
+        if (!colors.length || (line.productId === "hats" && line.yarnId === "stockings-multi") || !Number.isSafeInteger(line.quantity)) {
+          return NextResponse.json({ error: "Please choose an available yarn color." }, { status: 409 });
+        }
+        for (const color of colors) {
+          const yarn = getProduct(line.productId)?.yarns.find(yarn => yarn.id === color);
+          const sku = yarn?.supplierSku?.split(":")[1];
+          if (!sku || !availableForCharisma(snapshot, sku, minimum)) {
+            return NextResponse.json({ error: "That yarn is no longer available for this item. Please choose another color." }, { status: 409 });
+          }
+          requested.set(sku, (requested.get(sku) ?? 0) + line.quantity * minimum);
+        }
+      }
+      for (const [sku, needed] of requested) {
+        if ((snapshot?.quantities[sku] ?? 0) < needed) {
+          return NextResponse.json({ error: "There is not enough yarn for all items in this color. Please reduce the quantity or choose another color." }, { status: 409 });
+        }
+      }
+    }
+
+    const bobbinyLines = lines.filter(line => getProduct(line.productId)?.yarns.some(yarn => yarn.supplierSku?.startsWith("bobbiny:")));
+    if (bobbinyLines.length) {
+      const snapshot = await readBobbinyStock();
+      for (const line of bobbinyLines) {
+        const yarn = getProduct(line.productId)?.yarns.find(yarn => yarn.id === line.yarnId);
+        const handle = yarn?.supplierSku?.startsWith("bobbiny:") ? yarn.supplierSku.slice("bobbiny:".length) : null;
+        if (!handle || !availableBobbiny(snapshot, handle)) {
+          return NextResponse.json({ error: "That Bobbiny yarn is no longer in stock. Please choose another color." }, { status: 409 });
         }
       }
     }

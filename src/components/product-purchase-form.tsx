@@ -1,5 +1,10 @@
 "use client";
 
+import bobbinyBootstrapStock from "@/data/bobbiny-stock-bootstrap.json";
+import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
+import charismaBootstrapStock from "@/data/charisma-stock-bootstrap.json";
+import { charismaStockStatuses } from "@/lib/charisma-stock-options";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import bootstrapStock from "@/data/bernat-stock-bootstrap.json";
 import { availableForCatCave } from "@/lib/bernat-inventory.mjs";
@@ -97,10 +102,16 @@ export function ProductPurchaseForm({
   const [tagId, setTagId] = useState<ProductTagId>(DEFAULT_PRODUCT_TAG_ID);
   const [pomPomId, setPomPomId] = useState<HatPomPomId>(DEFAULT_HAT_POM_POM_ID);
   const isCatCave = product.id === "cat-cave";
+  const isHats = product.id === "hats";
+  const hasCharismaStock = isHats || product.id === "christmas-stockings";
+  const hasBobbinyStock = product.yarns.some(yarn => yarn.supplierSku?.startsWith("bobbiny:"));
+  const hasCachedSupplierStock = isCatCave || hasCharismaStock || hasBobbinyStock;
   const [liveStock, setLiveStock] = useState<Record<string, StockStatus>>(() =>
     isCatCave ? Object.fromEntries(product.yarns.map(yarn => [
       yarn.id,
       availableForCatCave(bootstrapStock, yarn.supplierSku?.split(":")[1] ?? "") ? "in_stock" : "out_of_stock",
+    ])) : hasCharismaStock ? charismaStockStatuses(charismaBootstrapStock, isHats ? 2 : 3) : hasBobbinyStock ? Object.fromEntries(product.yarns.map(yarn => [
+      yarn.id, availableBobbiny(bobbinyBootstrapStock, yarn.supplierSku?.slice("bobbiny:".length) ?? "") ? "in_stock" : "out_of_stock",
     ])) : {}
   );
   const [stockMessage, setStockMessage] = useState("");
@@ -183,11 +194,11 @@ export function ProductPurchaseForm({
         if (cancelled) return;
         const map: Record<string, StockStatus> = {};
         for (const r of data.results) map[r.yarnId] = r.status;
-        if (isCatCave) {
+        if (hasCachedSupplierStock) {
           if (!data.results.length || !Number.isFinite(Date.parse(data.results[0]?.checkedAt ?? ""))) {
             throw new Error("No verified stock snapshot");
           }
-          setStockMessage(data.results.some(r => isSelectable(r.status)) ? "" : "No yarn colors currently have enough stock at Michaels in Flagstaff.");
+          setStockMessage(data.results.some(r => isSelectable(r.status)) ? "" : "No yarn colors currently have enough supplier stock.");
         }
         setLiveStock(map);
         const pickDefault = () => {
@@ -199,10 +210,10 @@ export function ProductPurchaseForm({
             : product.yarns;
           return candidates.find(
             (y): y is (typeof product.yarns)[number] =>
-              !!y && isSelectable(map[y.id] ?? (isCatCave ? "out_of_stock" : y.stockStatus))
+              !!y && isSelectable(map[y.id] ?? (hasCachedSupplierStock ? "out_of_stock" : y.stockStatus))
           );
         };
-        if (isCatCave && yarnIdRef.current && isSelectable(map[yarnIdRef.current] ?? "out_of_stock")) return;
+        if (hasCachedSupplierStock && yarnIdRef.current && isSelectable(map[yarnIdRef.current] ?? "out_of_stock")) return;
         const first = pickDefault();
         const firstId = first?.id ?? null;
         setYarnId(firstId);
@@ -213,9 +224,9 @@ export function ProductPurchaseForm({
       }
     }
     void load();
-    const timer = isCatCave ? window.setInterval(() => void load(), 60000) : null;
+    const timer = hasCachedSupplierStock ? window.setInterval(() => void load(), 60000) : null;
     return () => { cancelled = true; if (timer !== null) window.clearInterval(timer); };
-  }, [product, isCatCave]); // stable: product doesn't change on this page
+  }, [product, hasCachedSupplierStock]); // stable: product doesn't change on this page
 
   const showHolidayPizza = charismaHasHolidayYarns(product.yarns);
   const showSoftPalette =
@@ -226,19 +237,19 @@ export function ProductPurchaseForm({
   const yarns = (() => {
     const withStatus = product.yarns.map((y) => ({
       ...y,
-      liveStatus: liveStock[y.id] ?? (isCatCave ? "out_of_stock" as const : undefined),
+      liveStatus: liveStock[y.id] ?? (hasCachedSupplierStock ? "out_of_stock" as const : undefined),
     }));
     const inStock = hasLiveStock
       ? withStatus.filter((y) => isSelectable(y.liveStatus ?? y.stockStatus))
       : withStatus;
     const extra: (YarnColor & { liveStatus?: StockStatus })[] = [];
-    if (showHolidayPizza) {
+    if (showHolidayPizza && (!hasCharismaStock || isSelectable(liveStock[charismaHolidayPizzaYarn().id] ?? "out_of_stock"))) {
       extra.push({ ...charismaHolidayPizzaYarn(), liveStatus: "in_stock" });
     }
-    if (showSoftPalette) {
+    if (showSoftPalette && (!hasCharismaStock || isSelectable(liveStock[charismaSoftPaletteYarn().id] ?? "out_of_stock"))) {
       extra.push({ ...charismaSoftPaletteYarn(), liveStatus: "in_stock" });
     }
-    if (showWarmPalette) {
+    if (showWarmPalette && (!hasCharismaStock || isSelectable(liveStock[charismaWarmPaletteYarn().id] ?? "out_of_stock"))) {
       extra.push({ ...charismaWarmPaletteYarn(), liveStatus: "in_stock" });
     }
     return extra.length ? [...inStock, ...extra] : inStock;
@@ -291,7 +302,7 @@ export function ProductPurchaseForm({
         return;
       }
     }
-    const status = isCharismaCuratedPaletteYarn(yarn.id)
+    const status = !hasCharismaStock && isCharismaCuratedPaletteYarn(yarn.id)
       ? "in_stock"
       : (liveStock[yarn.id] ?? yarn.stockStatus);
     if (!isSelectable(status)) { setMessage("That yarn is out of stock. Pick another color."); return; }
@@ -354,7 +365,7 @@ export function ProductPurchaseForm({
       {product.showPomPomPicker ? (
         <PomPomPicker value={pomPomId} onChange={setPomPomId} />
       ) : null}
-      {isCatCave && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
+      {hasCachedSupplierStock && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
       <YarnSwatchPicker
         allowHolidayFilter={product.id === "christmas-stockings"}
         keyboardNavigation
@@ -387,7 +398,7 @@ export function ProductPurchaseForm({
         type="button"
         className="h-12 w-full justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
         onClick={add}
-        disabled={isCatCave && (!yarnId || !yarns.length)}
+        disabled={hasCachedSupplierStock && (!yarnId || !yarns.length)}
       >
         <span>Add to cart</span>
         <span className="tabular-nums">

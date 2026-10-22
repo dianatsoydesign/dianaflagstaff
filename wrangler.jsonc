@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "diana-flagstaff",
-  // Wraps .open-next/worker.js and adds the hourly scheduled handler.
+  // Wraps .open-next/worker.js; supplier refreshes run in GitHub Actions.
   "main": "custom-worker.ts",
   "compatibility_date": "2026-10-09",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -33,15 +33,14 @@
       "preview_id": "c18e85c4493d499090ba650523cc91cb"
     },
     {
-      // Yarn stock cache for Bobbiny and Michaels (Charisma); keys are prefixed per supplier.
+      // Shared stock cache for Bobbiny, Charisma, and Bernat; supplier keys stay separate.
       "binding": "BOBBINY_STOCK",
       "id": "191c98d028e34244b24344c5c7fdce75",
       "preview_id": "15edd3bb46bf49a2beb5d95658c2240c"
     }
   ],
   "triggers": {
-    // Every hour at :00 → `scheduled` in custom-worker.ts refreshes Bobbiny stock.
-    // Charisma stock is pushed hourly from Diana's Mac (Michaels blocks Cloudflare).
-    "crons": ["0 * * * *"]
+    // Supplier stock now refreshes through GitHub Actions, once per supplier.
+    "crons": []
   }
 }
