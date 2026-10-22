@@ -168,7 +168,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
                       <span
                         key={line}
                         className={
-                          i === 0
+                          product.id === "cat-cave" || i === 0
                             ? "block font-medium text-ink"
                             : "block text-muted-foreground"
                         }

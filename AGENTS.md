@@ -27,3 +27,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - Always follow `.cursor/rules/accessibility.mdc` for website ideas, requests, content, and code changes, including in agents that do not load Cursor rules automatically.
 - Target WCAG 2.2 AA. Proactively flag accessibility barriers in Diana's requests before implementing them, explain the impact, and recommend an accessible alternative. Verify changed functionality and disclose gaps; do not claim full-site compliance from limited checks.
+
+## Responsive PDP chips
+
+- Follow `.cursor/rules/pdp-responsive-chips.mdc` for all current and new products and PDP pickers. Reuse the shared chip group and chip styles so options remain horizontal and wrap only as available width requires.

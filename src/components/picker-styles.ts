@@ -14,9 +14,12 @@ export const careSurfaceClass = "bg-[#e8e8e8] dark:bg-[#141414]";
 export const careSurfaceHoverClass =
   "hover:bg-[#e8e8e8] dark:hover:bg-[#141414]";
 
+/** All PDP chip groups wrap only when their available width is exhausted. */
+export const pickerChipGroupClass = "flex flex-wrap items-start gap-2";
+
 /** Tag and size option pills (selected = ink border + care surface). */
 export const pickerChipBase =
-  "inline-flex w-fit max-w-full min-h-11 cursor-pointer items-center rounded-full border-2 px-4 py-2.5 text-left text-sm leading-snug text-foreground transition-colors touch-manipulation select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50";
+  "inline-flex w-fit max-w-full min-h-11 shrink-0 cursor-pointer items-center rounded-full border-2 px-4 py-2.5 text-left text-sm leading-snug text-foreground transition-colors touch-manipulation select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50";
 
 /** White (light) / transparent (dark) behind typed values, not chip gray. */
 export const formFieldSurfaceClass = "bg-white dark:bg-transparent";

@@ -4,6 +4,7 @@ import {
   careSurfaceClass,
   careSurfaceHoverClass,
   pickerChipBase,
+  pickerChipGroupClass,
   pickerFieldsetClass,
   pickerLegendClass,
   formFieldInputClass,
@@ -100,7 +101,7 @@ export function SizePicker({
         ) : null}
       </legend>
       <div
-        className="relative z-10 flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap"
+        className={cn("relative z-10", pickerChipGroupClass)}
         role="radiogroup"
         aria-label="Size"
         onKeyDown={(e) => {

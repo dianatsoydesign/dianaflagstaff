@@ -1,0 +1,14 @@
+---
+description: Preserve responsive option chips on all current and future product detail pages
+alwaysApply: true
+---
+
+# PDP chip wrapping
+
+- Apply to every existing and new product, PDP option group, and shared picker.
+- Reuse `pickerChipGroupClass` and `pickerChipBase` from `src/components/picker-styles.ts` for size, pom-pom, tag, color-family, and future text chips.
+- Keep chips in a horizontal wrapping flex row at every viewport width. Wrap to additional rows only when the available container width cannot fit the next chip and gap.
+- Do not force mobile columns, fixed chip counts per row, horizontal scrolling, or shrinking chips to squeeze a row. Keep labels readable and allow unusually long labels to wrap within the container.
+- Preserve the 44px minimum chip height, focus indicators, accessible group labels, selection state, and keyboard navigation.
+- Keep circular yarn swatches in their responsive grid; this text-chip rule does not replace it.
+- When adding products or changing picker layouts, verify every listed PDP at 320, 390, 640, 768, 1024, and 1440 CSS pixels. Check wrapping, horizontal overflow, and keyboard selection, including the two-column PDP layout.

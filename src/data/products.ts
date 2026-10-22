@@ -299,7 +299,7 @@ export const products: Product[] = [
     imageShownColor: "Toasted Birch",
     sizes: [{ id: "one", label: "One size" }],
     hideSizePicker: true,
-    dimensions: { lines: ['20" long', '44" around', '8" opening diameter'] },
+    dimensions: { lines: ['20" overall diameter', '8" opening diameter'] },
     defaultYarnId: "bernat-blanket-big-toasted-birch",
     yarns: BERNAT_BLANKET_BIG_YARNS,
   },

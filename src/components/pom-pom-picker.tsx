@@ -4,6 +4,7 @@ import {
   careSurfaceClass,
   careSurfaceHoverClass,
   pickerChipBase,
+  pickerChipGroupClass,
   pickerFieldsetClass,
   pickerLegendClass,
 } from "@/components/picker-styles";
@@ -34,7 +35,7 @@ export function PomPomPicker({ value, onChange, className }: Props) {
         <span className="font-medium text-foreground">{selected.label}</span>
       </legend>
       <div
-        className="flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap"
+        className={pickerChipGroupClass}
         role="radiogroup"
         aria-label="Pom pom"
         onKeyDown={(e) => {

@@ -41,6 +41,7 @@ import {
   careSurfaceClass,
   careSurfaceHoverClass,
   pickerChipBase,
+  pickerChipGroupClass,
   pickerFieldsetClass,
   pickerLegendClass,
   yarnSwatchCircleImageClass,
@@ -187,7 +188,7 @@ export function YarnSwatchPicker({
       <>
       {useGroupFilter ? (
         <div
-          className="mb-3 flex flex-wrap items-center gap-2"
+          className={cn(pickerChipGroupClass, "mb-3 items-center")}
           role="group"
           aria-label="Color family"
         >

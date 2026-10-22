@@ -6,6 +6,7 @@ import {
   careSurfaceClass,
   careSurfaceHoverClass,
   pickerChipBase,
+  pickerChipGroupClass,
   pickerFieldsetClass,
   pickerLegendClass,
 } from "@/components/picker-styles";
@@ -34,7 +35,7 @@ export function TagPicker({ value, onChange, className, keyboardNavigation = tru
       </legend>
 
       <div
-        className="flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap"
+        className={pickerChipGroupClass}
         role="radiogroup"
         aria-label="Tag"
         onKeyDown={keyboardNavigation ? (e) => {
