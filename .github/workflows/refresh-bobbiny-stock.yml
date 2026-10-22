@@ -1,27 +1,54 @@
-name: Refresh Bobbiny stock
+name: Refresh Bobbiny stock for all products
 
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/refresh-bobbiny-stock.yml'
+      - 'scripts/push-bobbiny-stock.mjs'
+      - 'scripts/bobbiny-inventory.test.mjs'
+      - 'src/lib/bobbiny-inventory.mjs'
+      - 'src/app/api/cron/bobbiny-stock/route.ts'
+      - 'src/app/api/orders/route.ts'
+      - 'src/lib/yarn-stock.ts'
+      - 'src/data/bobbiny-premium-5mm.json'
+      - 'src/data/bobbiny-stock-bootstrap.json'
+      - 'src/lib/bobbiny-stock.ts'
+      - 'src/components/product-purchase-form.tsx'
   schedule:
-    - cron: "0 * * * *"   # every hour on the hour
-  workflow_dispatch:        # also allow manual "Run workflow" button in GitHub UI
+    - cron: '37 * * * *'
+  workflow_dispatch:
+    inputs:
+      check_only:
+        description: 'Verify Bobbiny access without publishing stock'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bobbiny-stock
+  cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 6
     steps:
-      - name: Ping refresh endpoint
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test stock rules
+        run: node --test scripts/bobbiny-inventory.test.mjs
+      - name: Verify Bobbiny quantities and save stock
+        env:
+          SITE_URL: https://dianaflagstaff.com
+          BOBBINY_STOCK_SECRET: ${{ github.event_name != 'pull_request' && secrets.BOBBINY_STOCK_SECRET || '' }}
+          CHECK_ONLY: ${{ github.event_name == 'pull_request' || inputs.check_only }}
         run: |
-          response=$(curl -s -w "\n%{http_code}" \
-            -X POST \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            "${{ vars.SITE_URL }}/api/cron/refresh-bobbiny")
-
-          body=$(echo "$response" | head -n -1)
-          code=$(echo "$response" | tail -n 1)
-
-          echo "HTTP $code — $body"
-
-          if [ "$code" != "200" ]; then
-            echo "Refresh failed!" >&2
-            exit 1
+          if [ "$CHECK_ONLY" = "true" ]; then
+            node scripts/push-bobbiny-stock.mjs --check-only
+          else
+            node scripts/push-bobbiny-stock.mjs
           fi

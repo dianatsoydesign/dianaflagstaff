@@ -1,132 +1,79 @@
-/**
- * Bobbiny Premium 5mm live stock.
- *
- * Strategy:
- *   1. Check KV ("bobbiny:stock"), shared across all Worker instances.
- *   2. If KV entry is missing or older than CACHE_MAX_AGE_MS, fetch fresh.
- *   3. Write the result back to KV with a TTL so Cloudflare auto-expires it.
- *   4. Fall back to in-memory cache when KV is unavailable (local dev / tests).
- */
+import catalog from '@/data/bobbiny-premium-5mm.json';
+import bootstrapStock from '@/data/bobbiny-stock-bootstrap.json';
+import { availableBobbiny, fetchBobbinySnapshot, validBobbinySnapshot } from '@/lib/bobbiny-inventory.mjs';
 
-const BOBBINY_PRODUCTS_JSON =
-  "https://bobbinycords.us/collections/premium-5mm/products.json?limit=250";
+type Snapshot = { checkedAt: number; quantities: Record<string, number | null> };
+const KEY = 'bobbiny:premium-5mm:quantities';
+const handles = catalog.yarns.map(yarn => yarn.supplierSku.slice('bobbiny:'.length));
+let memory: Snapshot | null = null;
+let pending: Promise<Snapshot | null> | null = null;
+let retryAfter = 0;
 
-const KV_KEY = "bobbiny:stock";
-const CACHE_MAX_AGE_MS = 60 * 60 * 1000; // 1 hour
-const KV_TTL_SECONDS = 2 * 60 * 60; // keep in KV for 2 h as a safety buffer
-
-// ── In-memory fallback (local dev / Worker cold-start before KV is populated) ──
-type MemCache = {
-  fetchedAt: number;
-  availabilityByHandle: Map<string, boolean>;
-};
-let memCache: MemCache | null = null;
-
-// ── KV helpers (same pattern as orders.ts) ────────────────────────────────────
-async function getBobbinyKv(): Promise<KVNamespace | null> {
+async function stockKv(): Promise<KVNamespace | null> {
   try {
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const { env } = await getCloudflareContext({ async: true });
-    return env.BOBBINY_STOCK ?? null;
-  } catch {
-    return null;
-  }
+    const { getCloudflareContext } = await import('@opennextjs/cloudflare');
+    return (await getCloudflareContext({ async: true })).env.BOBBINY_STOCK ?? null;
+  } catch { return null; }
 }
 
-// ── Core fetch from Bobbiny ────────────────────────────────────────────────────
-async function fetchFromBobbiny(): Promise<Map<string, boolean>> {
-  // Workers send no User-Agent by default, and Shopify answers 403 without one.
-  const res = await fetch(BOBBINY_PRODUCTS_JSON, {
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; DianasArt stock check)" },
-  });
-  if (!res.ok) throw new Error(`Bobbiny fetch failed (${res.status})`);
-  const data = (await res.json()) as {
-    products: { handle: string; variants: { available: boolean }[] }[];
-  };
-  const map = new Map<string, boolean>();
-  for (const p of data.products) {
-    map.set(p.handle, p.variants.some((v) => v.available));
-  }
-  return map;
-}
-
-// ── Serialisation helpers ─────────────────────────────────────────────────────
-function serialise(map: Map<string, boolean>): string {
-  return JSON.stringify({ fetchedAt: Date.now(), data: Object.fromEntries(map) });
-}
-
-function deserialise(raw: string): MemCache | null {
+export async function readBobbinyStock(): Promise<Snapshot | null> {
+  let saved: Snapshot | null = null;
   try {
-    const parsed = JSON.parse(raw) as { fetchedAt: number; data: Record<string, boolean> };
-    return {
-      fetchedAt: parsed.fetchedAt,
-      availabilityByHandle: new Map(Object.entries(parsed.data)),
-    };
-  } catch {
-    return null;
+    const raw = await (await stockKv())?.get(KEY);
+    saved = raw ? JSON.parse(raw) : null;
+  } catch { /* Preserve the last verified choices during storage outages. */ }
+  const candidates = [saved, memory, bootstrapStock].filter((snapshot): snapshot is Snapshot => snapshot !== null && validBobbinySnapshot(snapshot));
+  memory = candidates.sort((a, b) => b.checkedAt - a.checkedAt)[0] ?? null;
+  if (process.env.NODE_ENV === 'development' && Date.now() - (memory?.checkedAt ?? 0) >= 3600000 && Date.now() >= retryAfter) {
+    if (!pending) {
+      pending = fetchBobbinySnapshot(handles).then(snapshot => { memory = snapshot; return snapshot; }).catch(error => {
+        console.warn('Local Bobbiny stock refresh failed', error);
+        retryAfter = Date.now() + 60000;
+        return memory;
+      }).finally(() => { pending = null; });
+    }
+    return pending;
   }
+  return memory;
 }
 
-// ── Public API ────────────────────────────────────────────────────────────────
+export async function saveBobbinyStock(value: unknown) {
+  if (!validBobbinySnapshot(value)) throw new Error('Invalid Bobbiny stock snapshot');
+  const snapshot = value as Snapshot;
+  if (Date.now() - snapshot.checkedAt > 300000) throw new Error('Stock check is too old');
+  if (Object.keys(snapshot.quantities).length !== handles.length || handles.some(handle => !Object.hasOwn(snapshot.quantities, handle))) throw new Error('Incomplete Bobbiny catalog');
+  const kv = await stockKv();
+  if (!kv && process.env.NODE_ENV !== 'development') throw new Error('Stock storage unavailable');
+  const raw = kv ? await kv.get(KEY) : null;
+  const previous: Snapshot | null = raw ? JSON.parse(raw) : memory;
+  if (previous && validBobbinySnapshot(previous) && previous.checkedAt >= snapshot.checkedAt) throw new Error('Stock snapshot already saved or superseded');
+  if (kv) await kv.put(KEY, JSON.stringify(snapshot));
+  memory = snapshot;
+}
+
 export async function getBobbinyAvailabilityByHandle(): Promise<Map<string, boolean>> {
-  const kv = await getBobbinyKv();
-
-  // 1. Try KV
-  if (kv) {
-    const raw = await kv.get(KV_KEY);
-    if (raw) {
-      const cached = deserialise(raw);
-      if (cached && Date.now() - cached.fetchedAt < CACHE_MAX_AGE_MS) {
-        return cached.availabilityByHandle;
-      }
-    }
-  }
-
-  // 2. KV stale or unavailable: fall back to in-memory
-  if (memCache && Date.now() - memCache.fetchedAt < CACHE_MAX_AGE_MS) {
-    return memCache.availabilityByHandle;
-  }
-
-  // 3. Fetch fresh
-  let map: Map<string, boolean>;
-  try {
-    map = await fetchFromBobbiny();
-  } catch {
-    // Return whatever we have (stale is better than nothing)
-    if (kv) {
-      const raw = await kv.get(KV_KEY);
-      if (raw) {
-        const cached = deserialise(raw);
-        if (cached) return cached.availabilityByHandle;
-      }
-    }
-    if (memCache) return memCache.availabilityByHandle;
-    return new Map();
-  }
-
-  // 4. Persist
-  const serialised = serialise(map);
-  if (kv) {
-    await kv.put(KV_KEY, serialised, { expirationTtl: KV_TTL_SECONDS });
-  }
-  memCache = { fetchedAt: Date.now(), availabilityByHandle: map };
-
-  return map;
+  const snapshot = await readBobbinyStock();
+  return new Map(handles.map(handle => [handle, availableBobbiny(snapshot, handle)]));
 }
 
-/** Force a refresh regardless of cache age. Used by the cron endpoint. */
+export async function bobbinyAvailability() {
+  const snapshot = await readBobbinyStock();
+  return catalog.yarns.map(yarn => ({
+    yarnId: yarn.id, supplierSku: yarn.supplierSku,
+    status: availableBobbiny(snapshot, yarn.supplierSku.slice('bobbiny:'.length)) ? 'in_stock' as const : 'out_of_stock' as const,
+    source: 'supplier_live' as const,
+    checkedAt: snapshot ? new Date(snapshot.checkedAt).toISOString() : '',
+  }));
+}
+
+/** Legacy manual refresh endpoint: production updates now run in GitHub. */
 export async function forceRefreshBobbinyStock(): Promise<{ count: number }> {
-  const kv = await getBobbinyKv();
-  const map = await fetchFromBobbiny();
-  const serialised = serialise(map);
-  if (kv) {
-    await kv.put(KV_KEY, serialised, { expirationTtl: KV_TTL_SECONDS });
-  }
-  memCache = { fetchedAt: Date.now(), availabilityByHandle: map };
-  return { count: map.size };
+  if (process.env.NODE_ENV !== 'development') throw new Error('Bobbiny stock is updated by the GitHub workflow');
+  const snapshot = await fetchBobbinySnapshot(handles);
+  await saveBobbinyStock(snapshot);
+  return { count: handles.length };
 }
 
 export function parseBobbinyHandle(supplierSku: string): string | null {
-  if (!supplierSku.startsWith("bobbiny:")) return null;
-  return supplierSku.slice("bobbiny:".length);
+  return supplierSku.startsWith('bobbiny:') ? supplierSku.slice('bobbiny:'.length) : null;
 }

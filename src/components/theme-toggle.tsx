@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { navigationControlClass } from "@/lib/navigation-styles";
 
 type Props = {
   className?: string;
@@ -25,9 +26,8 @@ export function ThemeToggle({ className, lightOnDark }: Props) {
     <button
       type="button"
       className={cn(
-        "relative z-10 inline-flex size-11 cursor-pointer items-center justify-center rounded-full bg-transparent opacity-85 transition-opacity hover:opacity-70 [&_svg]:pointer-events-none [&_*]:cursor-pointer",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
-        lightOnDark ? "text-white" : "text-ink",
+        navigationControlClass(lightOnDark),
+        "relative z-10 size-11 [&_svg]:pointer-events-none",
         className
       )}
       style={{ cursor: "pointer" }}

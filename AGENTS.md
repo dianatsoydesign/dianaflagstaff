@@ -14,3 +14,16 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Product videos autoplay muted with inline playback when their gallery slide is selected. Keep playback controls available.
 - Preserve the original video and export edits to a new versioned filename. Keep yarn hue, white balance, framing, and stitch detail intact; correct temporal exposure flicker without blending moving product details.
 - Keep deployed video assets below Cloudflare's 25 MiB per-file limit; aim for under 20 MB.
+
+## Product recommendation associations
+
+- Maintain `src/data/product-recommendations.ts` when adding products. Products can belong to multiple explicit recommendation groups; these are independent of shop categories.
+- If a new product's association or grouping is uncertain, ask Diana before assigning it. You may propose a grouping, but wait for her answer before implementing that uncertain association.
+- Do not guess associations or backfill recommendations with unrelated products. Unassigned products show no recommendation section until their grouping is confirmed.
+
+- Approved exception: cat cave may recommend two random listed products per page visit until another listed product joins the pets recommendation group; then use pet matches automatically.
+
+## Accessibility requirements
+
+- Always follow `.cursor/rules/accessibility.mdc` for website ideas, requests, content, and code changes, including in agents that do not load Cursor rules automatically.
+- Target WCAG 2.2 AA. Proactively flag accessibility barriers in Diana's requests before implementing them, explain the impact, and recommend an accessible alternative. Verify changed functionality and disclose gaps; do not claim full-site compliance from limited checks.

@@ -181,7 +181,7 @@ export const products: Product[] = [
       { src: "/products/coasters/hero-studio-v6.jpg", alt: "Hand holding a stack of eucalyptus green handmade crochet coasters", shownColor: "Eucalyptus Green" },
       { src: "/products/coasters/mug-studio-v5.jpg", alt: "Close-up of a eucalyptus green crochet coaster with a black mug and by Diana label tag", shownColor: "Eucalyptus Green" },
     ],
-    sizes: [{ id: "one", label: "Set of 4" }],
+    sizes: [{ id: "one", label: "One coaster" }],
     hideSizePicker: true,
     dimensions: {
       lines: ['4.5" × 4.5"'],
@@ -291,7 +291,7 @@ export const products: Product[] = [
   },
   {
     id: "cat-cave",
-    name: "Cat cave",
+    name: "Cat or small dog cave",
     price: 50,
     category: "Pets",
     imageSrc: "/products/cat cave/cat-cave-with-cat-studio-v1.jpg",

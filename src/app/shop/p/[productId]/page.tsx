@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProduct, listedProducts } from "@/data/products";
+import { getRelatedProducts, getRandomRecommendationPool } from "@/data/product-recommendations";
 import { ProductDetail } from "@/components/product-detail";
 
 type PageProps = {
@@ -23,7 +24,7 @@ export default async function ProductPage({ params }: PageProps) {
   const product = getProduct(productId);
   if (!product) notFound();
 
-  const related = listedProducts.filter((p) => p.id !== product.id).slice(0, 2);
+  const related = getRelatedProducts(product.id);
 
-  return <ProductDetail product={product} related={related} />;
+  return <ProductDetail product={product} related={related} randomRecommendationPool={getRandomRecommendationPool(product.id)} />;
 }

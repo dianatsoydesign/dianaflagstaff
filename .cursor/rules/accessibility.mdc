@@ -1,0 +1,23 @@
+---
+description: Accessibility requirements and proactive review for every website idea, request, and change
+alwaysApply: true
+---
+
+# Accessibility in every website change
+
+- Apply to all website discussions, design ideas, content, components, and implementation changes. Target WCAG 2.2 Level AA for all changed functionality; preserve existing accessibility. Source: https://www.w3.org/WAI/WCAG22/quickref/.
+- Proactively evaluate Diana's requests before implementation. If a request introduces an accessibility barrier, flag it plainly: explain who is affected, the practical impact, and the relevant requirement. Recommend an accessible alternative that preserves the intended design. Do not silently implement the inaccessible version or treat a visual reference as proof of accessibility.
+- Implement the accessible equivalent when it preserves the request's intent. Ask for a design decision only when the alternative materially changes the requested behavior; continue unaffected work. Do not claim a known barrier is compliant even if the user explicitly chooses it.
+- Use semantic HTML and native controls first. Provide meaningful headings, landmarks, link purposes, accessible names, and programmatic state. Accessible names must include visible control text. Hide purely decorative icons from assistive technology.
+- Make every action keyboard operable with logical focus order, clearly visible and unobscured focus, and no keyboard traps. Dialogs need a name, appropriate initial focus, focus containment, keyboard dismissal where appropriate, and focus return to the trigger.
+- Do not rely on hover, color, gestures, dragging, or motion alone for essential information or actions. Provide keyboard, touch, and single-pointer alternatives. Hover/focus disclosures must be dismissible, hoverable, and persistent as applicable.
+- Check contrast in light and dark themes and all relevant states: ordinary text at least 4.5:1, large text at least 3:1, and required control boundaries, states, and meaningful graphics at least 3:1 against adjacent colors. Avoid opacity treatments that undermine contrast.
+- Support 200% text resizing, text-spacing overrides, and reflow at 320 CSS pixels (including the equivalent at 400% browser zoom), without lost content, overlapping controls, or unnecessary two-dimensional scrolling. Check relevant breakpoints and long labels/counts.
+- Prefer touch targets at least 44 by 44 CSS pixels as a project usability standard. Meet WCAG 2.2 AA target-size requirements and permitted exceptions; do not describe 44 pixels as the AA minimum.
+- Respect prefers-reduced-motion for nonessential zoom, transitions, and animation. No unsafe flashing. Autoplaying or automatically moving content must have required pause/stop controls; preserve playback controls and avoid autoplay audio.
+- Provide useful image alternatives; use empty alt text for decorative images. Supply captions, transcripts, audio description, or equivalent alternatives as required by the media's content and WCAG criteria.
+- Forms need persistent labels, instructions, programmatically associated and actionable errors, and accessible success/status messages. Announce cart updates without moving focus or excessively repeating announcements. Preserve accessible authentication and avoid unnecessary repeated entry.
+- Verify the affected experience before calling a change done: keyboard use, accessible names/states, mobile/reflow, relevant themes, contrast, and reduced motion as applicable. Use an automated accessibility scan when available and useful, plus manual checks; automated checks alone cannot establish conformance.
+- Fix accessibility regressions introduced by the change. Flag relevant existing issues discovered during work and distinguish them from new issues. Report what was checked and any remaining limitations; never claim whole-site compliance based on a limited change or scan.
+
+Examples: replace a hover-only size guide with a focusable button and accessible dialog; retain a text label or accessible name when simplifying an icon; disable decorative image zoom for reduced-motion users while keeping product access unchanged.

@@ -1,6 +1,13 @@
 "use client";
 
+import bobbinyBootstrapStock from "@/data/bobbiny-stock-bootstrap.json";
+import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
+import charismaBootstrapStock from "@/data/charisma-stock-bootstrap.json";
+import { charismaStockStatuses } from "@/lib/charisma-stock-options";
+
 import { useEffect, useMemo, useRef, useState } from "react";
+import bootstrapStock from "@/data/bernat-stock-bootstrap.json";
+import { availableForCatCave } from "@/lib/bernat-inventory.mjs";
 import {
   formatPriceOrTbd,
   type Product,
@@ -24,6 +31,8 @@ import { useInquiryCart } from "@/lib/inquiry-cart";
 import { yarnLineName } from "@/data/yarns";
 import { isSelectable, usesLiveSupplier } from "@/lib/yarn-stock";
 import { QuantityPicker } from "@/components/quantity-picker";
+import { ProductPickupEstimate } from "@/components/product-pickup-estimate";
+import { productionDaysForProduct, productsWithPickupEstimates, type PickupTiming } from "@/lib/pickup-estimate";
 import { SizePicker } from "@/components/size-picker";
 import { PomPomPicker } from "@/components/pom-pom-picker";
 import { TagPicker } from "@/components/tag-picker";
@@ -94,7 +103,22 @@ export function ProductPurchaseForm({
   );
   const [tagId, setTagId] = useState<ProductTagId>(DEFAULT_PRODUCT_TAG_ID);
   const [pomPomId, setPomPomId] = useState<HatPomPomId>(DEFAULT_HAT_POM_POM_ID);
-  const [liveStock, setLiveStock] = useState<Record<string, StockStatus>>({});
+  const isCatCave = product.id === "cat-cave";
+  const isHats = product.id === "hats";
+  const hasCharismaStock = isHats || product.id === "christmas-stockings";
+  const hasBobbinyStock = product.yarns.some(yarn => yarn.supplierSku?.startsWith("bobbiny:"));
+  const hasCachedSupplierStock = isCatCave || hasCharismaStock || hasBobbinyStock;
+  const [liveStock, setLiveStock] = useState<Record<string, StockStatus>>(() =>
+    isCatCave ? Object.fromEntries(product.yarns.map(yarn => [
+      yarn.id,
+      availableForCatCave(bootstrapStock, yarn.supplierSku?.split(":")[1] ?? "") ? "in_stock" : "out_of_stock",
+    ])) : hasCharismaStock ? charismaStockStatuses(charismaBootstrapStock, isHats ? 2 : 3) : hasBobbinyStock ? Object.fromEntries(product.yarns.map(yarn => [
+      yarn.id, availableBobbiny(bobbinyBootstrapStock, yarn.supplierSku?.slice("bobbiny:".length) ?? "") ? "in_stock" : "out_of_stock",
+    ])) : {}
+  );
+  const [stockMessage, setStockMessage] = useState("");
+  const yarnIdRef = useRef(yarnId);
+  useEffect(() => { yarnIdRef.current = yarnId; }, [yarnId]);
   const [message, setMessage] = useState<string | null>(null);
   const qtyConfig = product.quantityPicker;
   const [quantity, setQuantity] = useState(qtyConfig?.min ?? 1);
@@ -163,35 +187,48 @@ export function ProductPurchaseForm({
   useEffect(() => {
     let cancelled = false;
     async function load() {
-      const res = await fetch(`/api/yarn-stock?productId=${product.id}`);
-      if (!res.ok) return;
-      const data = (await res.json()) as {
-        results: { yarnId: string; status: StockStatus }[];
-      };
-      if (cancelled) return;
-      const map: Record<string, StockStatus> = {};
-      for (const r of data.results) map[r.yarnId] = r.status;
-      setLiveStock(map);
-      const pickDefault = () => {
-        const candidates = product.defaultYarnId
-          ? [
-              product.yarns.find((y) => y.id === product.defaultYarnId),
-              ...product.yarns,
-            ]
-          : product.yarns;
-        return candidates.find(
-          (y): y is (typeof product.yarns)[number] =>
-            !!y && isSelectable(map[y.id] ?? y.stockStatus)
-        );
-      };
-      const first = pickDefault();
-      const firstId = first?.id ?? null;
-      setYarnId(firstId);
-      onYarnChangeRef.current?.(first ?? null, false);
+      try {
+        const res = await fetch(`/api/yarn-stock?productId=${product.id}`, { cache: "no-store" });
+        if (!res.ok) throw new Error("Stock unavailable");
+        const data = (await res.json()) as {
+          results: { yarnId: string; status: StockStatus; checkedAt?: string; message?: string }[];
+        };
+        if (cancelled) return;
+        const map: Record<string, StockStatus> = {};
+        for (const r of data.results) map[r.yarnId] = r.status;
+        if (hasCachedSupplierStock) {
+          if (!data.results.length || !Number.isFinite(Date.parse(data.results[0]?.checkedAt ?? ""))) {
+            throw new Error("No verified stock snapshot");
+          }
+          setStockMessage(data.results.some(r => isSelectable(r.status)) ? "" : "No yarn colors currently have enough supplier stock.");
+        }
+        setLiveStock(map);
+        const pickDefault = () => {
+          const candidates = product.defaultYarnId
+            ? [
+                product.yarns.find((y) => y.id === product.defaultYarnId),
+                ...product.yarns,
+              ]
+            : product.yarns;
+          return candidates.find(
+            (y): y is (typeof product.yarns)[number] =>
+              !!y && isSelectable(map[y.id] ?? (hasCachedSupplierStock ? "out_of_stock" : y.stockStatus))
+          );
+        };
+        if (hasCachedSupplierStock && yarnIdRef.current && isSelectable(map[yarnIdRef.current] ?? "out_of_stock")) return;
+        const first = pickDefault();
+        const firstId = first?.id ?? null;
+        setYarnId(firstId);
+        onYarnChangeRef.current?.(first ?? null, false);
+      } catch {
+        // Keep the last successful choices (or the initial verified snapshot).
+        // A temporary stock-check outage must not empty the picker.
+      }
     }
     void load();
-    return () => { cancelled = true; };
-  }, [product]); // stable: product doesn't change on this page
+    const timer = hasCachedSupplierStock ? window.setInterval(() => void load(), 60000) : null;
+    return () => { cancelled = true; if (timer !== null) window.clearInterval(timer); };
+  }, [product, hasCachedSupplierStock]); // stable: product doesn't change on this page
 
   const showHolidayPizza = charismaHasHolidayYarns(product.yarns);
   const showSoftPalette =
@@ -199,33 +236,26 @@ export function ProductPurchaseForm({
   const showWarmPalette =
     showHolidayPizza && charismaHasWarmPaletteYarns(product.yarns);
 
-  const yarns = useMemo(() => {
+  const yarns = (() => {
     const withStatus = product.yarns.map((y) => ({
       ...y,
-      liveStatus: liveStock[y.id],
+      liveStatus: liveStock[y.id] ?? (hasCachedSupplierStock ? "out_of_stock" as const : undefined),
     }));
     const inStock = hasLiveStock
       ? withStatus.filter((y) => isSelectable(y.liveStatus ?? y.stockStatus))
       : withStatus;
     const extra: (YarnColor & { liveStatus?: StockStatus })[] = [];
-    if (showHolidayPizza) {
+    if (showHolidayPizza && (!hasCharismaStock || isSelectable(liveStock[charismaHolidayPizzaYarn().id] ?? "out_of_stock"))) {
       extra.push({ ...charismaHolidayPizzaYarn(), liveStatus: "in_stock" });
     }
-    if (showSoftPalette) {
+    if (showSoftPalette && (!hasCharismaStock || isSelectable(liveStock[charismaSoftPaletteYarn().id] ?? "out_of_stock"))) {
       extra.push({ ...charismaSoftPaletteYarn(), liveStatus: "in_stock" });
     }
-    if (showWarmPalette) {
+    if (showWarmPalette && (!hasCharismaStock || isSelectable(liveStock[charismaWarmPaletteYarn().id] ?? "out_of_stock"))) {
       extra.push({ ...charismaWarmPaletteYarn(), liveStatus: "in_stock" });
     }
     return extra.length ? [...inStock, ...extra] : inStock;
-  }, [
-    product.yarns,
-    liveStock,
-    hasLiveStock,
-    showHolidayPizza,
-    showSoftPalette,
-    showWarmPalette,
-  ]);
+  })();
 
   function resolveYarn(id: string | null): YarnColor | null {
     if (!id) return null;
@@ -234,6 +264,25 @@ export function ProductPurchaseForm({
     if (isCharismaWarmPaletteYarn(id)) return charismaWarmPaletteYarn();
     return product.yarns.find((y) => y.id === id) ?? null;
   }
+
+  const selectedTimingYarn = resolveYarn(yarnId);
+  const multicolorStocking = selectedTimingYarn
+    ? Boolean(selectedTimingYarn.multicolor
+      || (selectedTimingYarn.sortRank ?? 0) >= 2000
+      || selectedTimingYarn.id === "stockings-multi"
+      || isCharismaCuratedPaletteYarn(selectedTimingYarn.id))
+    : null;
+  const productionDays = productionDaysForProduct({
+    productId: product.id,
+    quantity: qtyConfig ? quantity : 1,
+    pomPomId,
+    multicolor: multicolorStocking,
+    customSize: customSizeSelected,
+  });
+  const pickupTiming: PickupTiming | null = productionDays === null ? null : {
+    productionDays,
+    sourcing: ["coasters", "hotpads", "placemats"].includes(product.id) ? "bobbiny" : "michaels",
+  };
 
   function handleYarnChange(id: string) {
     setYarnId(id);
@@ -274,7 +323,7 @@ export function ProductPurchaseForm({
         return;
       }
     }
-    const status = isCharismaCuratedPaletteYarn(yarn.id)
+    const status = !hasCharismaStock && isCharismaCuratedPaletteYarn(yarn.id)
       ? "in_stock"
       : (liveStock[yarn.id] ?? yarn.stockStatus);
     if (!isSelectable(status)) { setMessage("That yarn is out of stock. Pick another color."); return; }
@@ -337,6 +386,7 @@ export function ProductPurchaseForm({
       {product.showPomPomPicker ? (
         <PomPomPicker value={pomPomId} onChange={setPomPomId} />
       ) : null}
+      {hasCachedSupplierStock && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
       <YarnSwatchPicker
         allowHolidayFilter={product.id === "christmas-stockings"}
         keyboardNavigation
@@ -365,10 +415,14 @@ export function ProductPurchaseForm({
           label={qtyConfig.label ?? "Quantity"}
         />
       ) : null}
+      {productsWithPickupEstimates.has(product.id) && (
+        <ProductPickupEstimate timing={pickupTiming} customSize={customSizeSelected} />
+      )}
       <Button
         type="button"
         className="h-12 w-full justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
         onClick={add}
+        disabled={hasCachedSupplierStock && (!yarnId || !yarns.length)}
       >
         <span>Add to cart</span>
         <span className="tabular-nums">

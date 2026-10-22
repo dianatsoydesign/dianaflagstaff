@@ -20,6 +20,7 @@ import { usesLiveSupplier } from "@/lib/yarn-stock";
 type Props = {
   product: Product;
   related: Product[];
+  randomRecommendationPool?: Product[];
 };
 
 function sentenceCase(s: string): string {
@@ -27,7 +28,19 @@ function sentenceCase(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-export function ProductDetailClient({ product, related }: Props) {
+export function ProductDetailClient({ product, related, randomRecommendationPool }: Props) {
+  const [randomRecommendations, setRandomRecommendations] = useState<Product[]>([]);
+  useEffect(() => {
+    const pool = [...(randomRecommendationPool ?? [])];
+    // Shuffle once per page visit, keeping the chosen cards stable during interaction.
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    setRandomRecommendations(pool.slice(0, 2));
+  }, [product.id, randomRecommendationPool]);
+  const recommendations = randomRecommendationPool?.length ? randomRecommendations : related;
+
   const [selectedYarn, setSelectedYarn] = useState<YarnColor | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [previewYarn, setPreviewYarn] = useState<YarnColor | null>(null);
@@ -181,7 +194,7 @@ export function ProductDetailClient({ product, related }: Props) {
           </div>
         </div>
 
-        {related.length > 0 && (
+        {recommendations.length > 0 && (
           <section
             className="mt-20 border-t border-border pt-16"
             aria-labelledby="related-heading"
@@ -193,7 +206,7 @@ export function ProductDetailClient({ product, related }: Props) {
               You might also like
             </h2>
             <ul className="grid grid-cols-1 gap-[11px] sm:grid-cols-2">
-              {related.map((item) => (
+              {recommendations.map((item) => (
                 <li key={item.id}>
                   <ProductCard product={item} />
                 </li>

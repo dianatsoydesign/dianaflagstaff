@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, ShoppingCart } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useInquiryCart } from "@/lib/inquiry-cart";
@@ -16,28 +16,26 @@ import {
 import { InquiryDrawer } from "@/components/inquiry-drawer";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SITE_NAME } from "@/lib/site";
+import { navigationControlClass } from "@/lib/navigation-styles";
 
 const nav = [
   { href: "/", label: "Shop crochet" },
   { href: "/about", label: "About" },
 ];
 
-const navHoverClass =
-  "cursor-pointer bg-transparent text-base leading-snug transition-opacity hover:opacity-70";
-
 function BrandName({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex flex-col items-center whitespace-nowrap leading-[1.15] min-[800px]:flex-row min-[800px]:items-baseline min-[800px]:gap-[0.3em] min-[800px]:leading-[inherit]",
+        "inline-flex flex-col items-center whitespace-nowrap leading-[1.15] min-[1100px]:flex-row min-[1100px]:items-baseline min-[1100px]:gap-[0.3em] min-[1100px]:leading-[inherit]",
         className
       )}
     >
       <span>{SITE_NAME}</span>
-      <span className="inline-flex items-baseline gap-[0.3em] text-[0.72em] min-[800px]:text-[1em]">
+      <span className="inline-flex items-baseline gap-[0.3em] text-[0.72em] min-[1100px]:text-[1em]">
         <span
           aria-hidden
-          className="hidden mx-[0.12em] -translate-y-[calc(0.5ex_-_0.09em)] size-[0.18em] rounded-full bg-current min-[800px]:inline-block"
+          className="hidden mx-[0.12em] -translate-y-[calc(0.5ex_-_0.09em)] size-[0.18em] rounded-full bg-current min-[1100px]:inline-block"
         />
         <span className="font-tagline font-extralight tracking-normal">Made in Flagstaff</span>
         {/* Masked so the mountains follow text color in light and dark mode. */}
@@ -77,13 +75,13 @@ export function SiteHeader() {
             : "sticky top-0 bg-background"
         )}
       >
-        <div className="px-[3vw] py-[3.25vw] min-[800px]:px-[2vw] min-[800px]:py-[1.5vw]">
-        <div className="site-width grid grid-cols-[1fr_auto_1fr] items-center min-[800px]:flex min-[800px]:justify-between">
+        <div className="px-[3vw] py-[3.25vw] min-[1100px]:px-[2vw] min-[1100px]:py-[1.5vw]">
+        <div className="site-width grid grid-cols-[auto_minmax(0,1fr)_auto] gap-2 items-center min-[1100px]:flex min-[1100px]:justify-between">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={cn(
-                navHoverClass,
-                "-ml-3 inline-flex h-9 w-10 items-center justify-center justify-self-start min-[800px]:hidden",
+                navigationControlClass(heroHeader),
+                "inline-flex h-11 w-11 shrink-0 items-center justify-center justify-self-start min-[1100px]:hidden",
                 heroHeader ? "text-white" : "text-ink"
               )}
               aria-label="Open menu"
@@ -126,34 +124,30 @@ export function SiteHeader() {
           <Link
             href="/"
             className={cn(
-              "font-display text-[length:calc(0.01*min(100vh,900px)_+_0.92rem)] leading-[1.15] tracking-[-0.04em] transition-opacity hover:opacity-70 md:text-[length:min(calc(1.05vw_+_0.95rem),34px)]",
+              "min-w-0 justify-self-center text-center font-display text-[length:clamp(0.875rem,4vw,1.25rem)] leading-[1.15] tracking-[-0.04em] transition-opacity hover:opacity-70 min-[1100px]:text-[length:min(calc(1.05vw_+_0.95rem),34px)]",
               heroHeader ? "text-white" : "text-ink"
             )}
           >
             <BrandName />
           </Link>
 
-          <div className="flex items-center justify-self-end gap-0.5 min-[800px]:gap-9">
-          <div className="relative z-10 hidden min-[800px]:flex">
+          <div className="flex items-center justify-self-end gap-0.5 min-[1100px]:gap-4">
+          <div className="relative z-10 hidden min-[1100px]:flex">
             <ThemeToggle
               lightOnDark={heroHeader}
-              className={cn(navHoverClass, "h-8 w-8 opacity-85")}
             />
           </div>
 
           <nav
-            className="hidden items-center gap-[1.3vw] min-[800px]:flex"
+            className="hidden items-center gap-[1.3vw] min-[1100px]:flex"
             aria-label="Main"
           >
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  navHoverClass,
-                  heroHeader ? "text-white" : "text-ink",
-                  isNavActive(pathname, item.href) ? "opacity-100" : "opacity-85"
-                )}
+                aria-current={isNavActive(pathname, item.href) ? "page" : undefined}
+                className={navigationControlClass(heroHeader)}
               >
                 {item.label}
               </Link>
@@ -165,19 +159,31 @@ export function SiteHeader() {
               <button
                 type="button"
                 className={cn(
-                  navHoverClass,
-                  "relative -mr-3 inline-flex h-9 min-w-10 items-center gap-2 px-3 text-ink opacity-85 min-[800px]:h-8"
+                  navigationControlClass(heroHeader),
+                  "gap-2 whitespace-nowrap px-2 min-[1100px]:px-3"
                 )}
                 onClick={() => openCheckoutDrawer()}
-                aria-label={`Your cart, ${itemCount} items`}
+                aria-label={`Your cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
+                aria-haspopup="dialog"
               >
-                <ShoppingCart className="size-5" />
-                <span className="hidden sm:inline">Cart</span>
-                {itemCount > 0 && (
-                  <span className="absolute -top-0.5 right-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-ink px-1 text-[11px] font-medium text-primary-foreground">
-                    {itemCount}
+                <span aria-hidden="true" className="relative block size-9 shrink-0">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="absolute bottom-0.5 left-0 size-7"
+                  >
+                    <path d="M5 5h14l1.5 16h-17L5 5Z" />
+                    <path d="M8.5 9a3.5 3.5 0 0 0 7 0" />
+                  </svg>
+                  <span className="absolute right-0 top-0 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-ink px-1 text-[10px] font-semibold tabular-nums leading-none text-primary-foreground ring-2 ring-background">
+                    {itemCount > 99 ? "99+" : itemCount}
                   </span>
-                )}
+                </span>
+                <span aria-hidden="true" className="hidden min-[1100px]:inline">Cart</span>
               </button>
             )}
           </div>

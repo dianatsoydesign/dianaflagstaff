@@ -8,12 +8,12 @@ export async function GET(request: Request) {
 
   if (productId) {
     const results = await getProductYarnStock(productId);
-    return NextResponse.json({ results });
+    return NextResponse.json({ results }, { headers: { "Cache-Control": "no-store" } });
   }
 
   if (yarnId) {
     const result = await getYarnStock(yarnId);
-    return NextResponse.json({ result });
+    return NextResponse.json({ result }, { headers: { "Cache-Control": "no-store" } });
   }
 
   return NextResponse.json(

@@ -1,3 +1,4 @@
+import { charismaFlagstaffAvailability } from "@/lib/charisma-flagstaff-stock";
 /**
  * Yarn availability for the shop UI.
  *
@@ -10,9 +11,11 @@
  * Other products still use catalog / stub data until a supplier is wired in.
  */
 
+import { bernatAvailability } from "@/lib/bernat-stock";
 import { products, type StockStatus, type YarnColor } from "@/data/products";
 import { getAllYarns, getYarnById } from "@/data/yarns";
 import {
+  bobbinyAvailability,
   getBobbinyAvailabilityByHandle,
   parseBobbinyHandle,
 } from "@/lib/bobbiny-stock";
@@ -55,7 +58,7 @@ function liveSupplierFor(supplierSku: string | undefined) {
 }
 
 export function usesLiveSupplier(yarns: YarnColor[]): boolean {
-  return yarns.some((y) => liveSupplierFor(y.supplierSku) !== null);
+  return yarns.some((y) => y.supplierSku?.startsWith("michaels-bernat:") || liveSupplierFor(y.supplierSku) !== null);
 }
 
 function findYarnBySku(sku: string): YarnColor | undefined {
@@ -65,6 +68,12 @@ function findYarnBySku(sku: string): YarnColor | undefined {
 export async function checkSupplierStock(
   supplierSku: string
 ): Promise<YarnStockResult> {
+  if (supplierSku.startsWith("michaels-bernat:")) {
+    const results = await bernatAvailability();
+    const result = results.find(yarn => yarn.supplierSku === supplierSku);
+    if (result) return result;
+    return { yarnId: supplierSku, supplierSku, status: "out_of_stock", source: "supplier_live", checkedAt: "", message: "Unknown yarn color" };
+  }
   const yarn = findYarnBySku(supplierSku);
   const checkedAt = new Date().toISOString();
 
@@ -135,6 +144,10 @@ export async function getProductYarnStock(
 ): Promise<YarnStockResult[]> {
   const product = products.find((p) => p.id === productId);
   if (!product) return [];
+  if (productId === "cat-cave") return bernatAvailability();
+  if (productId === "hats") return charismaFlagstaffAvailability(2);
+  if (productId === "christmas-stockings") return charismaFlagstaffAvailability(3);
+  if (product.yarns.some(yarn => yarn.supplierSku?.startsWith("bobbiny:"))) return bobbinyAvailability();
 
   const supplier = product.yarns
     .map((y) => liveSupplierFor(y.supplierSku)?.supplier)
