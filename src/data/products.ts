@@ -1,4 +1,5 @@
 import { BOBBINY_PREMIUM_5MM_YARNS } from "@/data/bobbiny-premium-5mm";
+import { BERNAT_BLANKET_BIG_YARNS } from "@/data/bernat-blanket-big";
 import { CHARISMA_YARNS } from "@/data/charisma";
 import type { GalleryMatteInset } from "@/lib/gallery-matte-inset";
 
@@ -34,8 +35,12 @@ export type SizeOption = {
 };
 
 export type ProductImage = {
+  type?: "image" | "video";
+  poster?: string;
   src: string;
   alt: string;
+  /** Product color shown in this photo, displayed beneath the PDP image. */
+  shownColor?: string;
   /** Hide studio matte (fractions of image size); content is scaled with `object-contain`. */
   galleryMatteInset?: GalleryMatteInset;
 };
@@ -58,6 +63,8 @@ export type Product = {
   category: string;
   imageSrc: string;
   imageAlt: string;
+  /** Color(s) pictured in the main PDP photo. */
+  imageShownColor?: string;
   /** Additional gallery images (not including imageSrc which is always first). */
   galleryImages?: ProductImage[];
   sizes: SizeOption[];
@@ -141,11 +148,12 @@ export const products: Product[] = [
     category: "Holiday",
     imageSrc: "/products/christmas-stockings/hero-studio-v9.jpg",
     imageAlt: "Row of handmade crochet Christmas stockings in holiday colors",
+    imageShownColor: "Multi, Red, Off White, Pine, Multi (left to right)",
     galleryImages: [
-      { src: "/products/christmas-stockings/2-studio-v2.jpg", alt: "Red crochet Christmas stocking with ribbed cuff and tassel" },
-      { src: "/products/christmas-stockings/off-white-studio-v2.jpg", alt: "Cream crochet Christmas stocking with ribbed cuff and tassel" },
-      { src: "/products/christmas-stockings/pine-studio-v3.jpg", alt: "Pine green crochet Christmas stocking with ribbed cuff and tassel" },
-      { src: "/products/christmas-stockings/4-studio-v4.jpg", alt: "Hand holding a striped crochet Christmas stocking" },
+      { src: "/products/christmas-stockings/2-studio-v2.jpg", alt: "Red crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Red" },
+      { src: "/products/christmas-stockings/off-white-studio-v2.jpg", alt: "Cream crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Off White" },
+      { src: "/products/christmas-stockings/pine-studio-v3.jpg", alt: "Pine green crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Pine" },
+      { src: "/products/christmas-stockings/4-studio-v4.jpg", alt: "Hand holding a striped crochet Christmas stocking", shownColor: "Multi" },
     ],
     sizes: [{ id: "one", label: "One stocking" }],
     hideSizePicker: true,
@@ -168,9 +176,10 @@ export const products: Product[] = [
     category: "Table",
     imageSrc: "/products/coasters/2-studio-v9.jpg",
     imageAlt: "Eucalyptus green crochet coaster held between fingers",
+    imageShownColor: "Eucalyptus Green",
     galleryImages: [
-      { src: "/products/coasters/hero-studio-v6.jpg", alt: "Hand holding a stack of eucalyptus green handmade crochet coasters" },
-      { src: "/products/coasters/mug-studio-v5.jpg", alt: "Close-up of a eucalyptus green crochet coaster with a black mug and by Diana label tag" },
+      { src: "/products/coasters/hero-studio-v6.jpg", alt: "Hand holding a stack of eucalyptus green handmade crochet coasters", shownColor: "Eucalyptus Green" },
+      { src: "/products/coasters/mug-studio-v5.jpg", alt: "Close-up of a eucalyptus green crochet coaster with a black mug and by Diana label tag", shownColor: "Eucalyptus Green" },
     ],
     sizes: [{ id: "one", label: "Set of 4" }],
     hideSizePicker: true,
@@ -187,8 +196,10 @@ export const products: Product[] = [
     category: "Table",
     imageSrc: "/products/placemats/placemats-image-1-studio-v2.jpg",
     imageAlt: "Stack of golden natural crochet placemats with fine gold fibers",
+    imageShownColor: "Golden Natural",
     galleryImages: [
-      { src: "/products/placemats/placemats-image-3-studio-v1.jpg", alt: "Golden natural crochet placemat with a ceramic plate, fork, and spoon" },
+      { src: "/products/placemats/placemats-image-3-studio-v1.jpg", alt: "Golden natural crochet placemat with a ceramic plate, fork, and spoon", shownColor: "Golden Natural" },
+      { type: "video", src: "/products/placemats/placemats-deflicker-v1.mp4", alt: "Placemats product video", shownColor: "Golden Natural", poster: "/products/placemats/placemats-image-1-studio-v2.jpg" },
     ],
     sizes: [{ id: "one", label: "One placemat" }],
     hideSizePicker: true,
@@ -256,12 +267,13 @@ export const products: Product[] = [
     category: "Kitchen",
     imageSrc: "/products/hotpads/hero-studio-v3.jpg",
     imageAlt: "Stack of terracotta handmade crochet hot pads",
+    imageShownColor: "Terracotta",
     galleryImages: [
-      { src: "/products/hotpads/3-studio-v10.jpg", alt: "Hand fanning out terracotta crochet hot pads" },
-      { src: "/products/hotpads/4-studio-v2.jpg", alt: "Side view of stacked terracotta crochet hot pads" },
-      { src: "/products/hotpads/hotpad-with-product-1-studio-v1.jpg", alt: "Warm beige crochet hotpad with a glass candle" },
-      { src: "/products/hotpads/hotpad-with-product-2-studio-v1.jpg", alt: "Warm beige crochet hotpad under a stainless steel saucepan" },
-      { src: "/products/hotpads/hotpad-with-product-3-studio-v2.jpg", alt: "Warm beige crochet hotpad hanging by its leather loop on a wall hook" },
+      { src: "/products/hotpads/3-studio-v10.jpg", alt: "Hand fanning out terracotta crochet hot pads", shownColor: "Terracotta" },
+      { src: "/products/hotpads/4-studio-v2.jpg", alt: "Side view of stacked terracotta crochet hot pads", shownColor: "Terracotta" },
+      { src: "/products/hotpads/hotpad-with-product-1-studio-v1.jpg", alt: "Warm beige crochet hotpad with a glass candle", shownColor: "Warm Beige" },
+      { src: "/products/hotpads/hotpad-with-product-2-studio-v1.jpg", alt: "Warm beige crochet hotpad under a stainless steel saucepan", shownColor: "Warm Beige" },
+      { src: "/products/hotpads/hotpad-with-product-3-studio-v2.jpg", alt: "Warm beige crochet hotpad hanging by its leather loop on a wall hook", shownColor: "Warm Beige" },
     ],
     sizes: [
       { id: "one", label: '7.5" × 7"' },
@@ -276,6 +288,20 @@ export const products: Product[] = [
     customSizeLimits: { minInches: 7, maxInches: 10 },
     quantityPicker: { max: 10 },
     yarns: BOBBINY_PREMIUM_5MM_YARNS,
+  },
+  {
+    id: "cat-cave",
+    name: "Cat cave",
+    price: 50,
+    category: "Pets",
+    imageSrc: "/products/cat cave/cat-cave-with-cat-studio-v1.jpg",
+    imageAlt: "Tortoiseshell cat inside a plush Toasted Birch crochet cat cave beside a potted plant",
+    imageShownColor: "Toasted Birch",
+    sizes: [{ id: "one", label: "One size" }],
+    hideSizePicker: true,
+    dimensions: { lines: ['20" long', '44" around', '8" opening diameter'] },
+    defaultYarnId: "bernat-blanket-big-toasted-birch",
+    yarns: BERNAT_BLANKET_BIG_YARNS,
   },
   {
     id: "wine-bottle-holders",

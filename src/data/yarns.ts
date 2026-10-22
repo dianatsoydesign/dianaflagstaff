@@ -30,6 +30,7 @@ export function getAllYarns(): YarnColor[] {
 /** Supplier yarn line shown as the picker heading and in gallery alt text. */
 export function yarnLineName(yarn: YarnColor): string | null {
   if (yarn.supplierSku?.startsWith("bobbiny:")) return "Bobbiny Premium 5mm";
+  if (yarn.id.startsWith("bernat-blanket-big-")) return "Bernat Blanket Big";
   if (yarn.supplierSku?.startsWith("michaels:")) return "Charisma by Loops & Threads";
   return null;
 }
@@ -53,6 +54,14 @@ const CHARISMA_MATERIAL: YarnMaterial = {
 
 /** Fiber content from each supplier's product page (bobbinycords.us, michaels.com). */
 export function yarnMaterial(yarn: YarnColor): YarnMaterial {
+  if (yarn.id.startsWith("bernat-blanket-big-")) {
+    return {
+      fiber: "100% polyester",
+      washCare: "machine wash cold",
+      dryCare: "tumble dry low",
+      detail: "",
+    };
+  }
   if (
     yarn.supplierSku?.startsWith("bobbiny:") ||
     yarn.id.startsWith("bobbiny-5mm-")

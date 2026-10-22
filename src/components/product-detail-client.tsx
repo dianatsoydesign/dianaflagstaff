@@ -56,7 +56,7 @@ export function ProductDetailClient({ product, related }: Props) {
   }, [product.defaultSizeId, product.id, product.price, product.sizes]);
 
   const productImages = [
-    { src: product.imageSrc, alt: product.imageAlt },
+    { src: product.imageSrc, alt: product.imageAlt, shownColor: product.imageShownColor },
     ...(product.galleryImages ?? []),
   ];
 
@@ -65,7 +65,7 @@ export function ProductDetailClient({ product, related }: Props) {
     !!yarn &&
     !isCharismaCuratedPaletteYarn(yarn.id) &&
     !!yarn.supplierSku &&
-    usesLiveSupplier(product.yarns);
+    (usesLiveSupplier(product.yarns) || !!yarn.colorImages?.length);
 
   const colorSrcs = (yarn: YarnColor) =>
     yarn.colorImages?.length ? yarn.colorImages : [yarn.detailSwatchSrc ?? yarn.swatchSrc];
@@ -77,15 +77,20 @@ export function ProductDetailClient({ product, related }: Props) {
     : [];
   const yarnImages = yarnSrcs.map((src, i) => ({
     src,
+    shownColor: product.imageShownColor ? selectedYarn!.name : undefined,
     alt: `${selectedYarn!.name}, ${yarnLineName(selectedYarn!) ?? "yarn"}${i ? ` (${i + 1})` : ""}`,
   }));
-  const slides = [...productImages, ...yarnImages];
+  const slides = [
+    ...productImages.filter((image) => image.type !== "video"),
+    ...productImages.filter((image) => image.type === "video"),
+    ...yarnImages,
+  ];
 
   const previewSrc = hasColorImages(previewYarn)
     ? (previewYarn.colorImages?.[0] ?? previewYarn.detailSwatchSrc ?? previewYarn.swatchSrc)
     : null;
   const preview = previewSrc
-    ? { src: previewSrc, alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
+    ? { src: previewSrc, shownColor: product.imageShownColor ? previewYarn!.name : undefined, alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
     : null;
 
   const materialYarn = selectedYarn ?? product.yarns[0];
@@ -108,6 +113,7 @@ export function ProductDetailClient({ product, related }: Props) {
       <div className="site-width">
         <div className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px]">
           <ProductDetailGallery
+            keyboardNavigation
             slides={slides}
             activeIndex={Math.min(activeIndex, slides.length - 1)}
             onSelect={setActiveIndex}

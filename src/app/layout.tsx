@@ -52,8 +52,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col font-sans">
         <ThemeProvider>
           <InquiryCartProvider>
+            <a href="#main-content" className="skip-link">Skip to content</a>
             <SiteHeader />
-            <main className="flex-1 pb-16">{children}</main>
+            <main id="main-content" tabIndex={-1} className="flex-1 pb-16">{children}</main>
           </InquiryCartProvider>
         </ThemeProvider>
       </body>

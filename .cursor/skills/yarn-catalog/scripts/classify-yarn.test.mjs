@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {classifyYarn,pixelColor} from './classify-yarn.mjs';
+const px=rgb=>Array.from({length:16},()=>rgb);
+assert.equal(classifyYarn('Black',px([18,23,20])).colorGroup,'neutrals');
+assert.equal(classifyYarn('Really Red',px([154,20,40])).colorGroup,'reds');
+for(const n of ['Amethyst','Plum Purple','Winter Grape'])assert.equal(classifyYarn(n,px([80,36,66])).colorGroup,'purples');
+assert.equal(classifyYarn('Chalk Pink',px([235,199,196])).colorGroup,'pinks');
+assert.equal(classifyYarn('Gray',px([109,105,103])).multicolor,false);
+assert.equal(classifyYarn('Toasted Birch',px([180,160,140]),{'Toasted Birch':'multis'}).colorGroup,'multis');
+assert.equal(pixelColor(px([200,20,25])).family,'reds');
+assert.equal(classifyYarn('Unfamiliar',px([20,40,180])).reviewNeeded,true);
+assert.equal(classifyYarn('Red',px([20,40,180])).reviewNeeded,true);
+assert.throws(()=>classifyYarn('Bad',px([1,2,3]),{Bad:'unknown'}));
+console.log('Classifier regression checks passed');
+
+const pale=classifyYarn('Pale Gray',px([215,210,207]));
+const mid=classifyYarn('Gray',px([120,120,120]));
+const dark=classifyYarn('Black',px([20,23,20]));
+assert.ok(pale.sortRank<mid.sortRank && mid.sortRank<dark.sortRank);
+assert.ok(classifyYarn('Pink',px([240,190,200])).sortRank<classifyYarn('Pink',px([100,30,50])).sortRank);
+console.log('Lightest-to-darkest checks passed');

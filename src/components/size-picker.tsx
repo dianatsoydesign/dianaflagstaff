@@ -103,6 +103,16 @@ export function SizePicker({
         className="relative z-10 flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap"
         role="radiogroup"
         aria-label="Size"
+        onKeyDown={(e) => {
+          if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(e.key)) return;
+          const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>('button[role="radio"]:not(:disabled)'));
+          const current = buttons.indexOf(e.target as HTMLButtonElement);
+          if (current < 0 || !buttons.length) return;
+          e.preventDefault();
+          const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (current + (["ArrowRight", "ArrowDown"].includes(e.key) ? 1 : -1) + buttons.length) % buttons.length;
+          buttons[index].focus();
+          buttons[index].click();
+        }}
       >
         {presetSizes.map((size) => {
           const isSelected = value === size.id;
@@ -112,6 +122,7 @@ export function SizePicker({
               type="button"
               role="radio"
               aria-checked={isSelected}
+              tabIndex={isSelected || (!value && size.id === presetSizes[0]?.id) ? 0 : -1}
               onClick={() => onChange(size.id)}
               className={cn(
                 pickerChipBase,
@@ -134,6 +145,7 @@ export function SizePicker({
             type="button"
             role="radio"
             aria-checked={customSelected}
+            tabIndex={customSelected ? 0 : -1}
             onClick={() => onChange(REQUEST_DIFFERENT_SIZE_ID)}
             className={cn(
               pickerChipBase,

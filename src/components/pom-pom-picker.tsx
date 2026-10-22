@@ -37,6 +37,16 @@ export function PomPomPicker({ value, onChange, className }: Props) {
         className="flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap"
         role="radiogroup"
         aria-label="Pom pom"
+        onKeyDown={(e) => {
+          if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(e.key)) return;
+          const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>('button[role="radio"]:not(:disabled)'));
+          const current = buttons.indexOf(e.target as HTMLButtonElement);
+          if (current < 0 || !buttons.length) return;
+          e.preventDefault();
+          const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (current + (["ArrowRight", "ArrowDown"].includes(e.key) ? 1 : -1) + buttons.length) % buttons.length;
+          buttons[index].focus();
+          buttons[index].click();
+        }}
       >
         {HAT_POM_POM_OPTIONS.map((option) => {
           const isSelected = value === option.id;
@@ -46,6 +56,7 @@ export function PomPomPicker({ value, onChange, className }: Props) {
               type="button"
               role="radio"
               aria-checked={isSelected}
+              tabIndex={isSelected || false ? 0 : -1}
               onClick={() => onChange(option.id)}
               className={cn(
                 pickerChipBase,

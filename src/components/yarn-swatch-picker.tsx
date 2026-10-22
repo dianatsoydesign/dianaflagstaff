@@ -45,6 +45,7 @@ import {
   pickerLegendClass,
   yarnSwatchCircleImageClass,
 } from "@/components/picker-styles";
+import { bernatColorGroupId, bernatGroupsForYarns, type BernatColorGroupId } from "@/data/bernat-blanket-big";
 import { HolidayPizzaSwatch } from "@/components/holiday-pizza-swatch";
 import { colorName } from "@/lib/color-name";
 import { isBobbinyYarnId, productPhotoBgClass } from "@/lib/product-photo-bg";
@@ -60,9 +61,11 @@ function colorThumbSrc(yarn: {
   return yarn.detailSwatchSrc ?? yarn.swatchSrc;
 }
 
-type CatalogGroupId = BobbinyColorGroupId | CharismaPickerGroupId;
+type CatalogGroupId = BobbinyColorGroupId | CharismaPickerGroupId | BernatColorGroupId;
 
 type Props = {
+  allowHolidayFilter?: boolean;
+  keyboardNavigation?: boolean;
   yarns: (YarnColor & { liveStatus?: StockStatus })[];
   value: string | null;
   onChange: (yarnId: string) => void;
@@ -75,6 +78,8 @@ type Props = {
 
 export function YarnSwatchPicker({
   yarns,
+  allowHolidayFilter = false,
+  keyboardNavigation = true,
   value,
   onChange,
   onPreview,
@@ -87,13 +92,16 @@ export function YarnSwatchPicker({
     yarns.length > 20 && isCharismaColorCatalog(yarns);
   const useBobbinyGroups =
     !useCharismaGroups && yarns.length > 20 && isBobbinyColorCatalog(yarns);
-  const useGroupFilter = useCharismaGroups || useBobbinyGroups;
+  const useBernatGroups = yarns.length > 0 && yarns.every((y) => y.id.startsWith("bernat-blanket-big-"));
+  const useGroupFilter = useCharismaGroups || useBobbinyGroups || useBernatGroups;
 
   const groupOptions = useCharismaGroups
     ? charismaGroupsForYarns(yarns)
     : useBobbinyGroups
       ? bobbinyGroupsForYarns(yarns)
-      : [];
+      : useBernatGroups
+        ? bernatGroupsForYarns(yarns)
+        : [];
 
   const [groupFilterChoice, setGroupFilterChoice] = useState<
     { source: "auto" } | { source: "user"; groupId: CatalogGroupId | null }
@@ -109,6 +117,7 @@ export function YarnSwatchPicker({
     if (isCharismaWarmPaletteYarn(yarnId)) return null;
     const yarn = yarns.find((y) => y.id === yarnId);
     if (!yarn) return null;
+    if (useBernatGroups) return bernatColorGroupId(yarn);
     if (useCharismaGroups) return charismaColorGroupId(yarn);
     if (useBobbinyGroups) return bobbinyColorGroupId(yarnId);
     return null;
@@ -121,7 +130,7 @@ export function YarnSwatchPicker({
         : null
       : groupFilterChoice.groupId;
 
-  const showHolidayChip = useCharismaGroups && charismaHasHolidayYarns(yarns);
+  const showHolidayChip = allowHolidayFilter && useCharismaGroups && charismaHasHolidayYarns(yarns);
   const showSoftPaletteSwatch =
     useCharismaGroups && charismaHasSoftPaletteYarns(yarns);
   const showWarmPaletteSwatch =
@@ -130,7 +139,9 @@ export function YarnSwatchPicker({
   const displayedYarns = useGroupFilter
     ? useCharismaGroups
       ? filterCharismaYarnsForPicker(yarns, groupFilter as CharismaPickerGroupId | null)
-      : filterBobbinyYarnsByGroup(yarns, groupFilter as BobbinyColorGroupId | null)
+      : useBernatGroups
+        ? yarns.filter((yarn) => !groupFilter || bernatColorGroupId(yarn) === groupFilter)
+        : filterBobbinyYarnsByGroup(yarns, groupFilter as BobbinyColorGroupId | null)
     : yarns;
 
   const readOnlyColor = yarns.length === 1;
@@ -246,6 +257,18 @@ export function YarnSwatchPicker({
 
       <div
         className={cn("grid gap-1.5", cols)}
+        role={keyboardNavigation ? "radiogroup" : undefined}
+        aria-label={keyboardNavigation ? "Yarn color" : undefined}
+        onKeyDown={keyboardNavigation ? (e) => {
+          if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(e.key)) return;
+          const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"));
+          const current = buttons.indexOf(e.target as HTMLButtonElement);
+          if (current < 0 || !buttons.length) return;
+          e.preventDefault();
+          const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (current + (["ArrowRight", "ArrowDown"].includes(e.key) ? 1 : -1) + buttons.length) % buttons.length;
+          buttons[index].focus();
+          buttons[index].click();
+        } : undefined}
         onPointerLeave={(e) => {
           if (e.pointerType === "mouse") preview(null);
         }}
@@ -264,7 +287,10 @@ export function YarnSwatchPicker({
               onPointerEnter={(e) => {
                 if (e.pointerType === "mouse" && selectable) preview(yarn.id);
               }}
-              aria-pressed={isSelected}
+              role={keyboardNavigation ? "radio" : undefined}
+              aria-checked={keyboardNavigation ? isSelected : undefined}
+              tabIndex={keyboardNavigation ? (isSelected || (!(showHolidayChip && groupFilter === "holiday" && (value === CHARISMA_HOLIDAY_PIZZA_YARN_ID || (showSoftPaletteSwatch && value === CHARISMA_SOFT_PALETTE_YARN_ID) || (showWarmPaletteSwatch && value === CHARISMA_WARM_PALETTE_YARN_ID))) && !displayedYarns.some((y) => y.id === value && isSelectable(y.liveStatus ?? y.stockStatus)) && yarn.id === displayedYarns.find((y) => isSelectable(y.liveStatus ?? y.stockStatus))?.id) ? 0 : -1) : undefined}
+              aria-pressed={keyboardNavigation ? undefined : isSelected}
               aria-label={colorName(yarn.name)}
               title={colorName(yarn.name)}
               className={cn(
@@ -294,7 +320,10 @@ export function YarnSwatchPicker({
             onPointerEnter={(e) => {
               if (e.pointerType === "mouse") preview(CHARISMA_HOLIDAY_PIZZA_YARN_ID);
             }}
-            aria-pressed={value === CHARISMA_HOLIDAY_PIZZA_YARN_ID}
+            role={keyboardNavigation ? "radio" : undefined}
+            aria-checked={keyboardNavigation ? value === CHARISMA_HOLIDAY_PIZZA_YARN_ID : undefined}
+            tabIndex={keyboardNavigation ? (value === CHARISMA_HOLIDAY_PIZZA_YARN_ID ? 0 : -1) : undefined}
+            aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_HOLIDAY_PIZZA_YARN_ID}
             aria-label="Classic"
             title="Classic"
             className={cn(
@@ -317,7 +346,10 @@ export function YarnSwatchPicker({
                 preview(CHARISMA_SOFT_PALETTE_YARN_ID);
               }
             }}
-            aria-pressed={value === CHARISMA_SOFT_PALETTE_YARN_ID}
+            role={keyboardNavigation ? "radio" : undefined}
+            aria-checked={keyboardNavigation ? value === CHARISMA_SOFT_PALETTE_YARN_ID : undefined}
+            tabIndex={keyboardNavigation ? (value === CHARISMA_SOFT_PALETTE_YARN_ID ? 0 : -1) : undefined}
+            aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_SOFT_PALETTE_YARN_ID}
             aria-label="Soft palette"
             title="Soft palette"
             className={cn(
@@ -343,7 +375,10 @@ export function YarnSwatchPicker({
                 preview(CHARISMA_WARM_PALETTE_YARN_ID);
               }
             }}
-            aria-pressed={value === CHARISMA_WARM_PALETTE_YARN_ID}
+            role={keyboardNavigation ? "radio" : undefined}
+            aria-checked={keyboardNavigation ? value === CHARISMA_WARM_PALETTE_YARN_ID : undefined}
+            tabIndex={keyboardNavigation ? (value === CHARISMA_WARM_PALETTE_YARN_ID ? 0 : -1) : undefined}
+            aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_WARM_PALETTE_YARN_ID}
             aria-label="Warm palette"
             title="Warm palette"
             className={cn(

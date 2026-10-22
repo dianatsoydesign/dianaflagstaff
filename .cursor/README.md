@@ -25,6 +25,8 @@ This folder keeps **project-local** rules and skills so agents working in this r
 | [`skills/square-product-photo/SKILL.md`](skills/square-product-photo/SKILL.md) | Square AI product photos in `public/products/` |
 | [`skills/remove-background/SKILL.md`](skills/remove-background/SKILL.md) | Transparent PNG cutouts (Charisma swatches, etc.) |
 
+Use `skills/yarn-catalog/SKILL.md` when importing yarn catalogs or fixing swatches and color sorting.
+
 ## Repo docs agents should know
 
 - [`../README.md`](../README.md) — stack, local dev, deploy, Charisma cron on Mac

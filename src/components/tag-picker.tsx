@@ -12,12 +12,13 @@ import {
 import { cn } from "@/lib/utils";
 
 type Props = {
+  keyboardNavigation?: boolean;
   value: ProductTagId;
   onChange: (tagId: ProductTagId) => void;
   className?: string;
 };
 
-export function TagPicker({ value, onChange, className }: Props) {
+export function TagPicker({ value, onChange, className, keyboardNavigation = true }: Props) {
   const selected =
     PRODUCT_TAGS.find((t) => t.id === value) ?? PRODUCT_TAGS[0];
 
@@ -36,6 +37,16 @@ export function TagPicker({ value, onChange, className }: Props) {
         className="flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap"
         role="radiogroup"
         aria-label="Tag"
+        onKeyDown={keyboardNavigation ? (e) => {
+          if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(e.key)) return;
+          const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button"));
+          const current = buttons.indexOf(e.target as HTMLButtonElement);
+          if (current < 0) return;
+          e.preventDefault();
+          const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (current + (["ArrowRight", "ArrowDown"].includes(e.key) ? 1 : -1) + buttons.length) % buttons.length;
+          buttons[index].focus();
+          buttons[index].click();
+        } : undefined}
       >
         {PRODUCT_TAGS.map((tag) => {
           const isSelected = value === tag.id;
@@ -45,6 +56,7 @@ export function TagPicker({ value, onChange, className }: Props) {
               type="button"
               role="radio"
               aria-checked={isSelected}
+              tabIndex={keyboardNavigation ? (isSelected ? 0 : -1) : undefined}
               onClick={() => onChange(tag.id)}
               className={cn(
                 pickerChipBase,

@@ -338,6 +338,8 @@ export function ProductPurchaseForm({
         <PomPomPicker value={pomPomId} onChange={setPomPomId} />
       ) : null}
       <YarnSwatchPicker
+        allowHolidayFilter={product.id === "christmas-stockings"}
+        keyboardNavigation
         yarns={yarns}
         value={yarnId}
         onChange={handleYarnChange}
@@ -353,7 +355,7 @@ export function ProductPurchaseForm({
         }}
         legend={product.yarns.map(yarnLineName).find(Boolean) ?? "Yarn color"}
       />
-      <TagPicker value={tagId} onChange={setTagId} />
+      <TagPicker keyboardNavigation value={tagId} onChange={setTagId} />
       {qtyConfig ? (
         <QuantityPicker
           value={quantity}
