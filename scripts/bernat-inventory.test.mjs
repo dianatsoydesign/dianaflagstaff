@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { availableForCatCave, freshSnapshot, MAX_STOCK_AGE_MS, pickupQuantities, validSnapshot } from '../src/lib/bernat-inventory.mjs';
+import { availableForCatCave, pickupQuantities, validSnapshot } from '../src/lib/bernat-inventory.mjs';
 
 const now = Date.now();
 const snapshot = { storeId: '9608', checkedAt: now, quantities: { '100': 3, '101': 2, '102': 0, '103': null } };
@@ -10,10 +10,12 @@ test('requires at least three skeins of the chosen color', () => {
   for (const sku of ['101', '102', '103', '999']) assert.equal(availableForCatCave(snapshot, sku, now), false);
 });
 
-test('expires at two hours, including the exact boundary', () => {
-  assert.equal(freshSnapshot(snapshot, now + MAX_STOCK_AGE_MS - 1), true);
-  assert.equal(freshSnapshot(snapshot, now + MAX_STOCK_AGE_MS), false);
-  assert.equal(availableForCatCave(snapshot, '100', now + MAX_STOCK_AGE_MS), false);
+test('keeps last verified colors during an extended stock-check outage', () => {
+  for (const age of [2 * 60 * 60 * 1000, 7 * 24 * 60 * 60 * 1000]) {
+    assert.equal(availableForCatCave(snapshot, '100', now + age), true);
+    assert.equal(availableForCatCave(snapshot, '101', now + age), false);
+    assert.equal(availableForCatCave(snapshot, '103', now + age), false);
+  }
   assert.equal(availableForCatCave(null, '100', now), false);
 });
 

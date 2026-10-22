@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 // node scripts/push-bernat-stock.mjs --check-only verifies stock without publishing.
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { FLAGSTAFF_STORE_ID, MIN_SKEINS, pickupQuantities } from '../src/lib/bernat-inventory.mjs';
 
 const checkOnly = process.argv.includes('--check-only');
+const writeBootstrap = process.argv.includes('--write-bootstrap');
+if (writeBootstrap && !checkOnly) throw new Error('Use --check-only when writing bootstrap stock');
 const siteUrl = process.env.SITE_URL || 'https://dianaflagstaff.com';
 const secret = process.env.BERNAT_STOCK_SECRET;
 if (!checkOnly && !secret) throw new Error('Set BERNAT_STOCK_SECRET before publishing stock');
@@ -40,6 +42,10 @@ for (let offset = 0; offset < skus.length; offset += 25) {
 }
 const snapshot = { storeId: FLAGSTAFF_STORE_ID, checkedAt, quantities };
 console.log(`Checked ${skus.length} colors at Flagstaff #${FLAGSTAFF_STORE_ID}; ${Object.values(quantities).filter(qty => qty !== null && qty >= MIN_SKEINS).length} have at least ${MIN_SKEINS} skeins; ${Object.values(quantities).filter(qty => qty === null).length} have no verified pickup count and stay hidden.`);
+if (writeBootstrap) {
+  await writeFile(new URL('../src/data/bernat-stock-bootstrap.json', import.meta.url), JSON.stringify(snapshot, null, 2) + '\n');
+  console.log('Initial verified stock snapshot saved.');
+}
 if (!checkOnly) {
   const saved = await request(`${siteUrl.replace(/\/$/, '')}/api/cron/bernat-stock`, {
     method: 'POST',

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import bootstrapStock from "@/data/bernat-stock-bootstrap.json";
+import { availableForCatCave } from "@/lib/bernat-inventory.mjs";
 import {
   formatPriceOrTbd,
   type Product,
@@ -94,10 +96,14 @@ export function ProductPurchaseForm({
   );
   const [tagId, setTagId] = useState<ProductTagId>(DEFAULT_PRODUCT_TAG_ID);
   const [pomPomId, setPomPomId] = useState<HatPomPomId>(DEFAULT_HAT_POM_POM_ID);
-  const [liveStock, setLiveStock] = useState<Record<string, StockStatus>>({});
   const isCatCave = product.id === "cat-cave";
-  const [stockExpiresAt, setStockExpiresAt] = useState(0);
-  const [stockMessage, setStockMessage] = useState("Checking yarn availability…");
+  const [liveStock, setLiveStock] = useState<Record<string, StockStatus>>(() =>
+    isCatCave ? Object.fromEntries(product.yarns.map(yarn => [
+      yarn.id,
+      availableForCatCave(bootstrapStock, yarn.supplierSku?.split(":")[1] ?? "") ? "in_stock" : "out_of_stock",
+    ])) : {}
+  );
+  const [stockMessage, setStockMessage] = useState("");
   const yarnIdRef = useRef(yarnId);
   useEffect(() => { yarnIdRef.current = yarnId; }, [yarnId]);
   const [message, setMessage] = useState<string | null>(null);
@@ -178,17 +184,9 @@ export function ProductPurchaseForm({
         const map: Record<string, StockStatus> = {};
         for (const r of data.results) map[r.yarnId] = r.status;
         if (isCatCave) {
-          const checkedAt = Date.parse(data.results[0]?.checkedAt ?? "");
-          const expiresAt = checkedAt + 2 * 60 * 60 * 1000;
-          if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
-            setLiveStock({});
-            setStockExpiresAt(0);
-            setStockMessage("Yarn availability is being updated.");
-            setYarnId(null);
-            onYarnChangeRef.current?.(null, false);
-            return;
+          if (!data.results.length || !Number.isFinite(Date.parse(data.results[0]?.checkedAt ?? ""))) {
+            throw new Error("No verified stock snapshot");
           }
-          setStockExpiresAt(expiresAt);
           setStockMessage(data.results.some(r => isSelectable(r.status)) ? "" : "No yarn colors currently have enough stock at Michaels in Flagstaff.");
         }
         setLiveStock(map);
@@ -210,30 +208,14 @@ export function ProductPurchaseForm({
         setYarnId(firstId);
         onYarnChangeRef.current?.(first ?? null, false);
       } catch {
-        if (!cancelled && isCatCave) {
-          setLiveStock({});
-          setStockExpiresAt(0);
-          setStockMessage("Yarn availability is being updated.");
-          setYarnId(null);
-          onYarnChangeRef.current?.(null, false);
-        }
+        // Keep the last successful choices (or the initial verified snapshot).
+        // A temporary stock-check outage must not empty the picker.
       }
     }
     void load();
     const timer = isCatCave ? window.setInterval(() => void load(), 60000) : null;
     return () => { cancelled = true; if (timer !== null) window.clearInterval(timer); };
   }, [product, isCatCave]); // stable: product doesn't change on this page
-
-  useEffect(() => {
-    if (!isCatCave || !stockExpiresAt) return;
-    const timer = window.setTimeout(() => {
-      setLiveStock({});
-      setYarnId(null);
-      setStockMessage("Yarn availability is being updated.");
-      onYarnChangeRef.current?.(null, false);
-    }, Math.max(0, stockExpiresAt - Date.now()));
-    return () => window.clearTimeout(timer);
-  }, [isCatCave, stockExpiresAt]);
 
   const showHolidayPizza = charismaHasHolidayYarns(product.yarns);
   const showSoftPalette =
@@ -277,10 +259,6 @@ export function ProductPurchaseForm({
 
   function add() {
     setMessage(null);
-    if (isCatCave && stockExpiresAt <= Date.now()) {
-      setMessage("Yarn availability is being updated.");
-      return;
-    }
     const customSize =
       sizeId != null && isRequestDifferentSizeId(sizeId);
     const size = customSize
@@ -409,7 +387,7 @@ export function ProductPurchaseForm({
         type="button"
         className="h-12 w-full justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
         onClick={add}
-        disabled={isCatCave && (!yarnId || !yarns.length || !stockExpiresAt)}
+        disabled={isCatCave && (!yarnId || !yarns.length)}
       >
         <span>Add to cart</span>
         <span className="tabular-nums">

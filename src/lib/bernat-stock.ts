@@ -1,5 +1,6 @@
 import catalog from '@/data/bernat-blanket-big.json';
-import { availableForCatCave, freshSnapshot, validSnapshot, FLAGSTAFF_STORE_ID, pickupQuantities } from '@/lib/bernat-inventory.mjs';
+import bootstrapStock from '@/data/bernat-stock-bootstrap.json';
+import { availableForCatCave, validSnapshot, FLAGSTAFF_STORE_ID, pickupQuantities } from '@/lib/bernat-inventory.mjs';
 
 type Snapshot = { storeId: string; checkedAt: number; quantities: Record<string, number | null> };
 const KEY = 'michaels:bernat:flagstaff:9608';
@@ -33,7 +34,7 @@ async function refreshLocalStock(previous: Snapshot | null): Promise<Snapshot | 
   } catch (error) {
     localRetryAfter = Date.now() + 60000;
     console.warn('Local Flagstaff stock refresh failed', error);
-    return previous && freshSnapshot(previous) ? previous : null;
+    return previous && validSnapshot(previous) ? previous : bootstrapStock;
   }
 }
 
@@ -53,18 +54,21 @@ export async function readBernatStock(): Promise<Snapshot | null> {
     const raw = kv ? await kv.get(KEY) : null;
     snapshot = raw ? JSON.parse(raw) : null;
   } catch {
-    // A local preview can still fetch verified stock if its local KV is unavailable.
+    // Keep the latest verified snapshot during a temporary storage outage.
   }
+  const candidates = [snapshot, localSnapshot, bootstrapStock].filter((value): value is Snapshot => value !== null && validSnapshot(value));
+  snapshot = candidates.sort((a, b) => b.checkedAt - a.checkedAt)[0] ?? null;
+  localSnapshot = snapshot;
   if (process.env.NODE_ENV === 'development') {
     if (localSnapshot && validSnapshot(localSnapshot) &&
         (!snapshot || !validSnapshot(snapshot) || localSnapshot.checkedAt > snapshot.checkedAt)) snapshot = localSnapshot;
-    if (snapshot && freshSnapshot(snapshot) && Date.now() - snapshot.checkedAt < 60 * 60 * 1000) return snapshot;
+    if (snapshot && validSnapshot(snapshot) && Date.now() - snapshot.checkedAt < 60 * 60 * 1000) return snapshot;
     if (Date.now() >= localRetryAfter) {
       if (!localRefresh) localRefresh = refreshLocalStock(snapshot).finally(() => { localRefresh = null; });
       return localRefresh;
     }
   }
-  return snapshot && freshSnapshot(snapshot) ? snapshot : null;
+  return snapshot && validSnapshot(snapshot) ? snapshot : null;
 }
 
 export async function saveBernatStock(value: unknown) {
@@ -80,8 +84,8 @@ export async function saveBernatStock(value: unknown) {
   const raw = kv ? await kv.get(KEY) : null;
   const previous: Snapshot | null = raw ? JSON.parse(raw) : localSnapshot;
   if (previous && validSnapshot(previous) && previous.checkedAt >= snapshot.checkedAt) throw new Error('Stock snapshot already saved or superseded');
-  if (kv) await kv.put(KEY, JSON.stringify(snapshot), { expirationTtl: 86400 });
-  else localSnapshot = snapshot;
+  if (kv) await kv.put(KEY, JSON.stringify(snapshot));
+  localSnapshot = snapshot;
 }
 
 export async function bernatAvailability() {

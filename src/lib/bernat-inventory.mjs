@@ -1,7 +1,6 @@
 /** Local pickup only. Shared by the website and the hourly GitHub job. */
 export const FLAGSTAFF_STORE_ID = '9608';
 export const MIN_SKEINS = 3;
-export const MAX_STOCK_AGE_MS = 2 * 60 * 60 * 1000;
 
 /** @param {unknown} value @param {number} [now] */
 export function validSnapshot(value, now = Date.now()) {
@@ -15,14 +14,9 @@ export function validSnapshot(value, now = Date.now()) {
     /^\d+$/.test(sku) && (qty === null || (typeof qty === 'number' && Number.isSafeInteger(qty) && qty >= 0)));
 }
 
-/** @param {{storeId:string, checkedAt:number, quantities:Record<string,number|null>} | null} snapshot @param {number} [now] */
-export function freshSnapshot(snapshot, now = Date.now()) {
-  return validSnapshot(snapshot, now) && now - snapshot.checkedAt < MAX_STOCK_AGE_MS;
-}
-
 /** @param {{storeId:string, checkedAt:number, quantities:Record<string,number|null>} | null} snapshot @param {string} sku @param {number} [now] */
 export function availableForCatCave(snapshot, sku, now = Date.now()) {
-  return freshSnapshot(snapshot, now) && (snapshot.quantities[sku] ?? 0) >= MIN_SKEINS;
+  return validSnapshot(snapshot, now) && (snapshot.quantities[sku] ?? 0) >= MIN_SKEINS;
 }
 
 /** Validate the complete batch before saving; never use shipping inventory. @param {unknown} data @param {string[]} skus */

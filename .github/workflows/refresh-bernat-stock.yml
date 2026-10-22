@@ -8,6 +8,9 @@ on:
       - 'scripts/bernat-inventory.test.mjs'
       - 'src/lib/bernat-inventory.mjs'
       - 'src/data/bernat-blanket-big.json'
+      - 'src/data/bernat-stock-bootstrap.json'
+      - 'src/lib/bernat-stock.ts'
+      - 'src/components/product-purchase-form.tsx'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
