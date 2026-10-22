@@ -27,7 +27,7 @@ node scripts/push-bernat-stock.mjs --check-only --write-bootstrap
 
 1. Ensure GitHub repository access is working before configuring the scheduled job.
 2. Run the check-only workflow from GitHub to verify Michaels allows requests from the GitHub runner. Local success does not establish runner access.
-3. Set one new random `BERNAT_STOCK_SECRET` in Cloudflare Worker secrets and the matching GitHub Actions repository secret. Keep it out of committed files. This credential authorizes only this stock endpoint.
+3. Set the shared `STOCK_REFRESH_SECRET` in Cloudflare Worker runtime secrets and the matching GitHub Actions repository secret. Use the same value as the Bobbiny and Charisma refreshes; keep it out of committed files. The previous `BERNAT_STOCK_SECRET` remains accepted during migration.
 4. Deploy the website through the existing Cloudflare deployment procedure after Diana approves publishing. The bundled verified snapshot supplies initial choices until a successful stock push arrives.
 5. Put the workflow and checker files on the repository's default branch, run a publishing refresh manually, and verify the live cat cave picker against the resulting counts. Hourly schedules operate only from the default branch. Verify the next scheduled run succeeds too.
 

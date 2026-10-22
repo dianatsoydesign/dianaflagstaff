@@ -4,7 +4,7 @@ Hats require 2 skeins per color; Christmas stockings require 3. Both use the sam
 
 All constituent colors in a mixed palette must meet the applicable product threshold. The pictured stockings Multi option uses the existing classic holiday palette (Off White, Pine, Red). Checkout aggregates quantities across hats, stockings, and palettes sharing a color: one hat plus one stocking in the same color needs five skeins in the saved snapshot.
 
-The workflow runs at minute 27 each hour and supports manual publishing or check-only runs. GitHub schedules can be delayed. The endpoint is `/api/cron/charisma-flagstaff-stock`, protected by a dedicated `CHARISMA_STOCK_SECRET`; the same secret must be configured in GitHub and Cloudflare before activation. The complete raw snapshot is saved without expiry in the existing BOBBINY_STOCK namespace under `michaels:charisma:flagstaff:9608`.
+The workflow runs at minute 27 each hour and supports manual publishing or check-only runs. GitHub schedules can be delayed. The endpoint is `/api/cron/charisma-flagstaff-stock`, protected by the shared `STOCK_REFRESH_SECRET` configured in GitHub and Cloudflare runtime secrets (`CHARISMA_STOCK_SECRET` remains accepted during migration). The complete raw snapshot is saved without expiry in the existing BOBBINY_STOCK namespace under `michaels:charisma:flagstaff:9608`.
 
 Keep the bundled `src/data/charisma-stock-bootstrap.json` snapshot for first loads and storage outages. Successful updates replace choices; failed checks preserve the last successful choices, without emptying the picker. Local previews share an hourly refresh and retry failures after a minute. The two pages poll the lightweight cached website endpoint once per minute, not Michaels directly.
 
@@ -19,4 +19,4 @@ node scripts/push-charisma-flagstaff-stock.mjs --check-only
 node scripts/push-charisma-flagstaff-stock.mjs --check-only --write-bootstrap
 ```
 
-To activate, add matching CHARISMA_STOCK_SECRET values in GitHub and Cloudflare, deploy after Diana approves publishing, merge the workflow to the default branch, run an initial publishing refresh, and verify both live product pickers. Cat cave still uses its separate Bernat check and three-skein threshold. Supplier stock checks do not reserve yarn; preserved choices reflect the last successful check during an outage.
+To activate, add matching STOCK_REFRESH_SECRET values in GitHub and Cloudflare runtime secrets, deploy after Diana approves publishing, merge the workflow to the default branch, run an initial publishing refresh, and verify both live product pickers. Cat cave still uses its separate Bernat check and three-skein threshold. Supplier stock checks do not reserve yarn; preserved choices reflect the last successful check during an outage.
