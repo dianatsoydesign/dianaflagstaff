@@ -1,9 +1,41 @@
 import catalog from '@/data/bernat-blanket-big.json';
-import { availableForCatCave, freshSnapshot, validSnapshot } from '@/lib/bernat-inventory.mjs';
+import { availableForCatCave, freshSnapshot, validSnapshot, FLAGSTAFF_STORE_ID, pickupQuantities } from '@/lib/bernat-inventory.mjs';
 
 type Snapshot = { storeId: string; checkedAt: number; quantities: Record<string, number | null> };
 const KEY = 'michaels:bernat:flagstaff:9608';
 let localSnapshot: Snapshot | null = null;
+let localRefresh: Promise<Snapshot | null> | null = null;
+let localRetryAfter = 0;
+
+// Local previews have their own KV storage; GitHub only pushes to production.
+// Fetch real pickup counts here in development, with a shared hourly cache.
+async function refreshLocalStock(previous: Snapshot | null): Promise<Snapshot | null> {
+  const checkedAt = Date.now();
+  const quantities: Record<string, number | null> = {};
+  const skus = catalog.yarns.map(yarn => yarn.supplierSku.split(':')[1]);
+  try {
+    for (let offset = 0; offset < skus.length; offset += 25) {
+      const batch = skus.slice(offset, offset + 25);
+      const query = new URLSearchParams({ skuNumbers: batch.join(','), michaelsStoreId: FLAGSTAFF_STORE_ID, fields: 'inventory', source: 'pdpPage' });
+      const response = await fetch(`https://www.michaels.com/api/product/v2/sub-skus?${query}`, {
+        cache: 'no-store',
+        headers: {
+          Accept: 'application/json',
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+        },
+        signal: AbortSignal.timeout(15000),
+      });
+      if (!response.ok) throw new Error(`Michaels HTTP ${response.status}`);
+      Object.assign(quantities, pickupQuantities(await response.json(), batch));
+    }
+    localSnapshot = { storeId: FLAGSTAFF_STORE_ID, checkedAt, quantities };
+    return localSnapshot;
+  } catch (error) {
+    localRetryAfter = Date.now() + 60000;
+    console.warn('Local Flagstaff stock refresh failed', error);
+    return previous && freshSnapshot(previous) ? previous : null;
+  }
+}
 
 async function stockKv(): Promise<KVNamespace | null> {
   try {
@@ -15,14 +47,24 @@ async function stockKv(): Promise<KVNamespace | null> {
 }
 
 export async function readBernatStock(): Promise<Snapshot | null> {
+  let snapshot: Snapshot | null = null;
   try {
     const kv = await stockKv();
     const raw = kv ? await kv.get(KEY) : null;
-    const snapshot: Snapshot | null = raw ? JSON.parse(raw) : process.env.NODE_ENV === 'development' ? localSnapshot : null;
-    return snapshot && freshSnapshot(snapshot) ? snapshot : null;
+    snapshot = raw ? JSON.parse(raw) : null;
   } catch {
-    return null;
+    // A local preview can still fetch verified stock if its local KV is unavailable.
   }
+  if (process.env.NODE_ENV === 'development') {
+    if (localSnapshot && validSnapshot(localSnapshot) &&
+        (!snapshot || !validSnapshot(snapshot) || localSnapshot.checkedAt > snapshot.checkedAt)) snapshot = localSnapshot;
+    if (snapshot && freshSnapshot(snapshot) && Date.now() - snapshot.checkedAt < 60 * 60 * 1000) return snapshot;
+    if (Date.now() >= localRetryAfter) {
+      if (!localRefresh) localRefresh = refreshLocalStock(snapshot).finally(() => { localRefresh = null; });
+      return localRefresh;
+    }
+  }
+  return snapshot && freshSnapshot(snapshot) ? snapshot : null;
 }
 
 export async function saveBernatStock(value: unknown) {

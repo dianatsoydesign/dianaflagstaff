@@ -10,6 +10,10 @@ The picker reads the saved snapshot, checks for changes every minute, and clears
 
 This is a supplier stock check, not a reservation. Michaels can sell yarn between refreshes, and separate customer orders do not reserve or subtract supplier inventory.
 
+## Local previews
+
+In development, the website fetches real Flagstaff pickup quantities on the first stock request and caches them for one hour. Concurrent requests share the same refresh. If Michaels fails, the last verified snapshot can be used only until its original two-hour expiry; failed checks retry after a minute. This development fallback never runs in production and never updates production storage.
+
 ## Validate
 
 ```sh
