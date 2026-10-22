@@ -3,6 +3,8 @@ name: Refresh Flagstaff Charisma stock for hats and stockings
 on:
   pull_request:
     paths:
+      - 'src/lib/stock-refresh-auth.mjs'
+      - 'scripts/stock-refresh-auth.test.mjs'
       - '.github/workflows/refresh-charisma-flagstaff-stock.yml'
       - 'scripts/push-charisma-flagstaff-stock.mjs'
       - 'scripts/charisma-flagstaff-inventory.test.mjs'
@@ -42,9 +44,10 @@ jobs:
         with:
           node-version: '22'
       - name: Test stock rules
-        run: node --test scripts/charisma-flagstaff-inventory.test.mjs
+        run: node --test scripts/stock-refresh-auth.test.mjs scripts/charisma-flagstaff-inventory.test.mjs
       - name: Verify Flagstaff pickup counts and save stock
         env:
+          STOCK_REFRESH_SECRET: ${{ github.event_name != 'pull_request' && secrets.STOCK_REFRESH_SECRET || '' }}
           SITE_URL: https://dianaflagstaff.com
           CHARISMA_STOCK_SECRET: ${{ github.event_name != 'pull_request' && secrets.CHARISMA_STOCK_SECRET || '' }}
           CHECK_ONLY: ${{ github.event_name == 'pull_request' || inputs.check_only }}

@@ -15,7 +15,9 @@ Every supplier has a bundled, verified snapshot for first loads. Successful upda
 
 ## Activation
 
-Configure matching GitHub repository and Cloudflare Worker secrets:
+Configure one matching GitHub repository secret and Cloudflare Worker runtime secret: `STOCK_REFRESH_SECRET`. This authorizes Bobbiny, Charisma, and Bernat stock updates. Keep it private and out of build-only variables.
+
+Scripts prefer the shared key; endpoints accept either the shared key or their own supplier-specific key during migration. The existing legacy names remain supported:
 
 - BERNAT_STOCK_SECRET
 - CHARISMA_STOCK_SECRET (shared by hats and stockings)
@@ -26,3 +28,12 @@ Deploy through the existing Cloudflare procedure after Diana approves publishing
 Refresh bundled snapshots before a release with each supplier's push script in `--check-only --write-bootstrap` mode. Each script refuses partial/malformed source data, and the authenticated ingestion endpoints enforce complete catalog coverage and recent original check timestamps. All data lives in the existing BOBBINY_STOCK namespace, under separate supplier keys.
 
 See `flagstaff-cat-cave-stock.md` and `flagstaff-charisma-stock.md` for supplier-specific details.
+
+## Shared-secret migration
+
+1. Deploy the backward-compatible endpoint changes first.
+2. Set the same randomly generated STOCK_REFRESH_SECRET in Cloudflare runtime secrets and GitHub Actions repository secrets.
+3. Publish the updated workflows/scripts on main and run each supplier workflow.
+4. Remove legacy supplier secrets only after all three publishing runs pass.
+
+Stock refreshes update the existing supplier-specific cache keys; they do not commit catalog changes or rebuild the site. Never replace the separate legacy CRON_SECRET used by unrelated endpoints.

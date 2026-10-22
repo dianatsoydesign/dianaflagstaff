@@ -3,6 +3,8 @@ name: Refresh Bobbiny stock for all products
 on:
   pull_request:
     paths:
+      - 'src/lib/stock-refresh-auth.mjs'
+      - 'scripts/stock-refresh-auth.test.mjs'
       - '.github/workflows/refresh-bobbiny-stock.yml'
       - 'scripts/push-bobbiny-stock.mjs'
       - 'scripts/bobbiny-inventory.test.mjs'
@@ -40,9 +42,10 @@ jobs:
         with:
           node-version: '22'
       - name: Test stock rules
-        run: node --test scripts/bobbiny-inventory.test.mjs
+        run: node --test scripts/stock-refresh-auth.test.mjs scripts/bobbiny-inventory.test.mjs
       - name: Verify Bobbiny quantities and save stock
         env:
+          STOCK_REFRESH_SECRET: ${{ github.event_name != 'pull_request' && secrets.STOCK_REFRESH_SECRET || '' }}
           SITE_URL: https://dianaflagstaff.com
           BOBBINY_STOCK_SECRET: ${{ github.event_name != 'pull_request' && secrets.BOBBINY_STOCK_SECRET || '' }}
           CHECK_ONLY: ${{ github.event_name == 'pull_request' || inputs.check_only }}

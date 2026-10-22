@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 // node scripts/push-charisma-flagstaff-stock.mjs --check-only verifies stock without publishing.
 import { readFile, writeFile } from 'node:fs/promises';
+import { stockRefreshSecret } from '../src/lib/stock-refresh-auth.mjs';
 import { FLAGSTAFF_STORE_ID, MIN_SKEINS, pickupQuantities } from '../src/lib/charisma-inventory.mjs';
 
 const checkOnly = process.argv.includes('--check-only');
 const writeBootstrap = process.argv.includes('--write-bootstrap');
 if (writeBootstrap && !checkOnly) throw new Error('Use --check-only when writing bootstrap stock');
 const siteUrl = process.env.SITE_URL || 'https://dianaflagstaff.com';
-const secret = process.env.CHARISMA_STOCK_SECRET;
-if (!checkOnly && !secret) throw new Error('Set CHARISMA_STOCK_SECRET before publishing stock');
+const secret = stockRefreshSecret(process.env, 'CHARISMA_STOCK_SECRET');
+if (!checkOnly && !secret) throw new Error('Set STOCK_REFRESH_SECRET (or CHARISMA_STOCK_SECRET) before publishing stock');
 if (!checkOnly && new URL(siteUrl).protocol !== 'https:') throw new Error('SITE_URL must use HTTPS');
 const catalog = JSON.parse(await readFile(new URL('../src/data/charisma.json', import.meta.url), 'utf8'));
 const skus = [...new Set(catalog.yarns.map(yarn => {

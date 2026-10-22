@@ -1,12 +1,10 @@
+import { stockRefreshAuthError } from '@/lib/stock-refresh-auth.mjs';
 import { NextResponse } from 'next/server';
 import { saveBernatStock } from '@/lib/bernat-stock';
 
 export async function POST(request: Request) {
-  const secret = process.env.BERNAT_STOCK_SECRET;
-  if (!secret) return NextResponse.json({ error: 'Stock updates are not configured' }, { status: 503 });
-  if (request.headers.get('authorization') !== `Bearer ${secret}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const authError = stockRefreshAuthError(request.headers.get('authorization'), process.env, 'BERNAT_STOCK_SECRET');
+  if (authError) return NextResponse.json({ error: authError === 503 ? 'Stock updates are not configured' : 'Unauthorized' }, { status: authError });
   let body: unknown;
   try { body = await request.json(); }
   catch { return NextResponse.json({ error: 'Body must be JSON' }, { status: 400 }); }

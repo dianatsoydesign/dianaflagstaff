@@ -3,6 +3,8 @@ name: Refresh Flagstaff cat cave yarn stock
 on:
   pull_request:
     paths:
+      - 'src/lib/stock-refresh-auth.mjs'
+      - 'scripts/stock-refresh-auth.test.mjs'
       - '.github/workflows/refresh-bernat-stock.yml'
       - 'scripts/push-bernat-stock.mjs'
       - 'scripts/bernat-inventory.test.mjs'
@@ -37,9 +39,10 @@ jobs:
         with:
           node-version: '22'
       - name: Test stock rules
-        run: node --test scripts/bernat-inventory.test.mjs
+        run: node --test scripts/stock-refresh-auth.test.mjs scripts/bernat-inventory.test.mjs
       - name: Verify Flagstaff pickup counts and save stock
         env:
+          STOCK_REFRESH_SECRET: ${{ github.event_name != 'pull_request' && secrets.STOCK_REFRESH_SECRET || '' }}
           SITE_URL: https://dianaflagstaff.com
           BERNAT_STOCK_SECRET: ${{ github.event_name != 'pull_request' && secrets.BERNAT_STOCK_SECRET || '' }}
           CHECK_ONLY: ${{ github.event_name == 'pull_request' || inputs.check_only }}

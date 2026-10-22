@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 import { readFile, writeFile } from 'node:fs/promises';
+import { stockRefreshSecret } from '../src/lib/stock-refresh-auth.mjs';
 import { fetchBobbinySnapshot } from '../src/lib/bobbiny-inventory.mjs';
 
 const checkOnly = process.argv.includes('--check-only');
 const writeBootstrap = process.argv.includes('--write-bootstrap');
-const secret = process.env.BOBBINY_STOCK_SECRET;
+const secret = stockRefreshSecret(process.env, 'BOBBINY_STOCK_SECRET');
 const siteUrl = process.env.SITE_URL || 'https://dianaflagstaff.com';
 if (writeBootstrap && !checkOnly) throw new Error('Use --check-only with --write-bootstrap');
-if (!checkOnly && (!secret || new URL(siteUrl).protocol !== 'https:')) throw new Error('Set BOBBINY_STOCK_SECRET and an HTTPS SITE_URL');
+if (!checkOnly && (!secret || new URL(siteUrl).protocol !== 'https:')) throw new Error('Set STOCK_REFRESH_SECRET (or BOBBINY_STOCK_SECRET) and an HTTPS SITE_URL');
 const catalog = JSON.parse(await readFile(new URL('../src/data/bobbiny-premium-5mm.json', import.meta.url), 'utf8'));
 const handles = catalog.yarns.map(yarn => yarn.supplierSku.slice('bobbiny:'.length));
 if (!handles.length || new Set(handles).size !== handles.length) throw new Error('Empty or duplicate Bobbiny catalog');
