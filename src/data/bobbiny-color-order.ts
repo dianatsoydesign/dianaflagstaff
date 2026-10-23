@@ -16,9 +16,19 @@ export const BOBBINY_COLOR_GROUPS = [
       "laurel",
     ],
   },
-  { id: "yellows", label: "Yellows", keys: ["mustard", "spicy-yellow", "canary-yellow"] },
-  { id: "oranges", label: "Oranges", keys: ["terracotta"] },
-  { id: "reds", label: "Reds", keys: ["classic-red", "red-velvet", "wine-red"] },
+  {
+    id: "yellows-oranges-reds",
+    label: "Yellows, oranges & reds",
+    keys: [
+      "mustard",
+      "spicy-yellow",
+      "canary-yellow",
+      "terracotta",
+      "classic-red",
+      "red-velvet",
+      "wine-red",
+    ],
+  },
   {
     id: "pinks",
     label: "Pinks & purples",

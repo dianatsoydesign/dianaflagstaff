@@ -1,0 +1,17 @@
+---
+description: Reuse consistent UX, content, visual, and implementation patterns throughout this project
+alwaysApply: true
+---
+
+# Consistency by default
+
+- For every new feature, product, content edit, or UI change, inspect comparable existing experiences before proposing or implementing a solution.
+- Reuse established components, style tokens, spacing, typography, corner radii, labels, interaction behavior, and responsive patterns. Apply matching patterns across equivalent contexts unless Diana explicitly requests an exception or a documented requirement calls for one.
+- Execute the consistent solution within the requested scope; do not introduce a one-off value or ask for confirmation just to match an established pattern.
+- Prefer shared components or constants when the same pattern is maintained in multiple places. Do not broadly restyle unrelated areas to resolve a local request.
+- Example: stacked mobile product recommendations use the Shop page's 30px gap between product cards. Preserve intentional differences between single-column and multi-column layouts.
+- Carry established behavior forward to new products, including responsive chip wrapping, accessible selection states, and keyboard support.
+- When existing patterns conflict, follow the closest relevant shared component and Diana's latest approved decision. Briefly explain any necessary deviation; ask only if a material product decision remains unclear.
+- Verify changed experiences against their existing counterparts at relevant mobile and desktop widths, including accessibility requirements. Consistency must preserve readability, focus visibility, and usable targets.
+
+- Product images linking to a PDP use `productImageInteractionClass` from `src/lib/product-image-styles.ts`: Shop-style 6% image zoom within its clipped frame, 700ms ease-out, fine pointers only, disabled for reduced motion. Reuse it for new product links; do not add a separate card lift.

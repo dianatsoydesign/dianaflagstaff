@@ -4,11 +4,8 @@ import charismaGroupOverrides from "@/data/charisma-group-overrides.json";
 /** Rainbow from green, then browns, neutrals (grey/black/white). Multicolor yarns are omitted from the picker. */
 export const CHARISMA_COLOR_GROUPS = [
   { id: "greens", label: "Greens" },
-  { id: "yellows", label: "Yellows" },
-  { id: "oranges", label: "Oranges" },
-  { id: "reds", label: "Reds" },
-  { id: "pinks", label: "Pinks" },
-  { id: "purples", label: "Purples" },
+  { id: "yellows-oranges-reds", label: "Yellows, oranges & reds" },
+  { id: "pinks-purples", label: "Pinks & purples" },
   { id: "blues", label: "Blues" },
   { id: "browns", label: "Browns" },
   { id: "neutrals", label: "Neutrals" },
@@ -22,8 +19,11 @@ const GROUP_SORT_INDEX = new Map<CharismaColorGroupId, number>(
 
 const GROUP_IDS = new Set<string>(CHARISMA_COLOR_GROUPS.map((g) => g.id));
 
-function isCharismaGroupId(id: string): id is CharismaColorGroupId {
-  return GROUP_IDS.has(id);
+/** Merge display families while preserving reviewed supplier classifications. */
+function displayCharismaGroupId(id: string): CharismaColorGroupId | null {
+  if (["yellows", "oranges", "reds"].includes(id)) return "yellows-oranges-reds";
+  if (["pinks", "purples"].includes(id)) return "pinks-purples";
+  return GROUP_IDS.has(id) ? id as CharismaColorGroupId : null;
 }
 
 export function isCharismaMulticolorYarn(yarn: {
@@ -49,12 +49,12 @@ export function inferCharismaColorGroupId(yarn: {
   if (sortRank < 171) return "greens";
   let hue = sortRank - 200;
   if (hue < 0) hue += 360;
-  if (hue >= 345 || hue < 25) return "reds";
-  if (hue < 70) return "yellows";
+  if (hue >= 345 || hue < 25) return "yellows-oranges-reds";
+  if (hue < 70) return "yellows-oranges-reds";
   if (hue < 170) return "greens";
   if (hue < 265) return "blues";
-  if (hue < 300) return "purples";
-  return "pinks";
+  if (hue < 300) return "pinks-purples";
+  return "pinks-purples";
 }
 
 export function charismaColorGroupId(
@@ -65,7 +65,8 @@ export function charismaColorGroupId(
   const forced = charismaGroupOverrides[
     yarn.id as keyof typeof charismaGroupOverrides
   ];
-  if (forced && isCharismaGroupId(forced)) return forced;
+  const forcedGroup = forced ? displayCharismaGroupId(forced) : null;
+  if (forcedGroup) return forcedGroup;
   if (
     yarn.colorGroup === "greys" ||
     yarn.colorGroup === "blacks" ||
@@ -73,9 +74,8 @@ export function charismaColorGroupId(
   ) {
     return "neutrals";
   }
-  if (yarn.colorGroup && isCharismaGroupId(yarn.colorGroup)) {
-    return yarn.colorGroup;
-  }
+  const group = yarn.colorGroup ? displayCharismaGroupId(yarn.colorGroup) : null;
+  if (group) return group;
   return inferCharismaColorGroupId(yarn);
 }
 
@@ -89,7 +89,28 @@ export function charismaColorGroupSortIndex(
   return GROUP_SORT_INDEX.get(id) ?? CHARISMA_COLOR_GROUPS.length;
 }
 
-/** Same order as `CHARISMA_YARNS` in charisma.ts (group, then sortRank). */
+/** Keep the requested family sequence within each combined chip. */
+function charismaSubgroupSortIndex(
+  yarn: Pick<YarnColor, "id" | "colorGroup">
+): number {
+  const family = charismaGroupOverrides[
+    yarn.id as keyof typeof charismaGroupOverrides
+  ] ?? yarn.colorGroup;
+  switch (family) {
+    case "yellows":
+    case "pinks":
+      return 0;
+    case "oranges":
+    case "purples":
+      return 1;
+    case "reds":
+      return 2;
+    default:
+      return 3;
+  }
+}
+
+/** Catalog order: display group, original family, then existing shade order. */
 export function compareCharismaYarnCatalogOrder(
   a: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">,
   b: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">
@@ -97,6 +118,8 @@ export function compareCharismaYarnCatalogOrder(
   const ga = charismaColorGroupSortIndex(a);
   const gb = charismaColorGroupSortIndex(b);
   if (ga !== gb) return ga - gb;
+  const subgroup = charismaSubgroupSortIndex(a) - charismaSubgroupSortIndex(b);
+  if (subgroup !== 0) return subgroup;
   return (
     (a.sortRank ?? Number.MAX_SAFE_INTEGER) -
     (b.sortRank ?? Number.MAX_SAFE_INTEGER)

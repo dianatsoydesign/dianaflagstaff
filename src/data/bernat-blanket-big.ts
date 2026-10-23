@@ -3,11 +3,10 @@ import catalog from "@/data/bernat-blanket-big.json";
 
 export const BERNAT_COLOR_GROUPS = [
   { id: "greens", label: "Greens" },
-  { id: "yellows", label: "Yellows" },
+  { id: "yellows-browns", label: "Yellows & browns" },
   { id: "reds-pinks", label: "Reds + pinks" },
   { id: "purples", label: "Purples" },
   { id: "blues", label: "Blues" },
-  { id: "browns", label: "Browns" },
   { id: "neutrals", label: "Neutrals" },
   { id: "multis", label: "Multicolors" },
 ] as const;
@@ -16,13 +15,16 @@ export type BernatColorGroupId = (typeof BERNAT_COLOR_GROUPS)[number]["id"];
 /** Display families can combine reviewed colors without changing supplier data. */
 export function bernatColorGroupId(yarn: YarnColor): BernatColorGroupId | null {
   if (yarn.multicolor) return "multis";
+  if (["yellows", "browns"].includes(yarn.colorGroup ?? "")) return "yellows-browns";
   if (["reds", "pinks", "oranges"].includes(yarn.colorGroup ?? "")) return "reds-pinks";
   return BERNAT_COLOR_GROUPS.find((g) => g.id === yarn.colorGroup)?.id ?? null;
 }
 
 function compareBernatYarns(a: YarnColor, b: YarnColor) {
   const family = (yarn: YarnColor) => BERNAT_COLOR_GROUPS.findIndex((g) => g.id === bernatColorGroupId(yarn));
+  const yellowFirst = (yarn: YarnColor) => yarn.colorGroup === "yellows" ? 0 : 1;
   return family(a) - family(b)
+    || yellowFirst(a) - yellowFirst(b)
     || ((a.sortRank ?? 0) % 1000) - ((b.sortRank ?? 0) % 1000)
     || a.name.localeCompare(b.name);
 }

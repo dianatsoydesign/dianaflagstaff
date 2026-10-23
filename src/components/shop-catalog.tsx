@@ -25,7 +25,7 @@ export function ShopCatalog() {
         <ul className="grid grid-cols-1 gap-y-[30px] md:grid-cols-3 md:gap-x-[1.5vw] md:gap-y-[4vw]">
           {shopProducts.map((product, i) => (
             <li key={product.id}>
-              <ProductCard product={product} index={i} animate zoomOnHover />
+              <ProductCard product={product} index={i} animate />
             </li>
           ))}
         </ul>

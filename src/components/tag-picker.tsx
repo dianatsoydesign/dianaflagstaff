@@ -1,7 +1,9 @@
 "use client";
 
+import { useId } from "react";
+import Image from "next/image";
+import { Check } from "lucide-react";
 import { PRODUCT_TAGS, type ProductTagId } from "@/lib/product-tags";
-import { HandmadePrefixLabel } from "@/components/handmade-peaks-icon";
 import {
   careSurfaceClass,
   careSurfaceHoverClass,
@@ -14,30 +16,25 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   keyboardNavigation?: boolean;
+  description?: string;
   value: ProductTagId;
   onChange: (tagId: ProductTagId) => void;
   className?: string;
 };
 
-export function TagPicker({ value, onChange, className, keyboardNavigation = true }: Props) {
-  const selected =
-    PRODUCT_TAGS.find((t) => t.id === value) ?? PRODUCT_TAGS[0];
-
+export function TagPicker({ value, onChange, className, keyboardNavigation = true, description }: Props) {
+  const descriptionId = useId();
   return (
     <fieldset className={cn(pickerFieldsetClass, className)}>
       <legend className={pickerLegendClass}>
-        <span className="sr-only">Tag: </span>
-        Tag:{" "}
-        <HandmadePrefixLabel
-          text={selected.label}
-          className="font-medium text-foreground"
-        />
+        Faux leather label attached to your item
       </legend>
 
       <div
         className={pickerChipGroupClass}
         role="radiogroup"
-        aria-label="Tag"
+        aria-label="Faux leather label attached to your item"
+        aria-describedby={description ? descriptionId : undefined}
         onKeyDown={keyboardNavigation ? (e) => {
           if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(e.key)) return;
           const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button"));
@@ -61,6 +58,7 @@ export function TagPicker({ value, onChange, className, keyboardNavigation = tru
               onClick={() => onChange(tag.id)}
               className={cn(
                 pickerChipBase,
+                "relative w-56 flex-col gap-1 rounded-[12px] p-2",
                 isSelected
                   ? cn("border-ink font-medium", careSurfaceClass)
                   : cn(
@@ -71,14 +69,36 @@ export function TagPicker({ value, onChange, className, keyboardNavigation = tru
                     )
               )}
             >
-              <HandmadePrefixLabel
-                text={tag.label}
-                iconClassName="h-[1.3rem] w-[2.05rem]"
-              />
+              <span className="relative block aspect-[4/1] w-full overflow-hidden rounded-md">
+                <Image
+                  src={`/product-labels/${tag.id}-v1.png`}
+                  alt=""
+                  fill
+                  sizes="224px"
+                  className="scale-[1.4] object-cover"
+                />
+              </span>
+              <span className="flex w-full items-center gap-1.5">
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "flex size-5 shrink-0 items-center justify-center rounded-full border",
+                    isSelected ? "border-ink bg-ink text-background" : "border-muted-foreground"
+                  )}
+                >
+                  {isSelected ? <Check className="size-3.5" strokeWidth={2.5} /> : null}
+                </span>
+                <span>{tag.label}</span>
+              </span>
             </button>
           );
         })}
       </div>
+      {description ? (
+        <p id={descriptionId} className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          {description}
+        </p>
+      ) : null}
     </fieldset>
   );
 }

@@ -405,7 +405,14 @@ export function ProductPurchaseForm({
         }}
         legend={product.yarns.map(yarnLineName).find(Boolean) ?? "Yarn color"}
       />
-      <TagPicker keyboardNavigation value={tagId} onChange={setTagId} />
+      <TagPicker
+        keyboardNavigation
+        value={tagId}
+        onChange={setTagId}
+        description={product.id === "hotpads"
+          ? "Unsnap and reposition the label to use it as a hanging loop."
+          : undefined}
+      />
       {qtyConfig ? (
         <QuantityPicker
           value={quantity}

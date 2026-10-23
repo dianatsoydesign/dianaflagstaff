@@ -205,7 +205,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
             >
               You might also like
             </h2>
-            <ul className="grid grid-cols-1 gap-[11px] sm:grid-cols-2">
+            <ul className="grid grid-cols-1 gap-x-[11px] gap-y-[30px] sm:grid-cols-2 sm:gap-y-[11px]">
               {recommendations.map((item) => (
                 <li key={item.id}>
                   <ProductCard product={item} />

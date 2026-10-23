@@ -31,3 +31,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Responsive PDP chips
 
 - Follow `.cursor/rules/pdp-responsive-chips.mdc` for all current and new products and PDP pickers. Reuse the shared chip group and chip styles so options remain horizontal and wrap only as available width requires.
+
+## Consistency by default
+
+- Follow `.cursor/rules/consistent-patterns.mdc` for all project work. Inspect and reuse established UX, content, styling, responsive behavior, and shared implementation patterns unless Diana explicitly requests an exception or a documented requirement calls for one. Apply this default when adding new products as well as updating existing experiences.
+
+## No em dashes
+
+- Follow `.cursor/rules/no-em-dashes.mdc`. Never use em dashes in project copy or communication. Rewrite with periods, commas, colons, or parentheses instead.

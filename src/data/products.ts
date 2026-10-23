@@ -271,6 +271,7 @@ export const products: Product[] = [
     galleryImages: [
       { src: "/products/hotpads/3-studio-v10.jpg", alt: "Hand fanning out terracotta crochet hot pads", shownColor: "Terracotta" },
       { src: "/products/hotpads/4-studio-v2.jpg", alt: "Side view of stacked terracotta crochet hot pads", shownColor: "Terracotta" },
+      { src: "/products/hotpads/label-uses-closeup-v1.jpg", alt: "Close-up comparison of warm beige hotpads with removable leather labels wrapped around the edge and used as a hanging loop", shownColor: "Warm Beige" },
       { src: "/products/hotpads/hotpad-with-product-1-studio-v1.jpg", alt: "Warm beige crochet hotpad with a glass candle", shownColor: "Warm Beige" },
       { src: "/products/hotpads/hotpad-with-product-2-studio-v1.jpg", alt: "Warm beige crochet hotpad under a stainless steel saucepan", shownColor: "Warm Beige" },
       { src: "/products/hotpads/hotpad-with-product-3-studio-v2.jpg", alt: "Warm beige crochet hotpad hanging by its leather loop on a wall hook", shownColor: "Warm Beige" },

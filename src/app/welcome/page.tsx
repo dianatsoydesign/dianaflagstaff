@@ -8,6 +8,7 @@ import {
   listedProducts,
 } from "@/data/products";
 import { productPhotoBgClass } from "@/lib/product-photo-bg";
+import { productImageInteractionClass } from "@/lib/product-image-styles";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -42,18 +43,18 @@ export default function WelcomePage() {
             Handmade pieces for cold mornings.
           </h1>
           <ul className="grid grid-cols-1 gap-[11px] sm:grid-cols-3 md:col-span-8">
-            {featured.map((product, index) => (
+            {featured.map((product) => (
               <li key={product.id}>
                 <Link
                   href={`/shop/p/${product.id}`}
-                  className="flex flex-col gap-4 soft-lift"
+                  className="flex flex-col gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
                 >
                   <div className={cn("relative aspect-[3/4] overflow-hidden", productPhotoBgClass)}>
                     <Image
                       src={product.imageSrc}
                       alt={product.imageAlt}
                       fill
-                      className="object-contain"
+                      className={cn("object-contain", productImageInteractionClass)}
                       sizes="(max-width: 640px) 100vw, 22vw"
                     />
                   </div>

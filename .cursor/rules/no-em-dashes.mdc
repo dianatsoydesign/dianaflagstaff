@@ -1,0 +1,11 @@
+---
+description: Never use em dashes in project copy or communication
+alwaysApply: true
+---
+
+# No em dashes
+
+- Never use em dashes in website copy, documentation, comments, commit messages, or responses about this project.
+- Use a period, comma, colon, parentheses, or a rewritten sentence instead. Do not substitute double hyphens as punctuation.
+- Apply this rule to all new and edited text, including copy carried forward from earlier suggestions.
+- Preserve exact external quotations or machine-required syntax when changing punctuation would alter their meaning or behavior.
