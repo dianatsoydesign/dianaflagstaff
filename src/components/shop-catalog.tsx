@@ -1,6 +1,7 @@
 "use client";
 
-import { getProductListPrice, listedProducts } from "@/data/products";
+import { listedProducts } from "@/data/products";
+import { sortShopProducts } from "@/lib/shop-sort";
 import { patternRequests } from "@/data/pattern-requests";
 import { PatternRequestPanel } from "@/components/pattern-request-panel";
 import { ProductCard } from "@/components/product-card";
@@ -8,14 +9,7 @@ import { ProductCard } from "@/components/product-card";
 /** Set to true when pattern-request makes are ready to show on the shop page. */
 const showRequestAMake = false;
 
-const shopProducts = listedProducts
-  .filter((product) => product.id !== "placemats")
-  .sort((a, b) => getProductListPrice(a) - getProductListPrice(b));
-const placemats = listedProducts.find((product) => product.id === "placemats");
-const hotpadsIndex = shopProducts.findIndex((product) => product.id === "hotpads");
-if (placemats) {
-  shopProducts.splice(hotpadsIndex === -1 ? shopProducts.length : hotpadsIndex + 1, 0, placemats);
-}
+const shopProducts = sortShopProducts(listedProducts);
 
 export function ShopCatalog() {
   return (

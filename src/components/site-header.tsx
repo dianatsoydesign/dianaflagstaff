@@ -72,7 +72,7 @@ export function SiteHeader() {
           "z-40",
           heroHeader
             ? "absolute inset-x-0 top-0"
-            : pathname === "/shop/p/coasters"
+            : pathname.startsWith("/shop/p/")
               ? "relative bg-background md:sticky md:top-0"
               : "sticky top-0 bg-background"
         )}

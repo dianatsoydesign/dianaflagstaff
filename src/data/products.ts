@@ -58,6 +58,7 @@ export type ProductDimensions = {
 
 export type Product = {
   id: string;
+  /** Shows the New badge and places this product ahead of established products in the shop. */
   isNew?: boolean;
   name: string;
   price: number;

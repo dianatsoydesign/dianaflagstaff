@@ -35,7 +35,6 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   const configurationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (product.id !== "coasters") return;
     const gallery = galleryContainerRef.current?.querySelector("figure");
     const configuration = configurationRef.current;
     if (!gallery || !configuration) return;
@@ -61,6 +60,19 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
       window.visualViewport?.removeEventListener("resize", updateStickyGallery);
     };
   }, [product.id]);
+
+  useEffect(() => {
+    const header = document.querySelector("header");
+    const configuration = configurationRef.current;
+    if (!header || !configuration) return;
+    const updateOffset = () => {
+      configuration.style.setProperty("--desktop-gallery-top", `${Math.ceil(header.getBoundingClientRect().height) + 16}px`);
+    };
+    const observer = new ResizeObserver(updateOffset);
+    observer.observe(header);
+    updateOffset();
+    return () => observer.disconnect();
+  }, []);
 
   const [randomRecommendations, setRandomRecommendations] = useState<Product[]>([]);
   useEffect(() => {
@@ -169,12 +181,10 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
         <div ref={configurationRef} className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px] max-md:[&_button]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_input]:scroll-mt-[var(--preview-clearance,16px)]">
           <div
             ref={galleryContainerRef}
-            className={product.id === "coasters"
-              ? "max-md:contents md:col-start-1 md:row-start-1 min-w-0"
-              : "order-3 min-w-0 md:order-none md:col-start-1 md:row-start-1"}
+            className="max-md:contents md:col-start-1 md:row-start-1 min-w-0 md:sticky md:top-[var(--desktop-gallery-top,100px)] md:self-start"
           >
           <ProductDetailGallery
-            pinOnMobile={product.id === "coasters"}
+            pinOnMobile
             keyboardNavigation
             slides={slides}
             activeIndex={Math.min(activeIndex, slides.length - 1)}
@@ -183,7 +193,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
           />
           </div>
 
-          <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-8 md:self-start md:sticky md:top-20 md:py-2 md:pl-[2vw] lg:pl-[3vw]">
+          <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-8 md:self-start md:py-2 md:pl-[2vw] lg:pl-[3vw]">
             <div className="order-1 md:order-none">
               <ProductNamePrice
                 name={product.name}
@@ -194,7 +204,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
               {product.id === "cat-cave" && (
                 <p className="mt-3 max-w-[700px] text-sm leading-snug text-ink">
                   <Badge className="mr-2 align-middle">New</Badge>{" "}
-                  I&apos;m thrilled to take on this brand-new design for the first time, using proven techniques to craft it just for you.
+                  I&apos;m thrilled to take on this brand-new design for the first time.
                 </p>
               )}
             </div>
