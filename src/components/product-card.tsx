@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ProductImageBadge } from "@/components/product-image-badge";
 import { ProductNamePrice } from "@/components/product-name-price";
 import {
   formatProductListPrice,
@@ -27,7 +28,7 @@ export function ProductCard({
     <Link
       href={`/shop/p/${product.id}`}
       className={cn(
-        "group flex flex-col gap-[1.5vw] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+        "group flex flex-col gap-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
         animate && "fade-up",
         animate && index < 3 && `fade-up-delay-${index}`
       )}
@@ -48,6 +49,7 @@ export function ProductCard({
           )}
           sizes={imageSizes}
         />
+        <ProductImageBadge src={product.imageSrc} />
       </div>
       <ProductNamePrice
         name={product.name}

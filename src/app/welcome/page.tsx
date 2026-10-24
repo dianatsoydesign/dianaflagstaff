@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ProductImageBadge } from "@/components/product-image-badge";
 import Link from "next/link";
 import { ProductNamePrice } from "@/components/product-name-price";
 import {
@@ -57,6 +58,7 @@ export default function WelcomePage() {
                       className={cn("object-contain", productImageInteractionClass)}
                       sizes="(max-width: 640px) 100vw, 22vw"
                     />
+                    <ProductImageBadge src={product.imageSrc} />
                   </div>
                   <ProductNamePrice
                     name={product.name}

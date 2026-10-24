@@ -58,6 +58,7 @@ export type ProductDimensions = {
 
 export type Product = {
   id: string;
+  isNew?: boolean;
   name: string;
   price: number;
   category: string;
@@ -86,7 +87,7 @@ export type Product = {
   };
   /** Product-page quantity stepper (+ / −), e.g. coasters up to 12 sets. */
   quantityPicker?: QuantityPickerConfig;
-  /** Default yarn on load when in stock (otherwise first selectable). */
+  /** Color pictured in the main photo; selected on load only when available. */
   defaultYarnId?: string;
   /** Charisma picker: initial family chip (e.g. `holiday`). */
   defaultColorGroupFilter?: string;
@@ -157,7 +158,6 @@ export const products: Product[] = [
     ],
     sizes: [{ id: "one", label: "One stocking" }],
     hideSizePicker: true,
-    defaultYarnId: "charisma-off-white",
     defaultColorGroupFilter: "holiday",
     yarns: [
       ...CHARISMA_YARNS,
@@ -177,6 +177,7 @@ export const products: Product[] = [
     imageSrc: "/products/coasters/2-studio-v9.jpg",
     imageAlt: "Eucalyptus green crochet coaster held between fingers",
     imageShownColor: "Eucalyptus Green",
+    defaultYarnId: "bobbiny-5mm-eucalyptus-green",
     galleryImages: [
       { src: "/products/coasters/hero-studio-v6.jpg", alt: "Hand holding a stack of eucalyptus green handmade crochet coasters", shownColor: "Eucalyptus Green" },
       { src: "/products/coasters/mug-studio-v5.jpg", alt: "Close-up of a eucalyptus green crochet coaster with a black mug and by Diana label tag", shownColor: "Eucalyptus Green" },
@@ -268,6 +269,7 @@ export const products: Product[] = [
     imageSrc: "/products/hotpads/hero-studio-v3.jpg",
     imageAlt: "Stack of terracotta handmade crochet hot pads",
     imageShownColor: "Terracotta",
+    defaultYarnId: "bobbiny-5mm-terracotta",
     galleryImages: [
       { src: "/products/hotpads/3-studio-v10.jpg", alt: "Hand fanning out terracotta crochet hot pads", shownColor: "Terracotta" },
       { src: "/products/hotpads/4-studio-v2.jpg", alt: "Side view of stacked terracotta crochet hot pads", shownColor: "Terracotta" },
@@ -292,6 +294,7 @@ export const products: Product[] = [
   },
   {
     id: "cat-cave",
+    isNew: true,
     name: "Cat or small dog cave",
     price: 50,
     category: "Pets",

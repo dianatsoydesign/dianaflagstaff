@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { DimensionsCircle } from "@/components/dimensions-icon";
 import { MachineWashCircle } from "@/components/machine-wash-icon";
+import { Badge } from "@/components/ui/badge";
 import { ProductNamePrice } from "@/components/product-name-price";
 import {
   getSizeUnitPrice,
   type Product,
+  type ProductImage,
   type YarnColor,
 } from "@/data/products";
 import { defaultCatalogSizeId } from "@/lib/custom-size";
@@ -90,10 +92,10 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
     : [];
   const yarnImages = yarnSrcs.map((src, i) => ({
     src,
-    shownColor: product.imageShownColor ? selectedYarn!.name : undefined,
+    shownColor: selectedYarn!.name,
     alt: `${selectedYarn!.name}, ${yarnLineName(selectedYarn!) ?? "yarn"}${i ? ` (${i + 1})` : ""}`,
   }));
-  const slides = [
+  const slides: ProductImage[] = [
     ...productImages.filter((image) => image.type !== "video"),
     ...productImages.filter((image) => image.type === "video"),
     ...yarnImages,
@@ -102,9 +104,12 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   const previewSrc = hasColorImages(previewYarn)
     ? (previewYarn.colorImages?.[0] ?? previewYarn.detailSwatchSrc ?? previewYarn.swatchSrc)
     : null;
-  const preview = previewSrc
-    ? { src: previewSrc, shownColor: product.imageShownColor ? previewYarn!.name : undefined, alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
-    : null;
+  const previewProductPhoto = previewYarn ? productImages.find((image) =>
+    image.type !== "video" && image.shownColor?.toLowerCase() === previewYarn.name.toLowerCase()
+  ) : null;
+  const preview = previewProductPhoto ?? (previewSrc
+    ? { src: previewSrc, shownColor: previewYarn!.name, alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
+    : null);
 
   const materialYarn = selectedYarn ?? product.yarns[0];
   const material = materialYarn ? yarnMaterial(materialYarn) : yarnMaterial(product.yarns[0]);
@@ -113,9 +118,15 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   function handleYarnChange(yarn: YarnColor | null, pickedByUser: boolean) {
     setSelectedYarn(yarn);
     if (pickedByUser && yarn) {
-      if (!hasColorImages(yarn)) setActiveIndex(0);
+      const finishedPhoto = slides.findIndex((image) =>
+        image.type !== "video" &&
+        image.shownColor?.toLowerCase() === yarn.name.toLowerCase() &&
+        productIndexOf(image.src) !== -1
+      );
+      if (finishedPhoto !== -1) setActiveIndex(finishedPhoto);
+      else if (!hasColorImages(yarn)) setActiveIndex(0);
       else {
-        const existing = productIndexOf(colorSrcs(yarn)[0]);
+        const existing = slides.findIndex((image) => image.src === colorSrcs(yarn)[0]);
         setActiveIndex(existing === -1 ? productImages.length : existing);
       }
     } else setActiveIndex((i) => Math.min(i, productImages.length - 1));
@@ -135,13 +146,20 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
           />
 
           <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-8 md:self-start md:sticky md:top-20 md:py-2 md:pl-[2vw] lg:pl-[3vw]">
-            <ProductNamePrice
-              name={product.name}
-              price={displayUnitPrice}
-              priceTbd={priceTbd}
-              variant="detail"
-              className="order-1 md:order-none"
-            />
+            <div className="order-1 md:order-none">
+              <ProductNamePrice
+                name={product.name}
+                price={displayUnitPrice}
+                priceTbd={priceTbd}
+                variant="detail"
+              />
+              {product.id === "cat-cave" && (
+                <p className="mt-3 max-w-[700px] text-sm leading-snug text-ink">
+                  <Badge className="mr-2 align-middle">New</Badge>{" "}
+                  I&apos;m thrilled to take on this brand-new design for the first time, using proven techniques to craft it just for you.
+                </p>
+              )}
+            </div>
             <div className="order-2 flex flex-wrap items-start gap-x-6 gap-y-3 md:order-none">
               <div className="flex items-start gap-3">
                 <MachineWashCircle lineCount={careLineCount} />

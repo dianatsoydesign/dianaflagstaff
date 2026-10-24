@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProductImageBadge } from "@/components/product-image-badge";
 import {
   galleryMatteInsetStyle,
   type GalleryMatteInset,
@@ -32,6 +33,7 @@ export function GallerySlideImage({
 
   if (!useInset) {
     return (
+      <>
       <Image
         src={src}
         alt={alt}
@@ -40,6 +42,8 @@ export function GallerySlideImage({
         sizes={sizes}
         className={cn("object-contain", className)}
       />
+      <ProductImageBadge src={src} compact={sizes === "80px"} />
+      </>
     );
   }
 
@@ -58,6 +62,7 @@ export function GallerySlideImage({
         )}
         style={insetStyle}
       />
+      <ProductImageBadge src={src} compact={sizes === "80px"} />
     </div>
   );
 }

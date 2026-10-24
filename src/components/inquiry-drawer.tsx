@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ProductImageBadge } from "@/components/product-image-badge";
 import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
 import { QuantityStepper } from "@/components/quantity-stepper";
@@ -151,6 +152,7 @@ export function InquiryDrawer() {
                       sizes="280px"
                       priority
                     />
+                    <ProductImageBadge src={addedItem.productImageSrc} />
                   </div>
                   <h2 className="mt-4 font-sans text-base font-medium leading-snug text-ink">
                     {addedItem.productName}
@@ -273,6 +275,7 @@ export function InquiryDrawer() {
                           className="object-contain"
                           sizes="64px"
                         />
+                        <ProductImageBadge src={item.productImageSrc} compact />
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="font-medium leading-snug">

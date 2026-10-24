@@ -22,10 +22,14 @@ export function ShopCatalog() {
     <div className="flex flex-col gap-20">
       <section aria-label="Crochet shop">
         <h1 className="sr-only">Crochet shop</h1>
-        <ul className="grid grid-cols-1 gap-y-[30px] md:grid-cols-3 md:gap-x-[1.5vw] md:gap-y-[4vw]">
+        <ul className="grid grid-cols-1 gap-y-[30px] md:grid-cols-3 md:gap-x-[1.5vw]">
           {shopProducts.map((product, i) => (
             <li key={product.id}>
-              <ProductCard product={product} index={i} animate />
+              <ProductCard
+                product={product}
+                index={i}
+                animate
+              />
             </li>
           ))}
         </ul>

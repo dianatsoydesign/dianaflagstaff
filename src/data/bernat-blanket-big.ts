@@ -4,11 +4,11 @@ import catalog from "@/data/bernat-blanket-big.json";
 export const BERNAT_COLOR_GROUPS = [
   { id: "greens", label: "Greens" },
   { id: "yellows-browns", label: "Yellows & browns" },
-  { id: "reds-pinks", label: "Reds + pinks" },
+  { id: "reds-pinks", label: "Reds & pinks" },
   { id: "purples", label: "Purples" },
   { id: "blues", label: "Blues" },
   { id: "neutrals", label: "Neutrals" },
-  { id: "multis", label: "Multicolors" },
+  { id: "multis", label: "Multi" },
 ] as const;
 export type BernatColorGroupId = (typeof BERNAT_COLOR_GROUPS)[number]["id"];
 

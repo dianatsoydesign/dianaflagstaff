@@ -180,7 +180,7 @@ export function YarnSwatchPicker({
             </span>
           </>
         ) : (
-          legend
+          <>Color: <span className="font-medium text-foreground">Choose a color</span></>
         )}
       </legend>
 

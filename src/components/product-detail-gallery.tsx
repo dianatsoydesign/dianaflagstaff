@@ -88,7 +88,7 @@ export function ProductDetailGallery({
         {overlayCaption && (
           <figcaption className={cn("pointer-events-none absolute right-3 left-3 z-10 flex justify-end md:right-4 md:left-4", active?.type === "video" ? "bottom-16" : "bottom-3 md:bottom-4")}>
             <span className="max-w-full rounded-[8px] bg-white px-3 py-2 text-center text-sm leading-5 text-[#595959] [overflow-wrap:anywhere]">
-              <span className="text-black">{active.shownColor}</span>
+              <span className="text-black">Shown in {active.shownColor}</span>
             </span>
           </figcaption>
         )}

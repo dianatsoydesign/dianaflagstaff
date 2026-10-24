@@ -27,6 +27,7 @@ import {
   parseLabeledCustomSize,
   type CustomSizeDimensions,
 } from "@/lib/custom-size";
+import { initialProductYarn } from "@/lib/product-color-selection";
 import { useInquiryCart } from "@/lib/inquiry-cart";
 import { yarnLineName } from "@/data/yarns";
 import { isSelectable, usesLiveSupplier } from "@/lib/yarn-stock";
@@ -98,9 +99,6 @@ export function ProductPurchaseForm({
   const [customDimensions, setCustomDimensions] = useState<CustomSizeDimensions>(
     { width: "", height: "" }
   );
-  const [yarnId, setYarnId] = useState<string | null>(
-    product.yarns.length === 1 ? product.yarns[0].id : null
-  );
   const [tagId, setTagId] = useState<ProductTagId>(DEFAULT_PRODUCT_TAG_ID);
   const [pomPomId, setPomPomId] = useState<HatPomPomId>(DEFAULT_HAT_POM_POM_ID);
   const isCatCave = product.id === "cat-cave";
@@ -116,6 +114,10 @@ export function ProductPurchaseForm({
       yarn.id, availableBobbiny(bobbinyBootstrapStock, yarn.supplierSku?.slice("bobbiny:".length) ?? "") ? "in_stock" : "out_of_stock",
     ])) : {}
   );
+  const [yarnId, setYarnId] = useState<string | null>(() =>
+    initialProductYarn(product, liveStock, null, hasCachedSupplierStock)?.id ?? null
+  );
+  const userPickedYarn = useRef(false);
   const [stockMessage, setStockMessage] = useState("");
   const yarnIdRef = useRef(yarnId);
   useEffect(() => { yarnIdRef.current = yarnId; }, [yarnId]);
@@ -128,6 +130,21 @@ export function ProductPurchaseForm({
   useEffect(() => {
     onYarnChangeRef.current = onYarnChange;
   });
+
+  useEffect(() => {
+    const requestedId = new URLSearchParams(window.location.search).get("color");
+    const initial = initialProductYarn(product, liveStock, requestedId, hasCachedSupplierStock);
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      yarnIdRef.current = initial?.id ?? null;
+      setYarnId(initial?.id ?? null);
+      onYarnChangeRef.current?.(initial, Boolean(requestedId && initial));
+    });
+    return () => { cancelled = true; };
+    // Initialize once on mount; stock refreshes preserve the shopper's choice below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product]);
 
   const customSizeSelected =
     sizeId != null && isRequestDifferentSizeId(sizeId);
@@ -203,23 +220,21 @@ export function ProductPurchaseForm({
           setStockMessage(data.results.some(r => isSelectable(r.status)) ? "" : "No yarn colors currently have enough supplier stock.");
         }
         setLiveStock(map);
-        const pickDefault = () => {
-          const candidates = product.defaultYarnId
-            ? [
-                product.yarns.find((y) => y.id === product.defaultYarnId),
-                ...product.yarns,
-              ]
-            : product.yarns;
-          return candidates.find(
-            (y): y is (typeof product.yarns)[number] =>
-              !!y && isSelectable(map[y.id] ?? (hasCachedSupplierStock ? "out_of_stock" : y.stockStatus))
-          );
-        };
-        if (hasCachedSupplierStock && yarnIdRef.current && isSelectable(map[yarnIdRef.current] ?? "out_of_stock")) return;
-        const first = pickDefault();
-        const firstId = first?.id ?? null;
-        setYarnId(firstId);
-        onYarnChangeRef.current?.(first ?? null, false);
+        const currentId = yarnIdRef.current;
+        const currentYarn = product.yarns.find((yarn) => yarn.id === currentId);
+        const currentStatus = currentId ? map[currentId] ??
+          (isCharismaCuratedPaletteYarn(currentId) ? "in_stock" :
+            hasCachedSupplierStock && currentYarn?.supplierSku ? "out_of_stock" :
+              currentYarn?.stockStatus ?? "out_of_stock") : "out_of_stock";
+        if (currentId && isSelectable(currentStatus)) return;
+        const requestedId = new URLSearchParams(window.location.search).get("color");
+        const next = userPickedYarn.current
+          ? null
+          : initialProductYarn(product, map, requestedId, hasCachedSupplierStock);
+        yarnIdRef.current = next?.id ?? null;
+        setYarnId(next?.id ?? null);
+        onYarnChangeRef.current?.(next, Boolean(requestedId && next));
+        if (currentId && !next) setMessage("That color is no longer available. Choose another color.");
       } catch {
         // Keep the last successful choices (or the initial verified snapshot).
         // A temporary stock-check outage must not empty the picker.
@@ -285,7 +300,10 @@ export function ProductPurchaseForm({
   };
 
   function handleYarnChange(id: string) {
+    userPickedYarn.current = true;
+    yarnIdRef.current = id;
     setYarnId(id);
+    setMessage(null);
     onYarnChangeRef.current?.(resolveYarn(id), true);
   }
 
@@ -429,7 +447,7 @@ export function ProductPurchaseForm({
         type="button"
         className="h-12 w-full justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
         onClick={add}
-        disabled={hasCachedSupplierStock && (!yarnId || !yarns.length)}
+        disabled={hasCachedSupplierStock && !yarns.length}
       >
         <span>Add to cart</span>
         <span className="tabular-nums">
