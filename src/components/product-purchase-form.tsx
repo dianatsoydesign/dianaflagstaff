@@ -34,6 +34,7 @@ import { isSelectable, usesLiveSupplier } from "@/lib/yarn-stock";
 import { QuantityPicker } from "@/components/quantity-picker";
 import { ProductPickupEstimate } from "@/components/product-pickup-estimate";
 import { productionDaysForProduct, productsWithPickupEstimates, type PickupTiming } from "@/lib/pickup-estimate";
+import { PickerValidation } from "@/components/picker-validation";
 import { SizePicker } from "@/components/size-picker";
 import { PomPomPicker } from "@/components/pom-pom-picker";
 import { TagPicker } from "@/components/tag-picker";
@@ -319,11 +320,7 @@ export function ProductPurchaseForm({
     const yarn = resolveYarn(yarnId);
     if (!size || !yarn) {
       setMessage(
-        !size && !yarn
-          ? "Choose a size and yarn color."
-          : !size
-            ? "Choose a size."
-            : "Choose a yarn color."
+        !size ? "Choose a size." : "Choose a yarn color."
       );
       return;
     }
@@ -383,10 +380,11 @@ export function ProductPurchaseForm({
   return (
     <div className={cn("flex flex-col", pickerSectionGapClass, className)}>
       {!product.hideSizePicker && (
+        <PickerValidation error={message && !/yarn|color/i.test(message) ? message : null}>
         <SizePicker
           sizes={product.sizes}
           value={sizeId}
-          onChange={setSizeId}
+          onChange={(id) => { setSizeId(id); setMessage(null); }}
           allowRequestDifferentSize={product.allowRequestDifferentSize}
           customDimensions={customDimensions}
           onCustomDimensionsChange={(next) => {
@@ -405,11 +403,13 @@ export function ProductPurchaseForm({
           }}
           customSizeLimits={product.customSizeLimits}
         />
+        </PickerValidation>
       )}
       {product.showPomPomPicker ? (
         <PomPomPicker value={pomPomId} onChange={setPomPomId} />
       ) : null}
       {hasCachedSupplierStock && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
+      <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
       <YarnSwatchPicker
         allowHolidayFilter={product.id === "christmas-stockings"}
         keyboardNavigation
@@ -425,6 +425,7 @@ export function ProductPurchaseForm({
         }}
         legend={product.yarns.map(yarnLineName).find(Boolean) ?? "Yarn color"}
       />
+      </PickerValidation>
       <TagPicker
         keyboardNavigation
         value={tagId}
@@ -460,11 +461,6 @@ export function ProductPurchaseForm({
             )}
           </span>
         </Button>
-        {message && (
-          <p className="text-left text-sm text-muted-foreground" role="status">
-            {message}
-          </p>
-        )}
       </div>
     </div>
   );

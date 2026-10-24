@@ -183,6 +183,16 @@ export function MakerOrdersClient({ initiallyAuthed }: { initiallyAuthed: boolea
                         {order.status.replace("_", " ")}
                       </span>
                     </div>
+                    {order.customerEmail && (
+                      <p className="mt-2 break-words text-sm">
+                        <a href={`mailto:${order.customerEmail}`} className="underline underline-offset-2">{order.customerEmail}</a>
+                      </p>
+                    )}
+                    {order.customerPhone && (
+                      <p className="mt-1 text-sm">
+                        <a href={`tel:${order.customerPhone}`} className="underline underline-offset-2">{order.customerPhone}</a>
+                      </p>
+                    )}
                     {order.pickupPreference && (
                       <p className="mt-2 text-sm text-muted-foreground">
                         Pickup: {order.pickupPreference}

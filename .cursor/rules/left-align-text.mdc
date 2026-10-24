@@ -1,0 +1,12 @@
+---
+description: Left-align website text by default
+alwaysApply: true
+---
+
+# Left-aligned website text
+
+- Left-align text by default in all new and edited website experiences, including headings, body copy, helper text, notices, forms, carts, and empty states.
+- Use `text-left` where a parent or component would otherwise center text. Do not add `text-center` to content blocks unless Diana explicitly requests it.
+- Keep button labels centered within their controls and numeric totals aligned for readability where appropriate.
+- Apply this rule when editing existing areas without broadly restyling unrelated pages.
+- Example: cart payment helper text above the action row uses `text-left`, aligned with the subtotal label and form fields.

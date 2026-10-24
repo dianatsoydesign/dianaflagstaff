@@ -121,6 +121,8 @@ export async function createOrder(
     id: randomUUID(),
     createdAt: new Date().toISOString(),
     customerName: input.customerName,
+    customerEmail: input.customerEmail,
+    customerPhone: input.customerPhone,
     customerNote: input.customerNote,
     venmoHandle: input.venmoHandle,
     pickupPreference: input.pickupPreference,

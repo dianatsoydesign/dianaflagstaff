@@ -40,6 +40,23 @@ export type InquiryItem = {
   patternUrl?: string | null;
 };
 
+/** Default limits apply across colors and other options of the same product size. */
+export function cartQuantityMax(
+  item: Omit<InquiryItem, "id"> & { id?: string },
+  items: InquiryItem[]
+): number {
+  if (item.quantityMax != null) return item.quantityMax;
+  const otherQuantity = items.reduce((sum, other) => {
+    const sameSize =
+      other.kind === item.kind &&
+      other.productId === item.productId &&
+      other.sizeId === item.sizeId &&
+      (!isRequestDifferentSizeId(item.sizeId) || other.sizeLabel === item.sizeLabel);
+    return sameSize && other.id !== item.id ? sum + other.quantity : sum;
+  }, 0);
+  return Math.max(0, 2 - otherQuantity);
+}
+
 export type CartDrawerView = "closed" | "added" | "checkout";
 
 type InquiryCartContextValue = {
@@ -90,7 +107,7 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
       );
       if (existing) {
         resultId = existing.id;
-        const cap = item.quantityMax ?? existing.quantityMax;
+        const cap = cartQuantityMax({ ...existing, quantityMax: item.quantityMax ?? existing.quantityMax }, prev);
         const nextQty = existing.quantity + item.quantity;
         return prev.map((p) =>
           p.id === existing.id
@@ -98,13 +115,15 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
                 ...p,
                 quantity:
                   cap != null ? Math.min(cap, nextQty) : nextQty,
-                quantityMax: cap ?? p.quantityMax,
+                quantityMax: item.quantityMax ?? p.quantityMax,
                 productImageSrc: item.productImageSrc ?? p.productImageSrc,
               }
             : p
         );
       }
-      const newItem = { ...item, id: resultId };
+      const quantity = Math.min(item.quantity, cartQuantityMax(item, prev));
+      if (quantity <= 0) return prev;
+      const newItem = { ...item, quantity, id: resultId };
       return [...prev, newItem];
     });
     return resultId;
@@ -138,7 +157,7 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
   const updateQuantity = useCallback((id: string, quantity: number) => {
     setItems((prev) =>
       prev
-        .map((p) => (p.id === id ? { ...p, quantity } : p))
+        .map((p) => (p.id === id ? { ...p, quantity: Number.isFinite(quantity) ? Math.max(0, Math.min(Math.round(quantity), cartQuantityMax(p, prev))) : p.quantity } : p))
         .filter((p) => p.quantity > 0)
     );
   }, []);

@@ -39,3 +39,15 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## No em dashes
 
 - Follow `.cursor/rules/no-em-dashes.mdc`. Never use em dashes in project copy or communication. Rewrite with periods, commas, colons, or parentheses instead.
+
+## Website text alignment
+
+- Follow `.cursor/rules/left-align-text.mdc` for website work. Left-align content text by default, including headings, helper text, notices, and forms. Keep button labels centered and numeric totals aligned for readability where appropriate.
+
+## Product image corners
+
+- Follow `.cursor/rules/product-image-corners.mdc` for website work. Use explicit 8px rounded corners and clipped frames for rectangular product images in new and edited experiences. Preserve circular swatches.
+
+## Validation and error messages
+
+- Follow `.cursor/rules/validation-errors.mdc` for website work. Display new and edited validation and error messages in accessible red text, with explicit actionable wording and appropriate screen reader announcements.

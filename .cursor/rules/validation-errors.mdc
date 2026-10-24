@@ -1,0 +1,13 @@
+---
+description: Display website validation and error messages in accessible red text
+alwaysApply: true
+---
+
+# Validation and error messages
+
+- Show all new and edited website validation and error messages in red, including missing selections, invalid inputs, unavailable options, and submission failures.
+- Use `text-red-700 dark:text-red-400` for error text on standard light and dark surfaces. Verify at least 4.5:1 text contrast on the actual background; do not lower opacity.
+- Left-align messages. Keep the message specific and actionable, such as "Choose a yarn color."
+- Do not rely on red alone. Explain the problem in text, announce dynamically displayed errors with `role="alert"`, and associate field-specific errors with their controls using `aria-describedby` and `aria-invalid` where applicable.
+- Keep ordinary helper text and success messages distinct from validation errors.
+- Example: a missing yarn selection displays "Choose a yarn color." in red below the purchase action.

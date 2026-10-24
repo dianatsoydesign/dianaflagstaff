@@ -26,6 +26,8 @@ export type Order = {
   id: string;
   createdAt: string;
   customerName: string;
+  customerEmail?: string;
+  customerPhone?: string;
   customerNote?: string;
   venmoHandle?: string;
   pickupPreference?: string;

@@ -8,6 +8,7 @@ import type { PatternRequestItem } from "@/data/pattern-requests";
 import { getYarnById } from "@/data/yarns";
 import { useInquiryCart } from "@/lib/inquiry-cart";
 import { isSelectable } from "@/lib/yarn-stock";
+import { PickerValidation } from "@/components/picker-validation";
 import { SizePicker } from "@/components/size-picker";
 import { YarnSwatchPicker } from "@/components/yarn-swatch-picker";
 import { Button } from "@/components/ui/button";
@@ -71,7 +72,7 @@ export function PatternRequestPanel({ item }: Props) {
     const size = item.sizes.find((s) => s.id === sizeId);
     const yarn = baseYarns.find((y) => y.id === yarnId);
     if (!size || !yarn) {
-      setMessage("Choose a size and yarn color.");
+      setMessage(!size ? "Choose a size." : "Choose a yarn color.");
       return;
     }
     const status = liveStock[yarn.id] ?? yarn.stockStatus;
@@ -147,8 +148,12 @@ export function PatternRequestPanel({ item }: Props) {
         </p>
       </div>
 
-      <SizePicker sizes={item.sizes} value={sizeId} onChange={setSizeId} />
-      <YarnSwatchPicker yarns={yarns} value={yarnId} onChange={setYarnId} />
+      <PickerValidation error={message && !/yarn|color/i.test(message) ? message : null}>
+        <SizePicker sizes={item.sizes} value={sizeId} onChange={(id) => { setSizeId(id); setMessage(null); }} />
+      </PickerValidation>
+      <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
+        <YarnSwatchPicker keyboardNavigation yarns={yarns} value={yarnId} onChange={(id) => { setYarnId(id); setMessage(null); }} />
+      </PickerValidation>
 
       <Button
         type="button"
@@ -157,11 +162,6 @@ export function PatternRequestPanel({ item }: Props) {
       >
         Request this make
       </Button>
-      {message && (
-        <p className="text-center text-sm text-muted-foreground" role="status">
-          {message}
-        </p>
-      )}
     </article>
   );
 }

@@ -1,3 +1,4 @@
+import { CART_FIELD_LIMITS, isValidOrderEmail, isValidOrderPhone } from "@/lib/cart-field-limits";
 import { readBobbinyStock } from "@/lib/bobbiny-stock";
 import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
 import { readCharismaFlagstaffStock } from "@/lib/charisma-flagstaff-stock";
@@ -22,17 +23,36 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as {
       customerName?: string;
+      customerEmail?: string;
+      customerPhone?: string;
       customerNote?: string;
       pickupPreference?: string;
       venmoHandle?: string;
       lines?: OrderLine[];
     };
 
+    for (const [field, limit] of Object.entries(CART_FIELD_LIMITS)) {
+      const value = body[field as keyof typeof CART_FIELD_LIMITS];
+      if (value != null && (typeof value !== "string" || value.length > limit)) {
+        const label = field === "customerName" ? "Your name" : field === "pickupPreference" ? "Flagstaff pickup location" : field === "customerEmail" ? "Email address" : field === "customerPhone" ? "Phone number" : "Note";
+        return NextResponse.json(
+          { error: `${label} must be ${limit} characters or fewer.` },
+          { status: 400 }
+        );
+      }
+    }
+
     if (!body.customerName?.trim()) {
       return NextResponse.json(
         { error: "Name is required" },
         { status: 400 }
       );
+    }
+    if (!body.customerEmail || !isValidOrderEmail(body.customerEmail)) {
+      return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
+    }
+    if (body.customerPhone && !isValidOrderPhone(body.customerPhone)) {
+      return NextResponse.json({ error: "Enter a valid phone number or leave it blank." }, { status: 400 });
     }
     if (!body.lines?.length) {
       return NextResponse.json(
@@ -148,6 +168,8 @@ export async function POST(request: Request) {
 
     const order = await createOrder({
       customerName: body.customerName.trim(),
+      customerEmail: body.customerEmail.trim(),
+      customerPhone: body.customerPhone?.trim() || undefined,
       customerNote: body.customerNote?.trim(),
       pickupPreference: body.pickupPreference?.trim(),
       venmoHandle: body.venmoHandle,

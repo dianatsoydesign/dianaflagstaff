@@ -62,7 +62,7 @@ export function ProductDetailGallery({
     <div className={cn("flex flex-col gap-3", pinOnMobile && "max-md:contents", className)}>
       <figure
         className={cn(
-          "group relative aspect-square overflow-hidden rounded-[8px] md:self-center md:w-[min(100%,calc(100svh-var(--desktop-gallery-top,100px)-112px))] max-md:-mx-[3vw] max-md:w-screen max-md:rounded-none",
+          "group relative aspect-square overflow-hidden rounded-[8px] md:w-full max-md:-mx-[3vw] max-md:w-screen max-md:rounded-none",
           pinOnMobile && "max-md:order-3 max-md:data-[sticky=true]:sticky max-md:data-[sticky=true]:top-0 max-md:data-[sticky=true]:z-20",
           productPhotoBgClass
         )}

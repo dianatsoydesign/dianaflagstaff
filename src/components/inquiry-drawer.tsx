@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { CART_FIELD_LIMITS, isValidOrderEmail } from "@/lib/cart-field-limits";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { ProductImageBadge } from "@/components/product-image-badge";
 import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
 import { QuantityStepper } from "@/components/quantity-stepper";
 import { VENMO_HANDLE, formatPriceOrTbd } from "@/data/products";
-import { useInquiryCart } from "@/lib/inquiry-cart";
-import { formatLineOptions } from "@/lib/line-options";
+import { cartQuantityMax, useInquiryCart } from "@/lib/inquiry-cart";
+import { formatLineOptions, productShowsSize } from "@/lib/line-options";
 import { formFieldInputClass } from "@/components/picker-styles";
 import { productPhotoBgClass } from "@/lib/product-photo-bg";
 import { Button } from "@/components/ui/button";
@@ -29,7 +30,6 @@ export function InquiryDrawer() {
     total,
     subtotalTbd,
     drawerView,
-    lastAddedItemId,
     updateQuantity,
     removeItem,
     clear,
@@ -38,6 +38,9 @@ export function InquiryDrawer() {
   const router = useRouter();
 
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactError, setContactError] = useState<"email" | null>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const [note, setNote] = useState("");
   const [pickup, setPickup] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -45,15 +48,17 @@ export function InquiryDrawer() {
   const [error, setError] = useState<string | null>(null);
 
   const open = drawerView !== "closed";
-  const addedItem =
-    drawerView === "added" && lastAddedItemId
-      ? items.find((i) => i.id === lastAddedItemId)
-      : null;
 
   async function submit() {
     setError(null);
+    setContactError(null);
     if (!name.trim()) {
       setError("Please add your name so Diana knows who to meet.");
+      return;
+    }
+    if (!isValidOrderEmail(email)) {
+      setContactError("email");
+      emailRef.current?.focus();
       return;
     }
     if (items.length === 0) {
@@ -67,6 +72,7 @@ export function InquiryDrawer() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           customerName: name.trim(),
+          customerEmail: email.trim(),
           customerNote: note.trim() || undefined,
           pickupPreference: pickup.trim() || undefined,
           venmoHandle: VENMO_HANDLE,
@@ -100,6 +106,7 @@ export function InquiryDrawer() {
       clear();
       setDone(true);
       setName("");
+      setEmail("");
       setNote("");
       setPickup("");
     } catch (e) {
@@ -128,14 +135,9 @@ export function InquiryDrawer() {
           <SheetTitle className="font-display text-2xl tracking-[-0.04em] text-ink">
             Your cart
           </SheetTitle>
-          <SheetDescription>
-            Local pickup only. Venmo when we meet.
+          <SheetDescription className="sr-only">
+            Review your items and submit an order request.
           </SheetDescription>
-          {addedItem && (
-            <p role="status" className="text-sm text-ink">
-              Added to cart: {addedItem.productName}
-            </p>
-          )}
         </SheetHeader>
 
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4">
@@ -183,7 +185,7 @@ export function InquiryDrawer() {
                   key={item.id}
                   className="flex gap-3 border-b border-border/50 pb-4"
                 >
-                  <div className={cn("relative size-16 shrink-0 overflow-hidden rounded-sm", productPhotoBgClass)}>
+                  <div className={cn("relative aspect-square w-[38%] max-w-40 shrink-0 self-start overflow-hidden rounded-[8px]", productPhotoBgClass)}>
                     <Image
                       src={
                         item.productImageSrc ?? item.yarnSwatchSrc
@@ -191,7 +193,7 @@ export function InquiryDrawer() {
                       alt={item.productName}
                       fill
                       className="object-contain"
-                      sizes="64px"
+                      sizes="(min-width: 640px) 160px, 38vw"
                     />
                     <ProductImageBadge src={item.productImageSrc} compact />
                   </div>
@@ -206,17 +208,24 @@ export function InquiryDrawer() {
                       </p>
                     )}
                     <p className="mt-0.5 text-sm text-muted-foreground">
-                      {formatLineOptions(item)}
+                      {formatLineOptions({ ...item, tagLabel: undefined })}
                     </p>
                     <p className="mt-1 text-sm tabular-nums">
                       {formatPriceOrTbd(!!item.priceTbd, item.unitPrice)}
                     </p>
-                    <div className="mt-2 flex items-center gap-2">
+                    {item.quantityMax == null && item.quantity >= cartQuantityMax(item, items) && (
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {productShowsSize(item.productId, item.kind)
+                          ? "Maximum 2 per size across colors and options."
+                          : "Maximum 2 across colors and options."}
+                      </p>
+                    )}
+                    <div className="mt-2 flex items-end gap-2">
                       <QuantityStepper
                         size="compact"
                         value={item.quantity}
                         min={0}
-                        max={item.quantityMax ?? 99}
+                        max={cartQuantityMax(item, items)}
                         lockDecreaseAtMin={false}
                         onChange={(q) => updateQuantity(item.id, q)}
                       />
@@ -239,35 +248,103 @@ export function InquiryDrawer() {
 
           {!done && items.length > 0 && (
             <div className="mt-6 flex flex-col gap-3">
-              <label className="flex flex-col gap-1.5 text-sm">
-                <span className="font-medium">Your name</span>
+              <div className="flex flex-col gap-1.5 text-sm">
+                <label htmlFor="cart-name" className="font-medium">Your name</label>
+                <div className="relative">
                 <input
+                  id="cart-name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className={cn(formFieldInputClass, "h-12 w-full")}
-                  placeholder="So we know who to meet"
+                  maxLength={CART_FIELD_LIMITS.customerName}
+                  aria-describedby="cart-name-count"
                   autoComplete="name"
+                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-28")}
+                  placeholder="So we know who to meet"
                 />
-              </label>
-              <label className="flex flex-col gap-1.5 text-sm">
-                <span className="font-medium">Pickup preference</span>
+                  {name.length > 0 && (
+                <p id="cart-name-count" className={cn("pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs tabular-nums", name.length >= CART_FIELD_LIMITS.customerName ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
+                  {name.length} / {CART_FIELD_LIMITS.customerName}
+                </p>
+                  )}
+                </div>
+                <span className="sr-only" role="status">
+                  {name.length >= CART_FIELD_LIMITS.customerName ? "Character limit reached." : ""}
+                </span>
+              </div>
+              <div className="flex flex-col gap-1.5 text-sm">
+                <label htmlFor="cart-email" className="font-medium">Email address (required)</label>
+                <div className="relative">
                 <input
+                  ref={emailRef}
+                  id="cart-email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); if (contactError === "email") setContactError(null); }}
+                  maxLength={CART_FIELD_LIMITS.customerEmail}
+                  aria-invalid={contactError === "email" || undefined}
+                  aria-describedby={`cart-email-count${contactError === "email" ? " cart-email-error" : ""}`}
+                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-28")}
+                />
+                  {email.length > 0 && (
+                <p id="cart-email-count" className={cn("pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs tabular-nums", email.length >= CART_FIELD_LIMITS.customerEmail ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
+                  {email.length} / {CART_FIELD_LIMITS.customerEmail}
+                </p>
+                  )}
+                </div>
+                {contactError === "email" && (
+                  <p id="cart-email-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
+                    Enter a valid email address.
+                  </p>
+                )}
+              </div>
+              <div className="flex flex-col gap-1.5 text-sm">
+                <label htmlFor="cart-pickup" className="font-medium">Flagstaff pickup location</label>
+                <div className="relative">
+                <input
+                  id="cart-pickup"
                   value={pickup}
                   onChange={(e) => setPickup(e.target.value)}
-                  className={cn(formFieldInputClass, "h-12 w-full")}
+                  maxLength={CART_FIELD_LIMITS.pickupPreference}
+                  aria-describedby="cart-pickup-count"
+                  
+                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-28")}
                   placeholder="Friend meet-up / neighborhood handoff"
                 />
-              </label>
-              <label className="flex flex-col gap-1.5 text-sm">
-                <span className="font-medium">Note (optional)</span>
+                  {pickup.length > 0 && (
+                <p id="cart-pickup-count" className={cn("pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs tabular-nums", pickup.length >= CART_FIELD_LIMITS.pickupPreference ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
+                  {pickup.length} / {CART_FIELD_LIMITS.pickupPreference}
+                </p>
+                  )}
+                </div>
+                <span className="sr-only" role="status">
+                  {pickup.length >= CART_FIELD_LIMITS.pickupPreference ? "Character limit reached." : ""}
+                </span>
+              </div>
+              <div className="flex flex-col gap-1.5 text-sm">
+                <label htmlFor="cart-note" className="font-medium">Notes (optional)</label>
+                <div className="relative">
                 <textarea
+                  id="cart-note"
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
+                  maxLength={CART_FIELD_LIMITS.customerNote}
+                  aria-describedby="cart-note-count"
                   rows={3}
-                  className={cn(formFieldInputClass, "w-full py-2.5")}
-                  placeholder="Timing, color notes, gift wrap…"
+                  className={cn(formFieldInputClass, "w-full rounded-[8px] pb-8 pt-2.5")}
+                  placeholder="Your phone number (if Diana doesn’t already have it), timing, etc."
                 />
-              </label>
+                  {note.length > 0 && (
+                <p id="cart-note-count" className={cn("pointer-events-none absolute right-3 bottom-2 text-xs tabular-nums", note.length >= CART_FIELD_LIMITS.customerNote ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
+                  {note.length} / {CART_FIELD_LIMITS.customerNote}
+                </p>
+                  )}
+                </div>
+                <span className="sr-only" role="status">
+                  {note.length >= CART_FIELD_LIMITS.customerNote ? "Character limit reached." : ""}
+                </span>
+              </div>
               {error && (
                 <p className="text-sm text-destructive" role="alert">
                   {error}
@@ -287,22 +364,28 @@ export function InquiryDrawer() {
                 {formatPriceOrTbd(subtotalTbd, total)}
               </span>
             </div>
-            <Button
-              type="button"
-              variant="outline"
-              className="h-12 w-full rounded-full text-base"
-              onClick={() => handleOpenChange(false)}
-            >
-              Continue shopping
-            </Button>
-            <Button
-              type="button"
-              className="h-12 w-full rounded-full bg-button text-base text-button-foreground hover:bg-button-hover"
-              disabled={submitting}
-              onClick={submit}
-            >
-              {submitting ? "Sending…" : "Submit request"}
-            </Button>
+            <p id="cart-payment-note" className="text-left text-sm text-muted-foreground">
+              Payment due once your order is confirmed.
+            </p>
+            <div className="grid w-full grid-cols-2 gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                className="h-12 min-w-0 rounded-full px-2 text-sm sm:text-base"
+                onClick={() => handleOpenChange(false)}
+              >
+                Keep shopping
+              </Button>
+              <Button
+                type="button"
+                aria-describedby="cart-payment-note"
+                className="h-12 min-w-0 rounded-full bg-button px-2 text-sm text-button-foreground hover:bg-button-hover sm:text-base"
+                disabled={submitting}
+                onClick={submit}
+              >
+                {submitting ? "Sending…" : "Send request"}
+              </Button>
+            </div>
           </SheetFooter>
         )}
       </SheetContent>

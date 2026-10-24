@@ -1,0 +1,12 @@
+---
+description: Use subtle rounded corners for rectangular product images
+alwaysApply: true
+---
+
+# Product image corners
+
+- Use an explicit 8px corner radius (`rounded-[8px]`) for rectangular product image frames in new and edited website experiences, including cart thumbnails, product cards, and product galleries.
+- Apply the radius to the image frame with `overflow-hidden` so the image is clipped consistently.
+- Preserve circular yarn swatches and other intentionally circular imagery.
+- Apply this default going forward and when editing relevant image frames; do not broadly restyle unrelated pages unless requested.
+- Example: cart thumbnail frames use `overflow-hidden rounded-[8px]` while preserving the photo's proportions.
