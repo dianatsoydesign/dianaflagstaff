@@ -72,7 +72,9 @@ export function SiteHeader() {
           "z-40",
           heroHeader
             ? "absolute inset-x-0 top-0"
-            : "sticky top-0 bg-background"
+            : pathname === "/shop/p/coasters"
+              ? "relative bg-background md:sticky md:top-0"
+              : "sticky top-0 bg-background"
         )}
       >
         <div className="px-[3vw] py-[3.25vw] min-[1100px]:px-[2vw] min-[1100px]:py-[1.5vw]">

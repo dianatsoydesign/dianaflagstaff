@@ -5,35 +5,28 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { StockStatus, YarnColor } from "@/data/products";
 import {
-  bobbinyColorGroupId,
-  bobbinyGroupsForYarns,
   filterBobbinyYarnsByGroup,
   isBobbinyColorCatalog,
   type BobbinyColorGroupId,
 } from "@/data/bobbiny-color-order";
 import {
-  charismaColorGroupId,
-  charismaGroupsForYarns,
   isCharismaColorCatalog,
 } from "@/data/charisma-color-groups";
 import {
   CHARISMA_HOLIDAY_PIZZA_YARN_ID,
   charismaHasHolidayYarns,
   filterCharismaYarnsForPicker,
-  isCharismaHolidayPizzaYarn,
   type CharismaPickerGroupId,
 } from "@/data/charisma-holiday-colors";
 import {
   CHARISMA_SOFT_PALETTE_YARN_ID,
   CHARISMA_SOFT_PALETTE_SLICE_COLORS,
   charismaHasSoftPaletteYarns,
-  isCharismaSoftPaletteYarn,
 } from "@/data/charisma-soft-palette";
 import {
   CHARISMA_WARM_PALETTE_YARN_ID,
   CHARISMA_WARM_PALETTE_SLICE_COLORS,
   charismaHasWarmPaletteYarns,
-  isCharismaWarmPaletteYarn,
 } from "@/data/charisma-warm-palette";
 import { YarnPizzaSwatch } from "@/components/yarn-pizza-swatch";
 import { isSelectable } from "@/lib/yarn-stock";
@@ -73,8 +66,6 @@ type Props = {
   /** Mouse hover only, so a tap on touch screens doesn't leave a preview stuck. */
   onPreview?: (yarnId: string | null) => void;
   legend?: string;
-  /** Pins the family chip on first paint (e.g. Holiday while default yarn is off white). */
-  initialGroupFilter?: CatalogGroupId | null;
 };
 
 export function YarnSwatchPicker({
@@ -85,7 +76,6 @@ export function YarnSwatchPicker({
   onChange,
   onPreview,
   legend = "Yarn color",
-  initialGroupFilter,
 }: Props) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
@@ -96,40 +86,11 @@ export function YarnSwatchPicker({
   const useBernatGroups = yarns.length > 0 && yarns.every((y) => y.id.startsWith("bernat-blanket-big-"));
   const useGroupFilter = useCharismaGroups || useBobbinyGroups || useBernatGroups;
 
-  const groupOptions = useCharismaGroups
-    ? charismaGroupsForYarns(yarns)
-    : useBobbinyGroups
-      ? bobbinyGroupsForYarns(yarns)
-      : useBernatGroups
-        ? bernatGroupsForYarns(yarns)
-        : [];
-
-  const [groupFilterChoice, setGroupFilterChoice] = useState<
-    { source: "auto" } | { source: "user"; groupId: CatalogGroupId | null }
-  >(() =>
-    initialGroupFilter !== undefined
-      ? { source: "user", groupId: initialGroupFilter }
-      : { source: "auto" }
-  );
-
-  function yarnGroupId(yarnId: string): CatalogGroupId | null {
-    if (isCharismaHolidayPizzaYarn(yarnId)) return "holiday";
-    if (isCharismaSoftPaletteYarn(yarnId)) return null;
-    if (isCharismaWarmPaletteYarn(yarnId)) return null;
-    const yarn = yarns.find((y) => y.id === yarnId);
-    if (!yarn) return null;
-    if (useBernatGroups) return bernatColorGroupId(yarn);
-    if (useCharismaGroups) return charismaColorGroupId(yarn);
-    if (useBobbinyGroups) return bobbinyColorGroupId(yarnId);
-    return null;
-  }
-
-  const groupFilter =
-    groupFilterChoice.source === "auto"
-      ? value
-        ? yarnGroupId(value)
-        : null
-      : groupFilterChoice.groupId;
+  // Keep family sorting, but expose only the approved special filters.
+  const groupOptions = useBernatGroups
+    ? bernatGroupsForYarns(yarns).filter((group) => group.id === "multis")
+    : [];
+  const [groupFilter, setGroupFilter] = useState<CatalogGroupId | null>(null);
 
   const showHolidayChip = allowHolidayFilter && useCharismaGroups && charismaHasHolidayYarns(yarns);
   const showSoftPaletteSwatch =
@@ -157,7 +118,7 @@ export function YarnSwatchPicker({
   }
 
   function selectGroupFilter(next: CatalogGroupId | null) {
-    setGroupFilterChoice({ source: "user", groupId: next });
+    setGroupFilter(next);
   }
 
   // Responsive columns: more for large catalogs (Bobbiny = 50+), fewer for small ones
@@ -186,16 +147,17 @@ export function YarnSwatchPicker({
 
       {readOnlyColor ? null : (
       <>
-      {useGroupFilter ? (
+      {useGroupFilter && (showHolidayChip || groupOptions.length > 0) ? (
         <div
           className={cn(pickerChipGroupClass, "mb-3 items-center")}
           role="group"
-          aria-label="Color family"
+          aria-label="Color filters"
         >
           {showHolidayChip ? (
             <button
               type="button"
               onClick={() => selectGroupFilter("holiday")}
+              aria-pressed={groupFilter === "holiday"}
               className={cn(
                 pickerChipBase,
                 "gap-2",
@@ -220,6 +182,7 @@ export function YarnSwatchPicker({
                 key={group.id}
                 type="button"
                 onClick={() => selectGroupFilter(group.id)}
+                aria-pressed={isSelected}
                 className={cn(
                   pickerChipBase,
                   isSelected
@@ -239,6 +202,7 @@ export function YarnSwatchPicker({
           <button
             type="button"
             onClick={() => selectGroupFilter(null)}
+            aria-pressed={groupFilter === null}
             className={cn(
               pickerChipBase,
               groupFilter === null

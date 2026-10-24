@@ -11,6 +11,8 @@ type Props = {
   /** Product photos, product videos, then selected supplier yarn images. */
   slides: ProductImage[];
   keyboardNavigation?: boolean;
+  /** Coasters trial: only the full-size image pins; thumbnails stay in page flow. */
+  pinOnMobile?: boolean;
   activeIndex: number;
   onSelect: (index: number) => void;
   /** Temporarily shown in the main slot (e.g. while hovering a color swatch). */
@@ -21,6 +23,7 @@ type Props = {
 export function ProductDetailGallery({
   slides,
   keyboardNavigation = true,
+  pinOnMobile = false,
   activeIndex,
   onSelect,
   preview,
@@ -47,15 +50,20 @@ export function ProductDetailGallery({
     else prev();
   }
 
-  // Touch phones/tablets: swipe + dots only. Narrow desktop window + mouse: hover arrows.
-  const arrowClass =
-    "absolute top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/80 text-ink shadow backdrop-blur-sm transition-colors hover:bg-white fine-pointer:flex fine-pointer:opacity-0 fine-pointer:transition-opacity fine-pointer:group-hover:opacity-100" + (keyboardNavigation ? " focus-visible:opacity-100" : "");
+  const arrowClass = cn(
+    "absolute top-1/2 z-10 h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/80 text-ink shadow backdrop-blur-sm transition-colors hover:bg-white",
+    pinOnMobile
+      ? "flex max-md:h-11 max-md:w-11 md:opacity-0 md:group-hover:opacity-100"
+      : "hidden fine-pointer:flex fine-pointer:opacity-0 fine-pointer:transition-opacity fine-pointer:group-hover:opacity-100",
+    keyboardNavigation && "focus-visible:opacity-100",
+  );
 
   return (
-    <div className={cn("flex flex-col gap-3", className)}>
+    <div className={cn("flex flex-col gap-3", pinOnMobile && "max-md:contents", className)}>
       <figure
         className={cn(
-          "group relative aspect-square overflow-hidden rounded-[8px]",
+          "group relative aspect-square overflow-hidden rounded-[8px] max-md:-mx-[3vw] max-md:w-screen max-md:rounded-none",
+          pinOnMobile && "max-md:order-3 max-md:data-[sticky=true]:sticky max-md:data-[sticky=true]:top-0 max-md:data-[sticky=true]:z-20",
           productPhotoBgClass
         )}
         onTouchStart={handleTouchStart}
@@ -93,6 +101,12 @@ export function ProductDetailGallery({
           </figcaption>
         )}
 
+        {pinOnMobile && count > 1 && (
+          <span className="absolute top-3 right-3 z-10 rounded-full bg-white px-2 py-1 text-xs text-black md:hidden">
+            {activeIndex + 1} / {count}
+          </span>
+        )}
+
         {count > 1 && (
           <>
             <button type="button" aria-label="Previous gallery item" onClick={prev} className={`${arrowClass} left-3`}>
@@ -122,7 +136,7 @@ export function ProductDetailGallery({
       </figure>
 
       {count > 1 && (
-        <div className="flex gap-2 overflow-x-auto p-1 -m-1" role={keyboardNavigation ? "group" : undefined} aria-label={keyboardNavigation ? "Product photos — use left and right arrows" : undefined}
+        <div className={cn("flex gap-2 overflow-x-auto p-1 -m-1", pinOnMobile && "max-md:order-3 max-md:-mt-3")} role={keyboardNavigation ? "group" : undefined} aria-label={keyboardNavigation ? "Product photos — use left and right arrows" : undefined}
           onKeyDown={keyboardNavigation ? (e) => {
             if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
             const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button"));

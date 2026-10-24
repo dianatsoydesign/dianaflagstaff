@@ -42,7 +42,6 @@ import {
   charismaHasHolidayYarns,
   charismaHolidayPizzaYarn,
   isCharismaHolidayPizzaYarn,
-  type CharismaPickerGroupId,
 } from "@/data/charisma-holiday-colors";
 import {
   charismaHasSoftPaletteYarns,
@@ -319,7 +318,13 @@ export function ProductPurchaseForm({
       : product.sizes.find((s) => s.id === sizeId);
     const yarn = resolveYarn(yarnId);
     if (!size || !yarn) {
-      setMessage("Choose a size and yarn color.");
+      setMessage(
+        !size && !yarn
+          ? "Choose a size and yarn color."
+          : !size
+            ? "Choose a size."
+            : "Choose a yarn color."
+      );
       return;
     }
     if (customSize) {
@@ -411,9 +416,6 @@ export function ProductPurchaseForm({
         yarns={yarns}
         value={yarnId}
         onChange={handleYarnChange}
-        initialGroupFilter={
-          product.defaultColorGroupFilter as CharismaPickerGroupId | undefined
-        }
         onPreview={(id) => {
           if (!id || isCharismaCuratedPaletteYarn(id)) {
             onYarnPreview?.(null);
@@ -443,25 +445,27 @@ export function ProductPurchaseForm({
       {productsWithPickupEstimates.has(product.id) && (
         <ProductPickupEstimate timing={pickupTiming} customSize={customSizeSelected} />
       )}
-      <Button
-        type="button"
-        className="h-12 w-full justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
-        onClick={add}
-        disabled={hasCachedSupplierStock && !yarns.length}
-      >
-        <span>Add to cart</span>
-        <span className="tabular-nums">
-          {formatPriceOrTbd(
-            priceTbd,
-            unitPrice * (qtyConfig ? quantity : 1)
-          )}
-        </span>
-      </Button>
-      {message && (
-        <p className="text-center text-sm text-muted-foreground" role="status">
-          {message}
-        </p>
-      )}
+      <div className="flex flex-col gap-2">
+        <Button
+          type="button"
+          className="h-12 w-full justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
+          onClick={add}
+          disabled={hasCachedSupplierStock && !yarns.length}
+        >
+          <span>Add to cart</span>
+          <span className="tabular-nums">
+            {formatPriceOrTbd(
+              priceTbd,
+              unitPrice * (qtyConfig ? quantity : 1)
+            )}
+          </span>
+        </Button>
+        {message && (
+          <p className="text-left text-sm text-muted-foreground" role="status">
+            {message}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DimensionsCircle } from "@/components/dimensions-icon";
 import { MachineWashCircle } from "@/components/machine-wash-icon";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +31,37 @@ function sentenceCase(s: string): string {
 }
 
 export function ProductDetailClient({ product, related, randomRecommendationPool }: Props) {
+  const galleryContainerRef = useRef<HTMLDivElement>(null);
+  const configurationRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (product.id !== "coasters") return;
+    const gallery = galleryContainerRef.current?.querySelector("figure");
+    const configuration = configurationRef.current;
+    if (!gallery || !configuration) return;
+
+    function updateStickyGallery() {
+      if (!gallery || !configuration) return;
+      const galleryHeight = gallery.getBoundingClientRect().height;
+      const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+      // Preserve the full image size, and leave space to use the options below it.
+      const enabled = window.innerWidth < 768 && viewportHeight - galleryHeight >= 160;
+      gallery.dataset.sticky = String(enabled);
+      configuration.style.setProperty("--preview-clearance", enabled ? `${galleryHeight + 16}px` : "16px");
+    }
+
+    const observer = new ResizeObserver(updateStickyGallery);
+    observer.observe(gallery);
+    window.addEventListener("resize", updateStickyGallery);
+    window.visualViewport?.addEventListener("resize", updateStickyGallery);
+    updateStickyGallery();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateStickyGallery);
+      window.visualViewport?.removeEventListener("resize", updateStickyGallery);
+    };
+  }, [product.id]);
+
   const [randomRecommendations, setRandomRecommendations] = useState<Product[]>([]);
   useEffect(() => {
     const pool = [...(randomRecommendationPool ?? [])];
@@ -135,15 +166,22 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   return (
     <div className="site-gutter bg-background pb-20 pt-8">
       <div className="site-width">
-        <div className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px]">
+        <div ref={configurationRef} className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px] max-md:[&_button]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_input]:scroll-mt-[var(--preview-clearance,16px)]">
+          <div
+            ref={galleryContainerRef}
+            className={product.id === "coasters"
+              ? "max-md:contents md:col-start-1 md:row-start-1 min-w-0"
+              : "order-3 min-w-0 md:order-none md:col-start-1 md:row-start-1"}
+          >
           <ProductDetailGallery
+            pinOnMobile={product.id === "coasters"}
             keyboardNavigation
             slides={slides}
             activeIndex={Math.min(activeIndex, slides.length - 1)}
             onSelect={setActiveIndex}
             preview={preview}
-            className="order-3 md:order-none md:col-start-1 md:row-start-1"
           />
+          </div>
 
           <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-8 md:self-start md:sticky md:top-20 md:py-2 md:pl-[2vw] lg:pl-[3vw]">
             <div className="order-1 md:order-none">
