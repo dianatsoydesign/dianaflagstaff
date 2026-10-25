@@ -109,6 +109,14 @@ export async function POST(request: Request) {
       }
     }
 
+    for (const line of lines.filter(line => line.productId === "mushroom-hat")) {
+      const size = getProduct("mushroom-hat")?.sizes.find(size => size.id === line.sizeId);
+      if (!size) return NextResponse.json({ error: "Choose a mushroom hat style and size." }, { status: 400 });
+      line.sizeLabel = `${size.label} · Style: ${size.hatStyle === "short-tip" ? "Short tip" : "Slouchy, long tip"}`;
+      line.priceTbd = !!size.priceTbd;
+      line.unitPrice = size.priceTbd ? 0 : (size.price ?? getProduct("mushroom-hat")!.price);
+    }
+
     const catLines = lines.filter(line => line.productId === "cat-cave");
     if (catLines.length) {
       const snapshot = await readBernatStock();

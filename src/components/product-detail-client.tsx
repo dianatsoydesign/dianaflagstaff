@@ -114,7 +114,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   }, [product.defaultSizeId, product.id, product.price, product.sizes]);
 
   const productImages = [
-    { src: product.imageSrc, alt: product.imageAlt, shownColor: product.imageShownColor },
+    { src: product.imageSrc, alt: product.imageAlt, shownColor: product.imageShownColor, shownStyle: product.imageShownStyle },
     ...(product.galleryImages ?? []),
   ];
 
@@ -249,6 +249,12 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
             <ProductPurchaseForm
               product={product}
               relatedProducts={related}
+              onHatStyleChange={style => {
+                setPreviewYarn(null);
+                const label = style === "short-tip" ? "Short tip" : "Slouchy, long tip";
+                const index = slides.findIndex(image => image.shownStyle === label);
+                if (index !== -1) setActiveIndex(index);
+              }}
               onYarnChange={handleYarnChange}
               onYarnPreview={setPreviewYarn}
               onPriceChange={({ unitPrice, priceTbd: tbd }) => {

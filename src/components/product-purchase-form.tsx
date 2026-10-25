@@ -31,6 +31,7 @@ import { initialProductYarn } from "@/lib/product-color-selection";
 import { useInquiryCart } from "@/lib/inquiry-cart";
 import { yarnLineName } from "@/data/yarns";
 import { isSelectable, usesLiveSupplier } from "@/lib/yarn-stock";
+import { MushroomStylePicker } from "@/components/mushroom-style-picker";
 import { SharePage } from "@/components/share-page";
 import { QuantityPicker } from "@/components/quantity-picker";
 import { ProductPickupEstimate } from "@/components/product-pickup-estimate";
@@ -77,6 +78,7 @@ type Props = {
   onAdded?: () => void;
   className?: string;
   /** Called whenever the selected yarn changes; used to drive the gallery. */
+  onHatStyleChange?: (style: "slouchy" | "short-tip") => void;
   onYarnChange?: (yarn: YarnColor | null, pickedByUser: boolean) => void;
   /** Called with the hovered yarn (or null when the pointer leaves the swatches). */
   onYarnPreview?: (yarn: YarnColor | null) => void;
@@ -89,6 +91,7 @@ export function ProductPurchaseForm({
   relatedProducts = [],
   onAdded,
   className,
+  onHatStyleChange,
   onYarnChange,
   onYarnPreview,
   onPriceChange,
@@ -147,6 +150,9 @@ export function ProductPurchaseForm({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product]);
 
+  const selectedHatStyle = product.sizes.find(size => size.id === sizeId)?.hatStyle ?? "slouchy";
+  const visibleSizes = product.id === "mushroom-hat" ? product.sizes.filter(size => size.hatStyle === selectedHatStyle) : product.sizes;
+
   const customSizeSelected =
     sizeId != null && isRequestDifferentSizeId(sizeId);
 
@@ -183,9 +189,9 @@ export function ProductPurchaseForm({
     sizeId,
   ]);
 
-  const priceTbd =
+  const priceTbd = !!product.sizes.find(size => size.id === sizeId)?.priceTbd || (
     customSizeSelected &&
-    (!product.customSizePricing || sizedUnitPrice === null);
+    (!product.customSizePricing || sizedUnitPrice === null));
 
   const baseUnitPrice =
     sizedUnitPrice !== null ? sizedUnitPrice : product.price;
@@ -357,7 +363,7 @@ export function ProductPurchaseForm({
       productId: product.id,
       productName: product.name,
       sizeId: size.id,
-      sizeLabel: size.label,
+      sizeLabel: product.id === "mushroom-hat" ? `${size.label} · Style: ${selectedHatStyle === "short-tip" ? "Short tip" : "Slouchy, long tip"}` : size.label,
       yarnId: yarn.id,
       yarnName: yarn.name,
       yarnSwatchSrc: yarn.swatchSrc,
@@ -380,10 +386,18 @@ export function ProductPurchaseForm({
 
   return (
     <div className={cn("flex flex-col", pickerSectionGapClass, className)}>
+      {product.id === "mushroom-hat" && <MushroomStylePicker value={selectedHatStyle} onChange={style => {
+        const currentSize = product.sizes.find(size => size.id === sizeId);
+        const nextSize = product.sizes.find(size => size.hatStyle === style && size.label === currentSize?.label)
+          ?? product.sizes.find(size => size.hatStyle === style && size.label === "Adult");
+        setSizeId(nextSize?.id ?? null);
+        onHatStyleChange?.(style);
+        setMessage(null);
+      }} />}
       {!product.hideSizePicker && (
         <PickerValidation error={message && !/yarn|color/i.test(message) ? message : null}>
         <SizePicker
-          sizes={product.sizes}
+          sizes={visibleSizes}
           value={sizeId}
           onChange={(id) => { setSizeId(id); setMessage(null); }}
           allowRequestDifferentSize={product.allowRequestDifferentSize}

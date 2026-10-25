@@ -1,3 +1,4 @@
+import { HAT_POM_POM_OPTIONS } from "@/lib/hat-pom-pom";
 import { BOBBINY_PREMIUM_5MM_YARNS } from "@/data/bobbiny-premium-5mm";
 import { BERNAT_BLANKET_BIG_YARNS } from "@/data/bernat-blanket-big";
 import { CHARISMA_YARNS } from "@/data/charisma";
@@ -28,6 +29,8 @@ export type YarnColor = {
 };
 
 export type SizeOption = {
+  hatStyle?: "slouchy" | "short-tip";
+  priceTbd?: boolean;
   id: string;
   label: string;
   /** Overrides `product.price` for this size on the PDP and in the cart. */
@@ -41,6 +44,7 @@ export type ProductImage = {
   alt: string;
   /** Product color shown in this photo, displayed beneath the PDP image. */
   shownColor?: string;
+  shownStyle?: string;
   /** Hide studio matte (fractions of image size); content is scaled with `object-contain`. */
   galleryMatteInset?: GalleryMatteInset;
 };
@@ -67,6 +71,7 @@ export type Product = {
   imageAlt: string;
   /** Color(s) pictured in the main PDP photo. */
   imageShownColor?: string;
+  imageShownStyle?: string;
   /** Additional gallery images (not including imageSrc which is always first). */
   galleryImages?: ProductImage[];
   sizes: SizeOption[];
@@ -238,19 +243,25 @@ export const products: Product[] = [
   {
     id: "mushroom-hat",
     name: "Mushroom hat",
-    price: 55,
+    price: 65,
     category: "Holiday",
     imageSrc: "/products/mushroom hat/mushroom-hat-1-ai-upscaled-2048-v1.jpg",
+    imageShownStyle: "Slouchy, long tip",
     imageAlt: "Man wearing a red crochet mushroom hat with white spots and brim",
     galleryImages: [
-      { src: "/products/mushroom hat/mushroom-hat-2-ai-upscaled-2048-v1.jpg", alt: "Side view of a red crochet mushroom hat with white spots and a leather tag" },
-      { src: "/products/mushroom hat/mushroom-hat-3-ai-upscaled-2048-v1.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
+      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom-hat-2-ai-upscaled-2048-v1.jpg", alt: "Side view of a red crochet mushroom hat with white spots and a leather tag" },
+      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom-hat-3-ai-upscaled-2048-v1.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
+      { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom-hat-short-tip-studio-v2.jpg", alt: "Short-tip red and white crochet mushroom hat on a black mannequin against a neutral studio background" },
     ],
     sizes: [
-      { id: "baby", label: "Baby", price: 34 },
-      { id: "toddler", label: "Toddler", price: 39 },
-      { id: "child", label: "Child", price: 44 },
-      { id: "adult", label: "Adult", price: 55 },
+      { id: "baby", hatStyle: "slouchy", label: "Baby", price: 40 },
+      { id: "toddler", hatStyle: "slouchy", label: "Toddler", price: 46 },
+      { id: "child", hatStyle: "slouchy", label: "Child", price: 52 },
+      { id: "adult", hatStyle: "slouchy", label: "Adult", price: 65 },
+      { id: "short-tip-baby", label: "Baby", hatStyle: "short-tip", price: 34 },
+      { id: "short-tip-toddler", label: "Toddler", hatStyle: "short-tip", price: 39 },
+      { id: "short-tip-child", label: "Child", hatStyle: "short-tip", price: 44 },
+      { id: "short-tip-adult", label: "Adult", hatStyle: "short-tip", price: 55 },
     ],
     defaultSizeId: "adult",
     yarns: [
@@ -391,7 +402,7 @@ export function formatProductListPrice(product: Product): string {
   const max = Math.max(
     product.price,
     ...product.sizes.map((s) => s.price ?? product.price)
-  );
+  ) + (product.showPomPomPicker ? Math.max(...HAT_POM_POM_OPTIONS.map(option => option.priceAddUsd)) : 0);
   if (min !== max) return `${formatPrice(min)}\u2013${formatPrice(max)}`;
   return formatPrice(min);
 }
