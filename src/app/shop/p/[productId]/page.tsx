@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMetadata } from "@/lib/social-sharing";
 import { notFound } from "next/navigation";
 import { getProduct, listedProducts } from "@/data/products";
 import { getRelatedProducts, getRandomRecommendationPool } from "@/data/product-recommendations";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { productId } = await params;
   const product = getProduct(productId);
   if (!product) return {};
-  return { title: product.name };
+  return shareMetadata(product.name, `${product.name}, handmade by Diana in Flagstaff, Arizona. Explore colors and sizes. Local pickup only.`, `/shop/p/${product.id}`, `/social/${product.id}-v1.jpg`);
 }
 
 export default async function ProductPage({ params }: PageProps) {

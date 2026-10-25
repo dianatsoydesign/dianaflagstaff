@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { InquiryCartProvider } from "@/lib/inquiry-cart";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SITE_NAME } from "@/lib/site";
+import { SITE_URL } from "@/lib/social-sharing";
 import "./globals.css";
 
 /** Ventura Fluid uses Tenor Sans for titles/headings */
@@ -28,6 +29,7 @@ const tagline = Jost({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${SITE_NAME} • made in Flagstaff`,
     template: `%s · ${SITE_NAME}`,

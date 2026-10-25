@@ -31,6 +31,7 @@ import { initialProductYarn } from "@/lib/product-color-selection";
 import { useInquiryCart } from "@/lib/inquiry-cart";
 import { yarnLineName } from "@/data/yarns";
 import { isSelectable, usesLiveSupplier } from "@/lib/yarn-stock";
+import { SharePage } from "@/components/share-page";
 import { QuantityPicker } from "@/components/quantity-picker";
 import { ProductPickupEstimate } from "@/components/product-pickup-estimate";
 import { productionDaysForProduct, productsWithPickupEstimates, type PickupTiming } from "@/lib/pickup-estimate";
@@ -446,10 +447,10 @@ export function ProductPurchaseForm({
       {productsWithPickupEstimates.has(product.id) && (
         <ProductPickupEstimate timing={pickupTiming} customSize={customSizeSelected} />
       )}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-wrap items-start gap-3">
         <Button
           type="button"
-          className="h-12 w-full justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
+          className="h-12 min-w-[190px] flex-1 justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
           onClick={add}
           disabled={hasCachedSupplierStock && !yarns.length}
         >
@@ -461,6 +462,7 @@ export function ProductPurchaseForm({
             )}
           </span>
         </Button>
+        <SharePage title={product.name} path={`/shop/p/${product.id}`} />
       </div>
     </div>
   );

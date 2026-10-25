@@ -1,13 +1,11 @@
-import type { Metadata } from "next";
+import { shareMetadata, ABOUT_DESCRIPTION } from "@/lib/social-sharing";
 import Image from "next/image";
 import { Heart, Package, PawPrint, Sprout } from "lucide-react";
 
 const inlineAboutIcon =
   "inline size-[1.125em] shrink-0 align-[-0.15em] text-ink";
 
-export const metadata: Metadata = {
-  title: "About",
-};
+export const metadata = shareMetadata("Meet Diana", ABOUT_DESCRIPTION, "/about", "/social/about-v1.jpg");
 
 export default function AboutPage() {
   return (
