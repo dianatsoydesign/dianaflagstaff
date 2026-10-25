@@ -36,7 +36,7 @@ export async function POST(request: Request) {
       if (value != null && (typeof value !== "string" || value.length > limit)) {
         const label = field === "customerName" ? "Your name" : field === "pickupPreference" ? "Flagstaff pickup location" : field === "customerEmail" ? "Email address" : field === "customerPhone" ? "Phone number" : "Note";
         return NextResponse.json(
-          { error: `${label} must be ${limit} characters or fewer.` },
+          { error: `${label} must be ${limit} characters or fewer.`, field },
           { status: 400 }
         );
       }
@@ -44,12 +44,12 @@ export async function POST(request: Request) {
 
     if (!body.customerName?.trim()) {
       return NextResponse.json(
-        { error: "Name is required" },
+        { error: "Enter your name.", field: "customerName" },
         { status: 400 }
       );
     }
     if (!body.customerEmail || !isValidOrderEmail(body.customerEmail)) {
-      return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
+      return NextResponse.json({ error: "Enter a valid email address.", field: "customerEmail" }, { status: 400 });
     }
     if (body.customerPhone && !isValidOrderPhone(body.customerPhone)) {
       return NextResponse.json({ error: "Enter a valid phone number or leave it blank." }, { status: 400 });

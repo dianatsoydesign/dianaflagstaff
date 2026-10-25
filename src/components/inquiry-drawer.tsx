@@ -40,8 +40,25 @@ export function InquiryDrawer() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [contactError, setContactError] = useState<"email" | null>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
+  type CartField = "name" | "email" | "pickup" | "note";
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<CartField, string>>>({});
+  const [validationAttempt, setValidationAttempt] = useState(0);
+  const invalidField = useRef<CartField | null>(null);
+  function showFieldErrors(errors: Partial<Record<CartField, string>>) {
+    invalidField.current = (["name", "email", "pickup", "note"] as const).find((field) => errors[field]) ?? null;
+    setFieldErrors(errors);
+    setValidationAttempt((attempt) => attempt + 1);
+  }
+  function clearFieldError(field: CartField) {
+    setFieldErrors((prev) => ({ ...prev, [field]: undefined }));
+  }
+  useLayoutEffect(() => {
+    if (!invalidField.current) return;
+    const control = document.getElementById(`cart-${invalidField.current}`);
+    control?.focus({ preventScroll: true });
+    control?.closest("[data-cart-field]")?.scrollIntoView({ block: "nearest", behavior: "instant" });
+    invalidField.current = null;
+  }, [fieldErrors, validationAttempt]);
   const [note, setNote] = useState("");
   const [pickup, setPickup] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -123,16 +140,22 @@ export function InquiryDrawer() {
 
   async function submit() {
     setError(null);
-    setContactError(null);
-    if (!name.trim()) {
-      setError("Please add your name so Diana knows who to meet.");
+    const errors: Partial<Record<CartField, string>> = {};
+    if (!name.trim()) errors.name = "Enter your name so I know who to meet.";
+    if (!isValidOrderEmail(email)) errors.email = "Enter a valid email address.";
+    for (const [field, value, limit] of [
+      ["name", name, CART_FIELD_LIMITS.customerName],
+      ["email", email, CART_FIELD_LIMITS.customerEmail],
+      ["pickup", pickup, CART_FIELD_LIMITS.pickupPreference],
+      ["note", note, CART_FIELD_LIMITS.customerNote],
+    ] as const) {
+      if (value.length > limit) errors[field] = `Use ${limit} characters or fewer.`;
+    }
+    if (Object.keys(errors).length) {
+      showFieldErrors(errors);
       return;
     }
-    if (!isValidOrderEmail(email)) {
-      setContactError("email");
-      emailRef.current?.focus();
-      return;
-    }
+    setFieldErrors({});
     if (items.length === 0) {
       setError("Add at least one item first.");
       return;
@@ -172,7 +195,13 @@ export function InquiryDrawer() {
       if (!res.ok) {
         const data = (await res.json().catch(() => null)) as {
           error?: string;
+          field?: string;
         } | null;
+        const fieldMap: Record<string, CartField> = { customerName: "name", customerEmail: "email", pickupPreference: "pickup", customerNote: "note" };
+        if (data?.field && fieldMap[data.field]) {
+          showFieldErrors({ [fieldMap[data.field]]: data.error || "Check this field." });
+          return;
+        }
         throw new Error(data?.error || "Could not send request");
       }
       clear();
@@ -324,16 +353,17 @@ export function InquiryDrawer() {
 
           {!done && items.length > 0 && (
             <div className="mt-6 flex flex-col gap-5">
-              <div className="flex flex-col gap-1.5 text-sm">
+              <div data-cart-field="name" className="flex scroll-my-4 flex-col gap-1.5 text-sm">
                 <label htmlFor="cart-name" className="font-medium">Your name (required)</label>
                 <div className="relative">
                 <input
                   id="cart-name"
                   required
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => { setName(e.target.value); clearFieldError("name"); }}
                   maxLength={CART_FIELD_LIMITS.customerName}
-                  aria-describedby="cart-name-count"
+                  aria-invalid={!!fieldErrors.name || undefined}
+                  aria-describedby={`cart-name-count${fieldErrors.name ? " cart-name-error" : ""}`}
                   autoComplete="name"
                   className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
                   placeholder="So I know who to meet"
@@ -344,15 +374,19 @@ export function InquiryDrawer() {
                 </p>
                   )}
                 </div>
+                {fieldErrors.name && (
+                  <p id="cart-name-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
+                    {fieldErrors.name}
+                  </p>
+                )}
                 <span className="sr-only" role="status">
                   {name.length >= CART_FIELD_LIMITS.customerName ? "Character limit reached." : ""}
                 </span>
               </div>
-              <div className="flex flex-col gap-1.5 text-sm">
+              <div data-cart-field="email" className="flex scroll-my-4 flex-col gap-1.5 text-sm">
                 <label htmlFor="cart-email" className="font-medium">Email address (required)</label>
                 <div className="relative">
                 <input
-                  ref={emailRef}
                   id="cart-email"
                   placeholder="So you receive an order confirmation"
                   type="email"
@@ -362,10 +396,10 @@ export function InquiryDrawer() {
                   autoComplete="email"
                   required
                   value={email}
-                  onChange={(e) => { setEmail(e.target.value); if (contactError === "email") setContactError(null); }}
+                  onChange={(e) => { setEmail(e.target.value); clearFieldError("email"); }}
                   maxLength={CART_FIELD_LIMITS.customerEmail}
-                  aria-invalid={contactError === "email" || undefined}
-                  aria-describedby={`cart-email-count${contactError === "email" ? " cart-email-error" : ""}`}
+                  aria-invalid={!!fieldErrors.email || undefined}
+                  aria-describedby={`cart-email-count${fieldErrors.email ? " cart-email-error" : ""}`}
                   className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
                 />
                   {email.length > 0 && (
@@ -374,21 +408,22 @@ export function InquiryDrawer() {
                 </p>
                   )}
                 </div>
-                {contactError === "email" && (
+                {fieldErrors.email && (
                   <p id="cart-email-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
-                    Enter a valid email address.
+                    {fieldErrors.email}
                   </p>
                 )}
               </div>
-              <div className="flex flex-col gap-1.5 text-sm">
+              <div data-cart-field="pickup" className="flex scroll-my-4 flex-col gap-1.5 text-sm">
                 <label htmlFor="cart-pickup" className="font-medium">Flagstaff pickup location (optional)</label>
                 <div className="relative">
                 <input
                   id="cart-pickup"
                   value={pickup}
-                  onChange={(e) => setPickup(e.target.value)}
+                  onChange={(e) => { setPickup(e.target.value); clearFieldError("pickup"); }}
                   maxLength={CART_FIELD_LIMITS.pickupPreference}
-                  aria-describedby="cart-pickup-count"
+                  aria-invalid={!!fieldErrors.pickup || undefined}
+                  aria-describedby={`cart-pickup-count${fieldErrors.pickup ? " cart-pickup-error" : ""}`}
                   
                   className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
                   placeholder="Friend meet-up / neighborhood handoff"
@@ -399,19 +434,25 @@ export function InquiryDrawer() {
                 </p>
                   )}
                 </div>
+                {fieldErrors.pickup && (
+                  <p id="cart-pickup-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
+                    {fieldErrors.pickup}
+                  </p>
+                )}
                 <span className="sr-only" role="status">
                   {pickup.length >= CART_FIELD_LIMITS.pickupPreference ? "Character limit reached." : ""}
                 </span>
               </div>
-              <div className="flex flex-col gap-1.5 text-sm">
+              <div data-cart-field="note" className="flex scroll-my-4 flex-col gap-1.5 text-sm">
                 <label htmlFor="cart-note" className="font-medium">Notes (optional)</label>
                 <div className="relative">
                 <textarea
                   id="cart-note"
                   value={note}
-                  onChange={(e) => setNote(e.target.value)}
+                  onChange={(e) => { setNote(e.target.value); clearFieldError("note"); }}
                   maxLength={CART_FIELD_LIMITS.customerNote}
-                  aria-describedby="cart-note-count"
+                  aria-invalid={!!fieldErrors.note || undefined}
+                  aria-describedby={`cart-note-count${fieldErrors.note ? " cart-note-error" : ""}`}
                   rows={3}
                   className={cn(formFieldInputClass, "w-full rounded-[8px] pb-8 pt-2.5")}
                   placeholder="Your phone number (if Diana doesn’t already have it), timing, etc."
@@ -422,15 +463,15 @@ export function InquiryDrawer() {
                 </p>
                   )}
                 </div>
+                {fieldErrors.note && (
+                  <p id="cart-note-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
+                    {fieldErrors.note}
+                  </p>
+                )}
                 <span className="sr-only" role="status">
                   {note.length >= CART_FIELD_LIMITS.customerNote ? "Character limit reached." : ""}
                 </span>
               </div>
-              {error && (
-                <p className="text-left text-sm text-red-700 dark:text-red-400" role="alert">
-                  {error}
-                </p>
-              )}
             </div>
           )}
         </div>
@@ -485,6 +526,11 @@ export function InquiryDrawer() {
             <p id="cart-payment-note" className="text-left text-sm text-muted-foreground">
               Payment due once your order is confirmed.
             </p>
+            {error && (
+              <p className="text-left text-sm text-red-700 dark:text-red-400" role="alert">
+                {error}
+              </p>
+            )}
             <div className="grid w-full grid-cols-2 gap-2">
               <Button
                 type="button"
