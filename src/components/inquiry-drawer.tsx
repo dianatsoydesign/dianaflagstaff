@@ -1,5 +1,8 @@
 "use client";
 
+import { OfflineNotice } from "@/components/offline-notice";
+import { reportNetworkFailure } from "@/lib/connection-status";
+import { CartCat } from "@/components/cart-cat";
 import { CART_FIELD_LIMITS, isValidOrderEmail } from "@/lib/cart-field-limits";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -217,7 +220,12 @@ export function InquiryDrawer() {
       setNote("");
       setPickup("");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Something went wrong");
+      if (!navigator.onLine || e instanceof TypeError) {
+        reportNetworkFailure();
+        setError("The connection was interrupted. Your cart and details are still here. Check your connection before trying to send the request again.");
+      } else {
+        setError(e instanceof Error ? e.message : "Could not send your request. Try again.");
+      }
     } finally {
       setSubmitting(false);
     }
@@ -248,6 +256,7 @@ export function InquiryDrawer() {
         </SheetHeader>
 
         <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain px-4 py-4 scroll-py-4 sm:px-5">
+          <OfflineNotice compact />
           {done ? (
             <div className="rounded-xl bg-secondary/70 px-4 py-6 text-left">
               <h3 ref={confirmationHeading} tabIndex={-1} className="font-display text-xl text-ink">Request sent</h3>
@@ -263,26 +272,22 @@ export function InquiryDrawer() {
             </div>
           ) : items.length === 0 ? (
             <div className="flex min-h-[min(50vh,20rem)] flex-col items-center justify-center px-2 py-8 text-center">
-              <img
-                src="/illustrations/cat-out-of-bag.gif"
-                alt="Cat peeking out of a shopping bag"
-                width={800}
-                height={600}
-                className="mb-6 w-full max-w-[280px] object-contain"
-                decoding="async"
-              />
-              <p className="font-display text-xl text-ink">
-                Your cart is empty
+              <div className="mb-6 w-full max-w-[468px]"><CartCat /></div>
+              <p className="font-display text-3xl font-normal leading-[1.12] tracking-[-0.04em] text-ink">
+                Your cart is empty.
+              </p>
+              <p className="mt-4 font-sans text-lg leading-relaxed text-foreground">
+                Just a cat in the bag. For now.
               </p>
               <Button
                 type="button"
-                className="mt-6 h-12 w-full max-w-sm rounded-full bg-button text-base text-button-foreground hover:bg-button-hover"
+                className="mt-6 h-12 w-auto rounded-full bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
                 onClick={() => {
                   setDrawerOpen(false);
                   router.push("/");
                 }}
               >
-                Shop now
+                Explore the shop
               </Button>
             </div>
           ) : (

@@ -55,3 +55,14 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Required and optional form fields
 
 - Follow `.cursor/rules/form-field-requirements.mdc` for website work. Explicitly label required and optional fields consistently beside their persistent labels, and keep visible labels, accessibility semantics, and validation in agreement.
+
+## Animation controls
+
+- For every new or edited animation, reuse the compact bottom-right `AnimationToggle` pause/play control, with a 44px target, accessible action label, and visible keyboard focus.
+- Respect `prefers-reduced-motion`: start still and pause when the preference changes to reduced motion. Allow explicit playback.
+- Use transparent backgrounds where supported so animations blend with light and dark themes. Preserve original source assets.
+- Verify pause/play, reduced motion, keyboard access, and both themes when adding animations.
+
+## Button labels
+
+- Follow `.cursor/rules/button-sentence-case.mdc`: use sentence case for all new and edited button and action-link labels. Reuse shared button variants.

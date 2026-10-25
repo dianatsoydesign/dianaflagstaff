@@ -36,5 +36,5 @@ async function card(id, photos, portrait = false) {
 }
 for (const p of products) await card(p.id, [p.imageSrc]);
 await card('about', ['/about/portrait-v5.jpg'], true);
-await card('shop', products.filter(p => ['elf-hat', 'coasters'].includes(p.id)).map(p => p.imageSrc));
+await card('shop', products.filter(p => ['mushroom-hat', 'coasters'].includes(p.id)).map(p => p.imageSrc));
 console.log(`Generated ${products.length + 2} photography-only social preview cards.`);

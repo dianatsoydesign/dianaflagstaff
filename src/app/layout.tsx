@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { InquiryCartProvider } from "@/lib/inquiry-cart";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SITE_NAME } from "@/lib/site";
+import { OfflineNotice } from "@/components/offline-notice";
 import { SITE_URL } from "@/lib/social-sharing";
 import "./globals.css";
 
@@ -56,7 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <InquiryCartProvider>
             <a href="#main-content" className="skip-link">Skip to content</a>
             <SiteHeader />
-            <main id="main-content" tabIndex={-1} className="flex-1 pb-16">{children}</main>
+            <main id="main-content" tabIndex={-1} className="flex-1 pb-16"><OfflineNotice />{children}</main>
           </InquiryCartProvider>
         </ThemeProvider>
       </body>

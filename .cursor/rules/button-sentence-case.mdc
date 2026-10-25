@@ -1,0 +1,11 @@
+---
+description: Use sentence case for button and action labels
+alwaysApply: true
+---
+
+# Button sentence case
+
+- Use sentence case for every new or edited button and action-link label: capitalize the first word, proper names, and acronyms only.
+- Examples: "Try again", "Back to home", "Explore the shop", "Add to cart".
+- Home and shop are generic destinations in action labels, not proper names. Standalone navigation labels remain "Home" and "Shop".
+- Reuse shared Button variants for primary and secondary actions, including links styled as buttons.
