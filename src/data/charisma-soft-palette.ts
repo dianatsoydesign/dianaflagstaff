@@ -29,7 +29,7 @@ export function isCharismaSoftPaletteYarn(
 export function charismaSoftPaletteYarn(): YarnColor {
   return {
     id: CHARISMA_SOFT_PALETTE_YARN_ID,
-    name: "Holiday: soft palette",
+    name: "Holiday soft palette",
     swatchSrc: "/yarn-swatches/charisma-soft-palette.svg",
     stockStatus: "in_stock",
   };

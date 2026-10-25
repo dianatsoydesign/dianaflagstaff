@@ -7,3 +7,9 @@ export function colorName(name: string) {
     .map((word) => (PROPER_WORDS.has(word) ? word : word.toLowerCase()))
     .join(" ");
 }
+
+/** Sentence case for standalone color labels on product pages. */
+export function sentenceCaseColorName(name: string): string {
+  const label = colorName(name);
+  return label.charAt(0).toUpperCase() + label.slice(1);
+}

@@ -155,12 +155,12 @@ export const products: Product[] = [
     category: "Holiday",
     imageSrc: "/products/christmas-stockings/hero-studio-v9.jpg",
     imageAlt: "Row of handmade crochet Christmas stockings in holiday colors",
-    imageShownColor: "Multi, Red, Off White, Pine, Multi (left to right)",
+    imageShownColor: "Holiday warm palette, red, off white, pine, Holiday soft palette (left to right)",
     galleryImages: [
       { src: "/products/christmas-stockings/2-studio-v2.jpg", alt: "Red crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Red" },
       { src: "/products/christmas-stockings/off-white-studio-v2.jpg", alt: "Cream crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Off White" },
       { src: "/products/christmas-stockings/pine-studio-v3.jpg", alt: "Pine green crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Pine" },
-      { src: "/products/christmas-stockings/4-studio-v4.jpg", alt: "Hand holding a striped crochet Christmas stocking", shownColor: "Multi" },
+      { src: "/products/christmas-stockings/4-studio-v4.jpg", alt: "Hand holding a striped crochet Christmas stocking in the Holiday soft palette", shownColor: "Holiday soft palette" },
     ],
     sizes: [{ id: "one", label: "One stocking" }],
     hideSizePicker: true,
@@ -193,7 +193,7 @@ export const products: Product[] = [
     dimensions: {
       lines: ['4.5" × 4.5"'],
     },
-    quantityPicker: { max: 12 },
+    quantityPicker: { min: 4, max: 12 },
     yarns: BOBBINY_PREMIUM_5MM_YARNS,
   },
   {
@@ -302,7 +302,7 @@ export const products: Product[] = [
       referenceHeightInches: 7,
     },
     customSizeLimits: { minInches: 7, maxInches: 10 },
-    quantityPicker: { max: 10 },
+    quantityPicker: { min: 2, max: 10 },
     yarns: BOBBINY_PREMIUM_5MM_YARNS,
   },
   {

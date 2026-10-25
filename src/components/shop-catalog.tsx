@@ -25,6 +25,7 @@ export function ShopCatalog() {
                 index={i}
                 animate
                 dimInDark
+                showMinimumPurchase
               />
             </li>
           ))}

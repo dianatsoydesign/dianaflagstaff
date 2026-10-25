@@ -82,8 +82,8 @@ type Props = {
   onYarnChange?: (yarn: YarnColor | null, pickedByUser: boolean) => void;
   /** Called with the hovered yarn (or null when the pointer leaves the swatches). */
   onYarnPreview?: (yarn: YarnColor | null) => void;
-  /** PDP header price follows size / custom dimensions. */
-  onPriceChange?: (state: { unitPrice: number; priceTbd: boolean }) => void;
+  /** PDP header price follows size, custom dimensions, options, and quantity. */
+  onPriceChange?: (state: { unitPrice: number; priceTbd: boolean; quantity: number }) => void;
 };
 
 export function ProductPurchaseForm({
@@ -203,8 +203,8 @@ export function ProductPurchaseForm({
   const unitPrice = baseUnitPrice + pomPomAddUsd;
 
   useEffect(() => {
-    onPriceChange?.({ unitPrice, priceTbd });
-  }, [unitPrice, priceTbd, onPriceChange]);
+    onPriceChange?.({ unitPrice, priceTbd, quantity: qtyConfig ? quantity : 1 });
+  }, [unitPrice, priceTbd, quantity, qtyConfig, onPriceChange]);
 
   const hasLiveStock = usesLiveSupplier(product.yarns);
 

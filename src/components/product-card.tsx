@@ -4,6 +4,7 @@ import { ProductImageBadge } from "@/components/product-image-badge";
 import { ProductNamePrice } from "@/components/product-name-price";
 import {
   formatProductListPrice,
+  formatPrice,
   getProductListPrice,
   type Product,
 } from "@/data/products";
@@ -16,6 +17,7 @@ type Props = {
   index?: number;
   animate?: boolean;
   dimInDark?: boolean;
+  showMinimumPurchase?: boolean;
 };
 
 export function ProductCard({
@@ -23,7 +25,10 @@ export function ProductCard({
   index = 0,
   animate = false,
   dimInDark = false,
+  showMinimumPurchase = false,
 }: Props) {
+  const minimum = showMinimumPurchase ? product.quantityPicker?.min ?? 1 : 1;
+  const unitPrice = getProductListPrice(product);
   const imageSizes = "(max-width: 767px) 100vw, 31vw";
 
   return (
@@ -56,8 +61,8 @@ export function ProductCard({
       </div>
       <ProductNamePrice
         name={product.name}
-        price={getProductListPrice(product)}
-        priceLabel={formatProductListPrice(product)}
+        price={unitPrice * minimum}
+        priceLabel={minimum > 1 ? `${formatPrice(unitPrice * minimum)} for ${minimum}` : formatProductListPrice(product)}
       />
     </Link>
   );

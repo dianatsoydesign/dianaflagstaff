@@ -98,6 +98,8 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
       ? getSizeUnitPrice(product, defaultSizeId)
       : product.price;
   });
+  const minimumQuantity = product.quantityPicker?.min ?? 1;
+  const [displayQuantity, setDisplayQuantity] = useState(minimumQuantity);
   const [priceTbd, setPriceTbd] = useState(false);
 
   useEffect(() => {
@@ -110,8 +112,9 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
         ? getSizeUnitPrice(product, defaultSizeId)
         : product.price
     );
+    setDisplayQuantity(minimumQuantity);
     setPriceTbd(false);
-  }, [product.defaultSizeId, product.id, product.price, product.sizes]);
+  }, [product.defaultSizeId, product.id, product.price, product.sizes, minimumQuantity]);
 
   const productImages = [
     { src: product.imageSrc, alt: product.imageAlt, shownColor: product.imageShownColor, shownStyle: product.imageShownStyle },
@@ -197,7 +200,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
             <div className="order-1 md:order-none">
               <ProductNamePrice
                 name={product.name}
-                price={displayUnitPrice}
+                price={displayUnitPrice * displayQuantity}
                 priceTbd={priceTbd}
                 variant="detail"
               />
@@ -257,8 +260,9 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
               }}
               onYarnChange={handleYarnChange}
               onYarnPreview={setPreviewYarn}
-              onPriceChange={({ unitPrice, priceTbd: tbd }) => {
+              onPriceChange={({ unitPrice, priceTbd: tbd, quantity }) => {
                 setDisplayUnitPrice(unitPrice);
+                setDisplayQuantity(quantity);
                 setPriceTbd(tbd);
               }}
               className="order-4 md:order-none"

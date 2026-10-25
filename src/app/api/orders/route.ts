@@ -91,6 +91,15 @@ export async function POST(request: Request) {
       if (line.kind === "catalog" && !getProduct(line.productId)) {
         return NextResponse.json({ error: "This product is no longer available." }, { status: 400 });
       }
+      const product = getProduct(line.productId);
+      const minimum = product?.quantityPicker?.min ?? 1;
+      if (line.kind === "catalog" && minimum > 1 &&
+          (!Number.isSafeInteger(line.quantity) || line.quantity < minimum)) {
+        return NextResponse.json(
+          { error: `Order at least ${minimum} ${product?.name.toLowerCase()} per color and option combination.` },
+          { status: 400 }
+        );
+      }
       if (!isRequestDifferentSizeId(line.sizeId)) continue;
       const limits = getProduct(line.productId)?.customSizeLimits;
       if (!limits) continue;

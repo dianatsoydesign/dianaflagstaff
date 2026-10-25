@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { pickerFieldsetClass, pickerLegendClass } from "@/components/picker-styles";
 import { cn } from "@/lib/utils";
 import { QuantityStepper } from "@/components/quantity-stepper";
@@ -21,17 +22,27 @@ export function QuantityPicker({
   label = "Quantity",
   className,
 }: Props) {
+  const minimumDescriptionId = useId();
   return (
     <fieldset className={cn(pickerFieldsetClass, className)}>
-      <legend className={pickerLegendClass}>{label}:</legend>
-      <QuantityStepper
-        value={value}
-        onChange={onChange}
-        min={min}
-        max={max}
-        lockDecreaseAtMin
-        inputAriaLabel={label}
-      />
+      <legend className={pickerLegendClass}>{label} (required):</legend>
+      <div className="flex flex-wrap items-center gap-3">
+        <QuantityStepper
+          className="shrink-0"
+          value={value}
+          onChange={onChange}
+          min={min}
+          max={max}
+          lockDecreaseAtMin
+          inputDescriptionId={min > 1 ? minimumDescriptionId : undefined}
+          inputAriaLabel={`${label} (required), minimum ${min}, maximum ${max}`}
+        />
+        {min > 1 && (
+          <p id={minimumDescriptionId} className="text-sm text-muted-foreground">
+            Minimum {min}
+          </p>
+        )}
+      </div>
     </fieldset>
   );
 }

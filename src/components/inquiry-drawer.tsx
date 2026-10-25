@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { Trash2, X } from "lucide-react";
 import { QuantityStepper } from "@/components/quantity-stepper";
 import { VENMO_HANDLE, formatPriceOrTbd } from "@/data/products";
-import { cartQuantityMax, useInquiryCart, type InquiryItem } from "@/lib/inquiry-cart";
+import { cartQuantityMin, cartQuantityMax, useInquiryCart, type InquiryItem } from "@/lib/inquiry-cart";
 import { formatLineOptions, productShowsSize } from "@/lib/line-options";
 import { formFieldInputClass } from "@/components/picker-styles";
 import { productPhotoBgClass } from "@/lib/product-photo-bg";
@@ -325,16 +325,21 @@ export function InquiryDrawer() {
                           : "Maximum 2 across colors and options."}
                       </p>
                     )}
+                    {cartQuantityMin(item) > 1 && (
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Minimum {cartQuantityMin(item)}
+                      </p>
+                    )}
                     <div className="mt-auto flex min-w-0 flex-wrap items-end justify-between gap-2 pt-3">
                       <QuantityStepper
                         size="default"
                         className="shrink-0 [&_input]:w-8"
-                        inputAriaLabel={`Quantity for ${item.productName}, ${formatLineOptions(item)}`}
+                        inputAriaLabel={`Quantity for ${item.productName}, ${formatLineOptions(item)}, minimum ${cartQuantityMin(item)}`}
                         productContext={`${item.productName}, ${formatLineOptions(item)}`}
                         value={item.quantity}
-                        min={0}
+                        min={cartQuantityMin(item) > 1 ? cartQuantityMin(item) : 0}
                         max={cartQuantityMax(item, items)}
-                        lockDecreaseAtMin={false}
+                        lockDecreaseAtMin={cartQuantityMin(item) > 1}
                         onChange={(q) => q <= 0 ? removeWithUndo(item) : updateQuantity(item.id, q)}
                       />
                       <Button

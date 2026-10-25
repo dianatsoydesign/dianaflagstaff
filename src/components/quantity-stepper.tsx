@@ -19,6 +19,7 @@ type Props = {
   /** When true, − is disabled at `min` (product page). Cart allows − at 1 to remove. */
   lockDecreaseAtMin?: boolean;
   inputAriaLabel?: string;
+  inputDescriptionId?: string;
   productContext?: string;
   className?: string;
   size?: "default" | "compact";
@@ -31,6 +32,7 @@ export function QuantityStepper({
   max = 99,
   lockDecreaseAtMin = true,
   inputAriaLabel = "Quantity",
+  inputDescriptionId,
   productContext,
   className,
   size = "default",
@@ -85,6 +87,7 @@ export function QuantityStepper({
       </Button>
       <input
         id={inputId}
+        aria-describedby={inputDescriptionId}
         type="text"
         inputMode="numeric"
         pattern="[0-9]*"

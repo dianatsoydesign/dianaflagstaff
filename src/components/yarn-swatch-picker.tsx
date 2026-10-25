@@ -41,7 +41,7 @@ import {
 } from "@/components/picker-styles";
 import { bernatColorGroupId, bernatGroupsForYarns, type BernatColorGroupId } from "@/data/bernat-blanket-big";
 import { HolidayPizzaSwatch } from "@/components/holiday-pizza-swatch";
-import { colorName } from "@/lib/color-name";
+import { sentenceCaseColorName } from "@/lib/color-name";
 import { isBobbinyYarnId, productPhotoBgClass } from "@/lib/product-photo-bg";
 
 function colorThumbSrc(yarn: {
@@ -137,7 +137,7 @@ export function YarnSwatchPicker({
             <span className="sr-only">{legend}: </span>
             Color:{" "}
             <span className="font-medium text-foreground">
-              {colorName(shown.name)}
+              {sentenceCaseColorName(shown.name)}
             </span>
           </>
         ) : (
@@ -256,8 +256,8 @@ export function YarnSwatchPicker({
               aria-checked={keyboardNavigation ? isSelected : undefined}
               tabIndex={keyboardNavigation ? (isSelected || (!(showHolidayChip && groupFilter === "holiday" && (value === CHARISMA_HOLIDAY_PIZZA_YARN_ID || (showSoftPaletteSwatch && value === CHARISMA_SOFT_PALETTE_YARN_ID) || (showWarmPaletteSwatch && value === CHARISMA_WARM_PALETTE_YARN_ID))) && !displayedYarns.some((y) => y.id === value && isSelectable(y.liveStatus ?? y.stockStatus)) && yarn.id === displayedYarns.find((y) => isSelectable(y.liveStatus ?? y.stockStatus))?.id) ? 0 : -1) : undefined}
               aria-pressed={keyboardNavigation ? undefined : isSelected}
-              aria-label={colorName(yarn.name)}
-              title={colorName(yarn.name)}
+              aria-label={sentenceCaseColorName(yarn.name)}
+              title={sentenceCaseColorName(yarn.name)}
               className={cn(
                 "relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
@@ -270,7 +270,7 @@ export function YarnSwatchPicker({
             >
               <Image
                 src={colorThumbSrc(yarn)}
-                alt={colorName(yarn.name)}
+                alt={sentenceCaseColorName(yarn.name)}
                 fill
                 className={yarnSwatchCircleImageClass}
                 sizes="60px"
@@ -315,8 +315,8 @@ export function YarnSwatchPicker({
             aria-checked={keyboardNavigation ? value === CHARISMA_SOFT_PALETTE_YARN_ID : undefined}
             tabIndex={keyboardNavigation ? (value === CHARISMA_SOFT_PALETTE_YARN_ID ? 0 : -1) : undefined}
             aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_SOFT_PALETTE_YARN_ID}
-            aria-label="Holiday: soft palette"
-            title="Holiday: soft palette"
+            aria-label="Holiday soft palette"
+            title="Holiday soft palette"
             className={cn(
               "relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",

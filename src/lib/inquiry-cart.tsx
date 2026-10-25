@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { getProduct } from "@/data/products";
 import { isRequestDifferentSizeId } from "@/lib/custom-size";
 
 export type InquiryItemKind = "catalog" | "pattern_request";
@@ -39,6 +40,10 @@ export type InquiryItem = {
   designerName?: string;
   patternUrl?: string | null;
 };
+
+export function cartQuantityMin(item: Pick<InquiryItem, "kind" | "productId">): number {
+  return item.kind === "catalog" ? getProduct(item.productId)?.quantityPicker?.min ?? 1 : 1;
+}
 
 /** Default limits apply across colors and other options of the same product size. */
 export function cartQuantityMax(
@@ -122,7 +127,7 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
             : p
         );
       }
-      const quantity = Math.min(item.quantity, cartQuantityMax(item, prev));
+      const quantity = Math.min(Math.max(cartQuantityMin(item), Math.round(item.quantity)), cartQuantityMax(item, prev));
       if (quantity <= 0) return prev;
       const newItem = { ...item, quantity, id: resultId };
       return [...prev, newItem];
@@ -170,7 +175,7 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
   const updateQuantity = useCallback((id: string, quantity: number) => {
     setItems((prev) =>
       prev
-        .map((p) => (p.id === id ? { ...p, quantity: Number.isFinite(quantity) ? Math.max(0, Math.min(Math.round(quantity), cartQuantityMax(p, prev))) : p.quantity } : p))
+        .map((p) => (p.id === id ? { ...p, quantity: Number.isFinite(quantity) ? Math.max(cartQuantityMin(p), Math.min(Math.round(quantity), cartQuantityMax(p, prev))) : p.quantity } : p))
         .filter((p) => p.quantity > 0)
     );
   }, []);
