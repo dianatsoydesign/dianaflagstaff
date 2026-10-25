@@ -24,6 +24,7 @@ export function ShopCatalog() {
                 product={product}
                 index={i}
                 animate
+                dimInDark
               />
             </li>
           ))}

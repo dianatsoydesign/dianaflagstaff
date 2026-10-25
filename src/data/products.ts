@@ -252,6 +252,7 @@ export const products: Product[] = [
       { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom-hat-2-ai-upscaled-2048-v1.jpg", alt: "Side view of a red crochet mushroom hat with white spots and a leather tag" },
       { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom-hat-3-ai-upscaled-2048-v1.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
       { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom-hat-short-tip-studio-v2.jpg", alt: "Short-tip red and white crochet mushroom hat on a black mannequin against a neutral studio background" },
+      { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom-hat-short-tip-2-studio-v1.jpg", alt: "Short-tip mushroom hat on a black mannequin showing the raised brim and cream crochet underside" },
     ],
     sizes: [
       { id: "baby", hatStyle: "slouchy", label: "Baby", price: 40 },

@@ -15,12 +15,14 @@ type Props = {
   product: Product;
   index?: number;
   animate?: boolean;
+  dimInDark?: boolean;
 };
 
 export function ProductCard({
   product,
   index = 0,
   animate = false,
+  dimInDark = false,
 }: Props) {
   const imageSizes = "(max-width: 767px) 100vw, 31vw";
 
@@ -45,6 +47,7 @@ export function ProductCard({
           fill
           className={cn(
             "object-contain",
+            dimInDark && "dark:brightness-80",
             productImageInteractionClass
           )}
           sizes={imageSizes}
