@@ -19,7 +19,7 @@ import { SITE_NAME } from "@/lib/site";
 import { navigationControlClass } from "@/lib/navigation-styles";
 
 const nav = [
-  { href: "/", label: "Shop crochet" },
+  { href: "/", label: "Shop" },
   { href: "/about", label: "About" },
 ];
 

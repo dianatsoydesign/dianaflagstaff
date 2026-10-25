@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { productId } = await params;
   const product = getProduct(productId);
   if (!product) return {};
-  return shareMetadata(product.name, `${product.name}, handmade by Diana in Flagstaff, Arizona. Explore colors and sizes. Local pickup only.`, `/shop/p/${product.id}`, `/social/${product.id}-v1.jpg`);
+  return shareMetadata(product.name, `${product.name}, handmade by Diana in Flagstaff, Arizona. Explore colors and sizes. Local pickup only.`, `/shop/p/${product.id}`, `/social/${product.id}-v2.jpg`);
 }
 
 export default async function ProductPage({ params }: PageProps) {

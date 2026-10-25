@@ -5,7 +5,7 @@ import { Heart, Package, PawPrint, Sprout } from "lucide-react";
 const inlineAboutIcon =
   "inline size-[1.125em] shrink-0 align-[-0.15em] text-ink";
 
-export const metadata = shareMetadata("Meet Diana", ABOUT_DESCRIPTION, "/about", "/social/about-v1.jpg");
+export const metadata = shareMetadata("Meet Diana", ABOUT_DESCRIPTION, "/about", "/social/about-v2.jpg");
 
 export default function AboutPage() {
   return (

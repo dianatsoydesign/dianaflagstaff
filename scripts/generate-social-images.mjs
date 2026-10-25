@@ -18,24 +18,23 @@ function visit(node) {
   ts.forEachChild(node, visit);
 }
 visit(source);
-const escape = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 await fs.mkdir('public/social', { recursive: true });
-async function card(id, title, photos, subtitle) {
+async function card(id, photos, portrait = false) {
   const layers = [];
-  const photoWidth = Math.floor(570 / photos.length);
+  const gap = photos.length > 1 ? 12 : 0;
+  const photoWidth = Math.floor((1200 - gap * (photos.length - 1)) / photos.length);
   for (let i = 0; i < photos.length; i++) {
-    const input = await sharp(`public${photos[i]}`).rotate().resize(photoWidth - 12, 510, { fit: photos.length > 1 ? 'cover' : 'contain', background: '#f6f3ed' }).png().toBuffer();
-    layers.push({ input, left: 600 + i * photoWidth, top: 60 });
+    const input = await sharp(`public${photos[i]}`).rotate().resize(photoWidth, 630, {
+      fit: portrait ? 'cover' : 'contain',
+      position: 'centre',
+      background: '#f6f3ed',
+    }).png().toBuffer();
+    layers.push({ input, left: i * (photoWidth + gap), top: 0 });
   }
-  const words = title.split(' '), lines = [''];
-  for (const word of words) {
-    if ((lines.at(-1) + word).length > 19) lines.push('');
-    lines[lines.length - 1] += `${word} `;
-  }
-  const svg = `<svg width="1200" height="630"><rect width="1200" height="630" fill="#f6f3ed"/><g fill="#292821" font-family="sans-serif"><text x="55" y="105" font-size="30">Diana’s art</text>${lines.map((line, i) => `<text x="55" y="${230 + i * 60}" font-size="48">${escape(line.trim())}</text>`).join('')}<text x="55" y="470" font-size="23">${escape(subtitle)}</text><text x="55" y="515" font-size="22">Local pickup in Flagstaff, AZ</text><text x="55" y="565" font-size="20">dianaflagstaff.com</text></g></svg>`;
-  await sharp(Buffer.from(svg)).composite(layers).jpeg({ quality: 88 }).toFile(`public/social/${id}-v1.jpg`);
+  await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#f6f3ed' } })
+    .composite(layers).jpeg({ quality: 88 }).toFile(`public/social/${id}-v2.jpg`);
 }
-for (const p of products) await card(p.id, p.name, [p.imageSrc], 'Handmade crochet');
-await card('about', 'Meet Diana', ['/about/portrait-v5-mobile.jpg'], 'Artist. Maker. Crochet enthusiast.');
-await card('shop', 'Made by hand. Made for you.', products.filter(p => ['elf-hat', 'coasters'].includes(p.id)).map(p => p.imageSrc), 'Crochet hats, home goods, and gifts');
-console.log(`Generated ${products.length + 2} social preview cards.`);
+for (const p of products) await card(p.id, [p.imageSrc]);
+await card('about', ['/about/portrait-v5.jpg'], true);
+await card('shop', products.filter(p => ['elf-hat', 'coasters'].includes(p.id)).map(p => p.imageSrc));
+console.log(`Generated ${products.length + 2} photography-only social preview cards.`);
