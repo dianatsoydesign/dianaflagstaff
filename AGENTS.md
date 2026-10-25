@@ -58,7 +58,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Animation controls
 
-- For every new or edited animation, reuse the compact bottom-right `AnimationToggle` pause/play control, with a 44px target, accessible action label, and visible keyboard focus.
+- Approved exception: the custom-request Shop tile plays its decorative cat once (about one second) on entering view, then holds still. No playback control; reduced-motion users see a still frame. Never replay on hover or repeated scrolling.
+- For all other new or edited animations, reuse the compact bottom-right `AnimationToggle` pause/play control, with a 44px target, accessible action label, and visible keyboard focus.
 - Respect `prefers-reduced-motion`: start still and pause when the preference changes to reduced motion. Allow explicit playback.
 - Use transparent backgrounds where supported so animations blend with light and dark themes. Preserve original source assets.
 - Verify pause/play, reduced motion, keyboard access, and both themes when adding animations.
@@ -66,3 +67,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Button labels
 
 - Follow `.cursor/rules/button-sentence-case.mdc`: use sentence case for all new and edited button and action-link labels. Reuse shared button variants.
+
+- Store all animation assets and source JSON inside this repository (`public/illustrations/` or `src/data/animations/`), never reference Downloads or other machine-local folders.
+
+- Approved exception: request confirmations play the cat once (two seconds) and confetti once (under five seconds), then hold still. No pause button. Reduced-motion users see a still cat without confetti. Empty-cart animation retains its playback control.

@@ -136,26 +136,26 @@ export function OrderEmailComposer({ order }: { order: Order }) {
         ) : mail ? <p className="mt-2 text-sm text-muted-foreground">No emails sent for this order.</p> : null}
       </div>
       <form noValidate onSubmit={prepare} className="mt-5 flex flex-col gap-5">
-        <label className="flex flex-col gap-1.5 text-sm">
+        <label className="flex flex-col gap-3 text-sm">
           <span>Email type (required)</span>
           <select className={inputClass} value={kind} onChange={(event) => setKind(event.target.value as EmailKind)} required>
             <option value="confirmed">Order confirmed and payment details</option><option value="ready">Ready for pickup</option>
           </select>
         </label>
         {kind === "confirmed" ? (
-          <label className="flex flex-col gap-1.5 text-sm">
+          <label className="flex flex-col gap-3 text-sm">
             <span>Estimated pickup date (required)</span>
             <input aria-label="Estimated pickup date (required)" name="date" aria-invalid={!!fieldErrors.date || undefined} aria-describedby={fieldErrors.date ? `${order.id}-date-error` : undefined} className={inputClass} value={date} maxLength={150} onChange={(event) => { setDate(event.target.value); setFieldErrors({}); }} placeholder="November 5, 2026" required />
             {fieldError("date")}
           </label>
         ) : (
           <>
-            <label className="flex flex-col gap-1.5 text-sm">
+            <label className="flex flex-col gap-3 text-sm">
               <span>Proposed pickup date and time (required)</span>
               <input aria-label="Proposed pickup date and time (required)" name="time" aria-invalid={!!fieldErrors.time || undefined} aria-describedby={fieldErrors.time ? `${order.id}-time-error` : undefined} className={inputClass} value={time} maxLength={150} onChange={(event) => { setTime(event.target.value); setFieldErrors({}); }} placeholder="Saturday, November 7 at 2 pm" required />
               {fieldError("time")}
             </label>
-            <label className="flex flex-col gap-1.5 text-sm">
+            <label className="flex flex-col gap-3 text-sm">
               <span>Pickup spot (required)</span>
               <input aria-label="Pickup spot (required)" name="spot" aria-invalid={!!fieldErrors.spot || undefined} aria-describedby={fieldErrors.spot ? `${order.id}-spot-error` : undefined} className={inputClass} value={spot} maxLength={200} onChange={(event) => { setSpot(event.target.value); setFieldErrors({}); }} required />
               {fieldError("spot")}
@@ -168,17 +168,17 @@ export function OrderEmailComposer({ order }: { order: Order }) {
       {draft && (
         <div ref={preview} tabIndex={-1} aria-label="Email draft" className="mt-6 flex flex-col gap-5">
           <p className="font-medium">{draftKind === "confirmed" ? "Order confirmation draft" : "Ready for pickup draft"}</p>
-          <label className="flex flex-col gap-1.5 text-sm">
+          <label className="flex flex-col gap-3 text-sm">
             <span>Recipient email (required)</span>
             <input aria-label="Recipient email (required)" type="email" readOnly className={inputClass} value={draft.to} required />
             {!isValidOrderEmail(draft.to) && <span className={errorClass}>This order needs a valid customer email before direct sending.</span>}
           </label>
-          <label className="flex flex-col gap-1.5 text-sm">
+          <label className="flex flex-col gap-3 text-sm">
             <span>Subject (required)</span>
             <input aria-label="Subject (required)" className={inputClass} disabled={sending || reviewing} value={draft.subject} maxLength={200} onChange={(event) => setDraft({ ...draft, subject: event.target.value })} required />
             {(!draft.subject.trim() || /[\r\n]/.test(draft.subject)) && <span className={errorClass}>Enter a subject on one line.</span>}
           </label>
-          <label className="flex flex-col gap-1.5 text-sm">
+          <label className="flex flex-col gap-3 text-sm">
             <span>Message (required)</span>
             <textarea aria-label="Message (required)" rows={18} disabled={sending || reviewing} maxLength={16000} className={cn(formFieldInputClass, "w-full rounded-[8px] py-3 leading-relaxed")} value={draft.body} onChange={(event) => setDraft({ ...draft, body: event.target.value })} required />
             {!draft.body.trim() && <span className={errorClass}>Enter the email message.</span>}

@@ -94,7 +94,7 @@ export function MakerOrdersClient({ initiallyAuthed }: { initiallyAuthed: boolea
           Private order list. Customers never see this page. Enter the shared
           studio password.
         </p>
-        <label className="mt-5 flex flex-col gap-1.5 text-sm">
+        <label className="mt-5 flex flex-col gap-3 text-sm">
           <span className="font-medium">Password</span>
           <input
             type="password"

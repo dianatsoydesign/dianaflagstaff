@@ -1,5 +1,6 @@
 "use client";
 
+import { CustomRequestTile } from "@/components/custom-request-tile";
 import { listedProducts } from "@/data/products";
 import { sortShopProducts } from "@/lib/shop-sort";
 import { patternRequests } from "@/data/pattern-requests";
@@ -26,6 +27,7 @@ export function ShopCatalog() {
               />
             </li>
           ))}
+          <li><CustomRequestTile /></li>
         </ul>
       </section>
 

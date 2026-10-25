@@ -15,3 +15,11 @@ alwaysApply: true
 - Verify changed experiences against their existing counterparts at relevant mobile and desktop widths, including accessibility requirements. Consistency must preserve readability, focus visibility, and usable targets.
 
 - Product images linking to a PDP use `productImageInteractionClass` from `src/lib/product-image-styles.ts`: Shop-style 6% image zoom within its clipped frame, 700ms ease-out, fine pointers only, disabled for reduced motion. Reuse it for new product links; do not add a separate card lift.
+
+## Reuse before creating
+
+- Before building a field or interaction, inspect its existing counterpart. Reuse the actual shared component, not a newly copied approximation.
+- Name and email inputs must use `CustomerContactFields`, as the regular cart does. Preserve its labels, placeholders, sizes, spacing, autocomplete, mobile keyboard behavior, character limits/counters, error semantics, and focus styling.
+- When no shared component exists, extract the established implementation and use it in both places. Do not independently restyle equivalent controls unless Diana explicitly requests it.
+
+- Form spacing: use 20px (`gap-5`) between field groups and 12px (`gap-3` or `mb-3`) between a label and its control, leaving room for focus indicators. Reuse this spacing in cart and request forms.

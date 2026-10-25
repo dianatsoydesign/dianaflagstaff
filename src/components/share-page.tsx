@@ -1,20 +1,15 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
-import { Share2, Share } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { SITE_URL } from "@/lib/social-sharing";
 
-const subscribeToPlatform = () => () => {};
-const applePlatform = () => /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
 
 type Props = { title: string; path: string; label?: string };
 
 export function SharePage({ title, path, label = "Share" }: Props) {
   const [open, setOpen] = useState(false);
-  const isApple = useSyncExternalStore(subscribeToPlatform, applePlatform, () => false);
-  const ShareIcon = isApple ? Share : Share2;
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
   const url = new URL(path, SITE_URL).href;
@@ -57,7 +52,7 @@ export function SharePage({ title, path, label = "Share" }: Props) {
           }
         }}
       >
-        <ShareIcon aria-hidden="true" />{label}
+        {label}
       </DialogTrigger>
       <DialogContent className="max-h-[calc(100dvh-2rem)] rounded-[8px] overflow-y-auto text-left">
         <DialogTitle className="pr-8 text-lg">Share {title}</DialogTitle>

@@ -3,6 +3,9 @@
 import { OfflineNotice } from "@/components/offline-notice";
 import { reportNetworkFailure } from "@/lib/connection-status";
 import { CartCat } from "@/components/cart-cat";
+import { RequestTextarea } from "@/components/request-textarea";
+import { RequestConfirmation } from "@/components/request-confirmation";
+import { CustomerContactFields } from "@/components/customer-contact-fields";
 import { CART_FIELD_LIMITS, isValidOrderEmail } from "@/lib/cart-field-limits";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -66,10 +69,6 @@ export function InquiryDrawer() {
   const [pickup, setPickup] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
-  const confirmationHeading = useRef<HTMLHeadingElement>(null);
-  useLayoutEffect(() => {
-    if (done) confirmationHeading.current?.focus();
-  }, [done]);
   const [error, setError] = useState<string | null>(null);
 
   const [removedItems, setRemovedItems] = useState<{ item: InquiryItem; index: number }[]>([]);
@@ -258,18 +257,11 @@ export function InquiryDrawer() {
         <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain px-4 py-4 scroll-py-4 sm:px-5">
           <OfflineNotice compact />
           {done ? (
-            <div className="rounded-xl bg-secondary/70 px-4 py-6 text-left">
-              <h3 ref={confirmationHeading} tabIndex={-1} className="font-display text-xl text-ink">Request sent</h3>
-              <Button
-                className="mt-5 h-11 w-full rounded-full"
-                onClick={() => {
-                  setDone(false);
-                  setDrawerOpen(false);
-                }}
-              >
-                Keep browsing
-              </Button>
-            </div>
+            <RequestConfirmation onContinue={() => {
+              setDone(false);
+              setDrawerOpen(false);
+              router.push("/");
+            }} />
           ) : items.length === 0 ? (
             <div className="flex min-h-[min(50vh,20rem)] flex-col items-center justify-center px-2 py-8 text-center">
               <div className="mb-6 w-full max-w-[468px]"><CartCat /></div>
@@ -364,68 +356,10 @@ export function InquiryDrawer() {
 
           {!done && items.length > 0 && (
             <div className="mt-6 flex flex-col gap-5">
-              <div data-cart-field="name" className="flex scroll-my-4 flex-col gap-1.5 text-sm">
-                <label htmlFor="cart-name" className="font-medium">Your name (required)</label>
-                <div className="relative">
-                <input
-                  id="cart-name"
-                  required
-                  value={name}
-                  onChange={(e) => { setName(e.target.value); clearFieldError("name"); }}
-                  maxLength={CART_FIELD_LIMITS.customerName}
-                  aria-invalid={!!fieldErrors.name || undefined}
-                  aria-describedby={`cart-name-count${fieldErrors.name ? " cart-name-error" : ""}`}
-                  autoComplete="name"
-                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
-                  placeholder="So I know who to meet"
-                />
-                  {name.length > 0 && (
-                <p id="cart-name-count" className={cn("pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs tabular-nums", name.length >= CART_FIELD_LIMITS.customerName ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
-                  {name.length} / {CART_FIELD_LIMITS.customerName}
-                </p>
-                  )}
-                </div>
-                {fieldErrors.name && (
-                  <p id="cart-name-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
-                    {fieldErrors.name}
-                  </p>
-                )}
-                <span className="sr-only" role="status">
-                  {name.length >= CART_FIELD_LIMITS.customerName ? "Character limit reached." : ""}
-                </span>
-              </div>
-              <div data-cart-field="email" className="flex scroll-my-4 flex-col gap-1.5 text-sm">
-                <label htmlFor="cart-email" className="font-medium">Email address (required)</label>
-                <div className="relative">
-                <input
-                  id="cart-email"
-                  placeholder="So you receive an order confirmation"
-                  type="email"
-                  inputMode="email"
-                  autoCapitalize="none"
-                  spellCheck={false}
-                  autoComplete="email"
-                  required
-                  value={email}
-                  onChange={(e) => { setEmail(e.target.value); clearFieldError("email"); }}
-                  maxLength={CART_FIELD_LIMITS.customerEmail}
-                  aria-invalid={!!fieldErrors.email || undefined}
-                  aria-describedby={`cart-email-count${fieldErrors.email ? " cart-email-error" : ""}`}
-                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
-                />
-                  {email.length > 0 && (
-                <p id="cart-email-count" className={cn("pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs tabular-nums", email.length >= CART_FIELD_LIMITS.customerEmail ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
-                  {email.length} / {CART_FIELD_LIMITS.customerEmail}
-                </p>
-                  )}
-                </div>
-                {fieldErrors.email && (
-                  <p id="cart-email-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
-                    {fieldErrors.email}
-                  </p>
-                )}
-              </div>
-              <div data-cart-field="pickup" className="flex scroll-my-4 flex-col gap-1.5 text-sm">
+              <CustomerContactFields idPrefix="cart" name={name} email={email} fieldErrors={fieldErrors}
+                onNameChange={value => { setName(value); clearFieldError("name"); }}
+                onEmailChange={value => { setEmail(value); clearFieldError("email"); }} />
+              <div data-cart-field="pickup" className="flex scroll-my-4 flex-col gap-3 text-sm">
                 <label htmlFor="cart-pickup" className="font-medium">Flagstaff pickup location (optional)</label>
                 <div className="relative">
                 <input
@@ -454,35 +388,9 @@ export function InquiryDrawer() {
                   {pickup.length >= CART_FIELD_LIMITS.pickupPreference ? "Character limit reached." : ""}
                 </span>
               </div>
-              <div data-cart-field="note" className="flex scroll-my-4 flex-col gap-1.5 text-sm">
-                <label htmlFor="cart-note" className="font-medium">Notes (optional)</label>
-                <div className="relative">
-                <textarea
-                  id="cart-note"
-                  value={note}
-                  onChange={(e) => { setNote(e.target.value); clearFieldError("note"); }}
-                  maxLength={CART_FIELD_LIMITS.customerNote}
-                  aria-invalid={!!fieldErrors.note || undefined}
-                  aria-describedby={`cart-note-count${fieldErrors.note ? " cart-note-error" : ""}`}
-                  rows={3}
-                  className={cn(formFieldInputClass, "w-full rounded-[8px] pb-8 pt-2.5")}
-                  placeholder="Your phone number (if Diana doesn’t already have it), timing, etc."
-                />
-                  {note.length > 0 && (
-                <p id="cart-note-count" className={cn("pointer-events-none absolute right-3 bottom-2 text-xs tabular-nums", note.length >= CART_FIELD_LIMITS.customerNote ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
-                  {note.length} / {CART_FIELD_LIMITS.customerNote}
-                </p>
-                  )}
-                </div>
-                {fieldErrors.note && (
-                  <p id="cart-note-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
-                    {fieldErrors.note}
-                  </p>
-                )}
-                <span className="sr-only" role="status">
-                  {note.length >= CART_FIELD_LIMITS.customerNote ? "Character limit reached." : ""}
-                </span>
-              </div>
+              <RequestTextarea id="cart-note" label="Notes" value={note} maxLength={CART_FIELD_LIMITS.customerNote} error={fieldErrors.note}
+                placeholder="Your phone number (if Diana doesn’t already have it), timing, etc."
+                onChange={value => { setNote(value); clearFieldError("note"); }} />
             </div>
           )}
         </div>

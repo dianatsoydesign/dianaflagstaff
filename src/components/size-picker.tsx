@@ -167,7 +167,7 @@ export function SizePicker({
       {showCustomChip && customSelected ? (
         <div className="mt-3">
           <div className="grid grid-cols-2 gap-3">
-            <label className="flex min-w-0 flex-col gap-1.5 text-sm">
+            <label className="flex min-w-0 flex-col gap-3 text-sm">
               <span className="text-muted-foreground">Width (inches)</span>
               <input
                 type="text"
@@ -186,7 +186,7 @@ export function SizePicker({
                 placeholder="7–10"
               />
             </label>
-            <label className="flex min-w-0 flex-col gap-1.5 text-sm">
+            <label className="flex min-w-0 flex-col gap-3 text-sm">
               <span className="text-muted-foreground">Height (inches)</span>
               <input
                 type="text"

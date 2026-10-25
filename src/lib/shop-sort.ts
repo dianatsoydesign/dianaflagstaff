@@ -1,8 +1,8 @@
 import { getProductListPrice, type Product } from "@/data/products";
 
-/** New products lead; price orders each group, with the existing tableware pairing. */
+/** Sort by newness and price, then apply the approved shop display placements. */
 export function sortShopProducts(products: readonly Product[]): Product[] {
-  return [true, false].flatMap((isNew) => {
+  const sorted = [true, false].flatMap((isNew) => {
     const group = products
       .filter((product) => Boolean(product.isNew) === isNew)
       .sort((a, b) => getProductListPrice(a) - getProductListPrice(b));
@@ -15,4 +15,17 @@ export function sortShopProducts(products: readonly Product[]): Product[] {
     }
     return group;
   });
+
+  const mushroomIndex = sorted.findIndex((product) => product.id === "mushroom-hat");
+  if (mushroomIndex !== -1 && sorted.some((product) => product.id === "elf-hat")) {
+    const [mushroom] = sorted.splice(mushroomIndex, 1);
+    const elfIndex = sorted.findIndex((product) => product.id === "elf-hat");
+    sorted.splice(elfIndex, 0, mushroom);
+  }
+  const catCaveIndex = sorted.findIndex((product) => product.id === "cat-cave");
+  if (catCaveIndex !== -1) {
+    const [catCave] = sorted.splice(catCaveIndex, 1);
+    sorted.push(catCave);
+  }
+  return sorted;
 }
