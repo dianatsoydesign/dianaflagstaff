@@ -128,10 +128,10 @@ export function InquiryDrawer() {
       <SheetContent
         side="right"
         overlayClassName="bg-black/45 supports-backdrop-filter:backdrop-blur-[2px]"
-        className="flex h-full w-full max-w-none flex-col gap-0 overflow-hidden border-border p-0 sm:max-w-xl lg:max-w-2xl"
+        className="flex !h-dvh !w-full !max-w-none flex-col gap-0 overflow-hidden border-border p-0 motion-reduce:transition-none data-[side=right]:!translate-x-0 sm:!w-xl sm:!max-w-xl lg:!w-2xl lg:!max-w-2xl [&>[data-slot=sheet-close]]:size-11"
         showCloseButton
       >
-        <SheetHeader className="border-b border-border/60 px-5 pb-4 pt-5">
+        <SheetHeader className="shrink-0 border-b border-border/60 px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] pr-16 sm:px-5">
           <SheetTitle className="font-display text-2xl tracking-[-0.04em] text-ink">
             Your cart
           </SheetTitle>
@@ -140,7 +140,7 @@ export function InquiryDrawer() {
           </SheetDescription>
         </SheetHeader>
 
-        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4">
+        <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain px-4 py-4 scroll-py-4 sm:px-5">
           {done ? (
             <div className="rounded-xl bg-secondary/70 px-4 py-6 text-center">
               <p className="font-display text-xl text-ink">Request sent</p>
@@ -183,9 +183,9 @@ export function InquiryDrawer() {
               {items.map((item) => (
                 <li
                   key={item.id}
-                  className="flex gap-3 border-b border-border/50 pb-4"
+                  className="grid grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] items-start gap-x-3 gap-y-3 border-b border-border/50 pb-4"
                 >
-                  <div className={cn("relative aspect-square w-[38%] max-w-40 shrink-0 self-start overflow-hidden rounded-[8px]", productPhotoBgClass)}>
+                  <div className={cn("relative aspect-square w-full max-w-40 self-start overflow-hidden rounded-[8px] sm:row-span-2", productPhotoBgClass)}>
                     <Image
                       src={
                         item.productImageSrc ?? item.yarnSwatchSrc
@@ -197,7 +197,7 @@ export function InquiryDrawer() {
                     />
                     <ProductImageBadge src={item.productImageSrc} compact />
                   </div>
-                  <div className="min-w-0 flex-1">
+                  <div className="min-w-0 break-words">
                     <p className="font-medium leading-snug">
                       {item.productName}
                     </p>
@@ -220,9 +220,10 @@ export function InquiryDrawer() {
                           : "Maximum 2 across colors and options."}
                       </p>
                     )}
-                    <div className="mt-2 flex items-end gap-2">
+                  </div>
+                    <div className="col-span-2 flex min-w-0 flex-wrap items-end justify-between gap-2 sm:col-span-1 sm:col-start-2">
                       <QuantityStepper
-                        size="compact"
+                        size="default"
                         value={item.quantity}
                         min={0}
                         max={cartQuantityMax(item, items)}
@@ -240,25 +241,25 @@ export function InquiryDrawer() {
                         <Trash2 className="size-4" />
                       </Button>
                     </div>
-                  </div>
                 </li>
               ))}
             </ul>
           )}
 
           {!done && items.length > 0 && (
-            <div className="mt-6 flex flex-col gap-3">
+            <div className="mt-6 flex flex-col gap-5">
               <div className="flex flex-col gap-1.5 text-sm">
-                <label htmlFor="cart-name" className="font-medium">Your name</label>
+                <label htmlFor="cart-name" className="font-medium">Your name (required)</label>
                 <div className="relative">
                 <input
                   id="cart-name"
+                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   maxLength={CART_FIELD_LIMITS.customerName}
                   aria-describedby="cart-name-count"
                   autoComplete="name"
-                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-28")}
+                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
                   placeholder="So we know who to meet"
                 />
                   {name.length > 0 && (
@@ -278,6 +279,9 @@ export function InquiryDrawer() {
                   ref={emailRef}
                   id="cart-email"
                   type="email"
+                  inputMode="email"
+                  autoCapitalize="none"
+                  spellCheck={false}
                   autoComplete="email"
                   required
                   value={email}
@@ -285,7 +289,7 @@ export function InquiryDrawer() {
                   maxLength={CART_FIELD_LIMITS.customerEmail}
                   aria-invalid={contactError === "email" || undefined}
                   aria-describedby={`cart-email-count${contactError === "email" ? " cart-email-error" : ""}`}
-                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-28")}
+                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
                 />
                   {email.length > 0 && (
                 <p id="cart-email-count" className={cn("pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs tabular-nums", email.length >= CART_FIELD_LIMITS.customerEmail ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
@@ -300,7 +304,7 @@ export function InquiryDrawer() {
                 )}
               </div>
               <div className="flex flex-col gap-1.5 text-sm">
-                <label htmlFor="cart-pickup" className="font-medium">Flagstaff pickup location</label>
+                <label htmlFor="cart-pickup" className="font-medium">Flagstaff pickup location (optional)</label>
                 <div className="relative">
                 <input
                   id="cart-pickup"
@@ -309,7 +313,7 @@ export function InquiryDrawer() {
                   maxLength={CART_FIELD_LIMITS.pickupPreference}
                   aria-describedby="cart-pickup-count"
                   
-                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-28")}
+                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
                   placeholder="Friend meet-up / neighborhood handoff"
                 />
                   {pickup.length > 0 && (
@@ -346,7 +350,7 @@ export function InquiryDrawer() {
                 </span>
               </div>
               {error && (
-                <p className="text-sm text-destructive" role="alert">
+                <p className="text-left text-sm text-red-700 dark:text-red-400" role="alert">
                   {error}
                 </p>
               )}
@@ -355,7 +359,7 @@ export function InquiryDrawer() {
         </div>
 
         {!done && items.length > 0 && (
-          <SheetFooter className="gap-3 border-t border-border/60 bg-card px-5 py-4">
+          <SheetFooter className="shrink-0 gap-2 border-t border-border/60 bg-card px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-5 sm:pt-4">
             <div className="flex w-full items-center justify-between text-sm">
               <span className="font-medium text-ink">
                 Subtotal ({itemCount} {itemWord})

@@ -90,7 +90,7 @@ export function YarnSwatchPicker({
   const groupOptions = useBernatGroups
     ? bernatGroupsForYarns(yarns).filter((group) => group.id === "multis")
     : [];
-  const [groupFilter, setGroupFilter] = useState<CatalogGroupId | null>(null);
+  const [groupFilter, setGroupFilter] = useState<CatalogGroupId | null>(allowHolidayFilter ? "holiday" : null);
 
   const showHolidayChip = allowHolidayFilter && useCharismaGroups && charismaHasHolidayYarns(yarns);
   const showSoftPaletteSwatch =
@@ -289,8 +289,8 @@ export function YarnSwatchPicker({
             aria-checked={keyboardNavigation ? value === CHARISMA_HOLIDAY_PIZZA_YARN_ID : undefined}
             tabIndex={keyboardNavigation ? (value === CHARISMA_HOLIDAY_PIZZA_YARN_ID ? 0 : -1) : undefined}
             aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_HOLIDAY_PIZZA_YARN_ID}
-            aria-label="Classic"
-            title="Classic"
+            aria-label="Holiday classic"
+            title="Holiday classic"
             className={cn(
               "relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
@@ -315,8 +315,8 @@ export function YarnSwatchPicker({
             aria-checked={keyboardNavigation ? value === CHARISMA_SOFT_PALETTE_YARN_ID : undefined}
             tabIndex={keyboardNavigation ? (value === CHARISMA_SOFT_PALETTE_YARN_ID ? 0 : -1) : undefined}
             aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_SOFT_PALETTE_YARN_ID}
-            aria-label="Soft palette"
-            title="Soft palette"
+            aria-label="Holiday: soft palette"
+            title="Holiday: soft palette"
             className={cn(
               "relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
@@ -344,8 +344,8 @@ export function YarnSwatchPicker({
             aria-checked={keyboardNavigation ? value === CHARISMA_WARM_PALETTE_YARN_ID : undefined}
             tabIndex={keyboardNavigation ? (value === CHARISMA_WARM_PALETTE_YARN_ID ? 0 : -1) : undefined}
             aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_WARM_PALETTE_YARN_ID}
-            aria-label="Warm palette"
-            title="Warm palette"
+            aria-label="Holiday warm palette"
+            title="Holiday warm palette"
             className={cn(
               "relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",

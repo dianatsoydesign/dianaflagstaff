@@ -31,7 +31,7 @@ export function isCharismaWarmPaletteYarn(
 export function charismaWarmPaletteYarn(): YarnColor {
   return {
     id: CHARISMA_WARM_PALETTE_YARN_ID,
-    name: "Warm palette",
+    name: "Holiday warm palette",
     swatchSrc: "/yarn-swatches/charisma-warm-palette.svg",
     stockStatus: "in_stock",
   };

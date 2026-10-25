@@ -35,7 +35,7 @@ export function isCharismaHolidayPizzaYarn(
 export function charismaHolidayPizzaYarn(): YarnColor {
   return {
     id: CHARISMA_HOLIDAY_PIZZA_YARN_ID,
-    name: "Classic",
+    name: "Holiday classic",
     swatchSrc: "/yarn-swatches/charisma-holiday-pizza.svg",
     stockStatus: "in_stock",
   };

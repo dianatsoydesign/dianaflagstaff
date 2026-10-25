@@ -1,0 +1,14 @@
+---
+description: Consistently label required and optional website form fields
+alwaysApply: true
+---
+
+# Required and optional form fields
+
+- Explicitly mark every data-entry field in new and edited website forms as `(required)` or `(optional)` beside its persistent label. Apply the same convention to selection groups where users must provide a choice.
+- Never leave users to infer a field's status from other labels, placeholders, color, or an unexplained asterisk.
+- Labels must reflect actual validation. Use native `required` on supported required controls, or `aria-required` for appropriate custom controls, and enforce required values on the server when submitted.
+- Do not make optional information mandatory just to standardize labels. Preserve the approved collection requirements.
+- Keep the status in the accessible label and let long labels wrap on small screens.
+- Cart example: Your name (required), Email address (required), Flagstaff pickup location (optional), Notes (optional).
+- Research: https://baymard.com/research-articles/required-optional-form-fields

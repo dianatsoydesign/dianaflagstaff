@@ -1,4 +1,4 @@
-const PROPER_WORDS = new Set(["Holiday", "Italian"]);
+const PROPER_WORDS = new Set(["Holiday", "Holiday:", "Italian"]);
 
 /** Yarn data keeps the supplier's spelling (stock sync matches on it); display it lowercase. */
 export function colorName(name: string) {

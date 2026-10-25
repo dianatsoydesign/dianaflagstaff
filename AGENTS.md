@@ -51,3 +51,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Validation and error messages
 
 - Follow `.cursor/rules/validation-errors.mdc` for website work. Display new and edited validation and error messages in accessible red text, with explicit actionable wording and appropriate screen reader announcements.
+
+## Required and optional form fields
+
+- Follow `.cursor/rules/form-field-requirements.mdc` for website work. Explicitly label required and optional fields consistently beside their persistent labels, and keep visible labels, accessibility semantics, and validation in agreement.
