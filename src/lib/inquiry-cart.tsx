@@ -69,6 +69,7 @@ type InquiryCartContextValue = {
   pairsWellWithProductIds: string[];
   addItem: (item: Omit<InquiryItem, "id">) => string;
   removeItem: (id: string) => void;
+  restoreItem: (item: InquiryItem, index: number) => boolean;
   updateQuantity: (id: string, quantity: number) => void;
   clear: () => void;
   openAddedDrawer: (itemId: string, relatedProductIds?: string[]) => void;
@@ -154,6 +155,18 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
     setItems((prev) => prev.filter((p) => p.id !== id));
   }, []);
 
+  const restoreItem = useCallback((item: InquiryItem, index: number) => {
+    // Never silently reduce a restored quantity or bypass the per-size limit.
+    if (items.some((entry) => entry.id === item.id) || cartQuantityMax(item, items) < item.quantity) return false;
+    setItems((prev) => {
+      if (prev.some((entry) => entry.id === item.id) || cartQuantityMax(item, prev) < item.quantity) return prev;
+      const next = [...prev];
+      next.splice(Math.min(index, next.length), 0, item);
+      return next;
+    });
+    return true;
+  }, [items]);
+
   const updateQuantity = useCallback((id: string, quantity: number) => {
     setItems((prev) =>
       prev
@@ -180,6 +193,7 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
       pairsWellWithProductIds,
       addItem,
       removeItem,
+      restoreItem,
       updateQuantity,
       clear,
       openAddedDrawer,
@@ -193,6 +207,7 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
     pairsWellWithProductIds,
     addItem,
     removeItem,
+    restoreItem,
     updateQuantity,
     clear,
     openAddedDrawer,

@@ -204,7 +204,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
               {product.id === "cat-cave" && (
                 <p className="mt-3 max-w-[700px] text-sm leading-snug text-ink">
                   <Badge className="mr-2 align-middle">New</Badge>{" "}
-                  I&apos;m thrilled to take on this brand-new design for the first time.
+                  I&apos;m thrilled to take on this brand-new design!
                 </p>
               )}
             </div>

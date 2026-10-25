@@ -1,14 +1,14 @@
 "use client";
 
 import { CART_FIELD_LIMITS, isValidOrderEmail } from "@/lib/cart-field-limits";
-import { useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ProductImageBadge } from "@/components/product-image-badge";
 import { useRouter } from "next/navigation";
-import { Trash2 } from "lucide-react";
+import { Trash2, X } from "lucide-react";
 import { QuantityStepper } from "@/components/quantity-stepper";
 import { VENMO_HANDLE, formatPriceOrTbd } from "@/data/products";
-import { cartQuantityMax, useInquiryCart } from "@/lib/inquiry-cart";
+import { cartQuantityMax, useInquiryCart, type InquiryItem } from "@/lib/inquiry-cart";
 import { formatLineOptions, productShowsSize } from "@/lib/line-options";
 import { formFieldInputClass } from "@/components/picker-styles";
 import { productPhotoBgClass } from "@/lib/product-photo-bg";
@@ -32,6 +32,7 @@ export function InquiryDrawer() {
     drawerView,
     updateQuantity,
     removeItem,
+    restoreItem,
     clear,
     setDrawerOpen,
   } = useInquiryCart();
@@ -46,6 +47,77 @@ export function InquiryDrawer() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [removedItems, setRemovedItems] = useState<{ item: InquiryItem; index: number }[]>([]);
+  const [restoreError, setRestoreError] = useState<string | null>(null);
+  const pendingFocus = useRef<{ id: string; restored: boolean } | null>(null);
+  useLayoutEffect(() => {
+    const target = pendingFocus.current;
+    if (!target) return;
+    const element = document.getElementById(target.restored ? `cart-item-${target.id}` : target.id);
+    const control = target.restored ? element?.querySelector<HTMLInputElement>("input") : element;
+    if (control) {
+      control.focus();
+      pendingFocus.current = null;
+    }
+  }, [items, removedItems]);
+
+  const [snackbarHovered, setSnackbarHovered] = useState(false);
+  const [snackbarFocused, setSnackbarFocused] = useState(false);
+  const [pageInactive, setPageInactive] = useState(false);
+  useEffect(() => {
+    const update = () => setPageInactive(document.hidden || !document.hasFocus());
+    document.addEventListener("visibilitychange", update);
+    window.addEventListener("blur", update);
+    window.addEventListener("focus", update);
+    return () => {
+      document.removeEventListener("visibilitychange", update);
+      window.removeEventListener("blur", update);
+      window.removeEventListener("focus", update);
+    };
+  }, []);
+  const latestRemoval = removedItems[0];
+  useEffect(() => {
+    if (!latestRemoval || snackbarHovered || snackbarFocused || pageInactive || drawerView === "closed" || restoreError) return;
+    const timer = window.setTimeout(() => {
+      setRemovedItems((prev) => prev.filter((entry) => entry.item.id !== latestRemoval.item.id));
+    }, 10000);
+    return () => window.clearTimeout(timer);
+  }, [latestRemoval, snackbarHovered, snackbarFocused, pageInactive, drawerView, restoreError]);
+
+  function removeWithUndo(item: InquiryItem) {
+    const index = items.findIndex((entry) => entry.id === item.id);
+    setRemovedItems((prev) => [...prev, { item, index }]);
+    setRestoreError(null);
+    const nextItem = items[index + 1] ?? items[index - 1];
+    removeItem(item.id);
+    pendingFocus.current = nextItem
+      ? { id: nextItem.id, restored: true }
+      : { id: "cart-heading", restored: false };
+  }
+
+  function undoRemoval(item: InquiryItem) {
+    const removed = removedItems.find((entry) => entry.item.id === item.id);
+    if (!removed) return;
+    if (!restoreItem(item, removed.index)) {
+      setRestoreError(item.id);
+      return;
+    }
+    setRemovedItems((prev) => prev.filter((entry) => entry.item.id !== item.id));
+    setRestoreError(null);
+    setSnackbarFocused(false);
+    setSnackbarHovered(false);
+    pendingFocus.current = { id: item.id, restored: true };
+  }
+
+  function dismissRemoval() {
+    if (!latestRemoval) return;
+    setRemovedItems((prev) => prev.filter((entry) => entry.item.id !== latestRemoval.item.id));
+    setRestoreError(null);
+    setSnackbarFocused(false);
+    setSnackbarHovered(false);
+    pendingFocus.current = { id: "cart-heading", restored: false };
+  }
 
   const open = drawerView !== "closed";
 
@@ -104,6 +176,8 @@ export function InquiryDrawer() {
         throw new Error(data?.error || "Could not send request");
       }
       clear();
+      setRemovedItems([]);
+      setRestoreError(null);
       setDone(true);
       setName("");
       setEmail("");
@@ -132,7 +206,7 @@ export function InquiryDrawer() {
         showCloseButton
       >
         <SheetHeader className="shrink-0 border-b border-border/60 px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] pr-16 sm:px-5">
-          <SheetTitle className="font-display text-2xl tracking-[-0.04em] text-ink">
+          <SheetTitle id="cart-heading" tabIndex={-1} className="font-display text-2xl tracking-[-0.04em] text-ink">
             Your cart
           </SheetTitle>
           <SheetDescription className="sr-only">
@@ -182,10 +256,11 @@ export function InquiryDrawer() {
             <ul className="flex flex-col gap-4">
               {items.map((item) => (
                 <li
+                  id={`cart-item-${item.id}`}
                   key={item.id}
-                  className="grid grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] items-start gap-x-3 gap-y-3 border-b border-border/50 pb-4"
+                  className="grid grid-cols-[minmax(0,1fr)_minmax(11rem,1.5fr)] sm:grid-cols-[10rem_minmax(0,1fr)] items-stretch gap-x-4 border-b border-border/50 pb-4"
                 >
-                  <div className={cn("relative aspect-square w-full max-w-40 self-start overflow-hidden rounded-[8px] sm:row-span-2", productPhotoBgClass)}>
+                  <div className={cn("relative aspect-square w-full max-w-40 self-end overflow-hidden rounded-[8px]", productPhotoBgClass)}>
                     <Image
                       src={
                         item.productImageSrc ?? item.yarnSwatchSrc
@@ -197,7 +272,7 @@ export function InquiryDrawer() {
                     />
                     <ProductImageBadge src={item.productImageSrc} compact />
                   </div>
-                  <div className="min-w-0 break-words">
+                  <div className="flex min-w-0 flex-col break-words">
                     <p className="font-medium leading-snug">
                       {item.productName}
                     </p>
@@ -220,15 +295,15 @@ export function InquiryDrawer() {
                           : "Maximum 2 across colors and options."}
                       </p>
                     )}
-                  </div>
-                    <div className="col-span-2 flex min-w-0 flex-wrap items-end justify-between gap-2 sm:col-span-1 sm:col-start-2">
+                    <div className="mt-auto flex min-w-0 items-end justify-between gap-2 pt-3">
                       <QuantityStepper
                         size="default"
+                        className="shrink-0 [&_input]:w-8"
                         value={item.quantity}
                         min={0}
                         max={cartQuantityMax(item, items)}
                         lockDecreaseAtMin={false}
-                        onChange={(q) => updateQuantity(item.id, q)}
+                        onChange={(q) => q <= 0 ? removeWithUndo(item) : updateQuantity(item.id, q)}
                       />
                       <Button
                         type="button"
@@ -236,11 +311,12 @@ export function InquiryDrawer() {
                         size="icon-sm"
                         className="ml-auto size-11"
                         aria-label={`Remove ${item.productName}`}
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => removeWithUndo(item)}
                       >
                         <Trash2 className="size-4" />
                       </Button>
                     </div>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -260,7 +336,7 @@ export function InquiryDrawer() {
                   aria-describedby="cart-name-count"
                   autoComplete="name"
                   className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
-                  placeholder="So we know who to meet"
+                  placeholder="So I know who to meet"
                 />
                   {name.length > 0 && (
                 <p id="cart-name-count" className={cn("pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs tabular-nums", name.length >= CART_FIELD_LIMITS.customerName ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
@@ -278,6 +354,7 @@ export function InquiryDrawer() {
                 <input
                   ref={emailRef}
                   id="cart-email"
+                  placeholder="So you receive an order confirmation"
                   type="email"
                   inputMode="email"
                   autoCapitalize="none"
@@ -357,6 +434,43 @@ export function InquiryDrawer() {
             </div>
           )}
         </div>
+
+        {!done && latestRemoval && (
+          <div
+            role="region"
+            aria-label="Cart update"
+            className="mx-4 mb-3 flex shrink-0 items-center gap-2 rounded-[8px] bg-button px-3 py-2 text-button-foreground shadow-lg sm:mx-5"
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                event.stopPropagation();
+                dismissRemoval();
+              }
+            }}
+            onMouseEnter={() => setSnackbarHovered(true)}
+            onMouseLeave={() => setSnackbarHovered(false)}
+            onFocusCapture={() => setSnackbarFocused(true)}
+            onBlurCapture={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setSnackbarFocused(false);
+            }}
+          >
+            <div className="min-w-0 flex-1">
+              <p key={latestRemoval.item.id} role="status" aria-atomic="true" className="text-left text-sm">{latestRemoval.item.productName} removed.</p>
+              {restoreError === latestRemoval.item.id && (
+                <p role="alert" className="mt-1 text-sm text-red-300 dark:text-red-700">
+                  Reduce the other quantities for this size before restoring this item.
+                </p>
+              )}
+            </div>
+            <Button type="button" variant="ghost" className="h-11 shrink-0 rounded-full px-3 font-semibold text-button-foreground underline underline-offset-2 hover:bg-button-hover hover:text-button-foreground focus-visible:outline-2 focus-visible:outline-current" onClick={() => undoRemoval(latestRemoval.item)}>
+              Undo
+            </Button>
+            <Button type="button" variant="ghost" size="icon" aria-label="Dismiss cart notification"
+              className="size-11 shrink-0 rounded-full text-button-foreground hover:bg-button-hover hover:text-button-foreground focus-visible:outline-2 focus-visible:outline-current"
+              onClick={dismissRemoval}>
+              <X className="size-4" aria-hidden="true" />
+            </Button>
+          </div>
+        )}
 
         {!done && items.length > 0 && (
           <SheetFooter className="shrink-0 gap-2 border-t border-border/60 bg-card px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-5 sm:pt-4">
