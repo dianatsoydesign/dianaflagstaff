@@ -1,2 +1,7 @@
 NEXTJS_ENV=development
 MAKER_PASSWORD=DianasOrders!
+
+# Set a private password of at least 16 characters before enabling direct email.
+ORDER_EMAIL_ENABLED=false
+RESEND_API_KEY=
+ORDER_EMAIL_FROM=

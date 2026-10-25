@@ -26,7 +26,7 @@ export const formFieldSurfaceClass = "bg-white dark:bg-transparent";
 
 /** Text inputs and textareas: default ink border; override border color per field if needed. */
 export const formFieldInputClass = cn(
-  "min-w-0 rounded-lg border-2 border-ink px-3 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+  "min-w-0 rounded-lg border-2 border-ink px-3 text-base text-foreground placeholder:text-muted-foreground placeholder:opacity-100 outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
   formFieldSurfaceClass
 );
 

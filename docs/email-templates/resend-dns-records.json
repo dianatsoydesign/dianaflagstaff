@@ -1,0 +1,22 @@
+[
+  {
+    "type": "TXT",
+    "name": "resend._domainkey.mail.dianaflagstaff.com",
+    "content": "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQUMKtRYuYAQ4K117rCriQP4xUXGn9YM26NZTvJX9Z6fICgCksqAfbVMjB1VU5nQZV5WaOFI4bsnMt5ZVIHosPibV6Phvtqe0HHrkaP6q/9JTzY/rq8gPaeWQHXV+0AzJrlvy69zZa/Am3uMq//4kna3aaiGx+6kcSWL2A9IQvOQIDAQAB",
+    "ttl": 1
+  },
+  {
+    "type": "CNAME",
+    "name": "rsend.mail.dianaflagstaff.com",
+    "content": "rsend.forge.rmta.net",
+    "ttl": 1,
+    "proxied": false
+  },
+  {
+    "type": "CNAME",
+    "name": "send.mail.dianaflagstaff.com",
+    "content": "send.forge.rmta.net",
+    "ttl": 1,
+    "proxied": false
+  }
+]

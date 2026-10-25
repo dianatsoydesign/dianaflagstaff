@@ -22,10 +22,20 @@
     "enabled": true
   },
   "vars": {
-    "MAKER_PASSWORD": "DianasOrders!"
+    "ORDER_EMAIL_ENABLED": "false",
+    // Set MAKER_PASSWORD and RESEND_API_KEY using wrangler secret put.
+    // ORDER_EMAIL_FROM must use a verified Resend sending domain.
     // CRON_SECRET: set this in the Cloudflare dashboard (Workers → Settings → Variables)
     // to secure the /api/cron/* endpoints. Required for the Mac → site Charisma stock push.
   },
+  "d1_databases": [
+    {
+      "binding": "EMAIL_DB",
+      "database_name": "diana-order-emails",
+      "database_id": "49069767-f2cd-409a-86f0-3c9373acdbea",
+      "migrations_dir": "migrations/email"
+    }
+  ],
   "kv_namespaces": [
     {
       "binding": "ORDERS_KV",

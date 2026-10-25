@@ -1,5 +1,6 @@
 "use client";
 
+import { OrderEmailComposer } from "@/components/order-email-composer";
 import { useCallback, useEffect, useState } from "react";
 import {
   formatAggregateLine,
@@ -45,7 +46,9 @@ export function MakerOrdersClient({ initiallyAuthed }: { initiallyAuthed: boolea
   }, []);
 
   useEffect(() => {
-    if (initiallyAuthed) void load();
+    if (!initiallyAuthed) return;
+    const timer = window.setTimeout(() => { void load(); }, 0);
+    return () => window.clearTimeout(timer);
   }, [initiallyAuthed, load]);
 
   async function login(e: React.FormEvent) {
@@ -242,6 +245,7 @@ export function MakerOrdersClient({ initiallyAuthed }: { initiallyAuthed: boolea
                         </Button>
                       ))}
                     </div>
+                    <OrderEmailComposer order={order} />
                   </li>
                 ))}
               </ul>

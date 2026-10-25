@@ -51,7 +51,7 @@ export function ProductDetailGallery({
   }
 
   const arrowClass = cn(
-    "absolute top-1/2 z-10 h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/80 text-ink shadow backdrop-blur-sm transition-colors hover:bg-white",
+    "absolute top-1/2 z-10 h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow transition-colors hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black",
     pinOnMobile
       ? "flex max-md:h-11 max-md:w-11 md:opacity-0 md:group-hover:opacity-100"
       : "hidden fine-pointer:flex fine-pointer:opacity-0 fine-pointer:transition-opacity fine-pointer:group-hover:opacity-100",

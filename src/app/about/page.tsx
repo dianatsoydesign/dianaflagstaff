@@ -46,7 +46,7 @@ export default function AboutPage() {
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 transition-opacity hover:opacity-70"
               >
-                Pratt Institute
+                Pratt Institute (opens in a new tab)
               </a>{" "}
               with a Bachelor in Industrial Design and a Minor in Sustainability. I love turning ideas into something
               real you can hold, and choosing materials with the ethical and

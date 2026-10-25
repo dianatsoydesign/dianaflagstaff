@@ -9,6 +9,10 @@ interface KVNamespace {
 }
 
 interface CloudflareEnv {
+  EMAIL_DB?: import("./src/lib/mail-runtime").EmailDatabase;
+  RESEND_API_KEY?: string;
+  ORDER_EMAIL_FROM?: string;
+  ORDER_EMAIL_ENABLED?: string;
   ORDERS_KV?: KVNamespace;
   BOBBINY_STOCK?: KVNamespace;
   CRON_SECRET?: string;

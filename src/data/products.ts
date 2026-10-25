@@ -101,7 +101,7 @@ export type Product = {
   yarns: YarnColor[];
 };
 
-export const VENMO_HANDLE = "@loopedlocal";
+export const VENMO_HANDLE = "@diana-flagstaff";
 
 /** No longer on a catalog product, but still offered on the "Request a make" board. */
 export const PATTERN_BOARD_YARNS: YarnColor[] = [

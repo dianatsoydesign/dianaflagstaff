@@ -63,6 +63,10 @@ export function InquiryDrawer() {
   const [pickup, setPickup] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const confirmationHeading = useRef<HTMLHeadingElement>(null);
+  useLayoutEffect(() => {
+    if (done) confirmationHeading.current?.focus();
+  }, [done]);
   const [error, setError] = useState<string | null>(null);
 
   const [removedItems, setRemovedItems] = useState<{ item: InquiryItem; index: number }[]>([]);
@@ -245,8 +249,8 @@ export function InquiryDrawer() {
 
         <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain px-4 py-4 scroll-py-4 sm:px-5">
           {done ? (
-            <div className="rounded-xl bg-secondary/70 px-4 py-6 text-center">
-              <p className="font-display text-xl text-ink">Request sent</p>
+            <div className="rounded-xl bg-secondary/70 px-4 py-6 text-left">
+              <h3 ref={confirmationHeading} tabIndex={-1} className="font-display text-xl text-ink">Request sent</h3>
               <Button
                 className="mt-5 h-11 w-full rounded-full"
                 onClick={() => {
@@ -287,9 +291,9 @@ export function InquiryDrawer() {
                 <li
                   id={`cart-item-${item.id}`}
                   key={item.id}
-                  className="grid grid-cols-[minmax(0,1fr)_minmax(11rem,1.5fr)] sm:grid-cols-[10rem_minmax(0,1fr)] items-stretch gap-x-4 border-b border-border/50 pb-4"
+                  className="flex flex-wrap sm:grid sm:grid-cols-[10rem_minmax(0,1fr)] items-stretch gap-x-4 gap-y-3 border-b border-border/50 pb-4"
                 >
-                  <div className={cn("relative aspect-square w-full max-w-40 self-end overflow-hidden rounded-[8px]", productPhotoBgClass)}>
+                  <div className={cn("relative aspect-square w-full max-w-40 max-sm:w-[min(33%,10rem)] self-end overflow-hidden rounded-[8px]", productPhotoBgClass)}>
                     <Image
                       src={
                         item.productImageSrc ?? item.yarnSwatchSrc
@@ -301,7 +305,7 @@ export function InquiryDrawer() {
                     />
                     <ProductImageBadge src={item.productImageSrc} compact />
                   </div>
-                  <div className="flex min-w-0 flex-col break-words">
+                  <div className="flex min-w-0 flex-col break-words max-sm:flex-1 max-sm:basis-[11rem]">
                     <p className="font-medium leading-snug">
                       {item.productName}
                     </p>
@@ -324,10 +328,12 @@ export function InquiryDrawer() {
                           : "Maximum 2 across colors and options."}
                       </p>
                     )}
-                    <div className="mt-auto flex min-w-0 items-end justify-between gap-2 pt-3">
+                    <div className="mt-auto flex min-w-0 flex-wrap items-end justify-between gap-2 pt-3">
                       <QuantityStepper
                         size="default"
                         className="shrink-0 [&_input]:w-8"
+                        inputAriaLabel={`Quantity for ${item.productName}, ${formatLineOptions(item)}`}
+                        productContext={`${item.productName}, ${formatLineOptions(item)}`}
                         value={item.quantity}
                         min={0}
                         max={cartQuantityMax(item, items)}
@@ -535,7 +541,7 @@ export function InquiryDrawer() {
               <Button
                 type="button"
                 variant="outline"
-                className="h-12 min-w-0 rounded-full px-2 text-sm sm:text-base"
+                className="h-auto min-h-12 min-w-0 whitespace-normal rounded-full px-2 py-3 text-sm sm:text-base"
                 onClick={() => handleOpenChange(false)}
               >
                 Keep shopping
@@ -543,7 +549,7 @@ export function InquiryDrawer() {
               <Button
                 type="button"
                 aria-describedby="cart-payment-note"
-                className="h-12 min-w-0 rounded-full bg-button px-2 text-sm text-button-foreground hover:bg-button-hover sm:text-base"
+                className="h-auto min-h-12 min-w-0 whitespace-normal rounded-full bg-button px-2 py-3 text-sm text-button-foreground hover:bg-button-hover sm:text-base"
                 disabled={submitting}
                 onClick={submit}
               >

@@ -19,6 +19,7 @@ type Props = {
   /** When true, − is disabled at `min` (product page). Cart allows − at 1 to remove. */
   lockDecreaseAtMin?: boolean;
   inputAriaLabel?: string;
+  productContext?: string;
   className?: string;
   size?: "default" | "compact";
 };
@@ -30,6 +31,7 @@ export function QuantityStepper({
   max = 99,
   lockDecreaseAtMin = true,
   inputAriaLabel = "Quantity",
+  productContext,
   className,
   size = "default",
 }: Props) {
@@ -75,7 +77,7 @@ export function QuantityStepper({
           "shrink-0 rounded-none border-0 shadow-none",
           "hover:bg-muted/80 active:bg-muted"
         )}
-        aria-label="Decrease quantity"
+        aria-label={productContext ? `Decrease quantity for ${productContext}` : "Decrease quantity"}
         disabled={lockDecreaseAtMin && atMin}
         onClick={() => onChange(clampQuantity(value - 1, min, max))}
       >
@@ -131,7 +133,7 @@ export function QuantityStepper({
           "shrink-0 rounded-none border-0 shadow-none",
           "hover:bg-muted/80 active:bg-muted"
         )}
-        aria-label="Increase quantity"
+        aria-label={productContext ? `Increase quantity for ${productContext}` : "Increase quantity"}
         disabled={atMax}
         onClick={() => onChange(clampQuantity(value + 1, min, max))}
       >

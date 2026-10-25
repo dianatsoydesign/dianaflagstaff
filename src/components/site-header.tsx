@@ -23,19 +23,20 @@ const nav = [
   { href: "/about", label: "About" },
 ];
 
-function BrandName({ className }: { className?: string }) {
+function BrandName({ className, inline = false }: { className?: string; inline?: boolean }) {
   return (
     <span
       className={cn(
         "inline-flex flex-col items-center whitespace-nowrap leading-[1.15] min-[1100px]:flex-row min-[1100px]:items-baseline min-[1100px]:gap-[0.3em] min-[1100px]:leading-[inherit]",
+        inline && "flex-row items-baseline gap-[0.3em]",
         className
       )}
     >
       <span>{SITE_NAME}</span>
-      <span className="inline-flex items-baseline gap-[0.3em] text-[0.72em] min-[1100px]:text-[1em]">
+      <span className="inline-flex items-baseline gap-[0.3em] text-[0.9em]">
         <span
           aria-hidden
-          className="hidden mx-[0.12em] -translate-y-[calc(0.5ex_-_0.09em)] size-[0.18em] rounded-full bg-current min-[1100px]:inline-block"
+          className="inline-block mx-[0.12em] -translate-y-[calc(0.5ex_-_0.09em)] size-[0.18em] rounded-full bg-current"
         />
         <span className="font-tagline font-extralight tracking-normal">Made in Flagstaff</span>
         {/* Masked so the mountains follow text color in light and dark mode. */}
@@ -130,7 +131,7 @@ export function SiteHeader() {
               heroHeader ? "text-white" : "text-ink"
             )}
           >
-            <BrandName />
+            <BrandName inline />
           </Link>
 
           <div className="flex items-center justify-self-end gap-0.5 min-[1100px]:gap-4">
