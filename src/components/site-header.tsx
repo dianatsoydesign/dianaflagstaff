@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useInquiryCart } from "@/lib/inquiry-cart";
 import {
@@ -20,6 +20,7 @@ import { navigationControlClass } from "@/lib/navigation-styles";
 
 const nav = [
   { href: "/", label: "Shop" },
+  { href: "/art", label: "Art gallery" },
   { href: "/about", label: "About" },
 ];
 
@@ -61,6 +62,35 @@ export function SiteHeader() {
   const { itemCount, openCheckoutDrawer } = useInquiryCart();
   const [open, setOpen] = useState(false);
   const heroHeader = pathname === "/welcome";
+  const [headerHidden, setHeaderHidden] = useState(false);
+
+  useEffect(() => {
+    const smallScreen = window.matchMedia("(max-width: 1099px)");
+    let previousY = window.scrollY;
+    let accumulated = 0;
+    const update = () => {
+      const y = Math.max(0, window.scrollY);
+      const delta = y - previousY;
+      previousY = y;
+      if (pathname !== "/art" || !smallScreen.matches || open || y < 100) {
+        accumulated = 0;
+        setHeaderHidden(false);
+        return;
+      }
+      if (Math.sign(delta) !== Math.sign(accumulated)) accumulated = 0;
+      accumulated += delta;
+      if (accumulated > 40) setHeaderHidden(true);
+      if (accumulated < -16) setHeaderHidden(false);
+    };
+    const reset = () => { setHeaderHidden(false); accumulated = 0; };
+    reset();
+    window.addEventListener("scroll", update, { passive: true });
+    smallScreen.addEventListener("change", reset);
+    return () => {
+      window.removeEventListener("scroll", update);
+      smallScreen.removeEventListener("change", reset);
+    };
+  }, [pathname, open]);
 
   if (pathname.startsWith("/maker")) {
     return null;
@@ -69,8 +99,11 @@ export function SiteHeader() {
   return (
     <>
       <header
+        data-scroll-hidden={headerHidden ? "true" : "false"}
+        onFocusCapture={() => setHeaderHidden(false)}
         className={cn(
           "z-40",
+          headerHidden && "-translate-y-full",
           heroHeader
             ? "absolute inset-x-0 top-0"
             : pathname.startsWith("/shop/p/")
@@ -106,10 +139,11 @@ export function SiteHeader() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
+                    aria-current={isNavActive(pathname, item.href) ? "page" : undefined}
                     className={cn(
                       "rounded-sm px-3 py-3.5 text-base transition-colors",
                       isNavActive(pathname, item.href)
-                        ? "bg-wash text-ink"
+                        ? "bg-wash text-ink underline decoration-2 underline-offset-8"
                         : "text-ink hover:bg-wash active:bg-wash"
                     )}
                   >
@@ -150,7 +184,10 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 aria-current={isNavActive(pathname, item.href) ? "page" : undefined}
-                className={navigationControlClass(heroHeader)}
+                className={cn(
+                  navigationControlClass(heroHeader),
+                  isNavActive(pathname, item.href) && "underline decoration-2 underline-offset-8"
+                )}
               >
                 {item.label}
               </Link>

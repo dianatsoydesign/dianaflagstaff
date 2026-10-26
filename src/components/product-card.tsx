@@ -62,7 +62,7 @@ export function ProductCard({
       <ProductNamePrice
         name={product.name}
         price={unitPrice * minimum}
-        priceLabel={minimum > 1 ? `${formatPrice(unitPrice * minimum)} for ${minimum}` : formatProductListPrice(product)}
+        priceLabel={minimum > 1 ? `${minimum} for ${formatPrice(unitPrice * minimum)}` : formatProductListPrice(product)}
       />
     </Link>
   );

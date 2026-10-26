@@ -1,0 +1,672 @@
+[
+  {
+    "id": "charcoal-figure-drawings",
+    "title": "Charcoal",
+    "photos": [
+      {
+        "title": "Charcoal figure drawing-1",
+        "alt": "Standing figure viewed from behind",
+        "src": "/art/charcoal-figure-drawings/1-preview.webp",
+        "original": "/art/charcoal-figure-drawings/1.jpg",
+        "width": 1000,
+        "height": 1486
+      },
+      {
+        "title": "Charcoal figure drawing-2",
+        "alt": "Standing figure with angular construction lines",
+        "src": "/art/charcoal-figure-drawings/2-preview.webp",
+        "original": "/art/charcoal-figure-drawings/2.jpg",
+        "width": 1000,
+        "height": 1499
+      },
+      {
+        "title": "Charcoal figure drawing-3",
+        "alt": "Red and black standing figure study",
+        "src": "/art/charcoal-figure-drawings/3-preview.webp",
+        "original": "/art/charcoal-figure-drawings/3.jpg",
+        "width": 1000,
+        "height": 1535
+      },
+      {
+        "title": "Charcoal figure drawing-4",
+        "alt": "Blue, green and yellow standing figure study",
+        "src": "/art/charcoal-figure-drawings/4-preview.webp",
+        "original": "/art/charcoal-figure-drawings/4.jpg",
+        "width": 1000,
+        "height": 1705
+      },
+      {
+        "title": "Charcoal figure drawing-5",
+        "alt": "Overlapping figure gesture studies",
+        "src": "/art/charcoal-figure-drawings/5-preview.webp",
+        "original": "/art/charcoal-figure-drawings/5.jpg",
+        "width": 1000,
+        "height": 1230
+      },
+      {
+        "title": "Charcoal figure drawing-21",
+        "alt": "Figure leaning backward with raised arms",
+        "src": "/art/charcoal-figure-drawings/21-preview.webp",
+        "original": "/art/charcoal-figure-drawings/21.jpeg",
+        "width": 1000,
+        "height": 1356
+      },
+      {
+        "title": "Charcoal figure drawing-7",
+        "alt": "Standing figure with extended arm",
+        "src": "/art/charcoal-figure-drawings/7-preview.webp",
+        "original": "/art/charcoal-figure-drawings/7.jpg",
+        "width": 1000,
+        "height": 1429
+      },
+      {
+        "title": "Charcoal figure drawing-8",
+        "alt": "Multiple figures in standing and leaning poses",
+        "src": "/art/charcoal-figure-drawings/8-preview.webp",
+        "original": "/art/charcoal-figure-drawings/8.jpg",
+        "width": 1000,
+        "height": 750
+      },
+      {
+        "title": "Charcoal figure drawing-9",
+        "alt": "Red line gesture study",
+        "src": "/art/charcoal-figure-drawings/9-preview.webp",
+        "original": "/art/charcoal-figure-drawings/9.jpg",
+        "width": 1000,
+        "height": 1964
+      },
+      {
+        "title": "Charcoal figure drawing-10",
+        "alt": "Standing figure with hand on hip",
+        "src": "/art/charcoal-figure-drawings/10-preview.webp",
+        "original": "/art/charcoal-figure-drawings/10.jpg",
+        "width": 1000,
+        "height": 1501
+      },
+      {
+        "title": "Charcoal figure drawing-11",
+        "alt": "Crouching figure on hands and knees",
+        "src": "/art/charcoal-figure-drawings/11-preview.webp",
+        "original": "/art/charcoal-figure-drawings/11.jpg",
+        "width": 1000,
+        "height": 1342
+      },
+      {
+        "title": "Charcoal figure drawing-12",
+        "alt": "Colorful figure with arms outstretched",
+        "src": "/art/charcoal-figure-drawings/12-preview.webp",
+        "original": "/art/charcoal-figure-drawings/12.jpg",
+        "width": 1000,
+        "height": 1278
+      },
+      {
+        "title": "Charcoal figure drawing-13",
+        "alt": "Colorful reclining figure",
+        "src": "/art/charcoal-figure-drawings/13-preview.webp",
+        "original": "/art/charcoal-figure-drawings/13.jpg",
+        "width": 1000,
+        "height": 579
+      },
+      {
+        "title": "Charcoal figure drawing-14",
+        "alt": "Figure bending forward",
+        "src": "/art/charcoal-figure-drawings/14-preview.webp",
+        "original": "/art/charcoal-figure-drawings/14.jpg",
+        "width": 1000,
+        "height": 1240
+      },
+      {
+        "title": "Charcoal figure drawing-15",
+        "alt": "Standing figure stretching sideways",
+        "src": "/art/charcoal-figure-drawings/15-preview.webp",
+        "original": "/art/charcoal-figure-drawings/15.jpg",
+        "width": 1000,
+        "height": 1421
+      },
+      {
+        "title": "Charcoal figure drawing-16",
+        "alt": "Figure balancing on one leg",
+        "src": "/art/charcoal-figure-drawings/16-preview.webp",
+        "original": "/art/charcoal-figure-drawings/16.jpg",
+        "width": 1000,
+        "height": 832
+      },
+      {
+        "title": "Charcoal figure drawing-17",
+        "alt": "Red line figure in a wide stance",
+        "src": "/art/charcoal-figure-drawings/17-preview.webp",
+        "original": "/art/charcoal-figure-drawings/17.jpeg",
+        "width": 1000,
+        "height": 1332
+      },
+      {
+        "title": "Charcoal figure drawing-18",
+        "alt": "Standing figure built from circular construction lines",
+        "src": "/art/charcoal-figure-drawings/18-preview.webp",
+        "original": "/art/charcoal-figure-drawings/18.jpeg",
+        "width": 1000,
+        "height": 2044
+      },
+      {
+        "title": "Charcoal figure drawing-19",
+        "alt": "Red standing figure study",
+        "src": "/art/charcoal-figure-drawings/19-preview.webp",
+        "original": "/art/charcoal-figure-drawings/19.jpeg",
+        "width": 1000,
+        "height": 1494
+      },
+      {
+        "title": "Charcoal figure drawing-20",
+        "alt": "Red torso construction study",
+        "src": "/art/charcoal-figure-drawings/20-preview.webp",
+        "original": "/art/charcoal-figure-drawings/20.jpeg",
+        "width": 1000,
+        "height": 1511
+      }
+    ]
+  },
+  {
+    "id": "pencil-drawings",
+    "title": "Pencil",
+    "photos": [
+      {
+        "title": "Pencil drawing-1",
+        "alt": "Seated figure in an interior perspective study",
+        "src": "/art/pencil-drawings/1-preview.webp",
+        "original": "/art/pencil-drawings/1.jpg",
+        "width": 1000,
+        "height": 1326
+      },
+      {
+        "title": "Pencil drawing-2",
+        "alt": "Seated figure on a bench",
+        "src": "/art/pencil-drawings/2-preview.webp",
+        "original": "/art/pencil-drawings/2.jpg",
+        "width": 1000,
+        "height": 759
+      },
+      {
+        "title": "Pencil drawing-3",
+        "alt": "Interior room perspective drawing with figures",
+        "src": "/art/pencil-drawings/3-preview.webp",
+        "original": "/art/pencil-drawings/3.jpg",
+        "width": 1000,
+        "height": 608
+      },
+      {
+        "title": "Pencil drawing-4",
+        "alt": "Back anatomy study with extended arm",
+        "src": "/art/pencil-drawings/4-preview.webp",
+        "original": "/art/pencil-drawings/4.jpg",
+        "width": 1000,
+        "height": 1321
+      },
+      {
+        "title": "Pencil drawing-9",
+        "alt": "Expressive crouching figure composition",
+        "src": "/art/pencil-drawings/9-preview.webp",
+        "original": "/art/pencil-drawings/9.jpg",
+        "width": 1000,
+        "height": 744
+      },
+      {
+        "title": "Pencil drawing-6",
+        "alt": "Circular panoramic perspective drawing",
+        "src": "/art/pencil-drawings/6-preview.webp",
+        "original": "/art/pencil-drawings/6.jpg",
+        "width": 1000,
+        "height": 1000
+      },
+      {
+        "title": "Pencil drawing-12",
+        "alt": "Standing figure in profile",
+        "src": "/art/pencil-drawings/12-preview.webp",
+        "original": "/art/pencil-drawings/12.jpeg",
+        "width": 1000,
+        "height": 1415
+      },
+      {
+        "title": "Pencil drawing-8",
+        "alt": "Torso anatomy study with raised arm",
+        "src": "/art/pencil-drawings/8-preview.webp",
+        "original": "/art/pencil-drawings/8.jpg",
+        "width": 1000,
+        "height": 1500
+      },
+      {
+        "title": "Pencil drawing-10",
+        "alt": "Layered figure composition with dark shading",
+        "src": "/art/pencil-drawings/10-preview.webp",
+        "original": "/art/pencil-drawings/10.jpg",
+        "width": 1000,
+        "height": 766
+      },
+      {
+        "title": "Pencil drawing-11",
+        "alt": "Rider seated on a horse",
+        "src": "/art/pencil-drawings/11-preview.webp",
+        "original": "/art/pencil-drawings/11.jpg",
+        "width": 1000,
+        "height": 701
+      }
+    ]
+  },
+  {
+    "id": "self-portraits",
+    "title": "Self portraits",
+    "photos": [
+      {
+        "title": "Self portrait-ink",
+        "alt": "Black ink self portrait with flowing hair",
+        "src": "/art/self-portraits/1-preview.webp",
+        "original": "/art/self-portraits/1.jpg",
+        "width": 1000,
+        "height": 688
+      },
+      {
+        "title": "Self portrait-linear-full body",
+        "alt": "Full body linear self portrait",
+        "src": "/art/self-portraits/2-preview.webp",
+        "original": "/art/self-portraits/2.jpg",
+        "width": 1000,
+        "height": 1383
+      },
+      {
+        "title": "Self portrait-linear",
+        "alt": "Angular line self portrait",
+        "src": "/art/self-portraits/3-preview.webp",
+        "original": "/art/self-portraits/3.jpg",
+        "width": 1000,
+        "height": 1268
+      },
+      {
+        "title": "Self portrait-lines",
+        "alt": "Shaded self portrait with hair tied back",
+        "src": "/art/self-portraits/4-preview.webp",
+        "original": "/art/self-portraits/4.jpg",
+        "width": 1000,
+        "height": 1270
+      },
+      {
+        "title": "Self portrait-photorealistic",
+        "alt": "Expressive self portrait with flowing hair",
+        "src": "/art/self-portraits/5-preview.webp",
+        "original": "/art/self-portraits/5.jpg",
+        "width": 1000,
+        "height": 1328
+      }
+    ]
+  },
+  {
+    "id": "value-drawings",
+    "title": "Value",
+    "photos": [
+      {
+        "title": "Value drawing-1",
+        "alt": "Gazelle in a shaded landscape",
+        "src": "/art/value-drawings/1-preview.webp",
+        "original": "/art/value-drawings/1.jpg",
+        "width": 1000,
+        "height": 610
+      },
+      {
+        "title": "Value drawing-2",
+        "alt": "Geometric composition with seated figure",
+        "src": "/art/value-drawings/2-preview.webp",
+        "original": "/art/value-drawings/2.jpg",
+        "width": 1000,
+        "height": 1325
+      },
+      {
+        "title": "Value drawing-3",
+        "alt": "Standing figure value study",
+        "src": "/art/value-drawings/3-preview.webp",
+        "original": "/art/value-drawings/3.jpg",
+        "width": 1000,
+        "height": 1466
+      },
+      {
+        "title": "Value drawing-4",
+        "alt": "Draped fabric value study",
+        "src": "/art/value-drawings/4-preview.webp",
+        "original": "/art/value-drawings/4.jpg",
+        "width": 1000,
+        "height": 1344
+      },
+      {
+        "title": "Value drawing-5",
+        "alt": "Seated figure viewed from behind",
+        "src": "/art/value-drawings/5-preview.webp",
+        "original": "/art/value-drawings/5.jpg",
+        "width": 1000,
+        "height": 1344
+      },
+      {
+        "title": "Value drawing-6",
+        "alt": "Standing figure with arms raised",
+        "src": "/art/value-drawings/6-preview.webp",
+        "original": "/art/value-drawings/6.jpg",
+        "width": 1000,
+        "height": 1423
+      },
+      {
+        "title": "Value drawing-7",
+        "alt": "Close-up of gazelle drawing",
+        "src": "/art/value-drawings/7-preview.webp",
+        "original": "/art/value-drawings/7.jpg",
+        "width": 1000,
+        "height": 610
+      },
+      {
+        "title": "Value drawing-8",
+        "alt": "Expressive shaded portrait",
+        "src": "/art/value-drawings/8-preview.webp",
+        "original": "/art/value-drawings/8.jpg",
+        "width": 1000,
+        "height": 934
+      },
+      {
+        "title": "Value drawing-9",
+        "alt": "Waterfall and rocks in charcoal",
+        "src": "/art/value-drawings/9-preview.webp",
+        "original": "/art/value-drawings/9.jpg",
+        "width": 1000,
+        "height": 1389
+      }
+    ]
+  },
+  {
+    "id": "marker",
+    "title": "Marker",
+    "photos": [
+      {
+        "title": "Marker-compass",
+        "alt": "Marker drawing of a drafting compass",
+        "src": "/art/marker/1-preview.webp",
+        "original": "/art/marker/1.jpg",
+        "width": 1000,
+        "height": 768
+      },
+      {
+        "title": "Marker-hairdryer",
+        "alt": "Marker drawing of a hairdryer",
+        "src": "/art/marker/2-preview.webp",
+        "original": "/art/marker/2.jpg",
+        "width": 1000,
+        "height": 786
+      },
+      {
+        "title": "Marker-wallet",
+        "alt": "Marker drawing of a wallet",
+        "src": "/art/marker/3-preview.webp",
+        "original": "/art/marker/3.jpg",
+        "width": 1000,
+        "height": 793
+      }
+    ]
+  },
+  {
+    "id": "wood-and-metal",
+    "title": "Wood & metal",
+    "photos": [
+      {
+        "title": "Chair models",
+        "alt": "Series of small chair models",
+        "src": "/art/wood-and-metal/1-preview.webp",
+        "original": "/art/wood-and-metal/1.jpeg",
+        "width": 1000,
+        "height": 242
+      },
+      {
+        "title": "hammer 1",
+        "alt": "Close-up of brass hammer head and wooden handle",
+        "src": "/art/wood-and-metal/2-preview.webp",
+        "original": "/art/wood-and-metal/2.jpeg",
+        "width": 1000,
+        "height": 667
+      },
+      {
+        "title": "hammer 2",
+        "alt": "Brass hammer with wooden handle",
+        "src": "/art/wood-and-metal/3-preview.webp",
+        "original": "/art/wood-and-metal/3.jpeg",
+        "width": 1000,
+        "height": 667
+      },
+      {
+        "title": "Hammer 3",
+        "alt": "Detail of textured brass hammer head",
+        "src": "/art/wood-and-metal/4-preview.webp",
+        "original": "/art/wood-and-metal/4.jpeg",
+        "width": 1000,
+        "height": 1000
+      },
+      {
+        "title": "metal - 2",
+        "alt": "Metal elephant sculpture",
+        "src": "/art/wood-and-metal/5-preview.webp",
+        "original": "/art/wood-and-metal/5.png",
+        "width": 1000,
+        "height": 715
+      },
+      {
+        "title": "metal-1",
+        "alt": "Elephant sculptures supporting utensils",
+        "src": "/art/wood-and-metal/6-preview.webp",
+        "original": "/art/wood-and-metal/6.png",
+        "width": 1000,
+        "height": 714
+      },
+      {
+        "title": "metal-3",
+        "alt": "Group of three metal elephant sculptures",
+        "src": "/art/wood-and-metal/7-preview.webp",
+        "original": "/art/wood-and-metal/7.png",
+        "width": 1000,
+        "height": 691
+      }
+    ]
+  },
+  {
+    "id": "caid-renderings",
+    "title": "CAID",
+    "photos": [
+      {
+        "title": "mug closeup 1",
+        "alt": "Green travel mug with its lid lifted",
+        "src": "/art/caid-renderings/1-preview.webp",
+        "original": "/art/caid-renderings/1.jpg",
+        "width": 1000,
+        "height": 1545
+      },
+      {
+        "title": "mug closeup 2",
+        "alt": "Green travel mug with black handle",
+        "src": "/art/caid-renderings/2-preview.webp",
+        "original": "/art/caid-renderings/2.jpg",
+        "width": 1000,
+        "height": 647
+      },
+      {
+        "title": "mug closeup",
+        "alt": "Close-up of travel mug lid",
+        "src": "/art/caid-renderings/3-preview.webp",
+        "original": "/art/caid-renderings/3.jpg",
+        "width": 1000,
+        "height": 647
+      },
+      {
+        "title": "Render 1",
+        "alt": "Rendered tabletop objects and containers",
+        "src": "/art/caid-renderings/4-preview.webp",
+        "original": "/art/caid-renderings/4.jpg",
+        "width": 1000,
+        "height": 713
+      },
+      {
+        "title": "Render 2",
+        "alt": "Blue sculptural desk with yellow frame",
+        "src": "/art/caid-renderings/5-preview.webp",
+        "original": "/art/caid-renderings/5.jpg",
+        "width": 1000,
+        "height": 647
+      },
+      {
+        "title": "Render 3",
+        "alt": "White curved surface rendering",
+        "src": "/art/caid-renderings/6-preview.webp",
+        "original": "/art/caid-renderings/6.jpg",
+        "width": 1000,
+        "height": 681
+      },
+      {
+        "title": "Render 4",
+        "alt": "Iridescent curved form",
+        "src": "/art/caid-renderings/7-preview.webp",
+        "original": "/art/caid-renderings/7.jpg",
+        "width": 1000,
+        "height": 681
+      },
+      {
+        "title": "Render 5",
+        "alt": "Exploded iridescent sculptural form",
+        "src": "/art/caid-renderings/8-preview.webp",
+        "original": "/art/caid-renderings/8.jpg",
+        "width": 1000,
+        "height": 681
+      },
+      {
+        "title": "Render 6",
+        "alt": "Blue sculptural desk with objects",
+        "src": "/art/caid-renderings/9-preview.webp",
+        "original": "/art/caid-renderings/9.jpg",
+        "width": 1000,
+        "height": 681
+      },
+      {
+        "title": "Render 7",
+        "alt": "Rendered desk accessories and objects",
+        "src": "/art/caid-renderings/10-preview.webp",
+        "original": "/art/caid-renderings/10.jpg",
+        "width": 1000,
+        "height": 681
+      }
+    ]
+  },
+  {
+    "id": "sewing",
+    "title": "Prototyping & sewing",
+    "photos": [
+      {
+        "title": "Sewing-1",
+        "alt": "Black fabric storage cart with orange trim",
+        "src": "/art/sewing/1-preview.webp",
+        "original": "/art/sewing/1.JPG",
+        "width": 1000,
+        "height": 666
+      },
+      {
+        "title": "Sewing-2",
+        "alt": "Front view of sewn storage cart",
+        "src": "/art/sewing/2-preview.webp",
+        "original": "/art/sewing/2.JPG",
+        "width": 1000,
+        "height": 1500
+      },
+      {
+        "title": "Sewing-3",
+        "alt": "Placing materials in fabric storage cart",
+        "src": "/art/sewing/3-preview.webp",
+        "original": "/art/sewing/3.JPG",
+        "width": 1000,
+        "height": 667
+      },
+      {
+        "title": "Sewing-4",
+        "alt": "Opening the storage cart cover",
+        "src": "/art/sewing/4-preview.webp",
+        "original": "/art/sewing/4.JPG",
+        "width": 1000,
+        "height": 667
+      },
+      {
+        "title": "Sewing-5",
+        "alt": "Close-up of storage cart compartments",
+        "src": "/art/sewing/5-preview.webp",
+        "original": "/art/sewing/5.JPG",
+        "width": 1000,
+        "height": 667
+      },
+      {
+        "title": "Sewing-6",
+        "alt": "Orange hand stitching around fabric opening",
+        "src": "/art/sewing/6-preview.webp",
+        "original": "/art/sewing/6.JPG",
+        "width": 1000,
+        "height": 667
+      },
+      {
+        "title": "Sewing-7",
+        "alt": "Unfolded black fabric cover with orange edges",
+        "src": "/art/sewing/7-preview.webp",
+        "original": "/art/sewing/7.JPG",
+        "width": 1000,
+        "height": 878
+      },
+      {
+        "title": "Sewing-8",
+        "alt": "Sewing fabric at a sewing machine",
+        "src": "/art/sewing/8-preview.webp",
+        "original": "/art/sewing/8.JPG",
+        "width": 1000,
+        "height": 750
+      },
+      {
+        "title": "Sewing-9",
+        "alt": "Close-up of machine sewing",
+        "src": "/art/sewing/9-preview.webp",
+        "original": "/art/sewing/9.JPG",
+        "width": 1000,
+        "height": 750
+      },
+      {
+        "title": "Sewing-10",
+        "alt": "Maker beside completed storage cart",
+        "src": "/art/sewing/10-preview.webp",
+        "original": "/art/sewing/10.jpg",
+        "width": 1000,
+        "height": 682
+      }
+    ]
+  },
+  {
+    "id": "mixed-materials",
+    "title": "Mixed materials",
+    "photos": [
+      {
+        "title": "Mixed materials-1",
+        "alt": "Hands assembling colorful hexagonal material samples",
+        "src": "/art/mixed-materials/1-preview.webp",
+        "original": "/art/mixed-materials/1.JPG",
+        "width": 1000,
+        "height": 750
+      },
+      {
+        "title": "Mixed materials-2",
+        "alt": "Work in progress on hexagonal material mosaic",
+        "src": "/art/mixed-materials/2-preview.webp",
+        "original": "/art/mixed-materials/2.JPG",
+        "width": 1000,
+        "height": 1333
+      },
+      {
+        "title": "Mixed materials-3",
+        "alt": "Completed mosaic of colorful hexagonal materials",
+        "src": "/art/mixed-materials/3-preview.webp",
+        "original": "/art/mixed-materials/3.jpg",
+        "width": 1000,
+        "height": 750
+      }
+    ]
+  }
+]

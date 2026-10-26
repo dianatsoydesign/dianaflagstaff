@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ProductNamePrice } from "@/components/product-name-price";
 import {
   getSizeUnitPrice,
+  formatPrice,
   type Product,
   type ProductImage,
   type YarnColor,
@@ -201,6 +202,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
               <ProductNamePrice
                 name={product.name}
                 price={displayUnitPrice * displayQuantity}
+                priceLabel={minimumQuantity > 1 ? `${displayQuantity} for ${formatPrice(displayUnitPrice * displayQuantity)}` : undefined}
                 priceTbd={priceTbd}
                 variant="detail"
               />
