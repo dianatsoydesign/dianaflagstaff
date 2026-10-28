@@ -14,6 +14,8 @@ on:
       - 'src/app/api/orders/route.ts'
       - 'src/lib/yarn-stock.ts'
       - 'src/data/charisma.json'
+      - 'src/data/hat-yarns.json'
+      - 'src/data/michaels-hat-catalog.mjs'
       - 'src/data/charisma-stock-bootstrap.json'
       - 'src/lib/charisma-flagstaff-stock.ts'
       - 'src/lib/charisma-stock-options.ts'

@@ -3,7 +3,7 @@ import { readBobbinyStock } from "@/lib/bobbiny-stock";
 import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
 import { readCharismaFlagstaffStock } from "@/lib/charisma-flagstaff-stock";
 import { charismaRecipe } from "@/lib/charisma-stock-options";
-import { availableForCharisma } from "@/lib/charisma-inventory.mjs";
+import { availableForCharisma, availableForCharismaHat } from "@/lib/charisma-inventory.mjs";
 import { readBernatStock } from "@/lib/bernat-stock";
 import { availableForCatCave, MIN_SKEINS } from "@/lib/bernat-inventory.mjs";
 import { NextResponse } from "next/server";
@@ -158,7 +158,7 @@ export async function POST(request: Request) {
         for (const color of colors) {
           const yarn = getProduct(line.productId)?.yarns.find(yarn => yarn.id === color);
           const sku = yarn?.supplierSku?.split(":")[1];
-          if (!sku || !availableForCharisma(snapshot, sku, minimum)) {
+          if (!sku || !(line.productId === "hats" ? availableForCharismaHat(snapshot, sku) : availableForCharisma(snapshot, sku, minimum))) {
             return NextResponse.json({ error: "That yarn is no longer available for this item. Please choose another color." }, { status: 409 });
           }
           requested.set(sku, (requested.get(sku) ?? 0) + line.quantity * minimum);

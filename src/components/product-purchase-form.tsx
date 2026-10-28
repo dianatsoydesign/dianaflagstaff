@@ -438,7 +438,7 @@ export function ProductPurchaseForm({
           }
           onYarnPreview?.(product.yarns.find((y) => y.id === id) ?? null);
         }}
-        legend={product.yarns.map(yarnLineName).find(Boolean) ?? "Yarn color"}
+        legend={yarnLineName(yarns.find(yarn => yarn.id === yarnId) ?? product.yarns[0]) ?? "Yarn color"}
       />
       </PickerValidation>
       <TagPicker

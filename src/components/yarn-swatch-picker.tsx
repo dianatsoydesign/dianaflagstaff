@@ -178,6 +178,24 @@ export function YarnSwatchPicker({
               Holiday
             </button>
           ) : null}
+          <button
+            type="button"
+            onClick={() => selectGroupFilter(null)}
+            aria-pressed={groupFilter === null}
+            className={cn(
+              pickerChipBase,
+              groupFilter === null
+                ? cn("border-ink font-medium", careSurfaceClass)
+                : cn(
+                    "border-border bg-card/80",
+                    "hover:border-ink/40",
+                    careSurfaceHoverClass,
+                    "active:bg-[#e8e8e8] dark:active:bg-[#141414]"
+                  )
+            )}
+          >
+            All colors
+          </button>
           {groupOptions.map((group) => {
             const isSelected = groupFilter === group.id;
             return (
@@ -202,24 +220,6 @@ export function YarnSwatchPicker({
               </button>
             );
           })}
-          <button
-            type="button"
-            onClick={() => selectGroupFilter(null)}
-            aria-pressed={groupFilter === null}
-            className={cn(
-              pickerChipBase,
-              groupFilter === null
-                ? cn("border-ink font-medium", careSurfaceClass)
-                : cn(
-                    "border-border bg-card/80",
-                    "hover:border-ink/40",
-                    careSurfaceHoverClass,
-                    "active:bg-[#e8e8e8] dark:active:bg-[#141414]"
-                  )
-            )}
-          >
-            All colors
-          </button>
         </div>
       ) : null}
 
@@ -281,30 +281,6 @@ export function YarnSwatchPicker({
             </button>
           );
         })}
-        {showHolidayChip && groupFilter === "holiday" ? (
-          <button
-            type="button"
-            onClick={() => onChange(CHARISMA_HOLIDAY_PIZZA_YARN_ID)}
-            onPointerEnter={(e) => {
-              if (e.pointerType === "mouse") preview(CHARISMA_HOLIDAY_PIZZA_YARN_ID);
-            }}
-            role={keyboardNavigation ? "radio" : undefined}
-            aria-checked={keyboardNavigation ? value === CHARISMA_HOLIDAY_PIZZA_YARN_ID : undefined}
-            tabIndex={keyboardNavigation ? (value === CHARISMA_HOLIDAY_PIZZA_YARN_ID ? 0 : -1) : undefined}
-            aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_HOLIDAY_PIZZA_YARN_ID}
-            aria-label="Holiday classic"
-            title="Holiday classic"
-            className={cn(
-              "relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
-              value === CHARISMA_HOLIDAY_PIZZA_YARN_ID
-                ? "border-ink"
-                : "border-transparent hover:border-ink/40"
-            )}
-          >
-            <HolidayPizzaSwatch decorative />
-          </button>
-        ) : null}
         {showHolidayChip && groupFilter === "holiday" && showSoftPaletteSwatch ? (
           <button
             type="button"
@@ -332,6 +308,30 @@ export function YarnSwatchPicker({
               sliceColors={CHARISMA_SOFT_PALETTE_SLICE_COLORS}
               decorative
             />
+          </button>
+        ) : null}
+        {showHolidayChip && groupFilter === "holiday" ? (
+          <button
+            type="button"
+            onClick={() => onChange(CHARISMA_HOLIDAY_PIZZA_YARN_ID)}
+            onPointerEnter={(e) => {
+              if (e.pointerType === "mouse") preview(CHARISMA_HOLIDAY_PIZZA_YARN_ID);
+            }}
+            role={keyboardNavigation ? "radio" : undefined}
+            aria-checked={keyboardNavigation ? value === CHARISMA_HOLIDAY_PIZZA_YARN_ID : undefined}
+            tabIndex={keyboardNavigation ? (value === CHARISMA_HOLIDAY_PIZZA_YARN_ID ? 0 : -1) : undefined}
+            aria-pressed={keyboardNavigation ? undefined : value === CHARISMA_HOLIDAY_PIZZA_YARN_ID}
+            aria-label="Holiday classic"
+            title="Holiday classic"
+            className={cn(
+              "relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+              value === CHARISMA_HOLIDAY_PIZZA_YARN_ID
+                ? "border-ink"
+                : "border-transparent hover:border-ink/40"
+            )}
+          >
+            <HolidayPizzaSwatch decorative />
           </button>
         ) : null}
         {showHolidayChip && groupFilter === "holiday" && showWarmPaletteSwatch ? (

@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import { availableForCharismaHat, availableForCharisma, pickupQuantities, validSnapshot } from '../src/lib/charisma-inventory.mjs';
 
 const now = Date.now();
-const snapshot = { storeId: '9608', checkedAt: now, quantities: { '100': 2, '101': 1, '102': 0, '103': null } };
+const snapshot = { storeId: '9608', checkedAt: now, quantities: { '100': 3, '104': 2, '101': 1, '102': 0, '103': null } };
 
-test('requires at least two skeins of the chosen color', () => {
+test('hides Limited Quantity pickup colors below three skeins', () => {
   assert.equal(availableForCharismaHat(snapshot, '100', now), true);
-  for (const sku of ['101', '102', '103', '999']) assert.equal(availableForCharismaHat(snapshot, sku, now), false);
+  for (const sku of ['104', '101', '102', '103', '999']) assert.equal(availableForCharismaHat(snapshot, sku, now), false);
 });
 
 test('keeps last verified colors during an extended stock-check outage', () => {

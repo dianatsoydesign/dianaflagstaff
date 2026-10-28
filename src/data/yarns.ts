@@ -1,3 +1,4 @@
+import hatCatalog from "@/data/hat-yarns.json";
 import { PATTERN_BOARD_YARNS, products, type YarnColor } from "@/data/products";
 import { BOBBINY_PREMIUM_5MM_YARNS } from "@/data/bobbiny-premium-5mm";
 import { charismaHolidayPizzaYarn } from "@/data/charisma-holiday-colors";
@@ -29,6 +30,8 @@ export function getAllYarns(): YarnColor[] {
 
 /** Supplier yarn line shown as the picker heading and in gallery alt text. */
 export function yarnLineName(yarn: YarnColor): string | null {
+  const additional = hatCatalog.yarns.find(color => color.id === yarn.id);
+  if (additional) return additional.lineName;
   if (yarn.supplierSku?.startsWith("bobbiny:")) return "Bobbiny Premium 5mm";
   if (yarn.id.startsWith("bernat-blanket-big-")) return "Bernat Blanket Big";
   if (yarn.supplierSku?.startsWith("michaels:")) return "Charisma by Loops & Threads";
@@ -54,6 +57,7 @@ const CHARISMA_MATERIAL: YarnMaterial = {
 
 /** Fiber content from each supplier's product page (bobbinycords.us, michaels.com). */
 export function yarnMaterial(yarn: YarnColor): YarnMaterial {
+  if (yarn.id.startsWith("charisma-tweed-stripe-")) return { ...CHARISMA_MATERIAL, fiber: "97% acrylic, 3% viscose" };
   if (yarn.id.startsWith("bernat-blanket-big-")) {
     return {
       fiber: "100% polyester",

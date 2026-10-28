@@ -2,6 +2,7 @@ import { HAT_POM_POM_OPTIONS } from "@/lib/hat-pom-pom";
 import { BOBBINY_PREMIUM_5MM_YARNS } from "@/data/bobbiny-premium-5mm";
 import { BERNAT_BLANKET_BIG_YARNS } from "@/data/bernat-blanket-big";
 import { CHARISMA_YARNS } from "@/data/charisma";
+import { HAT_YARNS } from "@/data/hat-yarns";
 import type { GalleryMatteInset } from "@/lib/gallery-matte-inset";
 
 export type { GalleryMatteInset };
@@ -155,7 +156,7 @@ export const products: Product[] = [
     category: "Holiday",
     imageSrc: "/products/christmas-stockings/hero-studio-v9.jpg",
     imageAlt: "Row of handmade crochet Christmas stockings in holiday colors",
-    imageShownColor: "Holiday warm palette, red, off white, pine, Holiday soft palette (left to right)",
+    imageShownColor: "Holiday warm palette (left), Holiday soft palette (right)",
     galleryImages: [
       { src: "/products/christmas-stockings/2-studio-v2.jpg", alt: "Red crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Red" },
       { src: "/products/christmas-stockings/off-white-studio-v2.jpg", alt: "Cream crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Off White" },
@@ -357,7 +358,7 @@ export const products: Product[] = [
     ],
     defaultSizeId: "adult",
     showPomPomPicker: true,
-    yarns: CHARISMA_YARNS,
+    yarns: HAT_YARNS,
   },
 ];
 

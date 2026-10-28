@@ -1,5 +1,5 @@
 import { charismaStockStatuses, CHARISMA_PALETTES } from '@/lib/charisma-stock-options';
-import catalog from '@/data/charisma.json';
+import { MICHAELS_HAT_CATALOG } from '@/data/michaels-hat-catalog.mjs';
 import bootstrapStock from '@/data/charisma-stock-bootstrap.json';
 import { validSnapshot, FLAGSTAFF_STORE_ID, pickupQuantities } from '@/lib/charisma-inventory.mjs';
 
@@ -14,7 +14,7 @@ let localRetryAfter = 0;
 async function refreshLocalStock(previous: Snapshot | null): Promise<Snapshot | null> {
   const checkedAt = Date.now();
   const quantities: Record<string, number | null> = {};
-  const skus = catalog.yarns.map(yarn => yarn.supplierSku.split(':')[1]);
+  const skus = MICHAELS_HAT_CATALOG.map(yarn => yarn.supplierSku.split(':')[1]);
   try {
     for (let offset = 0; offset < skus.length; offset += 25) {
       const batch = skus.slice(offset, offset + 25);
@@ -63,7 +63,7 @@ export async function readCharismaFlagstaffStock(): Promise<Snapshot | null> {
   if (process.env.NODE_ENV === 'development') {
     if (localSnapshot && validSnapshot(localSnapshot) &&
         (!snapshot || !validSnapshot(snapshot) || localSnapshot.checkedAt > snapshot.checkedAt)) snapshot = localSnapshot;
-    if (snapshot && validSnapshot(snapshot) && Date.now() - snapshot.checkedAt < 60 * 60 * 1000) return snapshot;
+    if (snapshot && validSnapshot(snapshot) && MICHAELS_HAT_CATALOG.every(yarn => Object.hasOwn(snapshot?.quantities ?? {}, yarn.supplierSku.split(':')[1])) && Date.now() - snapshot.checkedAt < 60 * 60 * 1000) return snapshot;
     if (Date.now() >= localRetryAfter) {
       if (!localRefresh) localRefresh = refreshLocalStock(snapshot).finally(() => { localRefresh = null; });
       return localRefresh;
@@ -77,7 +77,7 @@ export async function saveCharismaFlagstaffStock(value: unknown) {
   const snapshot = value as Snapshot;
   // Ingestion must be recent; never reset an old snapshot's original check time.
   if (Date.now() - snapshot.checkedAt > 5 * 60 * 1000) throw new Error('Stock check is too old');
-  const expected = catalog.yarns.map(yarn => yarn.supplierSku.split(':')[1]);
+  const expected = MICHAELS_HAT_CATALOG.map(yarn => yarn.supplierSku.split(':')[1]);
   if (Object.keys(snapshot.quantities).length !== expected.length ||
       expected.some(sku => !Object.hasOwn(snapshot.quantities, sku))) throw new Error('Incomplete Charisma catalog');
   const kv = await stockKv();
@@ -92,7 +92,7 @@ export async function saveCharismaFlagstaffStock(value: unknown) {
 export async function charismaFlagstaffAvailability(minimum: 2 | 3) {
   const snapshot = await readCharismaFlagstaffStock();
   const statuses = charismaStockStatuses(snapshot, minimum);
-  const yarns = [...catalog.yarns, ...Object.keys(CHARISMA_PALETTES).map(id => ({ id, supplierSku: undefined }))];
+  const yarns = [...MICHAELS_HAT_CATALOG, ...Object.keys(CHARISMA_PALETTES).map(id => ({ id, supplierSku: undefined }))];
   return yarns.map(yarn => ({
     yarnId: yarn.id,
     supplierSku: yarn.supplierSku,

@@ -50,7 +50,7 @@ export function charismaHolidayYarnsInCatalog<T extends { id: string }>(
 ): T[] {
   const byId = new Map(yarns.map((y) => [y.id, y]));
   const picked: T[] = [];
-  for (const id of CHARISMA_HOLIDAY_YARN_IDS) {
+  for (const id of ["charisma-red", "charisma-off-white", "charisma-pine"]) {
     const yarn = byId.get(id);
     if (yarn) picked.push(yarn);
   }

@@ -32,7 +32,7 @@ export function isCharismaMulticolorYarn(yarn: {
   multicolor?: boolean;
   sortRank?: number;
 }): boolean {
-  if (yarn.id && !yarn.id.startsWith("charisma-")) return false;
+  if (yarn.id && !/^(charisma-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-)/.test(yarn.id)) return false;
   return Boolean(yarn.multicolor || (yarn.sortRank ?? 0) >= 2000);
 }
 
@@ -61,7 +61,7 @@ export function inferCharismaColorGroupId(yarn: {
 export function charismaColorGroupId(
   yarn: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">
 ): CharismaColorGroupId | null {
-  if (!yarn.id.startsWith("charisma-")) return null;
+  if (!/^(charisma-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-)/.test(yarn.id)) return null;
   if (isCharismaMulticolorYarn(yarn)) return "multis";
   const forced = charismaGroupOverrides[
     yarn.id as keyof typeof charismaGroupOverrides
