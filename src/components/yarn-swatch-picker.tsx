@@ -11,6 +11,7 @@ import {
 } from "@/data/bobbiny-color-order";
 import {
   isCharismaColorCatalog,
+  charismaGroupsForYarns,
 } from "@/data/charisma-color-groups";
 import {
   CHARISMA_HOLIDAY_PIZZA_YARN_ID,
@@ -87,9 +88,11 @@ export function YarnSwatchPicker({
   const useGroupFilter = useCharismaGroups || useBobbinyGroups || useBernatGroups;
 
   // Keep family sorting, but expose only the approved special filters.
-  const groupOptions = useBernatGroups
-    ? bernatGroupsForYarns(yarns).filter((group) => group.id === "multis")
-    : [];
+  const groupOptions = useCharismaGroups
+    ? charismaGroupsForYarns(yarns).filter((group) => group.id === "multis")
+    : useBernatGroups
+      ? bernatGroupsForYarns(yarns).filter((group) => group.id === "multis")
+      : [];
   const [groupFilter, setGroupFilter] = useState<CatalogGroupId | null>(allowHolidayFilter ? "holiday" : null);
 
   const showHolidayChip = allowHolidayFilter && useCharismaGroups && charismaHasHolidayYarns(yarns);

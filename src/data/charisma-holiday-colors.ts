@@ -2,7 +2,6 @@ import type { YarnColor } from "@/data/products";
 import {
   type CharismaColorGroupId,
   filterCharismaYarnsByGroup,
-  isCharismaMulticolorYarn,
 } from "@/data/charisma-color-groups";
 import { CHARISMA_SOFT_PALETTE_YARN_ID } from "@/data/charisma-soft-palette";
 import { CHARISMA_WARM_PALETTE_YARN_ID } from "@/data/charisma-warm-palette";
@@ -70,17 +69,11 @@ function withoutCuratedPaletteYarns<T extends { id: string }>(yarns: T[]): T[] {
   return yarns.filter((y) => !isHolidayPickerVirtualYarn(y.id));
 }
 
-function withoutMulticolorCharismaYarns<T extends YarnColor>(yarns: T[]): T[] {
-  return yarns.filter((y) => !isCharismaMulticolorYarn(y));
-}
-
 export function filterCharismaYarnsForPicker<T extends YarnColor>(
   yarns: T[],
   groupId: CharismaPickerGroupId | null
 ): T[] {
-  const catalog = withoutMulticolorCharismaYarns(
-    withoutCuratedPaletteYarns(yarns)
-  );
+  const catalog = withoutCuratedPaletteYarns(yarns);
   if (!groupId) return catalog;
   if (groupId === "holiday") return charismaHolidayYarnsInCatalog(catalog);
   return filterCharismaYarnsByGroup(catalog, groupId);

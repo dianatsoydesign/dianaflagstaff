@@ -1,7 +1,7 @@
 import type { YarnColor } from "@/data/products";
 import charismaGroupOverrides from "@/data/charisma-group-overrides.json";
 
-/** Rainbow from green, then browns, neutrals (grey/black/white). Multicolor yarns are omitted from the picker. */
+/** Rainbow from green, then browns, neutrals (grey/black/white). Multicolor yarns follow the solid families. */
 export const CHARISMA_COLOR_GROUPS = [
   { id: "greens", label: "Greens" },
   { id: "yellows-oranges-reds", label: "Yellows, oranges & reds" },
@@ -9,6 +9,7 @@ export const CHARISMA_COLOR_GROUPS = [
   { id: "blues", label: "Blues" },
   { id: "browns", label: "Browns" },
   { id: "neutrals", label: "Neutrals" },
+  { id: "multis", label: "Multicolor" },
 ] as const;
 
 export type CharismaColorGroupId = (typeof CHARISMA_COLOR_GROUPS)[number]["id"];
@@ -40,7 +41,7 @@ export function inferCharismaColorGroupId(yarn: {
   sortRank?: number;
   multicolor?: boolean;
 }): CharismaColorGroupId | null {
-  if (isCharismaMulticolorYarn(yarn)) return null;
+  if (isCharismaMulticolorYarn(yarn)) return "multis";
   const { sortRank = Number.MAX_SAFE_INTEGER } = yarn;
   if (sortRank >= 1000) {
     if (sortRank >= 1035 || sortRank <= 1012) return "neutrals";
@@ -61,7 +62,7 @@ export function charismaColorGroupId(
   yarn: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">
 ): CharismaColorGroupId | null {
   if (!yarn.id.startsWith("charisma-")) return null;
-  if (isCharismaMulticolorYarn(yarn)) return null;
+  if (isCharismaMulticolorYarn(yarn)) return "multis";
   const forced = charismaGroupOverrides[
     yarn.id as keyof typeof charismaGroupOverrides
   ];
@@ -83,7 +84,6 @@ export function charismaColorGroupId(
 export function charismaColorGroupSortIndex(
   yarn: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">
 ): number {
-  if (isCharismaMulticolorYarn(yarn)) return CHARISMA_COLOR_GROUPS.length;
   const id = charismaColorGroupId(yarn);
   if (!id) return CHARISMA_COLOR_GROUPS.length;
   return GROUP_SORT_INDEX.get(id) ?? CHARISMA_COLOR_GROUPS.length;
