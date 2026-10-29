@@ -3,10 +3,12 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import collections from "@/data/art-gallery.json";
-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { ArtImageViewer } from "@/components/art-image-viewer";
 import { navigationControlClass } from "@/lib/navigation-styles";
 
 export function ArtGallery() {
+  const [openPhoto, setOpenPhoto] = useState<string | null>(null);
   const filtersRef = useRef<HTMLElement>(null);
   const [offsets, setOffsets] = useState({ header: 0, filters: 60 });
 
@@ -42,23 +44,19 @@ export function ArtGallery() {
           </div>
         </div>
       </nav>
-      <div className="columns-2 gap-1 px-1 md:columns-3 xl:columns-4">
-        {collections.flatMap((group, groupIndex) =>
-          group.photos.map((photo, index) => (
-              <Dialog key={photo.src}>
-                <DialogTrigger id={index === 0 ? group.id : undefined} style={{ scrollMarginTop: offsets.header + offsets.filters + 8 }} className=" relative mb-1 block w-full cursor-zoom-in break-inside-avoid overflow-hidden align-top focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" aria-label={`Open ${photo.title}: ${photo.alt}`}>
+      <div className="space-y-1 px-1">
+        {collections.map((group, groupIndex) => (
+          <section key={group.id} id={group.id} aria-label={group.title} style={{ scrollMarginTop: offsets.header + offsets.filters + 8 }} className="grid grid-cols-1 items-start gap-1 md:grid-cols-3 xl:grid-cols-4">
+          {group.photos.map((photo, index) => (
+              <Dialog key={photo.src} open={openPhoto === photo.src} onOpenChange={open => setOpenPhoto(open ? photo.src : null)}>
+                <DialogTrigger className="relative block w-full cursor-zoom-in overflow-hidden rounded-[8px] align-top focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" aria-label={`Open ${photo.title}: ${photo.alt}`}>
                   <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} unoptimized loading={groupIndex === 0 && index < 4 ? "eager" : "lazy"} className="block h-auto w-full" />
                 </DialogTrigger>
-                <DialogContent className="flex max-h-[94dvh] w-[96vw] max-w-[96vw] flex-col gap-3 overflow-y-auto rounded-none p-3 motion-reduce:animate-none! sm:max-w-[96vw]">
-                  <div className="pr-12">
-                    <DialogTitle className="leading-normal">{photo.title}</DialogTitle>
-                    <DialogDescription className="sr-only">{photo.alt}</DialogDescription>
-                  </div>
-                  <Image src={photo.original} alt={photo.alt} width={photo.width} height={photo.height} unoptimized className="mx-auto block h-auto max-h-[74dvh] w-auto max-w-full object-contain" />
-                </DialogContent>
+                {openPhoto === photo.src && <ArtImageViewer photo={photo} />}
               </Dialog>
-          ))
-        )}
+          ))}
+          </section>
+        ))}
       </div>
     </div>
   );

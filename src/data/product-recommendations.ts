@@ -5,6 +5,7 @@ import { listedProducts, type Product } from "@/data/products";
  * Unassigned products get no recommendations; never fill with unrelated products.
  */
 export const recommendationGroups: Record<string, readonly string[]> = {
+  blankets: ["blanket", "hotpads", "placemats"],
   hats: ["hats", "elf-hat", "mushroom-hat"],
   holiday: ["christmas-stockings", "elf-hat", "mushroom-hat"],
   pets: ["cat-cave"],

@@ -1,0 +1,779 @@
+[
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 1.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "33a5307fc6443c3f94f867b805cfa76c63ba8b53fe3fd5efeef0337414efaa98"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 2.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "e3566e3d5695a83af06332b578925c201c636795580f88b8e7ad09dac89e5a5b"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 3.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 3.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "b282468eeed3c2282896528bb588a49020e28b03d72aeeee68d837063414dfcd"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 4.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 4.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "8c0dde01e4884e63b2db9369494ec7d063d9cfad089039d4d639591255bc570b"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 5.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 5.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "65150bf7406c08a42f543e07587e03966abb0c9b2bddef30b88f881cc5818baf"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 6.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 6.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "36d411576f5c5ace6de16828180dbc247b906d0c174ccb98e9a2e7ad893b7ebf"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 7.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 7.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "8c68bb2f397f1802e34145bb7d14c07bfa05199dc7f74446f97d338f53f9b42b"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 8.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 8.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "ef6db07116d5089be7d66ed0a8071fb2be32a5a6429b37e9891152faad09b303"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 9.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 9.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "12dd6c1d7d909bd11baa536faf44212aa807d299dde41f841df79084da9ed72a"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 10.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 10.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "d14ae91f69e3891fd67a94884648da2db073b58ce8e6314476245281107d26a0"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/acrylic throw blanket 11.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/blanket 11.jpg",
+    "bucket": "Live",
+    "product": "Blanket",
+    "sha256": "fe816a90638acbc8e9bc6aa80d1337d6a0454597ac154175ec50a0963cf9fe5e"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 1.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 1.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "c3624691b3e79b6ae7527342f745484285390ef58b29115c0a1d4eb3b9d13631"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 2.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 2.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "68d94665cc26bfe13662c1d972fd0b923140a898427c3f6fbe0bbc9737f0abcd"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 3.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 3.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "8d5bc59455bc2d805f8c76afae3fd9a5ac8487bf8d48c2771f77fdd333a44e60"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 4.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 4.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "3f78607707fd86ae95af4d500ed53b5487774097b8086331de7a73b580da7e49"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 5.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 5.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "e212ab1a596c5a6cb4f7b7db2f3de4eab8399ce30191cf5e1cc88c43bd2368ca"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 6.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 6.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "0121c289ceccb8851de3fbb8efce9323662fbbe02100703fd5509b9c74d1a7b2"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 7.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 7.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "b389ea79bd411b707ba1ee56747ca26b1cda8f8a5e8bdfcac42e03d62679f713"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 8.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 8.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "87f70d59c5bfa65ba63c7a70d65d75e222758b961ad241de013e427be76fbec8"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 9.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 9.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "dba9afb4cab62f26ce080857f671b911f27e541c63931749979909a532f1480f"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 10.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 10.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "050b37852a187dd2de8db73b4561c85bc79d5afffc290fc64a14e14ddab2b799"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/acrylic throw blanket 11.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Edited masters/blanket 11.png",
+    "bucket": "Edited masters",
+    "product": "Blanket",
+    "sha256": "50f85bdf326451c34e1e4a806e8bd19ff7f768d3b3f162e7503073600a5c462e"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 1.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "ccbcdbbbafbbb1e9283a395917a4457d2aac11fd1cfd41523b37c069d5d9dd5f"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 1.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 2.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "64347ee02e3f54874a0a04de82ab0285570583e3fc5297fc85cc3815aa978e85"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 3.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "340137b12ab7bf5db687ca9b38278c20af0d25d945562194373b3fb1575159b2"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 2.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 4.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "f3f37c43ce507bf8988384dae1c6f4b11876d947d92f057a3b6e328cce003ad2"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 3.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 5.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "3d3ff8f47e48576228bb3c02e85ad6f930058e4aaac01b9fb8404012df1b1651"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 3.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 6.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "f7860fa26bdd4de10bd6e6f3febb60dc2c4321d9ce0203c5ab7fb086afea2512"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 4.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 7.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "153f417997d05d6c52250ea6a51d39ab71c408c9cc9bedea4061edf501482346"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 4.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 8.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "8da70a67728c4ced5e35e2d9ba156492efceb293b6540462f5b7cd22fcf81af5"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 5.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 9.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "cbf80ad449f33741300db2d41ee83d526b5500e5410cecf6e510d34973e88524"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 5.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 10.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "9a592d6c11eff093d9bf0705af2a7a9f29734bc5f6a985cb6b3eff420aec5444"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 6.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 11.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "313be3c8a33c7b66cd1baeb363d419cbe61a5b61a60f075acc98c60391bddeba"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 6.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 12.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "a9d7ae140894031092b10405703eb2d2f1e62629a6cbf0b315a4fba9e936da3a"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 7.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 13.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "b630d5d87a0d3dd41acd33c38a77cee94e14c6e1b1509b3c0fbf3597ea24bf96"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 7.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 14.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "e7c8ede98c137d6ccdecd51f708cb5b1e4578faba09c4fc678968a989f78bda9"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 8.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 15.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "02d246bea09bc510016778d9a8c2b6d7c71392bd4e09447e2ad3ab277059549a"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 8.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 16.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "a6e1faf24f98c4d4f0520fbfc51df57bd4a6afcb2e3d3ab33a523233a578be1d"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 9.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 17.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "c482ac71b4448954a7f8136625e2e0e43354fef6e09c527ae9dbd7468161438b"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 9.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 18.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "a924ec4836085cac82fb7cd42a27a473ca99d807bc37546a728a38d8b5525a39"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 10.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 19.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "cdced597fd0ab669f93f2f1f5998a552f1c7df3c53d8e51f7dd465f2f01b2931"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 10.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 20.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "8f607d9a0484ce760bd66ff21e8616f51f93bb68266b10ad285f2b59fae8895a"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 11.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 21.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "86c8414269e24ee0901a4ad6a44d47c9a4ad3b3a12782fd769ac6e465950a5f1"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 11.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 22.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "119cb6866f1a0440e6015f347c8f93cc66efcd36712033847261d212e1eaa9aa"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 12.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 23.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "4a4c42a0cbc7e96cc08c1a982ad30645f9ccd585beb43da00b12c7c98ae55167"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 12.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 24.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "38274086622daf4538b98b81e6962f24fdc8abbf46282331df29a73e32a26df4"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 13.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 25.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "3a903d0191c1a2fbea9284bc63dfc2f160a9bb9f55b0e920ce79784b6cd88fe7"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 13.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 26.png",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "586b0f4e37d41df32aa4ac55b88adecea386a80f0a4948ba71e1e611e676cafe"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 14.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 27.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "cee20f86b9e1d981ea3d977c264c41fd3d9c1bd61df832f23eb94fd2d44215c8"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 15.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 28.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "6e0776056fa1efe1efbfae44be6c9fe318ef1da15401c0d0f208ac864fef3977"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 16.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 29.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "545769a87cb485abda3f6dc579a09bd6795462da12ff999fe87579a6fda6b40e"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 17.mp4",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 30.mp4",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "df25bccf4f3336e64011ceb570945d5ab083a773e9895d109456719492b45bd4"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 18.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 31.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "6c34a120f552c868320a0fd6e270ab3cc0dbea4af5873c2db2b73ce91b6ca6c1"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals and unused/acrylic throw blanket 19.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/Blanket/Originals/blanket 32.jpg",
+    "bucket": "Originals",
+    "product": "Blanket",
+    "sha256": "3b70f89a80918d5f9db9aaa5ad47c11357950a8d7dc758d7567072e32c0e3b64"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/hero-studio-v9.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/christmas stockings 1.jpg",
+    "bucket": "Live",
+    "product": "Christmas stockings",
+    "sha256": "8a318a123f796063973db87a27ee165edd5591cb7105d2fca343c45f762a6560"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/2-studio-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/christmas stockings 2.jpg",
+    "bucket": "Live",
+    "product": "Christmas stockings",
+    "sha256": "c2fce80ba81192a36a1f5d79d803217c53a8f933631d73c8ea247a6843764f98"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/off-white-studio-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/christmas stockings 3.jpg",
+    "bucket": "Live",
+    "product": "Christmas stockings",
+    "sha256": "0d8f7175dc5d7ddde9396b244696f9e1c5cf0613ca99862c1166cba11be2cbab"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/pine-studio-v3.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/christmas stockings 4.jpg",
+    "bucket": "Live",
+    "product": "Christmas stockings",
+    "sha256": "8405adede76d2cb083db4a419f885b867a5d9b30c35502d8966e9c242463047d"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/4-studio-v4.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/christmas-stockings/christmas stockings 5.jpg",
+    "bucket": "Live",
+    "product": "Christmas stockings",
+    "sha256": "d2c9d71034253dc0c4f3a514cdf87ae0a5f8cd0a2ecb919076afe0086eeb92b9"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/coasters/2-studio-v9.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/coasters/coasters 1.jpg",
+    "bucket": "Live",
+    "product": "Coasters",
+    "sha256": "326ab6d2bbd643751debfa2937c006f7f538438bb656c783e087053b26dc8680"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/coasters/hero-studio-v6.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/coasters/coasters 2.jpg",
+    "bucket": "Live",
+    "product": "Coasters",
+    "sha256": "4bab0e1df5f0bc5f063801bfa67364da69fc483d603fea5c85386f6368ac0918"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/coasters/mug-studio-v5.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/coasters/coasters 3.jpg",
+    "bucket": "Live",
+    "product": "Coasters",
+    "sha256": "1cadf5cb3f9d3afb5ff2026e3787d38f1563def2f08f6842191a7d3b16918ae5"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/placemats-image-1-studio-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/placemats 1.jpg",
+    "bucket": "Live",
+    "product": "Placemats",
+    "sha256": "f669aca0075c7c2f5d2f51e38807f0e18891d4018ef7d46840609baf1be7b88a"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/placemats-image-3-studio-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/placemats 2.jpg",
+    "bucket": "Live",
+    "product": "Placemats",
+    "sha256": "a7e798e3a6bd26b961a6a75a0df69f87d1e41837b84c797d0d9f893a5c05532c"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/placemats-deflicker-v1.mp4",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/placemats 3.mp4",
+    "bucket": "Live",
+    "product": "Placemats",
+    "sha256": "c93da74dabc2296dc31fb44a0fd838f34e815cbca12b073f6c31feb511072243"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/placemats video.mp4",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/Originals/placemats 1.mp4",
+    "bucket": "Originals",
+    "product": "Placemats",
+    "sha256": "ae1d34dc20534c728b4f0777a0449cd29b7086ce6fa85de01a389a63f0441b7e"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/placemats-image 2.jpeg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/placemats/Originals/placemats 2.jpeg",
+    "bucket": "Originals",
+    "product": "Placemats",
+    "sha256": "31ffef749f33a133665ae4889450e7c85c9d3b1184be56bc14a1034250090692"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/elf-hat/hero-studio-v6.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/elf-hat/elf hat 1.jpg",
+    "bucket": "Live",
+    "product": "Elf hat",
+    "sha256": "67337636efe8492dbdfe2a1b8e1757ea9fd26cff97f70a8120109d29c0d9e5f6"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/elf-hat/3.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/elf-hat/Originals/elf hat 1.jpg",
+    "bucket": "Originals",
+    "product": "Elf hat",
+    "sha256": "bb734e1fe197c15b81a213476144456ab80893cc09d1d8aaca9d7e4522690aa0"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/elf-hat/hero-studio-v3.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/elf-hat/Unused edits/elf hat 1.jpg",
+    "bucket": "Unused edits",
+    "product": "Elf hat",
+    "sha256": "5fa7297baae7f42095244b6fa0ba7013f4c021f036e9caf1d800e6d81926d838"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/elf-hat/hero-studio-v5.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/elf-hat/Unused edits/elf hat 2.jpg",
+    "bucket": "Unused edits",
+    "product": "Elf hat",
+    "sha256": "e1ebead440e88d3720446400078e6d883a157662d9eb5c206675001c3e6c0243"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-1-ai-upscaled-2048-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat 1.jpg",
+    "bucket": "Live",
+    "product": "Mushroom hat",
+    "sha256": "6c895f85250d3e28624008a831d1add882c6f0f0730615257b137ba333f83c2f"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-2-ai-upscaled-2048-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat 2.jpg",
+    "bucket": "Live",
+    "product": "Mushroom hat",
+    "sha256": "280be16b64926c0be3f2780d604ef62a75c88af895e789c7137f7d9f75b49553"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-3-ai-upscaled-2048-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat 3.jpg",
+    "bucket": "Live",
+    "product": "Mushroom hat",
+    "sha256": "d098b8be24bc86a65c0da2d84a341ca3ca0da0a0fe7764ea451988aa3a2d54a7"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-short-tip-studio-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat 4.jpg",
+    "bucket": "Live",
+    "product": "Mushroom hat",
+    "sha256": "725e29fa78693e1336d7a34e8172e3644c5db3e1f20fb687de3a78e4d8757d49"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-short-tip-2-studio-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat 5.jpg",
+    "bucket": "Live",
+    "product": "Mushroom hat",
+    "sha256": "872df5309b5c7f56be5015cb39d7d19ea04cc24cfe2ab38199488909208a491f"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat - short tip.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 1.png",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "d7c8c4f825cbd875d2d1dce8c112edb6e9372ce884552efba23f89861408829a"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat short tip 2.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 2.png",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "5c41cc9ca9ed8ab0a36dce0394e10fe7019db15375fffb5e54215f2da779eaab"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat-2.jpeg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 3.jpeg",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "94511265ee7ae1406bd96f9fab09b9f399f2a8cc1861bb6dcc09bf15826f194e"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom hat-3.jpeg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 4.jpeg",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "06860ad21f9e7622fb090521c8e20d081324b9635b26a121f37d7de735e37c1b"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-1.jpeg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 5.jpeg",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "8a87cf61882832b27c8b7b6d4f06cb38b626b9e20c66b1914c08a3ed586f4821"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-short-tip-2-master-v1.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Edited masters/mushroom hat 1.png",
+    "bucket": "Edited masters",
+    "product": "Mushroom hat",
+    "sha256": "c9ea18ff3c3dace580020fbbe749da6967c3129091eda9345797809a0a551d08"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-short-tip-master-v1.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Edited masters/mushroom hat 2.png",
+    "bucket": "Edited masters",
+    "product": "Mushroom hat",
+    "sha256": "5a059eb354a435fd63a9596d8c499f68cd3479b295f0e502e805cf5b528fbba5"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-short-tip-master-v2.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Edited masters/mushroom hat 3.png",
+    "bucket": "Edited masters",
+    "product": "Mushroom hat",
+    "sha256": "b058a00403ac4967f183d01110ee9a8d71939af9be38aa9076f71cb6f6403c08"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/mushroom-hat-short-tip-studio-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Unused edits/mushroom hat 1.jpg",
+    "bucket": "Unused edits",
+    "product": "Mushroom hat",
+    "sha256": "99f5768a0b49fe21191d6ba678ca1fbfb90b474a17a18bd55a2f6886275d5c4d"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/PXL_20261018_231748662.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 6.jpg",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "84084643bbf4263615792edd40219cf6b9710d4bc8cd1835f0ae16f671bc97e2"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/PXL_20261018_232032699.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 7.jpg",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "df69489fbcb4698dae82af357171f8b15615f1832ac17a6afcdf1617ad2c8e0d"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/PXL_20261018_232439624.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 8.jpg",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "e984298fa5d6df441241d655e9f879b3b842996639295b5642dc21ae25aa05e0"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/PXL_20261018_232658435.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 9.jpg",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "f3d56967fcb181142c16705abec25c149fb5cc8c492472236707a5ab3bdded05"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/PXL_20261018_232846197.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/mushroom hat/Originals/mushroom hat 10.jpg",
+    "bucket": "Originals",
+    "product": "Mushroom hat",
+    "sha256": "4438692c79bd41ea62321b1154970d041141ee922aae484c45e305df6d67c961"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hero-studio-v3.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpads 1.jpg",
+    "bucket": "Live",
+    "product": "Hotpads",
+    "sha256": "7411f6e50507b6d6d6194909fbdb400816ebc14aa0adb76fe81d223a50325217"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/3-studio-v10.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpads 2.jpg",
+    "bucket": "Live",
+    "product": "Hotpads",
+    "sha256": "34731ee8e64fb334edb4370fc44937b421977ab2e1afd35e6c6991f85817cd15"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/4-studio-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpads 3.jpg",
+    "bucket": "Live",
+    "product": "Hotpads",
+    "sha256": "90a04f619aa06abdf183d2b12f516ed18a389c7c6919ff8fd2faf1a8099f1d54"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/label-uses-closeup-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpads 4.jpg",
+    "bucket": "Live",
+    "product": "Hotpads",
+    "sha256": "45dc592adf652e03c85ddd28ce3c26ebc40682ba516c605181afdbbba8197e7c"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpad-with-product-1-studio-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpads 5.jpg",
+    "bucket": "Live",
+    "product": "Hotpads",
+    "sha256": "58da3d26a22ff9d512b484b22b65be5210ee5e280a5293999172d5edb4c168bb"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpad-with-product-2-studio-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpads 6.jpg",
+    "bucket": "Live",
+    "product": "Hotpads",
+    "sha256": "3ccb3de4dd5942a2b1b8c180d5d93af4a3508cf7cf38e4f7dac0764ad9f2d433"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpad-with-product-3-studio-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/hotpads 7.jpg",
+    "bucket": "Live",
+    "product": "Hotpads",
+    "sha256": "150d2601fb60b078b63e239a0494a978f226142ccafab18598ba78752e118fb2"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/DSC_1987.JPG",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hotpads/Originals/hotpads 1.JPG",
+    "bucket": "Originals",
+    "product": "Hotpads",
+    "sha256": "d4bf2301bf6d755227b4e9b1662b7dacdb16dbd312a0ae2c80c9ca7b5fcb26c6"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/cat cave/cat-cave-with-cat-studio-v1.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/cat cave/cat or small dog cave 1.jpg",
+    "bucket": "Live",
+    "product": "Cat or small dog cave",
+    "sha256": "3a50ad7c59b5036896230d943f0f4b2e86c6ee3b758fb6f9789bcc0a00992da8"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/cat cave/cat cave.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/cat cave/Originals/cat or small dog cave 1.png",
+    "bucket": "Originals",
+    "product": "Cat or small dog cave",
+    "sha256": "7ab526e8c1f4d2c6a65c71e5002ed0ee09b25f0be5578571199a52a4d84b95a0"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/cat cave/Screenshot 2026-10-21 at 6.34.46\u202fPM.png",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/cat cave/Originals/cat or small dog cave 2.png",
+    "bucket": "Originals",
+    "product": "Cat or small dog cave",
+    "sha256": "08e6a741026fb3e65b8a56fce8e63887e751013c5c0f46b777a9d1dd7706578f"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/hero-studio-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/wine bottle holders 1.jpg",
+    "bucket": "Live",
+    "product": "Wine bottle holders",
+    "sha256": "8ffc8ca60a8a1ca5e8a5e31dcf4aa37bcf1531c07848e8e1f08bacc434aa3b26"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/2-studio-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/wine bottle holders 2.jpg",
+    "bucket": "Live",
+    "product": "Wine bottle holders",
+    "sha256": "4c917c5fcd131530630446bf64ad0e40c9235e681263b3a36588411df8800926"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/2-studio.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/Unused edits/wine bottle holders 1.jpg",
+    "bucket": "Unused edits",
+    "product": "Wine bottle holders",
+    "sha256": "cd0815bcb065fa288196c4389af11a7d8527639eae9d3180b5d514248e40f189"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/Originals/wine bottle holders 1.jpg",
+    "bucket": "Originals",
+    "product": "Wine bottle holders",
+    "sha256": "fabbb7836317c7d984ad236cd653c7414a60ca4472780e2af43ac41b9b16d2da"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/hero-studio.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/Unused edits/wine bottle holders 2.jpg",
+    "bucket": "Unused edits",
+    "product": "Wine bottle holders",
+    "sha256": "3be38feb2af200cd9c6b89892e918cf65b02857f8465a48a908b1818bc96c13a"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/hero.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/wine-bottle-holders/Originals/wine bottle holders 2.jpg",
+    "bucket": "Originals",
+    "product": "Wine bottle holders",
+    "sha256": "7b741904ce1857ba7a4fce562d53dd1ddbc2ce9028219eb5f81457b87514bf96"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hats/hero-studio-sq-v2.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hats/hats 1.jpg",
+    "bucket": "Live",
+    "product": "Hats",
+    "sha256": "92aead19a5a2c191d507885a2f118d2a9d8718ec5115c47eb7452c34870a5487"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hats/2-studio-sq-v3.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hats/hats 2.jpg",
+    "bucket": "Live",
+    "product": "Hats",
+    "sha256": "8531dae2fa0ea1aad2f71c53ece773a6bf71a7169ee9fbf30e5d4728b4b7d63e"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hats/3-studio-sq-v5.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hats/hats 3.jpg",
+    "bucket": "Live",
+    "product": "Hats",
+    "sha256": "26bbde4db22dee5f6150d89f5127d8a3ecdb321c5e446018adc2d5608af62773"
+  },
+  {
+    "from": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hats/PXL_20260716_171913678.jpg",
+    "to": "/Users/dianatsoy/Documents/Diana's crochet website/public/products/hats/Originals/hats 1.jpg",
+    "bucket": "Originals",
+    "product": "Hats",
+    "sha256": "f442f154fba5943638740b5408d04906549f238dc44b96f3699d1720e51d2ecc"
+  }
+]

@@ -1,3 +1,4 @@
+import { BLANKET_YARNS } from "@/data/blanket";
 import { HAT_POM_POM_OPTIONS } from "@/lib/hat-pom-pom";
 import { BOBBINY_PREMIUM_5MM_YARNS } from "@/data/bobbiny-premium-5mm";
 import { BERNAT_BLANKET_BIG_YARNS } from "@/data/bernat-blanket-big";
@@ -150,18 +151,145 @@ export const PATTERN_BOARD_YARNS: YarnColor[] = [
 
 export const products: Product[] = [
   {
+    "id": "blanket",
+    "name": "Blanket",
+    "price": 160,
+    "category": "Home",
+    "isNew": true,
+    "imageSrc": "/products/Blanket/blanket 1.jpg",
+    "imageAlt": "White chunky chenille crochet blanket draped over a gray sofa",
+    "imageShownColor": "White",
+    "galleryImages": [
+      {
+        "src": "/products/Blanket/blanket 2.jpg",
+        "alt": "White crochet blanket hanging over the side of a sofa",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 3.jpg",
+        "alt": "White chenille crochet blanket spread out to show rows and border",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 4.jpg",
+        "alt": "Hand resting on a white ribbed crochet blanket",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 5.jpg",
+        "alt": "White blanket spread out with its ribbed border held in one hand",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 6.jpg",
+        "alt": "Close-up of the white blanket edge held between fingers",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 7.jpg",
+        "alt": "Close-up of folded ribbed white crochet blanket",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 8.jpg",
+        "alt": "Hand holding the thick edge of a white crochet blanket",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 9.jpg",
+        "alt": "Close-up of plush white chenille blanket stitches",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 10.jpg",
+        "alt": "Phone resting on a white blanket to show stitch scale",
+        "shownColor": "White"
+      },
+      {
+        "src": "/products/Blanket/blanket 11.jpg",
+        "alt": "Side view of a phone on plush white chenille stitches",
+        "shownColor": "White"
+      }
+    ],
+    "sizes": [
+      {
+        "id": "lovey",
+        "label": "Lovey · 12 × 12 in",
+        "price": 16
+      },
+      {
+        "id": "security",
+        "label": "Security · 18 × 24 in",
+        "price": 32
+      },
+      {
+        "id": "baby",
+        "label": "Baby · 30 × 36 in",
+        "price": 64
+      },
+      {
+        "id": "receiving",
+        "label": "Receiving · 40 × 40 in",
+        "price": 80
+      },
+      {
+        "id": "lap",
+        "label": "Lap · 36 × 48 in",
+        "price": 96
+      },
+      {
+        "id": "crib",
+        "label": "Crib · 36 × 52 in",
+        "price": 96
+      },
+      {
+        "id": "throw",
+        "label": "Throw · 50 × 60 in",
+        "price": 144
+      },
+      {
+        "id": "large-throw",
+        "label": "Large throw · 48 × 71 in",
+        "price": 160
+      },
+      {
+        "id": "twin",
+        "label": "Twin · 66 × 90 in",
+        "price": 288
+      },
+      {
+        "id": "full",
+        "label": "Full · 80 × 90 in",
+        "price": 352
+      },
+      {
+        "id": "queen",
+        "label": "Queen · 90 × 100 in",
+        "price": 432
+      },
+      {
+        "id": "king",
+        "label": "King · 108 × 100 in",
+        "price": 512
+      }
+    ],
+    "defaultSizeId": "large-throw",
+    "defaultYarnId": "sweet-snuggles-white",
+    "yarns": BLANKET_YARNS
+  },
+  {
     id: "christmas-stockings",
     name: "Christmas stockings",
     price: 35,
     category: "Holiday",
-    imageSrc: "/products/christmas-stockings/hero-studio-v9.jpg",
+    imageSrc: "/products/christmas-stockings/christmas stockings 1.jpg",
     imageAlt: "Row of handmade crochet Christmas stockings in holiday colors",
     imageShownColor: "Holiday warm palette (left), Holiday soft palette (right)",
     galleryImages: [
-      { src: "/products/christmas-stockings/2-studio-v2.jpg", alt: "Red crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Red" },
-      { src: "/products/christmas-stockings/off-white-studio-v2.jpg", alt: "Cream crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Off White" },
-      { src: "/products/christmas-stockings/pine-studio-v3.jpg", alt: "Pine green crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Pine" },
-      { src: "/products/christmas-stockings/4-studio-v4.jpg", alt: "Hand holding a striped crochet Christmas stocking in the Holiday soft palette", shownColor: "Holiday soft palette" },
+      { src: "/products/christmas-stockings/christmas stockings 2.jpg", alt: "Red crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Red" },
+      { src: "/products/christmas-stockings/christmas stockings 3.jpg", alt: "Cream crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Off White" },
+      { src: "/products/christmas-stockings/christmas stockings 4.jpg", alt: "Pine green crochet Christmas stocking with ribbed cuff and tassel", shownColor: "Pine" },
+      { src: "/products/christmas-stockings/christmas stockings 5.jpg", alt: "Hand holding a striped crochet Christmas stocking in the Holiday soft palette", shownColor: "Holiday soft palette" },
     ],
     sizes: [{ id: "one", label: "One stocking" }],
     hideSizePicker: true,
@@ -181,13 +309,13 @@ export const products: Product[] = [
     name: "Coasters",
     price: 5,
     category: "Table",
-    imageSrc: "/products/coasters/2-studio-v9.jpg",
+    imageSrc: "/products/coasters/coasters 1.jpg",
     imageAlt: "Eucalyptus green crochet coaster held between fingers",
     imageShownColor: "Eucalyptus Green",
     defaultYarnId: "bobbiny-5mm-eucalyptus-green",
     galleryImages: [
-      { src: "/products/coasters/hero-studio-v6.jpg", alt: "Hand holding a stack of eucalyptus green handmade crochet coasters", shownColor: "Eucalyptus Green" },
-      { src: "/products/coasters/mug-studio-v5.jpg", alt: "Close-up of a eucalyptus green crochet coaster with a black mug and by Diana label tag", shownColor: "Eucalyptus Green" },
+      { src: "/products/coasters/coasters 2.jpg", alt: "Hand holding a stack of eucalyptus green handmade crochet coasters", shownColor: "Eucalyptus Green" },
+      { src: "/products/coasters/coasters 3.jpg", alt: "Close-up of a eucalyptus green crochet coaster with a black mug and by Diana label tag", shownColor: "Eucalyptus Green" },
     ],
     sizes: [{ id: "one", label: "One coaster" }],
     hideSizePicker: true,
@@ -202,12 +330,12 @@ export const products: Product[] = [
     name: "Placemats",
     price: 20,
     category: "Table",
-    imageSrc: "/products/placemats/placemats-image-1-studio-v2.jpg",
+    imageSrc: "/products/placemats/placemats 1.jpg",
     imageAlt: "Stack of golden natural crochet placemats with fine gold fibers",
     imageShownColor: "Golden Natural",
     galleryImages: [
-      { src: "/products/placemats/placemats-image-3-studio-v1.jpg", alt: "Golden natural crochet placemat with a ceramic plate, fork, and spoon", shownColor: "Golden Natural" },
-      { type: "video", src: "/products/placemats/placemats-deflicker-v1.mp4", alt: "Placemats product video", shownColor: "Golden Natural", poster: "/products/placemats/placemats-image-1-studio-v2.jpg" },
+      { src: "/products/placemats/placemats 2.jpg", alt: "Golden natural crochet placemat with a ceramic plate, fork, and spoon", shownColor: "Golden Natural" },
+      { type: "video", src: "/products/placemats/placemats 3.mp4", alt: "Placemats product video", shownColor: "Golden Natural", poster: "/products/placemats/placemats 1.jpg" },
     ],
     sizes: [{ id: "one", label: "One placemat" }],
     hideSizePicker: true,
@@ -223,7 +351,7 @@ export const products: Product[] = [
     name: "Elf hat",
     price: 45,
     category: "Holiday",
-    imageSrc: "/products/elf-hat/hero-studio-v6.jpg",
+    imageSrc: "/products/elf-hat/elf hat 1.jpg",
     imageAlt: "Handmade red and white striped crochet elf hat with green brim",
     sizes: [
       { id: "baby", label: "Baby", price: 28 },
@@ -246,14 +374,14 @@ export const products: Product[] = [
     name: "Mushroom hat",
     price: 65,
     category: "Holiday",
-    imageSrc: "/products/mushroom hat/mushroom-hat-1-ai-upscaled-2048-v1.jpg",
+    imageSrc: "/products/mushroom hat/mushroom hat 1.jpg",
     imageShownStyle: "Slouchy, long tip",
     imageAlt: "Man wearing a red crochet mushroom hat with white spots and brim",
     galleryImages: [
-      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom-hat-2-ai-upscaled-2048-v1.jpg", alt: "Side view of a red crochet mushroom hat with white spots and a leather tag" },
-      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom-hat-3-ai-upscaled-2048-v1.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
-      { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom-hat-short-tip-studio-v2.jpg", alt: "Short-tip red and white crochet mushroom hat on a black mannequin against a neutral studio background" },
-      { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom-hat-short-tip-2-studio-v1.jpg", alt: "Short-tip mushroom hat on a black mannequin showing the raised brim and cream crochet underside" },
+      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom hat 2.jpg", alt: "Side view of a red crochet mushroom hat with white spots and a leather tag" },
+      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom hat 3.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
+      { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom hat 4.jpg", alt: "Short-tip red and white crochet mushroom hat on a black mannequin against a neutral studio background" },
+      { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom hat 5.jpg", alt: "Short-tip mushroom hat on a black mannequin showing the raised brim and cream crochet underside" },
     ],
     sizes: [
       { id: "baby", hatStyle: "slouchy", label: "Baby", price: 40 },
@@ -280,17 +408,17 @@ export const products: Product[] = [
     name: "Hotpads",
     price: 12,
     category: "Kitchen",
-    imageSrc: "/products/hotpads/hero-studio-v3.jpg",
+    imageSrc: "/products/hotpads/hotpads 1.jpg",
     imageAlt: "Stack of terracotta handmade crochet hot pads",
     imageShownColor: "Terracotta",
     defaultYarnId: "bobbiny-5mm-terracotta",
     galleryImages: [
-      { src: "/products/hotpads/3-studio-v10.jpg", alt: "Hand fanning out terracotta crochet hot pads", shownColor: "Terracotta" },
-      { src: "/products/hotpads/4-studio-v2.jpg", alt: "Side view of stacked terracotta crochet hot pads", shownColor: "Terracotta" },
-      { src: "/products/hotpads/label-uses-closeup-v1.jpg", alt: "Close-up comparison of warm beige hotpads with removable leather labels wrapped around the edge and used as a hanging loop", shownColor: "Warm Beige" },
-      { src: "/products/hotpads/hotpad-with-product-1-studio-v1.jpg", alt: "Warm beige crochet hotpad with a glass candle", shownColor: "Warm Beige" },
-      { src: "/products/hotpads/hotpad-with-product-2-studio-v1.jpg", alt: "Warm beige crochet hotpad under a stainless steel saucepan", shownColor: "Warm Beige" },
-      { src: "/products/hotpads/hotpad-with-product-3-studio-v2.jpg", alt: "Warm beige crochet hotpad hanging by its leather loop on a wall hook", shownColor: "Warm Beige" },
+      { src: "/products/hotpads/hotpads 2.jpg", alt: "Hand fanning out terracotta crochet hot pads", shownColor: "Terracotta" },
+      { src: "/products/hotpads/hotpads 3.jpg", alt: "Side view of stacked terracotta crochet hot pads", shownColor: "Terracotta" },
+      { src: "/products/hotpads/hotpads 4.jpg", alt: "Close-up comparison of warm beige hotpads with removable leather labels wrapped around the edge and used as a hanging loop", shownColor: "Warm Beige" },
+      { src: "/products/hotpads/hotpads 5.jpg", alt: "Warm beige crochet hotpad with a glass candle", shownColor: "Warm Beige" },
+      { src: "/products/hotpads/hotpads 6.jpg", alt: "Warm beige crochet hotpad under a stainless steel saucepan", shownColor: "Warm Beige" },
+      { src: "/products/hotpads/hotpads 7.jpg", alt: "Warm beige crochet hotpad hanging by its leather loop on a wall hook", shownColor: "Warm Beige" },
     ],
     sizes: [
       { id: "one", label: '7.5" × 7"' },
@@ -312,7 +440,7 @@ export const products: Product[] = [
     name: "Cat or small dog cave",
     price: 50,
     category: "Pets",
-    imageSrc: "/products/cat cave/cat-cave-with-cat-studio-v1.jpg",
+    imageSrc: "/products/cat cave/cat or small dog cave 1.jpg",
     imageAlt: "Tortoiseshell cat inside a plush Toasted Birch crochet cat cave beside a potted plant",
     imageShownColor: "Toasted Birch",
     sizes: [{ id: "one", label: "One size" }],
@@ -327,10 +455,10 @@ export const products: Product[] = [
     price: 32,
     category: "Home",
     hidden: true,
-    imageSrc: "/products/wine-bottle-holders/hero-studio-v2.jpg",
+    imageSrc: "/products/wine-bottle-holders/wine bottle holders 1.jpg",
     imageAlt: "Two handmade crochet wine bottle holders in cream and burgundy",
     galleryImages: [
-      { src: "/products/wine-bottle-holders/2-studio-v2.jpg", alt: "Crochet wine bottle holder close-up" },
+      { src: "/products/wine-bottle-holders/wine bottle holders 2.jpg", alt: "Crochet wine bottle holder close-up" },
     ],
     sizes: [{ id: "one", label: "One holder" }],
     yarns: BOBBINY_PREMIUM_5MM_YARNS,
@@ -340,12 +468,12 @@ export const products: Product[] = [
     name: "Hats",
     price: 25,
     category: "Hats",
-    imageSrc: "/products/hats/hero-studio-sq-v2.jpg",
+    imageSrc: "/products/hats/hats 1.jpg",
     imageAlt: "Two handmade pom-pom beanies in rust and speckled charcoal yarn",
     galleryImages: [
-      { src: "/products/hats/2-studio-sq-v3.jpg", alt: "Speckled charcoal crochet pom-pom beanie" },
+      { src: "/products/hats/hats 2.jpg", alt: "Speckled charcoal crochet pom-pom beanie" },
       {
-        src: "/products/hats/3-studio-sq-v5.jpg",
+        src: "/products/hats/hats 3.jpg",
         alt: "Two people wearing handmade crochet pom-pom beanies",
       },
     ],

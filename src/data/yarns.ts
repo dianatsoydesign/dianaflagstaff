@@ -30,6 +30,7 @@ export function getAllYarns(): YarnColor[] {
 
 /** Supplier yarn line shown as the picker heading and in gallery alt text. */
 export function yarnLineName(yarn: YarnColor): string | null {
+  if (yarn.id.startsWith("sweet-snuggles-")) return "Sweet Snuggles by Loops & Threads";
   const additional = hatCatalog.yarns.find(color => color.id === yarn.id);
   if (additional) return additional.lineName;
   if (yarn.supplierSku?.startsWith("bobbiny:")) return "Bobbiny Premium 5mm";
@@ -57,6 +58,7 @@ const CHARISMA_MATERIAL: YarnMaterial = {
 
 /** Fiber content from each supplier's product page (bobbinycords.us, michaels.com). */
 export function yarnMaterial(yarn: YarnColor): YarnMaterial {
+  if (yarn.id.startsWith("sweet-snuggles-")) return { fiber: "100% polyester", washCare: "machine wash warm", dryCare: "dry flat", detail: "" };
   if (yarn.id.startsWith("charisma-tweed-stripe-")) return { ...CHARISMA_MATERIAL, fiber: "97% acrylic, 3% viscose" };
   if (yarn.id.startsWith("bernat-blanket-big-")) {
     return {

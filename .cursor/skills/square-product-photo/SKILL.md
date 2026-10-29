@@ -1,6 +1,6 @@
 ---
 name: product-photo-edit
-description: Automates product photography workflows for a crochet business. Standardizes white balance, lighting, and margins (60–65% padding) across 1:1 square assets to match the soft neutral off-white backdrop of the elf-hat master photo (`public/products/elf-hat/hero-studio-v6.jpg`), while locking true yarn hues (e.g., Eucalyptus Green, Terracotta) and normalizing hand model nail polish.
+description: Automates product photography workflows for a crochet business. Standardizes white balance, lighting, and margins (60–65% padding) across 1:1 square assets to match the soft neutral off-white backdrop of the elf-hat master photo (`public/products/elf-hat/elf hat 1.jpg`), while locking true yarn hues (e.g., Eucalyptus Green, Terracotta) and normalizing hand model nail polish.
 ---
 
 # # Square Product Photo & Visual Consistency Rule
@@ -15,9 +15,9 @@ Standardize image exposure, background appearance, and white balance across all 
 
 ### Master Visual Anchor Baselines (AI Judgment Standards)
 
-* **The Absolute Standard**: Use **`public/products/elf-hat/hero-studio-v6.jpg`** as the exclusive master reference for background white balance, background tone, and lighting quality. Inspect this exact image before editing. Match its soft neutral off-white background with a subtle warm-gray cast. Sample the unobstructed background, not the hat, skin, or clothing. This reference governs the background and lighting only; retain each product’s designated true yarn-color reference. 
+* **The Absolute Standard**: Use **`public/products/elf-hat/elf hat 1.jpg`** as the exclusive master reference for background white balance, background tone, and lighting quality. Inspect this exact image before editing. Match its soft neutral off-white background with a subtle warm-gray cast. Sample the unobstructed background, not the hat, skin, or clothing. This reference governs the background and lighting only; retain each product’s designated true yarn-color reference. 
 
-* **Automatic Deviation Correction**: Before editing any new photo, the AI must evaluate it directly against the elf-hat master photo (`public/products/elf-hat/hero-studio-v6.jpg`) and execute autonomous corrections without user prompts:
+* **Automatic Deviation Correction**: Before editing any new photo, the AI must evaluate it directly against the elf-hat master photo (`public/products/elf-hat/elf hat 1.jpg`) and execute autonomous corrections without user prompts:
 
   * **If an input image is too warm/pinkish**: Automatically cool down the temperature until the background matrix matches the soft neutral off-white backdrop of the elf-hat master photo.
 
@@ -27,7 +27,7 @@ Standardize image exposure, background appearance, and white balance across all 
 
 ### Universal Signature Background
 
-* **Target Tone**: Standardize all product backgrounds to match the soft, minimalist, neutral off-white / subtle warm-gray tone in `public/products/elf-hat/hero-studio-v6.jpg`. Avoid introducing the stronger cream, yellow, or pink cast of other photos. 
+* **Target Tone**: Standardize all product backgrounds to match the soft, minimalist, neutral off-white / subtle warm-gray tone in `public/products/elf-hat/elf hat 1.jpg`. Avoid introducing the stronger cream, yellow, or pink cast of other photos. 
 
 * **Gradient & Vignette**: Match the subtle, natural background light falloff visible in the elf-hat master photo. Preserve a continuous surface and avoid adding an artificial ivory vignette.
 
@@ -95,7 +95,7 @@ python3 ".cursor/skills/square-product-photo/scripts/measure_[subject.py](http:/
 
 2. Square frame. Add or remove only empty background. 
 
-3. One continuous background matching the tone and white balance of `public/products/elf-hat/hero-studio-v6.jpg`; include that image as a background reference when editing. No seams, stripes, pasted sides, or flat color blocks.
+3. One continuous background matching the tone and white balance of `public/products/elf-hat/elf hat 1.jpg`; include that image as a background reference when editing. No seams, stripes, pasted sides, or flat color blocks.
 
 4. Do not crop, stretch, squash, shorten, or widen the product.
 
@@ -103,7 +103,7 @@ python3 ".cursor/skills/square-product-photo/scripts/measure_[subject.py](http:/
 
 ## 4. Hand & Nail Polish Standardization Routine
 
-When nail polish is visible in the frame, recolor **only the polish pixels** to match the baseline established in `public/products/christmas-stockings/4-studio-v4.jpg`. A hand with no polish showing stays exactly as it is.
+When nail polish is visible in the frame, recolor **only the polish pixels** to match the baseline established in `public/products/christmas-stockings/christmas stockings 5.jpg`. A hand with no polish showing stays exactly as it is.
 
 * **Precise Color Palette Constraints**:
 
