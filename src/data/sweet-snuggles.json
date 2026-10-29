@@ -1,0 +1,337 @@
+{
+  "masterSku": "M20001332",
+  "productUrl": "https://www.michaels.com/product/sweet-snuggles-yarn-by-loops-threads-10610036",
+  "syncedAt": "2026-10-29T20:01:02.390Z",
+  "yarns": [
+    {
+      "id": "sweet-snuggles-mint",
+      "name": "Mint",
+      "supplierSku": "michaels-sweet-snuggles:10640077",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-mint/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-mint/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-mint/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-mint/photo-3.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-mint/photo-4.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "sortRank": 17.71502506193048,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-green-ash",
+      "name": "Green Ash",
+      "supplierSku": "michaels-sweet-snuggles:10697185",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-green-ash/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-green-ash/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-green-ash/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-green-ash/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "sortRank": 29.765207334675214,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-teal",
+      "name": "Teal",
+      "supplierSku": "michaels-sweet-snuggles:10610041",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-teal/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-teal/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-teal/photo-2.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "sortRank": 32.888690223216486,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-yellow",
+      "name": "Yellow",
+      "supplierSku": "michaels-sweet-snuggles:10610046",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-yellow/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-yellow/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-yellow/photo-2.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "yellows",
+      "sortRank": 1008.8636086772966,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-coral",
+      "name": "Coral",
+      "supplierSku": "michaels-sweet-snuggles:10610045",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-coral/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-coral/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-coral/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-coral/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "oranges",
+      "sortRank": 2018.9881979236907,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-red",
+      "name": "Red",
+      "supplierSku": "michaels-sweet-snuggles:10640074",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-red/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-red/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-red/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-red/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "reds",
+      "sortRank": 3065.08352748813,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-pink",
+      "name": "Pink",
+      "supplierSku": "michaels-sweet-snuggles:10610044",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-pink/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-pink/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-pink/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-pink/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "pinks",
+      "sortRank": 4011.53444502045,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-blush",
+      "name": "Blush",
+      "supplierSku": "michaels-sweet-snuggles:10610047",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-blush/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-blush/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-blush/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-blush/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "pinks",
+      "sortRank": 4015.741885577597,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-rose",
+      "name": "Rose",
+      "supplierSku": "michaels-sweet-snuggles:10697177",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-rose/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-rose/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-rose/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-rose/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "pinks",
+      "sortRank": 4054.803606838668,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-lavender",
+      "name": "Lavender",
+      "supplierSku": "michaels-sweet-snuggles:10697182",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-lavender/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-lavender/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-lavender/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-lavender/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "purples",
+      "sortRank": 5035.0726635350475,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-purple",
+      "name": "Purple",
+      "supplierSku": "michaels-sweet-snuggles:10640082",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-purple/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-purple/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-purple/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-purple/photo-3.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-purple/photo-4.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "purples",
+      "sortRank": 5069.895801335814,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-sky-blue",
+      "name": "Sky Blue",
+      "supplierSku": "michaels-sweet-snuggles:10640080",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-sky-blue/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-sky-blue/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-sky-blue/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-sky-blue/photo-3.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-sky-blue/photo-4.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "sortRank": 6021.345143339795,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-chalk-blue",
+      "name": "Chalk Blue",
+      "supplierSku": "michaels-sweet-snuggles:10697188",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-chalk-blue/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-chalk-blue/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-chalk-blue/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-chalk-blue/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "sortRank": 6027.417400993893,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-turquoise",
+      "name": "Turquoise",
+      "supplierSku": "michaels-sweet-snuggles:10640079",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-turquoise/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-turquoise/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-turquoise/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-turquoise/photo-3.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-turquoise/photo-4.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "sortRank": 6040.582467295165,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-denim",
+      "name": "Denim",
+      "supplierSku": "michaels-sweet-snuggles:10610042",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-denim/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-denim/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-denim/photo-2.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "sortRank": 6059.374602537035,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-blue",
+      "name": "Blue",
+      "supplierSku": "michaels-sweet-snuggles:10640081",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-blue/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-blue/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-blue/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-blue/photo-3.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-blue/photo-4.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "sortRank": 6073.016351857813,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-white",
+      "name": "White",
+      "supplierSku": "michaels-sweet-snuggles:10610036",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-white/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-white/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-white/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-white/photo-3.webp"
+      ],
+      "stockStatus": "out_of_stock",
+      "colorGroup": "neutrals",
+      "sortRank": 8012.033915774756,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-silver",
+      "name": "Silver",
+      "supplierSku": "michaels-sweet-snuggles:10610037",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-silver/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-silver/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-silver/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-silver/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "sortRank": 8013.681985167655,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-winter-white",
+      "name": "Winter White",
+      "supplierSku": "michaels-sweet-snuggles:10697174",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-winter-white/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-winter-white/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-winter-white/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-winter-white/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "sortRank": 8017.804610845265,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-fog",
+      "name": "Fog",
+      "supplierSku": "michaels-sweet-snuggles:10697191",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-fog/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-fog/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-fog/photo-2.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-fog/photo-3.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "sortRank": 8041.035423468532,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-gray",
+      "name": "Gray",
+      "supplierSku": "michaels-sweet-snuggles:10610038",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-gray/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-gray/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-gray/photo-2.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "sortRank": 8055.469610829158,
+      "multicolor": false
+    },
+    {
+      "id": "sweet-snuggles-black",
+      "name": "Black",
+      "supplierSku": "michaels-sweet-snuggles:10610039",
+      "swatchSrc": "/yarn-images/sweet-snuggles/sweet-snuggles-black/swatch.webp",
+      "colorImages": [
+        "/yarn-images/sweet-snuggles/sweet-snuggles-black/photo-1.webp",
+        "/yarn-images/sweet-snuggles/sweet-snuggles-black/photo-2.webp"
+      ],
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "sortRank": 8083.862669160884,
+      "multicolor": false
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import { readSweetSnugglesStock } from "@/lib/sweet-snuggles-stock";
+import { availableForSweetSnuggles } from "@/lib/sweet-snuggles-inventory.mjs";
 import { CART_FIELD_LIMITS, isValidOrderEmail, isValidOrderPhone } from "@/lib/cart-field-limits";
 import { readBobbinyStock } from "@/lib/bobbiny-stock";
 import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
@@ -124,6 +126,17 @@ export async function POST(request: Request) {
       line.sizeLabel = `${size.label} · Style: ${size.hatStyle === "short-tip" ? "Short tip" : "Slouchy, long tip"}`;
       line.priceTbd = !!size.priceTbd;
       line.unitPrice = size.priceTbd ? 0 : (size.price ?? getProduct("mushroom-hat")!.price);
+    }
+
+    const blanketLines = lines.filter(line => line.productId === "blanket");
+    if (blanketLines.length) {
+      const snapshot = await readSweetSnugglesStock();
+      for (const line of blanketLines) {
+        const yarn = getProduct("blanket")?.yarns.find(yarn => yarn.id === line.yarnId);
+        if (!yarn?.supplierSku || !availableForSweetSnuggles(snapshot, yarn.supplierSku.split(":")[1])) {
+          return NextResponse.json({ error: "That blanket yarn is no longer available. Please choose another color." }, { status: 409 });
+        }
+      }
     }
 
     const catLines = lines.filter(line => line.productId === "cat-cave");

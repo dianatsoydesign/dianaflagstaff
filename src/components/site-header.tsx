@@ -20,7 +20,7 @@ import { navigationControlClass } from "@/lib/navigation-styles";
 
 const nav = [
   { href: "/", label: "Shop" },
-  { href: "/art", label: "Art gallery" },
+  { href: "/art", label: "Art + design" },
   { href: "/about", label: "About" },
 ];
 

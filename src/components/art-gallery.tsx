@@ -33,7 +33,7 @@ export function ArtGallery() {
     <div className="pb-8 text-left">
       <div className="site-gutter pb-4 pt-10 sm:pt-16">
         <div className="site-width">
-          <h1 className="sr-only">Art gallery</h1>
+          <h1 className="sr-only">Art + design</h1>
           <p className="max-w-2xl text-lg text-muted-foreground">My best work from the past decade, mostly created at Pratt Institute.</p>
         </div>
       </div>

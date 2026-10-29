@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import {
   careSurfaceClass,
   careSurfaceHoverClass,
@@ -53,6 +54,18 @@ export function SizePicker({
   onCustomDimensionsChange,
   customSizeLimits,
 }: Props) {
+  const chipsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = chipsRef.current;
+    const selectedChip = container?.querySelector<HTMLButtonElement>('[aria-checked="true"]');
+    if (!container || !selectedChip) return;
+    const bounds = container.getBoundingClientRect();
+    const chip = selectedChip.getBoundingClientRect();
+    if (chip.left < bounds.left + 6) container.scrollLeft -= bounds.left + 6 - chip.left;
+    else if (chip.right > bounds.right - 6) container.scrollLeft += chip.right - bounds.right + 6;
+  }, [value]);
+
   const presetSizes = sizes.filter((s) => !isRequestDifferentSizeId(s.id));
   const showCustomChip =
     allowRequestDifferentSize || sizesIncludeCustomRequest(sizes);
@@ -101,7 +114,15 @@ export function SizePicker({
         ) : null}
       </legend>
       <div
-        className={cn("relative z-10", pickerChipGroupClass)}
+        ref={chipsRef}
+        className={cn(pickerChipGroupClass, "relative z-10 -m-1.5 flex-nowrap overflow-x-auto p-1.5 pb-3")}
+        onFocus={event => {
+          const container = event.currentTarget;
+          const chip = (event.target as HTMLElement).getBoundingClientRect();
+          const bounds = container.getBoundingClientRect();
+          if (chip.left < bounds.left + 6) container.scrollLeft -= bounds.left + 6 - chip.left;
+          else if (chip.right > bounds.right - 6) container.scrollLeft += chip.right - bounds.right + 6;
+        }}
         role="radiogroup"
         aria-label="Size"
         onKeyDown={(e) => {
@@ -111,7 +132,7 @@ export function SizePicker({
           if (current < 0 || !buttons.length) return;
           e.preventDefault();
           const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (current + (["ArrowRight", "ArrowDown"].includes(e.key) ? 1 : -1) + buttons.length) % buttons.length;
-          buttons[index].focus();
+          buttons[index].focus({ preventScroll: true });
           buttons[index].click();
         }}
       >
@@ -127,6 +148,7 @@ export function SizePicker({
               onClick={() => onChange(size.id)}
               className={cn(
                 pickerChipBase,
+                "max-w-none whitespace-nowrap",
                 isSelected
                   ? cn("border-ink font-medium", careSurfaceClass)
                   : cn(
@@ -150,6 +172,7 @@ export function SizePicker({
             onClick={() => onChange(REQUEST_DIFFERENT_SIZE_ID)}
             className={cn(
               pickerChipBase,
+              "max-w-none whitespace-nowrap",
               customSelected
                 ? cn("border-ink font-medium", careSurfaceClass)
                 : cn(

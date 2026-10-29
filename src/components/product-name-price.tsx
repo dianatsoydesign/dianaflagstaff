@@ -76,6 +76,20 @@ export function ProductNamePrice({
   className,
   variant = "card",
 }: Props) {
+  const cardRange = !priceTbd && priceLabel?.match(/^(\$[\d,.]+)\u2013(\$[\d,.]+)$/);
+
+  const quantityPrice = !priceTbd && priceLabel?.match(/^(\d+) for (\$[\d,.]+)$/);
+  const quantityPriceContent = quantityPrice ? (
+    <>
+      <span className="sr-only">{priceLabel}</span>
+      <span aria-hidden="true" className="inline-flex items-baseline whitespace-nowrap">
+        <span>{quantityPrice[1]}</span>
+        <span className="mx-[0.35em]">for</span>
+        <span>{quantityPrice[2]}</span>
+      </span>
+    </>
+  ) : null;
+
   if (variant === "card") {
     return (
       <p className={cn(rowClass, "gap-y-1", className)}>
@@ -84,7 +98,16 @@ export function ProductNamePrice({
         </span>
         <NamePriceDot fontSizeClass={cardNameFontSizeClass} />
         <span className={cn("inline-flex items-center", cardPriceClass)}>
-          {priceTbd ? "TBD" : (priceLabel ?? formatPrice(price))}
+          {cardRange ? (
+            <>
+              <span className="sr-only">{cardRange[1]} to {cardRange[2]}</span>
+              <span aria-hidden="true" className="inline-flex items-center whitespace-nowrap">
+                <span>{cardRange[1]}</span>
+                <span className="mx-[0.35em] h-px w-[0.55em] -translate-y-[0.04em] shrink-0 bg-current" />
+                <span>{cardRange[2]}</span>
+              </span>
+            </>
+          ) : priceTbd ? "TBD" : (quantityPriceContent ?? priceLabel ?? formatPrice(price))}
         </span>
       </p>
     );
@@ -98,7 +121,7 @@ export function ProductNamePrice({
       <span className={cn(cellClass, nameTypeByVariant[variant])}>{name}</span>
       <NamePriceDot cellHeight={cellHeight} />
       <span className={cn(cellClass, priceClassByVariant[variant])}>
-        {priceTbd ? "TBD" : (priceLabel ?? formatPrice(price))}
+        {priceTbd ? "TBD" : (quantityPriceContent ?? priceLabel ?? formatPrice(price))}
       </span>
     </>
   );

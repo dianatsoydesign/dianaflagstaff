@@ -1,5 +1,7 @@
 "use client";
 
+import sweetSnugglesBootstrapStock from "@/data/sweet-snuggles-stock-bootstrap.json";
+import { availableForSweetSnuggles } from "@/lib/sweet-snuggles-inventory.mjs";
 import bobbinyBootstrapStock from "@/data/bobbiny-stock-bootstrap.json";
 import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
 import charismaBootstrapStock from "@/data/charisma-stock-bootstrap.json";
@@ -109,9 +111,10 @@ export function ProductPurchaseForm({
   const isHats = product.id === "hats";
   const hasCharismaStock = isHats || product.id === "christmas-stockings";
   const hasBobbinyStock = product.yarns.some(yarn => yarn.supplierSku?.startsWith("bobbiny:"));
-  const hasCachedSupplierStock = isCatCave || hasCharismaStock || hasBobbinyStock;
+  const hasSweetSnugglesStock = product.id === "blanket";
+  const hasCachedSupplierStock = isCatCave || hasCharismaStock || hasBobbinyStock || hasSweetSnugglesStock;
   const [liveStock, setLiveStock] = useState<Record<string, StockStatus>>(() =>
-    isCatCave ? Object.fromEntries(product.yarns.map(yarn => [
+    hasSweetSnugglesStock ? Object.fromEntries(product.yarns.map(yarn => [yarn.id, availableForSweetSnuggles(sweetSnugglesBootstrapStock, yarn.supplierSku?.split(":")[1] ?? "") ? "in_stock" : "out_of_stock"])) : isCatCave ? Object.fromEntries(product.yarns.map(yarn => [
       yarn.id,
       availableForCatCave(bootstrapStock, yarn.supplierSku?.split(":")[1] ?? "") ? "in_stock" : "out_of_stock",
     ])) : hasCharismaStock ? charismaStockStatuses(charismaBootstrapStock, isHats ? 2 : 3) : hasBobbinyStock ? Object.fromEntries(product.yarns.map(yarn => [

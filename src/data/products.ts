@@ -155,11 +155,15 @@ export const products: Product[] = [
     "name": "Blanket",
     "price": 160,
     "category": "Home",
-    "isNew": true,
-    "imageSrc": "/products/Blanket/blanket 1.jpg",
-    "imageAlt": "White chunky chenille crochet blanket draped over a gray sofa",
+    "imageSrc": "/products/Blanket/blanket 5.jpg",
+    "imageAlt": "White blanket spread out with its ribbed border held in one hand",
     "imageShownColor": "White",
     "galleryImages": [
+      {
+        "src": "/products/Blanket/blanket 1.jpg",
+        "alt": "White chunky chenille crochet blanket draped over a gray sofa",
+        "shownColor": "White"
+      },
       {
         "src": "/products/Blanket/blanket 2.jpg",
         "alt": "White crochet blanket hanging over the side of a sofa",
@@ -173,11 +177,6 @@ export const products: Product[] = [
       {
         "src": "/products/Blanket/blanket 4.jpg",
         "alt": "Hand resting on a white ribbed crochet blanket",
-        "shownColor": "White"
-      },
-      {
-        "src": "/products/Blanket/blanket 5.jpg",
-        "alt": "White blanket spread out with its ribbed border held in one hand",
         "shownColor": "White"
       },
       {
@@ -418,7 +417,6 @@ export const products: Product[] = [
       { src: "/products/hotpads/hotpads 4.jpg", alt: "Close-up comparison of warm beige hotpads with removable leather labels wrapped around the edge and used as a hanging loop", shownColor: "Warm Beige" },
       { src: "/products/hotpads/hotpads 5.jpg", alt: "Warm beige crochet hotpad with a glass candle", shownColor: "Warm Beige" },
       { src: "/products/hotpads/hotpads 6.jpg", alt: "Warm beige crochet hotpad under a stainless steel saucepan", shownColor: "Warm Beige" },
-      { src: "/products/hotpads/hotpads 7.jpg", alt: "Warm beige crochet hotpad hanging by its leather loop on a wall hook", shownColor: "Warm Beige" },
     ],
     sizes: [
       { id: "one", label: '7.5" × 7"' },

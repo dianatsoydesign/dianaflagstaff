@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ArtImageViewer } from "@/components/art-image-viewer";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { GallerySlideImage } from "@/components/gallery-slide-image";
 import type { ProductImage } from "@/data/products";
 import { productPhotoBgClass } from "@/lib/product-photo-bg";
@@ -31,8 +33,13 @@ export function ProductDetailGallery({
   className,
 }: Props) {
   const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef(0);
+  const movedTouch = useRef(false);
+  const [zoomOpen, setZoomOpen] = useState(false);
   const count = slides.length;
   const active = preview ?? slides[activeIndex] ?? slides[0];
+
+  const zoomEnabled = active?.src === "/products/hotpads/hotpads 1.jpg";
 
   const overlayCaption = !!(active?.shownColor || active?.shownStyle);
 
@@ -40,13 +47,17 @@ export function ProductDetailGallery({
   const next = () => onSelect((activeIndex + 1) % count);
 
   function handleTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
+    movedTouch.current = false;
+    touchStartX.current = e.touches.length === 1 ? e.touches[0].clientX : null;
+    touchStartY.current = e.touches[0].clientY;
   }
   function handleTouchEnd(e: React.TouchEvent) {
     if (touchStartX.current === null) return;
     const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    movedTouch.current = movedTouch.current || Math.hypot(dx, dy) > 10;
     touchStartX.current = null;
-    if (Math.abs(dx) < 40 || count < 2) return;
+    if (Math.abs(dx) < 40 || Math.abs(dy) >= Math.abs(dx) || count < 2) return;
     if (dx < 0) next();
     else prev();
   }
@@ -69,6 +80,9 @@ export function ProductDetailGallery({
         )}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
+        onTouchMove={event => {
+          if (touchStartX.current !== null && Math.hypot(event.touches[0].clientX - touchStartX.current, event.touches[0].clientY - touchStartY.current) > 10) movedTouch.current = true;
+        }}
       >
         {active?.type === "video" ? (
           <video
@@ -83,6 +97,15 @@ export function ProductDetailGallery({
             preload="metadata"
             className="h-full w-full object-contain"
           />
+        ) : active && zoomEnabled ? (
+          <Dialog open={zoomOpen} onOpenChange={setZoomOpen}>
+            <DialogTrigger aria-label={`Zoom image: ${active.alt}`} className="absolute inset-0 block cursor-zoom-in focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" onClick={event => {
+              if (event.detail !== 0 && movedTouch.current) event.preventDefault();
+            }}>
+              <GallerySlideImage src={active.src} alt={active.alt} priority sizes="(max-width: 768px) 100vw, 50vw" galleryMatteInset={active.galleryMatteInset} />
+            </DialogTrigger>
+            {zoomOpen && <ArtImageViewer photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" />}
+          </Dialog>
         ) : active && (
           <GallerySlideImage
             key={active.src}
@@ -100,12 +123,6 @@ export function ProductDetailGallery({
               <span className="text-black">{[active.shownColor && sentenceCaseColorName(active.shownColor), active.shownStyle].filter(Boolean).join(" · ")}</span>
             </span>
           </figcaption>
-        )}
-
-        {pinOnMobile && count > 1 && (
-          <span className="absolute top-3 right-3 z-10 rounded-full bg-white px-2 py-1 text-xs text-black md:hidden">
-            {activeIndex + 1} / {count}
-          </span>
         )}
 
         {count > 1 && (
@@ -136,6 +153,11 @@ export function ProductDetailGallery({
         )}
       </figure>
 
+      {zoomEnabled && (
+        <p className={cn("text-left text-xs text-muted-foreground", pinOnMobile && "max-md:order-3")}>
+          Tap or click the image to zoom.
+        </p>
+      )}
       {count > 1 && (
         <div className={cn("flex gap-2 overflow-x-auto p-1 -m-1", pinOnMobile && "max-md:order-3 max-md:-mt-3")} role={keyboardNavigation ? "group" : undefined} aria-label={keyboardNavigation ? "Product photos — use left and right arrows" : undefined}
           onKeyDown={keyboardNavigation ? (e) => {
@@ -158,7 +180,7 @@ export function ProductDetailGallery({
               aria-pressed={keyboardNavigation ? i === activeIndex : undefined}
               onClick={() => onSelect(i)}
               className={cn(
-                "relative aspect-square w-16 shrink-0 overflow-hidden rounded-[8px] transition-opacity md:w-20",
+                "relative aspect-square w-16 shrink-0 overflow-hidden rounded-[8px] transition-opacity md:w-20 focus-visible:outline-none! focus-visible:opacity-100 after:pointer-events-none after:absolute after:inset-1 after:z-20 after:rounded-[4px] after:border-2 after:border-transparent focus-visible:after:border-foreground focus-visible:after:ring-2 focus-visible:after:ring-background",
                 productPhotoBgClass,
                 i === activeIndex
                   ? "opacity-100"
