@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { BackButton } from "@/components/back-button";
 import { useEffect, useRef } from "react";
 import { NotFoundCat } from "@/components/not-found-cat";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ export function ErrorState({ retry }: { retry: () => void }) {
           <p className="mx-auto mt-6 max-w-md text-lg leading-relaxed text-foreground">Something went wrong. Let&apos;s try that again.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button type="button" onClick={retry} className="h-12 rounded-full bg-button px-6 text-base text-button-foreground hover:bg-button-hover">Try again</Button>
-            <Button variant="outline" render={<Link href="/" />} className="h-12 rounded-full px-6 text-base">Back to home</Button>
+            <BackButton className="h-12 rounded-full px-6 text-base" />
           </div>
         </div>
       </section>

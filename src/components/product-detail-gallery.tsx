@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { ArtImageViewer } from "@/components/art-image-viewer";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
@@ -8,6 +8,7 @@ import { GallerySlideImage } from "@/components/gallery-slide-image";
 import type { ProductImage } from "@/data/products";
 import { productPhotoBgClass } from "@/lib/product-photo-bg";
 import { sentenceCaseColorName } from "@/lib/color-name";
+import { useViewerHistory } from "@/lib/use-viewer-history";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -35,7 +36,7 @@ export function ProductDetailGallery({
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef(0);
   const movedTouch = useRef(false);
-  const [zoomOpen, setZoomOpen] = useState(false);
+  const [zoomPhoto, setZoomPhoto] = useViewerHistory("product-gallery");
   const count = slides.length;
   const active = preview ?? slides[activeIndex] ?? slides[0];
 
@@ -95,16 +96,16 @@ export function ProductDetailGallery({
             controls
             playsInline
             preload="metadata"
-            className="h-full w-full object-contain"
+            className="product-gallery-video h-full w-full object-contain"
           />
         ) : active && zoomEnabled ? (
-          <Dialog open={zoomOpen} onOpenChange={setZoomOpen}>
+          <Dialog open={zoomPhoto === active.src} onOpenChange={open => setZoomPhoto(open ? active.src : null)}>
             <DialogTrigger aria-label={`Zoom image: ${active.alt}`} className="absolute inset-0 block cursor-zoom-in focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" onClick={event => {
               if (event.detail !== 0 && movedTouch.current) event.preventDefault();
             }}>
               <GallerySlideImage src={active.src} alt={active.alt} priority sizes="(max-width: 768px) 100vw, 50vw" galleryMatteInset={active.galleryMatteInset} />
             </DialogTrigger>
-            {zoomOpen && <ArtImageViewer photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" />}
+            {zoomPhoto === active.src && <ArtImageViewer photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" />}
           </Dialog>
         ) : active && (
           <GallerySlideImage
@@ -159,7 +160,7 @@ export function ProductDetailGallery({
         </p>
       )}
       {count > 1 && (
-        <div className={cn("flex gap-2 overflow-x-auto p-1 -m-1", pinOnMobile && "max-md:order-3 max-md:-mt-3")} role={keyboardNavigation ? "group" : undefined} aria-label={keyboardNavigation ? "Product photos — use left and right arrows" : undefined}
+        <div className={cn("flex min-w-0 gap-2 overflow-x-auto p-1 -m-1 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden", pinOnMobile && "max-md:order-3 max-md:-mt-3")} role={keyboardNavigation ? "group" : undefined} aria-label={keyboardNavigation ? "Product photos — use left and right arrows" : undefined}
           onKeyDown={keyboardNavigation ? (e) => {
             if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
             const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button"));

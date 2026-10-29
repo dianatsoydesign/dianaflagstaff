@@ -152,26 +152,16 @@ export const PATTERN_BOARD_YARNS: YarnColor[] = [
 export const products: Product[] = [
   {
     "id": "blanket",
-    "name": "Blanket",
-    "price": 160,
+    "name": "Chunky chenille blanket",
+    "price": 178,
     "category": "Home",
     "imageSrc": "/products/Blanket/blanket 5.jpg",
     "imageAlt": "White blanket spread out with its ribbed border held in one hand",
     "imageShownColor": "White",
     "galleryImages": [
       {
-        "src": "/products/Blanket/blanket 1.jpg",
-        "alt": "White chunky chenille crochet blanket draped over a gray sofa",
-        "shownColor": "White"
-      },
-      {
         "src": "/products/Blanket/blanket 2.jpg",
         "alt": "White crochet blanket hanging over the side of a sofa",
-        "shownColor": "White"
-      },
-      {
-        "src": "/products/Blanket/blanket 3.jpg",
-        "alt": "White chenille crochet blanket spread out to show rows and border",
         "shownColor": "White"
       },
       {
@@ -190,11 +180,6 @@ export const products: Product[] = [
         "shownColor": "White"
       },
       {
-        "src": "/products/Blanket/blanket 8.jpg",
-        "alt": "Hand holding the thick edge of a white crochet blanket",
-        "shownColor": "White"
-      },
-      {
         "src": "/products/Blanket/blanket 9.jpg",
         "alt": "Close-up of plush white chenille blanket stitches",
         "shownColor": "White"
@@ -208,68 +193,75 @@ export const products: Product[] = [
         "src": "/products/Blanket/blanket 11.jpg",
         "alt": "Side view of a phone on plush white chenille stitches",
         "shownColor": "White"
+      },
+      {
+        "type": "video",
+        "src": "/products/Blanket/blanket 12-silent-v2.mp4",
+        "alt": "White crochet blanket product video",
+        "shownColor": "White",
+        "poster": "/products/Blanket/blanket 5.jpg"
       }
     ],
     "sizes": [
       {
         "id": "lovey",
         "label": "Lovey · 12 × 12 in",
-        "price": 16
+        "price": 18
       },
       {
         "id": "security",
         "label": "Security · 18 × 24 in",
-        "price": 32
+        "price": 36
       },
       {
         "id": "baby",
         "label": "Baby · 30 × 36 in",
-        "price": 64
+        "price": 71
       },
       {
         "id": "receiving",
         "label": "Receiving · 40 × 40 in",
-        "price": 80
+        "price": 89
       },
       {
         "id": "lap",
         "label": "Lap · 36 × 48 in",
-        "price": 96
+        "price": 107
       },
       {
         "id": "crib",
         "label": "Crib · 36 × 52 in",
-        "price": 96
+        "price": 107
       },
       {
         "id": "throw",
         "label": "Throw · 50 × 60 in",
-        "price": 144
+        "price": 160
       },
       {
         "id": "large-throw",
         "label": "Large throw · 48 × 71 in",
-        "price": 160
+        "price": 178
       },
       {
         "id": "twin",
         "label": "Twin · 66 × 90 in",
-        "price": 288
+        "price": 320
       },
       {
         "id": "full",
         "label": "Full · 80 × 90 in",
-        "price": 352
+        "price": 391
       },
       {
         "id": "queen",
         "label": "Queen · 90 × 100 in",
-        "price": 432
+        "price": 480
       },
       {
         "id": "king",
         "label": "King · 108 × 100 in",
-        "price": 512
+        "price": 569
       }
     ],
     "defaultSizeId": "large-throw",
@@ -334,7 +326,7 @@ export const products: Product[] = [
     imageShownColor: "Golden Natural",
     galleryImages: [
       { src: "/products/placemats/placemats 2.jpg", alt: "Golden natural crochet placemat with a ceramic plate, fork, and spoon", shownColor: "Golden Natural" },
-      { type: "video", src: "/products/placemats/placemats 3.mp4", alt: "Placemats product video", shownColor: "Golden Natural", poster: "/products/placemats/placemats 1.jpg" },
+      { type: "video", src: "/products/placemats/placemats 3-silent-v2.mp4", alt: "Placemats product video", shownColor: "Golden Natural", poster: "/products/placemats/placemats 1.jpg" },
     ],
     sizes: [{ id: "one", label: "One placemat" }],
     hideSizePicker: true,

@@ -10,7 +10,7 @@ function visit(node) {
     for (const item of node.initializer.elements) {
       const data = {};
       for (const prop of item.properties ?? []) {
-        if (ts.isPropertyAssignment(prop) && ts.isStringLiteral(prop.initializer)) data[prop.name.getText(source)] = prop.initializer.text;
+        if (ts.isPropertyAssignment(prop) && ts.isStringLiteral(prop.initializer)) data[ts.isStringLiteral(prop.name) ? prop.name.text : prop.name.getText(source)] = prop.initializer.text;
       }
       if (data.id && data.name && data.imageSrc) products.push(data);
     }
@@ -32,9 +32,12 @@ async function card(id, photos, portrait = false) {
     layers.push({ input, left: i * (photoWidth + gap), top: 0 });
   }
   await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#f6f3ed' } })
-    .composite(layers).jpeg({ quality: 88 }).toFile(`public/social/${id}-v2.jpg`);
+    .composite(layers).jpeg({ quality: 88 }).toFile(`public/social/${id}-${id === 'blanket' ? 'v3' : 'v2'}.jpg`);
 }
-for (const p of products) await card(p.id, [p.imageSrc]);
+const selectedId = process.argv.find(arg => arg.startsWith('--product='))?.split('=')[1];
+if (selectedId && !products.some(p => p.id === selectedId)) throw new Error(`Unknown product: ${selectedId}`);
+for (const p of products.filter(p => !selectedId || p.id === selectedId)) await card(p.id, [p.imageSrc]);
+if (selectedId) process.exit(0);
 await card('about', ['/about/portrait-v5.jpg'], true);
 await card('shop', products.filter(p => ['mushroom-hat', 'coasters'].includes(p.id)).map(p => p.imageSrc));
 console.log(`Generated ${products.length + 2} photography-only social preview cards.`);

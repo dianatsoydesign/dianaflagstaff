@@ -5,10 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import collections from "@/data/art-gallery.json";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { ArtImageViewer } from "@/components/art-image-viewer";
+import { useViewerHistory } from "@/lib/use-viewer-history";
 import { navigationControlClass } from "@/lib/navigation-styles";
 
 export function ArtGallery() {
-  const [openPhoto, setOpenPhoto] = useState<string | null>(null);
+  const [openPhoto, setOpenPhoto] = useViewerHistory("art-gallery");
   const filtersRef = useRef<HTMLElement>(null);
   const [offsets, setOffsets] = useState({ header: 0, filters: 60 });
 

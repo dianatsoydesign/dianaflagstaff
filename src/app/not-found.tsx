@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { BackButton } from "@/components/back-button";
 import { NotFoundCat } from "@/components/not-found-cat";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function NotFound() {
         <div className="flex w-full max-w-4xl flex-col items-center">
           <h1 id="not-found-heading" className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.12] tracking-[-0.04em] text-ink lg:whitespace-nowrap">This page has wandered off.</h1>
           <p className="mx-auto mt-6 max-w-md text-lg leading-relaxed text-foreground">A little like a cat with a ball of yarn.</p>
-          <Link href="/" className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-button px-6 py-3 text-base font-medium text-button-foreground hover:bg-button-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground">Back to home</Link>
+          <BackButton className="mt-8 h-12 rounded-full px-6 text-base" />
         </div>
       </section>
     </div>
