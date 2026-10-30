@@ -38,14 +38,17 @@ export function ArtGallery() {
     let frame = 0;
     const update = () => {
       frame = 0;
-      const line = (filtersRef.current?.getBoundingClientRect().bottom ?? offsets.header + offsets.filters) + 24;
-      let current: HTMLElement | undefined = sections[0];
-      for (const section of sections) {
-        if (section.getBoundingClientRect().top <= line) current = section;
-        else break;
-      }
-      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = sections.at(-1);
-      if (current) setActiveCollection(current.id);
+      const visibleTop = Math.max(0, filtersRef.current?.getBoundingClientRect().bottom ?? offsets.header + offsets.filters);
+      const visibleBottom = window.innerHeight;
+      const visibleSections = sections.map(section => {
+        const bounds = section.getBoundingClientRect();
+        return { id: section.id, height: Math.max(0, Math.min(bounds.bottom, visibleBottom) - Math.max(bounds.top, visibleTop)) };
+      });
+      const totalVisibleGallery = visibleSections.reduce((total, section) => total + section.height, 0);
+      // Tall collections need to fill most of the visible gallery, not reveal
+      // half of their entire scroll length. Keep the current chip at a tie.
+      const majority = visibleSections.find(section => section.height > totalVisibleGallery / 2);
+      if (totalVisibleGallery > 0 && majority) setActiveCollection(majority.id);
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     const observer = new ResizeObserver(schedule);
@@ -63,14 +66,23 @@ export function ArtGallery() {
     };
   }, [offsets.header, offsets.filters]);
 
+  function revealChip(chip: HTMLElement) {
+    const row = chipRowRef.current;
+    if (!row || row.scrollWidth <= row.clientWidth) return;
+    const bounds = row.getBoundingClientRect(), selected = chip.getBoundingClientRect();
+    const padding = 8;
+    if (selected.left < bounds.left + padding) row.scrollLeft -= bounds.left + padding - selected.left;
+    else if (selected.right > bounds.right - padding) row.scrollLeft += selected.right - bounds.right + padding;
+  }
+
   useEffect(() => {
     const row = chipRowRef.current;
-    const chip = row?.querySelector<HTMLElement>('[aria-current="location"]');
-    if (!row || !chip || row.scrollWidth <= row.clientWidth) return;
-    const bounds = row.getBoundingClientRect(), selected = chip.getBoundingClientRect();
-    // Reveal the active chip horizontally without moving the page or keyboard focus.
-    if (selected.left < bounds.left) row.scrollLeft -= bounds.left - selected.left + 4;
-    else if (selected.right > bounds.right) row.scrollLeft += selected.right - bounds.right + 4;
+    // A scroll-driven selection must never hide the chip someone is using.
+    const focused = document.activeElement;
+    const chip = focused instanceof HTMLAnchorElement && row?.contains(focused)
+      ? focused
+      : row?.querySelector<HTMLElement>('[aria-current="location"]');
+    if (chip) revealChip(chip);
   }, [activeCollection]);
 
   return (
@@ -83,7 +95,21 @@ export function ArtGallery() {
       </div>
       <nav ref={filtersRef} aria-label="Art collections" style={{ top: offsets.header }} className="site-gutter sticky z-30 bg-background py-2">
         <div className="site-width">
-          <div ref={chipRowRef} className="-ml-3 flex gap-2 overflow-x-auto px-2 py-2 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden md:pb-3 min-[1100px]:flex-wrap min-[1100px]:pb-2">
+          <div ref={chipRowRef}
+            onFocusCapture={event => {
+              if (event.target instanceof HTMLAnchorElement) revealChip(event.target);
+            }}
+            onKeyDown={event => {
+              if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+              const chips = Array.from(event.currentTarget.querySelectorAll<HTMLAnchorElement>("a[href]"));
+              const current = chips.indexOf(event.target as HTMLAnchorElement);
+              if (current < 0) return;
+              event.preventDefault();
+              const index = event.key === "Home" ? 0 : event.key === "End" ? chips.length - 1
+                : Math.max(0, Math.min(chips.length - 1, current + (event.key === "ArrowRight" ? 1 : -1)));
+              chips[index]?.focus({ preventScroll: true });
+            }}
+            className="-ml-3 flex gap-2 overflow-x-auto px-2 py-2 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden md:pb-3 min-[1100px]:flex-wrap min-[1100px]:pb-2">
             {collections.map(group => <a key={group.id} href={`#${group.id}`} aria-current={activeCollection === group.id ? "location" : undefined} className={`${navigationControlClass()} whitespace-nowrap border-2 ${activeCollection === group.id ? `border-ink ${careSurfaceClass} font-semibold` : "border-transparent"}`}>{group.title}<span className="ml-2 text-sm text-muted-foreground">{group.photos.length}</span></a>)}
           </div>
         </div>

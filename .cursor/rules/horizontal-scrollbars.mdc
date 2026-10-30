@@ -1,0 +1,15 @@
+---
+description: Horizontal scrollbar presentation and accessible scrolling
+alwaysApply: true
+---
+
+# Horizontal scrolling
+
+- For current and future horizontally scrolling UI, hide the scrollbar on mobile (below the shared `md` breakpoint) while preserving native touch, trackpad, mouse-wheel, and keyboard scrolling. Never use `overflow: hidden` just to hide a scrollbar.
+- Reuse `max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden` on the horizontal scroll container.
+- Where a desktop scrollbar is visible, leave enough bottom padding that the track never touches chips, thumbnails, text, or controls.
+- Leave enough padding inside clipped scroll containers for complete keyboard focus outlines. Keep every item reachable by keyboard, and reveal focused items without moving focus unexpectedly.
+- Preserve discoverability of offscreen content through a partially visible next item, visible navigation controls, or another appropriate cue. Do not rely on a hidden scrollbar as the only indication that more content exists.
+- When an active item follows page scrolling, keep it visible horizontally without scrolling the page vertically or stealing focus.
+- Keep touch targets at least 44px where practical, support reduced motion, and verify narrow-screen reflow and focus visibility.
+- This rule governs presentation of intentional horizontal scrolling. Continue using wrapping chips where existing rules require them; do not introduce new horizontal overflow to avoid wrapping.

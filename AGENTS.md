@@ -71,3 +71,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Store all animation assets and source JSON inside this repository (`public/illustrations/` or `src/data/animations/`), never reference Downloads or other machine-local folders.
 
 - Approved exception: request confirmations play the cat once (two seconds) and confetti once (under five seconds), then hold still. No pause button. Reduced-motion users see a still cat without confetti. Empty-cart animation retains its playback control.
+
+## Horizontal scrollbars
+
+- Follow `.cursor/rules/horizontal-scrollbars.mdc` for all horizontal scroll containers: hide mobile scrollbar chrome while preserving scrolling and accessibility; separate visible desktop scrollbars from content and protect focus outlines.
