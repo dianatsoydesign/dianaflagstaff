@@ -25,7 +25,7 @@ export function QuantityPicker({
   const minimumDescriptionId = useId();
   return (
     <fieldset className={cn(pickerFieldsetClass, className)}>
-      <legend className={pickerLegendClass}>{label} (required):</legend>
+      <legend className={pickerLegendClass}>{label}:</legend>
       <div className="flex flex-wrap items-center gap-3">
         <QuantityStepper
           className="shrink-0"
@@ -35,7 +35,7 @@ export function QuantityPicker({
           max={max}
           lockDecreaseAtMin
           inputDescriptionId={min > 1 ? minimumDescriptionId : undefined}
-          inputAriaLabel={`${label} (required), minimum ${min}, maximum ${max}`}
+          inputAriaLabel={`${label}, minimum ${min}, maximum ${max}`}
         />
         {min > 1 && (
           <p id={minimumDescriptionId} className="text-sm text-muted-foreground">
