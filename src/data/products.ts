@@ -185,11 +185,6 @@ export const products: Product[] = [
         "shownColor": "White"
       },
       {
-        "src": "/products/Blanket/blanket 10.jpg",
-        "alt": "Phone resting on a white blanket to show stitch scale",
-        "shownColor": "White"
-      },
-      {
         "src": "/products/Blanket/blanket 11.jpg",
         "alt": "Side view of a phone on plush white chenille stitches",
         "shownColor": "White"

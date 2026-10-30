@@ -6,11 +6,14 @@ import collections from "@/data/art-gallery.json";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { ArtImageViewer } from "@/components/art-image-viewer";
 import { useViewerHistory } from "@/lib/use-viewer-history";
+import { careSurfaceClass } from "@/components/picker-styles";
 import { navigationControlClass } from "@/lib/navigation-styles";
 
 export function ArtGallery() {
   const [openPhoto, setOpenPhoto] = useViewerHistory("art-gallery");
   const filtersRef = useRef<HTMLElement>(null);
+  const [activeCollection, setActiveCollection] = useState(collections[0]?.id ?? "");
+  const chipRowRef = useRef<HTMLDivElement>(null);
   const [offsets, setOffsets] = useState({ header: 0, filters: 60 });
 
   useEffect(() => {
@@ -30,6 +33,46 @@ export function ArtGallery() {
     return () => { observer.disconnect(); attributes.disconnect(); };
   }, []);
 
+  useEffect(() => {
+    const sections = collections.map(group => document.getElementById(group.id)).filter((section): section is HTMLElement => !!section);
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const line = (filtersRef.current?.getBoundingClientRect().bottom ?? offsets.header + offsets.filters) + 24;
+      let current: HTMLElement | undefined = sections[0];
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= line) current = section;
+        else break;
+      }
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = sections.at(-1);
+      if (current) setActiveCollection(current.id);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const observer = new ResizeObserver(schedule);
+    sections.forEach(section => observer.observe(section));
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("hashchange", schedule);
+    schedule();
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("hashchange", schedule);
+    };
+  }, [offsets.header, offsets.filters]);
+
+  useEffect(() => {
+    const row = chipRowRef.current;
+    const chip = row?.querySelector<HTMLElement>('[aria-current="location"]');
+    if (!row || !chip || row.scrollWidth <= row.clientWidth) return;
+    const bounds = row.getBoundingClientRect(), selected = chip.getBoundingClientRect();
+    // Reveal the active chip horizontally without moving the page or keyboard focus.
+    if (selected.left < bounds.left) row.scrollLeft -= bounds.left - selected.left + 4;
+    else if (selected.right > bounds.right) row.scrollLeft += selected.right - bounds.right + 4;
+  }, [activeCollection]);
+
   return (
     <div className="pb-8 text-left">
       <div className="site-gutter pb-4 pt-10 sm:pt-16">
@@ -40,8 +83,8 @@ export function ArtGallery() {
       </div>
       <nav ref={filtersRef} aria-label="Art collections" style={{ top: offsets.header }} className="site-gutter sticky z-30 bg-background py-2">
         <div className="site-width">
-          <div className="-ml-3 flex gap-2 overflow-x-auto px-1 py-1 min-[1100px]:flex-wrap">
-            {collections.map(group => <a key={group.id} href={`#${group.id}`} className={`${navigationControlClass()} whitespace-nowrap`}>{group.title}<span className="ml-2 text-sm text-muted-foreground">{group.photos.length}</span></a>)}
+          <div ref={chipRowRef} className="-ml-3 flex gap-2 overflow-x-auto px-1 py-1 min-[1100px]:flex-wrap">
+            {collections.map(group => <a key={group.id} href={`#${group.id}`} aria-current={activeCollection === group.id ? "location" : undefined} className={`${navigationControlClass()} whitespace-nowrap border-2 ${activeCollection === group.id ? `border-ink ${careSurfaceClass} font-semibold` : "border-transparent"}`}>{group.title}<span className="ml-2 text-sm text-muted-foreground">{group.photos.length}</span></a>)}
           </div>
         </div>
       </nav>
