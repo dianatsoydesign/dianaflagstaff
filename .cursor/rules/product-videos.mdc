@@ -1,0 +1,15 @@
+---
+description: Consistent product video order, discovery, and silent playback
+alwaysApply: true
+---
+
+# Product videos
+
+- Apply to all current and future products using the shared PDP gallery.
+- Keep the cover photo first. Place the first product video second, immediately after the cover, before the remaining product photos. Put additional product videos after those photos, before supplier yarn/color images.
+- Example: cover, video, detail photos, additional videos, supplier photos.
+- Clearly mark video thumbnails with a play icon and a visible “Video” label. Offer the shared mobile “Watch video” shortcut to select the primary video directly.
+- Reuse shared gallery ordering and controls. Do not add product-specific ordering exceptions without Diana’s instruction.
+- Website product videos must have their audio tracks removed, not merely start muted. Hide sound controls where supported, while retaining pause/play and seeking controls.
+- Autoplay muted inline only when the video slide is selected. Preserve original source files and create separate versioned web exports.
+- Keep web videos below Cloudflare’s 25 MiB per-file limit, aiming below 20 MB. Use browser-compatible encoding and fast-start playback.

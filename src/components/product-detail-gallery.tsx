@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { ArtImageViewer } from "@/components/art-image-viewer";
@@ -12,8 +13,10 @@ import { useViewerHistory } from "@/lib/use-viewer-history";
 import { cn } from "@/lib/utils";
 
 type Props = {
-  /** Product photos, product videos, then selected supplier yarn images. */
+  /** Cover photo, primary video, remaining photos/videos, then supplier yarn images. */
   slides: ProductImage[];
+  /** Make product video easier to discover. */
+  emphasizeVideo?: boolean;
   keyboardNavigation?: boolean;
   /** Only the full-size image pins on mobile; thumbnails stay in page flow. */
   pinOnMobile?: boolean;
@@ -26,6 +29,7 @@ type Props = {
 
 export function ProductDetailGallery({
   slides,
+  emphasizeVideo = false,
   keyboardNavigation = true,
   pinOnMobile = false,
   activeIndex,
@@ -38,6 +42,7 @@ export function ProductDetailGallery({
   const movedTouch = useRef(false);
   const [zoomPhoto, setZoomPhoto] = useViewerHistory("product-gallery");
   const count = slides.length;
+  const videoIndex = slides.findIndex(slide => slide.type === "video");
   const active = preview ?? slides[activeIndex] ?? slides[0];
 
   const zoomEnabled = active?.src === "/products/hotpads/hotpads 1.jpg";
@@ -118,6 +123,12 @@ export function ProductDetailGallery({
           />
         )}
 
+        {emphasizeVideo && videoIndex !== -1 && active?.type !== "video" && (
+          <Button type="button" variant="outline" className="absolute left-3 top-3 z-10 h-11 gap-2 bg-white px-4 text-black hover:bg-neutral-100 md:hidden" onClick={() => onSelect(videoIndex)}>
+            <Play className="size-4" aria-hidden="true" />Watch video
+          </Button>
+        )}
+
         {overlayCaption && (
           <figcaption className={cn("pointer-events-none absolute right-3 left-3 z-10 flex justify-end md:right-4 md:left-4", active?.type === "video" ? "bottom-16" : count > 1 ? "bottom-10" : "bottom-3 md:bottom-4")}>
             <span className="max-w-full rounded-[8px] bg-white px-3 py-2 text-left text-sm leading-5 text-[#595959] [overflow-wrap:anywhere]">
@@ -176,7 +187,7 @@ export function ProductDetailGallery({
             <button
               key={slide.src}
               type="button"
-              aria-label={slide.alt}
+              aria-label={emphasizeVideo && slide.type === "video" ? `Watch video: ${slide.alt}` : slide.alt}
               tabIndex={keyboardNavigation ? (i === activeIndex ? 0 : -1) : undefined}
               aria-pressed={keyboardNavigation ? i === activeIndex : undefined}
               onClick={() => onSelect(i)}
@@ -195,8 +206,9 @@ export function ProductDetailGallery({
                 galleryMatteInset={slide.galleryMatteInset}
               />
               {slide.type === "video" && (
-                <span className="absolute inset-0 flex items-center justify-center bg-black/15">
+                <span className={cn("absolute inset-0 flex items-center justify-center bg-black/15", emphasizeVideo && "flex-col gap-1 bg-black/35")}>
                   <Play className="h-7 w-7 fill-white text-white drop-shadow" aria-hidden="true" />
+                  {emphasizeVideo && <span className="rounded bg-black/75 px-1.5 py-0.5 text-xs font-semibold text-white">Video</span>}
                 </span>
               )}
             </button>

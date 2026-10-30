@@ -83,7 +83,7 @@ export function ArtGallery() {
       </div>
       <nav ref={filtersRef} aria-label="Art collections" style={{ top: offsets.header }} className="site-gutter sticky z-30 bg-background py-2">
         <div className="site-width">
-          <div ref={chipRowRef} className="-ml-3 flex gap-2 overflow-x-auto px-1 py-1 min-[1100px]:flex-wrap">
+          <div ref={chipRowRef} className="-ml-3 flex gap-2 overflow-x-auto px-2 py-2 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden md:pb-3 min-[1100px]:flex-wrap min-[1100px]:pb-2">
             {collections.map(group => <a key={group.id} href={`#${group.id}`} aria-current={activeCollection === group.id ? "location" : undefined} className={`${navigationControlClass()} whitespace-nowrap border-2 ${activeCollection === group.id ? `border-ink ${careSurfaceClass} font-semibold` : "border-transparent"}`}>{group.title}<span className="ml-2 text-sm text-muted-foreground">{group.photos.length}</span></a>)}
           </div>
         </div>

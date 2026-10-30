@@ -142,9 +142,14 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
     shownColor: selectedYarn!.name,
     alt: `${selectedYarn!.name}, ${yarnLineName(selectedYarn!) ?? "yarn"}${i ? ` (${i + 1})` : ""}`,
   }));
+  const photos = productImages.filter(image => image.type !== "video");
+  const videos = productImages.filter(image => image.type === "video");
+  // Keep the cover first and the primary product video immediately after it.
   const slides: ProductImage[] = [
-    ...productImages.filter((image) => image.type !== "video"),
-    ...productImages.filter((image) => image.type === "video"),
+    ...photos.slice(0, 1),
+    ...videos.slice(0, 1),
+    ...photos.slice(1),
+    ...videos.slice(1),
     ...yarnImages,
   ];
 
@@ -191,6 +196,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
             pinOnMobile
             keyboardNavigation
             slides={slides}
+            emphasizeVideo={videos.length > 0}
             activeIndex={Math.min(activeIndex, slides.length - 1)}
             onSelect={setActiveIndex}
             preview={preview}
