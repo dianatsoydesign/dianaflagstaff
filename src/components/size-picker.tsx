@@ -11,7 +11,8 @@ import {
   formFieldInputClass,
 } from "@/components/picker-styles";
 import { cn } from "@/lib/utils";
-import type { SizeOption } from "@/data/products";
+import { CompactSizePicker } from "@/components/compact-size-picker";
+import { formatPriceOrTbd, type SizeOption } from "@/data/products";
 import {
   REQUEST_DIFFERENT_SIZE_ID,
   customDimensionsWithinLimits,
@@ -35,6 +36,8 @@ const dimensionInputClass = cn(
 
 type Props = {
   sizes: SizeOption[];
+  basePrice?: number;
+  priceSuffix?: string;
   value: string | null;
   onChange: (sizeId: string) => void;
   /** Renders a second chip after preset sizes (hotpads). */
@@ -47,6 +50,8 @@ type Props = {
 
 export function SizePicker({
   sizes,
+  basePrice,
+  priceSuffix = "",
   value,
   onChange,
   allowRequestDifferentSize = false,
@@ -95,6 +100,12 @@ export function SizePicker({
   const rangeError =
     sideOutOfRange(customDimensions.width) ||
     sideOutOfRange(customDimensions.height);
+
+  // Long lists use a compact selector; short lists keep all size chips browsable.
+  if (presetSizes.length > 5 && !showCustomChip && basePrice !== undefined) {
+    return <CompactSizePicker sizes={presetSizes} value={value} basePrice={basePrice} onChange={onChange} />;
+  }
+  const pricesDiffer = basePrice !== undefined && new Set(presetSizes.map(size => size.priceTbd ? "TBD" : size.price ?? basePrice)).size > 1;
 
   return (
     <fieldset className={pickerFieldsetClass}>
@@ -159,7 +170,7 @@ export function SizePicker({
                     )
               )}
             >
-              {size.label}
+              {size.label}{pricesDiffer && ` · ${formatPriceOrTbd(!!size.priceTbd, size.price ?? basePrice!)}${size.priceTbd ? "" : priceSuffix}`}
             </button>
           );
         })}

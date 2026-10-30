@@ -204,6 +204,14 @@ export function ProductPurchaseForm({
     : 0;
 
   const unitPrice = baseUnitPrice + pomPomAddUsd;
+  const pricedSizes = visibleSizes.map(size => {
+    const dimensions = product.customSizePricing ? parseLabeledCustomSize(size.label) : null;
+    const price = dimensions && product.customSizePricing
+      ? customSizeUnitPrice(dimensions, product.price, product.customSizePricing) ?? product.price
+      : size.price ?? product.price;
+    return { ...size, price: price + pomPomAddUsd };
+  });
+
 
   useEffect(() => {
     onPriceChange?.({ unitPrice, priceTbd, quantity: qtyConfig ? quantity : 1 });
@@ -397,10 +405,15 @@ export function ProductPurchaseForm({
         onHatStyleChange?.(style);
         setMessage(null);
       }} />}
+      {product.showPomPomPicker ? (
+        <PomPomPicker value={pomPomId} onChange={setPomPomId} />
+      ) : null}
       {!product.hideSizePicker && (
         <PickerValidation error={message && !/yarn|color/i.test(message) ? message : null}>
         <SizePicker
-          sizes={visibleSizes}
+          sizes={pricedSizes}
+          basePrice={product.price + pomPomAddUsd}
+          priceSuffix={qtyConfig ? " each" : ""}
           value={sizeId}
           onChange={(id) => { setSizeId(id); setMessage(null); }}
           allowRequestDifferentSize={product.allowRequestDifferentSize}
@@ -423,9 +436,6 @@ export function ProductPurchaseForm({
         />
         </PickerValidation>
       )}
-      {product.showPomPomPicker ? (
-        <PomPomPicker value={pomPomId} onChange={setPomPomId} />
-      ) : null}
       {hasCachedSupplierStock && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
       <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
       <YarnSwatchPicker

@@ -1,0 +1,15 @@
+---
+description: Rounded corners on every modal, dialog, drawer, and popup surface
+alwaysApply: true
+---
+
+# Rounded overlay surfaces
+
+- Use explicit 8px corners for all current and new modal dialogs, sheets, drawers, size selectors, share dialogs, navigation overlays, and image viewers on mobile and desktop.
+- Reuse `overlaySurfaceClass` from `src/lib/overlay-styles.ts` through the shared `DialogContent` and `SheetContent` components.
+- Keep corners rounded at every breakpoint. Do not override with `rounded-none`, square bottom corners, or a different radius on overlay surfaces.
+- Clip surface backgrounds, header/footer fills, and media to the rounded frame. Put overflowing content in an internal scrolling region; keep header and close controls reachable.
+- Preserve full-viewport image viewing and safe-area insets. Rounding must not reduce image viewing space or change zoom/pan behavior.
+- Keep focus indicators fully visible inside clipped surfaces and scroll areas. Preserve focus containment/return, Escape, browser Back, accessible names, and 44px close-button targets.
+- Audit both the shared primitives and their callers when introducing or changing an overlay. Verify mobile and desktop, both themes, scrolling, and keyboard focus.
+- This rule governs overlay surfaces. Preserve intentional circles/pills and square inner segments enclosed by an already-rounded control.

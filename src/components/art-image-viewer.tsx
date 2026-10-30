@@ -207,7 +207,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer" }: { phot
   }
 
   return (
-    <DialogContent showCloseButton={false} onTouchStart={event => event.stopPropagation()} onTouchEnd={event => event.stopPropagation()} className="inset-0 left-0 top-0 flex h-dvh max-h-dvh w-screen max-w-none translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden rounded-none border-0 bg-background p-0 ring-0 sm:max-w-none data-open:animate-none data-closed:animate-none">
+    <DialogContent showCloseButton={false} onTouchStart={event => event.stopPropagation()} onTouchEnd={event => event.stopPropagation()} className="inset-0 left-0 top-0 flex h-dvh max-h-dvh w-screen max-w-none translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden border-0 bg-background p-0 ring-0 sm:max-w-none data-open:animate-none data-closed:animate-none">
       <DialogTitle className="sr-only">{viewerLabel}</DialogTitle>
       <DialogDescription className="sr-only">{photo.alt}. Click the image, use the zoom buttons, pinch, or double-tap to zoom. Two-finger scroll or drag to pan. Hold Space and drag, or use the middle mouse button, to pan. Shift+1 fits the image. Keyboard: plus or minus to zoom, arrow keys to move, zero to fit, Escape to close.</DialogDescription>
       <div className="absolute right-[max(0.5rem,env(safe-area-inset-right))] top-[max(0.5rem,env(safe-area-inset-top))] z-10 flex max-w-[calc(100%-1rem)] flex-wrap items-center justify-end gap-1 rounded-[8px] border border-border/50 bg-background/85 p-1 shadow-sm backdrop-blur-md" role="group" aria-label="Image controls">

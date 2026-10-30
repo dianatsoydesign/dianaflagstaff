@@ -75,3 +75,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Horizontal scrollbars
 
 - Follow `.cursor/rules/horizontal-scrollbars.mdc` for all horizontal scroll containers: hide mobile scrollbar chrome while preserving scrolling and accessibility; separate visible desktop scrollbars from content and protect focus outlines.
+
+## Rounded overlay surfaces
+
+- Follow `.cursor/rules/overlay-corners.mdc` for every modal, dialog, sheet, drawer, popup surface, and image viewer. Reuse the shared 8px overlay corners on mobile and desktop, and preserve clipping, scrolling, safe areas, and accessible focus controls.
