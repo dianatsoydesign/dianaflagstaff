@@ -1,0 +1,13 @@
+---
+description: Keep selected size summaries consistent with option pricing across the site
+alwaysApply: true
+---
+
+# Size price summaries
+
+- Across all PDPs, show the selected size name/dimensions and its price beside the Size label. Example: `Size: Medium · $12 each`.
+- Apply this behavior in shared chip and compact size selectors, not per-product overrides.
+- Reuse `sizeOptionLabel` and `sizeOptionPrice` from `src/lib/size-option-label.ts` for summaries and price-bearing options. Preserve the same currency, price, and applicable `each` suffix.
+- Use the selected size price with the product base price as fallback. Show TBD without an `each` suffix for quote-only options; never invent a price for custom sizes or requests without a known price.
+- For custom sizes, pass the purchase form’s calculated unit price to the shared size picker. Show that price with the applicable suffix once dimensions are valid; show TBD for incomplete, invalid, or quote-only sizes. Never duplicate custom-pricing calculations inside the picker.
+- Update the summary when selection changes. Preserve accessible labels and avoid repeating Size twice to screen readers.

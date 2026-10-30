@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useRef } from "react";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Plus } from "lucide-react";
 import { ArtImageViewer } from "@/components/art-image-viewer";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { GallerySlideImage } from "@/components/gallery-slide-image";
@@ -17,6 +17,7 @@ type Props = {
   slides: ProductImage[];
   /** Make product video easier to discover. */
   emphasizeVideo?: boolean;
+  zoomImages?: boolean;
   keyboardNavigation?: boolean;
   /** Only the full-size image pins on mobile; thumbnails stay in page flow. */
   pinOnMobile?: boolean;
@@ -30,6 +31,7 @@ type Props = {
 export function ProductDetailGallery({
   slides,
   emphasizeVideo = false,
+  zoomImages = false,
   keyboardNavigation = true,
   pinOnMobile = false,
   activeIndex,
@@ -45,7 +47,7 @@ export function ProductDetailGallery({
   const videoIndex = slides.findIndex(slide => slide.type === "video");
   const active = preview ?? slides[activeIndex] ?? slides[0];
 
-  const zoomEnabled = active?.src === "/products/hotpads/hotpads 1.jpg";
+  const zoomEnabled = zoomImages && !!active && active.type !== "video";
 
   const overlayCaption = !!(active?.shownColor || active?.shownStyle);
 
@@ -109,6 +111,9 @@ export function ProductDetailGallery({
               if (event.detail !== 0 && movedTouch.current) event.preventDefault();
             }}>
               <GallerySlideImage src={active.src} alt={active.alt} priority sizes="(max-width: 768px) 100vw, 50vw" galleryMatteInset={active.galleryMatteInset} />
+              <span aria-hidden="true" className="pointer-events-none absolute right-3 top-3 inline-flex size-11 items-center justify-center rounded-full bg-white text-black shadow-sm md:right-4 md:top-4">
+                <Plus className="size-5" />
+              </span>
             </DialogTrigger>
             {zoomPhoto === active.src && <ArtImageViewer photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" />}
           </Dialog>
@@ -165,11 +170,6 @@ export function ProductDetailGallery({
         )}
       </figure>
 
-      {zoomEnabled && (
-        <p className={cn("text-left text-xs text-muted-foreground", pinOnMobile && "max-md:order-3")}>
-          Tap or click the image to zoom.
-        </p>
-      )}
       {count > 1 && (
         <div className={cn("flex min-w-0 gap-2 overflow-x-auto p-1 -m-1 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden", pinOnMobile && "max-md:order-3 max-md:-mt-3")} role={keyboardNavigation ? "group" : undefined} aria-label={keyboardNavigation ? "Product photos — use left and right arrows" : undefined}
           onKeyDown={keyboardNavigation ? (e) => {

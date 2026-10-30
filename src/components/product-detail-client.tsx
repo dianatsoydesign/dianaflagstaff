@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { DimensionsCircle } from "@/components/dimensions-icon";
 import { MachineWashCircle } from "@/components/machine-wash-icon";
 import { Badge } from "@/components/ui/badge";
+import { SharePage } from "@/components/share-page";
 import { ProductNamePrice } from "@/components/product-name-price";
 import {
   getSizeUnitPrice,
@@ -196,6 +197,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
             pinOnMobile
             keyboardNavigation
             slides={slides}
+            zoomImages={product.id === "hotpads"}
             emphasizeVideo={videos.length > 0}
             activeIndex={Math.min(activeIndex, slides.length - 1)}
             onSelect={setActiveIndex}
@@ -205,13 +207,19 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
 
           <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-8 md:self-start md:py-2 md:pl-[2vw] lg:pl-[3vw]">
             <div className="order-1 md:order-none">
+              <div className="flex items-start gap-3">
               <ProductNamePrice
+                className="min-w-0 flex-1"
                 name={product.name}
                 price={displayUnitPrice * displayQuantity}
                 priceLabel={minimumQuantity > 1 ? `${displayQuantity} for ${formatPrice(displayUnitPrice * displayQuantity)}` : undefined}
                 priceTbd={priceTbd}
                 variant="detail"
               />
+              {product.id === "coasters" && (
+                <SharePage title={product.name} path={`/shop/p/${product.id}`} compact />
+              )}
+              </div>
               {product.id === "cat-cave" && (
                 <p className="mt-3 max-w-[700px] text-sm leading-snug text-ink">
                   <Badge className="mr-2 align-middle">New</Badge>{" "}

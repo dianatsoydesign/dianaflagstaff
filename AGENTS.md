@@ -79,3 +79,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Rounded overlay surfaces
 
 - Follow `.cursor/rules/overlay-corners.mdc` for every modal, dialog, sheet, drawer, popup surface, and image viewer. Reuse the shared 8px overlay corners on mobile and desktop, and preserve clipping, scrolling, safe areas, and accessible focus controls.
+
+## Selected size pricing
+
+- Follow `.cursor/rules/size-price-summary.mdc`: shared site size selectors show the selected size and price beside Size, with wording matching the options, including applicable “each” suffixes.

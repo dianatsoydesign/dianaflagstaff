@@ -1,14 +1,15 @@
 "use client";
 
+import { Share2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { SITE_URL } from "@/lib/social-sharing";
 
 
-type Props = { title: string; path: string; label?: string };
+type Props = { title: string; path: string; label?: string; compact?: boolean };
 
-export function SharePage({ title, path, label = "Share" }: Props) {
+export function SharePage({ title, path, label = "Share", compact = false }: Props) {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
@@ -44,7 +45,7 @@ export function SharePage({ title, path, label = "Share" }: Props) {
   return (
     <Dialog open={open} onOpenChange={(next) => { setOpen(next); setStatus(""); setError(""); }}>
       <DialogTrigger
-        render={<Button type="button" variant="outline" className="h-12 gap-2 px-4" />}
+        render={<Button type="button" variant="outline" className={compact ? "h-11 shrink-0 gap-2 px-3" : "h-12 gap-2 px-4"} />}
         onClick={(event) => {
           if (typeof navigator.share === "function") {
             event.preventDefault();
@@ -52,6 +53,7 @@ export function SharePage({ title, path, label = "Share" }: Props) {
           }
         }}
       >
+        {compact && <Share2 aria-hidden="true" className="size-4" />}
         {label}
       </DialogTrigger>
       <DialogContent className="max-h-[calc(100dvh-2rem)] rounded-[8px] overflow-y-auto text-left">

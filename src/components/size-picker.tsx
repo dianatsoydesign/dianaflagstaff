@@ -12,7 +12,8 @@ import {
 } from "@/components/picker-styles";
 import { cn } from "@/lib/utils";
 import { CompactSizePicker } from "@/components/compact-size-picker";
-import { formatPriceOrTbd, type SizeOption } from "@/data/products";
+import { sizeOptionLabel } from "@/lib/size-option-label";
+import { type SizeOption } from "@/data/products";
 import {
   REQUEST_DIFFERENT_SIZE_ID,
   customDimensionsWithinLimits,
@@ -46,6 +47,8 @@ type Props = {
   onCustomDimensionsChange?: (dimensions: CustomSizeDimensions) => void;
   /** Inclusive inch bounds for each custom side (hotpads). */
   customSizeLimits?: CustomSizeLimits;
+  /** Calculated unit price from the purchase form; absent means quote required. */
+  customSizePrice?: number;
 };
 
 export function SizePicker({
@@ -58,6 +61,7 @@ export function SizePicker({
   customDimensions = { width: "", height: "" },
   onCustomDimensionsChange,
   customSizeLimits,
+  customSizePrice,
 }: Props) {
   const chipsRef = useRef<HTMLDivElement>(null);
 
@@ -103,25 +107,23 @@ export function SizePicker({
 
   // Long lists use a compact selector; short lists keep all size chips browsable.
   if (presetSizes.length > 5 && !showCustomChip && basePrice !== undefined) {
-    return <CompactSizePicker sizes={presetSizes} value={value} basePrice={basePrice} onChange={onChange} />;
+    return <CompactSizePicker sizes={presetSizes} value={value} basePrice={basePrice} priceSuffix={priceSuffix} onChange={onChange} />;
   }
   const pricesDiffer = basePrice !== undefined && new Set(presetSizes.map(size => size.priceTbd ? "TBD" : size.price ?? basePrice)).size > 1;
 
   return (
     <fieldset className={pickerFieldsetClass}>
       <legend className={pickerLegendClass}>
-        <span className="sr-only">Size: </span>
         Size:{" "}
         {customSelected ? (
-          customLabel ? (
-            <span className="font-medium text-foreground">{customLabel}</span>
-          ) : (
-            <span className="font-medium text-foreground">
-              Request different size
-            </span>
-          )
+          <span className="font-medium text-foreground">{sizeOptionLabel({
+            id: REQUEST_DIFFERENT_SIZE_ID,
+            label: customLabel ?? "Request different size",
+            price: customLabel ? customSizePrice : undefined,
+            priceTbd: !customLabel || customSizePrice === undefined,
+          }, undefined, priceSuffix)}</span>
         ) : selected ? (
-          <span className="font-medium text-foreground">{selected.label}</span>
+          <span className="font-medium text-foreground">{sizeOptionLabel(selected, basePrice, priceSuffix)}</span>
         ) : null}
       </legend>
       <div
@@ -170,7 +172,7 @@ export function SizePicker({
                     )
               )}
             >
-              {size.label}{pricesDiffer && ` · ${formatPriceOrTbd(!!size.priceTbd, size.price ?? basePrice!)}${size.priceTbd ? "" : priceSuffix}`}
+              {pricesDiffer ? sizeOptionLabel(size, basePrice, priceSuffix) : size.label}
             </button>
           );
         })}

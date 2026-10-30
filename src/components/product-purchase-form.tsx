@@ -433,6 +433,7 @@ export function ProductPurchaseForm({
             }
           }}
           customSizeLimits={product.customSizeLimits}
+          customSizePrice={customSizeSelected && !priceTbd ? unitPrice : undefined}
         />
         </PickerValidation>
       )}
@@ -491,7 +492,7 @@ export function ProductPurchaseForm({
           </span>
         </Button>
         </div>
-        <SharePage title={product.name} path={`/shop/p/${product.id}`} />
+        {product.id !== "coasters" && <SharePage title={product.name} path={`/shop/p/${product.id}`} />}
       </div>
     </div>
   );

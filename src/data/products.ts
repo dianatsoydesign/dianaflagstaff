@@ -219,13 +219,8 @@ export const products: Product[] = [
         "price": 89
       },
       {
-        "id": "lap",
-        "label": "Lap · 36 × 48 in",
-        "price": 107
-      },
-      {
         "id": "crib",
-        "label": "Crib · 36 × 52 in",
+        "label": "Lap / crib · 36 × 52 in",
         "price": 107
       },
       {

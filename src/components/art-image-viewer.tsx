@@ -27,9 +27,10 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer" }: { phot
   const [view, setView] = useState(initialView);
   const [dragging, setDragging] = useState(false);
   const [size, setSize] = useState({ width: 0, height: 0 });
-  const fit = Math.min(size.width / photo.width, size.height / photo.height);
-  const fittedWidth = photo.width * fit;
-  const fittedHeight = photo.height * fit;
+  const [imageSize, setImageSize] = useState({ width: photo.width, height: photo.height });
+  const fit = Math.min(size.width / imageSize.width, size.height / imageSize.height);
+  const fittedWidth = imageSize.width * fit;
+  const fittedHeight = imageSize.height * fit;
 
   const panLimitX = Math.max(0, (fittedWidth * view.scale - size.width) / 2);
   const panLimitY = Math.max(0, (fittedHeight * view.scale - size.height) / 2);
@@ -242,7 +243,10 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer" }: { phot
           else if (event.key === "ArrowUp") update({ ...old, y: old.y + 80 });
           else if (event.key === "ArrowDown") update({ ...old, y: old.y - 80 });
         }}>
-        <Image src={photo.original} alt={photo.alt} width={photo.width} height={photo.height} unoptimized draggable={false} className="pointer-events-none absolute left-1/2 top-1/2 max-w-none touch-none select-none" style={{ width: fittedWidth || "100%", height: fittedHeight || "100%", objectFit: "contain", transform: `translate(-50%, -50%) translate(${view.x}px, ${view.y}px) scale(${view.scale})` }} />
+        <Image src={photo.original} alt={photo.alt} width={photo.width} height={photo.height} unoptimized draggable={false} onLoad={event => {
+          const image = event.currentTarget;
+          if (image.naturalWidth && image.naturalHeight) setImageSize({ width: image.naturalWidth, height: image.naturalHeight });
+        }} className="pointer-events-none absolute left-1/2 top-1/2 max-w-none touch-none select-none" style={{ width: fittedWidth || "100%", height: fittedHeight || "100%", objectFit: "contain", transform: `translate(-50%, -50%) translate(${view.x}px, ${view.y}px) scale(${view.scale})` }} />
       </div>
         {view.scale > 1 && (
           <div className="absolute bottom-[max(0.75rem,env(safe-area-inset-bottom))] right-3 z-10 flex flex-wrap rounded-[8px] border bg-background p-1 shadow-sm" role="group" aria-label="Move around image">
