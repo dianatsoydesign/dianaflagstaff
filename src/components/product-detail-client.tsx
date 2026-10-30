@@ -185,9 +185,9 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   }
 
   return (
-    <div className="site-gutter bg-background pb-20 pt-8">
+    <div className="site-gutter bg-background pb-20 pt-8 max-md:pb-[calc(7rem+env(safe-area-inset-bottom))]">
       <div className="site-width">
-        <div ref={configurationRef} className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px] max-md:[&_button]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_input]:scroll-mt-[var(--preview-clearance,16px)]">
+        <div ref={configurationRef} className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px] max-md:[&_button]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_input]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_button]:scroll-mb-28 max-md:[&_input]:scroll-mb-28">
           <div
             ref={galleryContainerRef}
             className="max-md:contents md:col-start-1 md:row-start-1 min-w-0 md:sticky md:top-[var(--desktop-gallery-top,100px)] md:self-start"

@@ -465,9 +465,10 @@ export function ProductPurchaseForm({
         <ProductPickupEstimate timing={pickupTiming} customSize={customSizeSelected} />
       )}
       <div className="flex flex-wrap items-start gap-3">
+        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background px-[3vw] pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:contents">
         <Button
           type="button"
-          className="h-12 min-w-[190px] flex-1 justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover"
+          className="h-12 min-w-[190px] flex-1 justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover max-md:w-full"
           onClick={add}
           disabled={hasCachedSupplierStock && !yarns.length}
         >
@@ -479,6 +480,7 @@ export function ProductPurchaseForm({
             )}
           </span>
         </Button>
+        </div>
         <SharePage title={product.name} path={`/shop/p/${product.id}`} />
       </div>
     </div>
