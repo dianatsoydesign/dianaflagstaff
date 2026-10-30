@@ -101,9 +101,17 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
   const touchPoints = useRef<Point[]>([]);
   const touchGesture = useRef<{ origin: Point; moved: boolean; multi: boolean } | null>(null);
   const handleTouch = useEffectEvent((event: TouchEvent) => {
-    // Controls retain their normal tap behavior.
-    if ((event.target as HTMLElement).closest("button")) return;
-    if (currentView.current.scale <= 1 && hasThumbnails && event.touches.length < 2 && (event.target as HTMLElement).closest("[data-zoom-strip]")) {
+    const target = event.target as HTMLElement;
+    const inImageStrip = !!target.closest("[data-zoom-strip]");
+    // Strip images are buttons too. Only actual controls bypass image gestures.
+    if (target.closest("button") && !inImageStrip) return;
+    if (currentView.current.scale <= 1 && hasThumbnails && event.touches.length < 2 && inImageStrip && !touchGesture.current?.multi) {
+      // Keep one-finger native scrolling, but retain the first finger so a
+      // second finger can start a pinch without losing its initial position.
+      touchPoints.current = Array.from(event.touches, touch => ({ x: touch.clientX, y: touch.clientY }));
+      if (event.type === "touchstart" && touchPoints.current[0]) {
+        touchGesture.current = { origin: touchPoints.current[0], moved: false, multi: false };
+      } else if (!event.touches.length) touchGesture.current = null;
       event.stopPropagation();
       return;
     }
@@ -142,7 +150,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
         const point = { x: touch.clientX, y: touch.clientY };
         const last = previousTap.current, now = Date.now();
         if (hasThumbnails || (last && now - last.time < 350 && Math.hypot(point.x - last.point.x, point.y - last.point.y) < 30)) {
-          zoom(currentView.current.scale > 1 ? 1 : 2.5, localPoint(point));
+          zoom(currentView.current.scale > 1 ? 1 : 2, localPoint(point));
           previousTap.current = null;
         } else previousTap.current = { time: now, point };
       }
@@ -233,7 +241,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
       const last = previousTap.current;
       const now = Date.now();
       if (event.pointerType === "mouse" || (last && now - last.time < 350 && Math.hypot(point.x - last.point.x, point.y - last.point.y) < 30)) {
-        zoom(currentView.current.scale > 1 ? 1 : 2.5, localPoint(point));
+        zoom(currentView.current.scale > 1 ? 1 : 2, localPoint(point));
         previousTap.current = null;
       } else previousTap.current = { time: now, point };
     }
@@ -297,15 +305,15 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
           else if (event.key === "ArrowUp") update({ ...old, y: old.y + 80 });
           else if (event.key === "ArrowDown") update({ ...old, y: old.y - 80 });
         }}>
-        {hasThumbnails && view.scale === 1 && <ZoomGalleryStrip images={galleryImages!} selected={photo.original} onSelect={src => onSelectImage?.(src)} onZoom={src => {
-          if (src === photo.original) zoom(2.5);
+        {hasThumbnails && <div className={`absolute inset-0 ${view.scale > 1 ? "pointer-events-none opacity-0" : ""}`} aria-hidden={view.scale > 1 || undefined}><ZoomGalleryStrip images={galleryImages!} selected={photo.original} onSelect={src => onSelectImage?.(src)} onZoom={src => {
+          if (src === photo.original) zoom(2);
           else { pendingImageZoom.current = true; onSelectImage?.(src); }
-        }} />}
+        }} /></div>}
         <Image src={photo.original} alt={photo.alt} width={photo.width} height={photo.height} unoptimized draggable={false} onLoad={event => {
           const image = event.currentTarget;
           if (image.naturalWidth && image.naturalHeight) {
             setImageSize({ width: image.naturalWidth, height: image.naturalHeight });
-            const nextView = pendingImageZoom.current ? { scale: 2.5, x: 0, y: 0 } : initialView;
+            const nextView = pendingImageZoom.current ? { scale: 2, x: 0, y: 0 } : initialView;
             pendingImageZoom.current = false;
             currentView.current = nextView;
             setView(nextView);

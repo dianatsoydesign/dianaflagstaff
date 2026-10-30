@@ -407,6 +407,24 @@ export function ProductPurchaseForm({
       {product.showPomPomPicker ? (
         <PomPomPicker value={pomPomId} onChange={setPomPomId} />
       ) : null}
+      {hasCachedSupplierStock && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
+      <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
+      <YarnSwatchPicker
+        allowHolidayFilter={product.id === "christmas-stockings"}
+        keyboardNavigation
+        yarns={yarns}
+        value={yarnId}
+        onChange={handleYarnChange}
+        onPreview={(id) => {
+          if (!id || isCharismaCuratedPaletteYarn(id)) {
+            onYarnPreview?.(null);
+            return;
+          }
+          onYarnPreview?.(product.yarns.find((y) => y.id === id) ?? null);
+        }}
+        legend={yarnLineName(yarns.find(yarn => yarn.id === yarnId) ?? product.yarns[0]) ?? "Yarn color"}
+      />
+      </PickerValidation>
       {!product.hideSizePicker && (
         <PickerValidation error={message && !/yarn|color/i.test(message) ? message : null}>
         <SizePicker
@@ -436,24 +454,6 @@ export function ProductPurchaseForm({
         />
         </PickerValidation>
       )}
-      {hasCachedSupplierStock && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
-      <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
-      <YarnSwatchPicker
-        allowHolidayFilter={product.id === "christmas-stockings"}
-        keyboardNavigation
-        yarns={yarns}
-        value={yarnId}
-        onChange={handleYarnChange}
-        onPreview={(id) => {
-          if (!id || isCharismaCuratedPaletteYarn(id)) {
-            onYarnPreview?.(null);
-            return;
-          }
-          onYarnPreview?.(product.yarns.find((y) => y.id === id) ?? null);
-        }}
-        legend={yarnLineName(yarns.find(yarn => yarn.id === yarnId) ?? product.yarns[0]) ?? "Yarn color"}
-      />
-      </PickerValidation>
       <TagPicker
         keyboardNavigation
         value={tagId}
@@ -475,10 +475,10 @@ export function ProductPurchaseForm({
         <ProductPickupEstimate timing={pickupTiming} customSize={customSizeSelected} />
       )}
       <div className="flex flex-wrap items-start gap-3">
-        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background px-[3vw] pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:contents">
+        <div className="fixed inset-x-0 bottom-0 z-30 md:contents">
         <Button
           type="button"
-          className="h-12 min-w-[190px] flex-1 justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover max-md:w-full"
+          className="h-12 min-w-[190px] flex-1 justify-between bg-button px-6 text-base text-button-foreground hover:bg-button-hover max-md:h-[calc(44px+env(safe-area-inset-bottom))] max-md:min-h-11 max-md:w-full max-md:rounded-none max-md:border-0 max-md:pb-[env(safe-area-inset-bottom)] max-md:focus-visible:ring-inset max-md:active:translate-y-0"
           onClick={add}
           disabled={hasCachedSupplierStock && !yarns.length}
         >

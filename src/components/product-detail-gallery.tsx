@@ -32,7 +32,7 @@ type Props = {
 export function ProductDetailGallery({
   slides,
   emphasizeVideo = false,
-  zoomImages = false,
+  zoomImages = true,
   keyboardNavigation = true,
   pinOnMobile = false,
   activeIndex,

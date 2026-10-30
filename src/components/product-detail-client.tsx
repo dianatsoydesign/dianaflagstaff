@@ -197,7 +197,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
             pinOnMobile
             keyboardNavigation
             slides={slides}
-            zoomImages={product.id === "hotpads"}
+            zoomImages
             emphasizeVideo={videos.length > 0}
             activeIndex={Math.min(activeIndex, slides.length - 1)}
             onSelect={setActiveIndex}
