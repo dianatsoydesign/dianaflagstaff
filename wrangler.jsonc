@@ -13,8 +13,17 @@
   ],
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    // Image requests must pass through protection before static assets are served.
+    "run_worker_first": ["/art", "/art/*", "/products/*", "/yarn-images/*", "/yarn-swatches/*", "/about", "/about/*", "/shop", "/shop/*", "/", "/_next/image*"]
   },
+  "ratelimits": [
+    {
+      "name": "IMAGE_RATE_LIMITER",
+      "namespace_id": "96081030",
+      "simple": { "limit": 600, "period": 60 }
+    }
+  ],
   "images": {
     "binding": "IMAGES"
   },

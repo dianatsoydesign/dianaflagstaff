@@ -9,6 +9,7 @@ interface KVNamespace {
 }
 
 interface CloudflareEnv {
+  IMAGE_RATE_LIMITER?: { limit(options: { key: string }): Promise<{ success: boolean }> };
   EMAIL_DB?: import("./src/lib/mail-runtime").EmailDatabase;
   RESEND_API_KEY?: string;
   ORDER_EMAIL_FROM?: string;

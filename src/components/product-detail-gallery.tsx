@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight, Play, Plus } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, Play, ZoomIn } from "lucide-react";
 import { ArtImageViewer } from "@/components/art-image-viewer";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { GallerySlideImage } from "@/components/gallery-slide-image";
@@ -10,6 +10,7 @@ import type { ProductImage } from "@/data/products";
 import { productPhotoBgClass } from "@/lib/product-photo-bg";
 import { sentenceCaseColorName } from "@/lib/color-name";
 import { useViewerHistory } from "@/lib/use-viewer-history";
+import { productZoomInCursor } from "@/lib/zoom-cursor";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -43,6 +44,19 @@ export function ProductDetailGallery({
   const touchStartY = useRef(0);
   const movedTouch = useRef(false);
   const [zoomPhoto, setZoomPhoto] = useViewerHistory("product-gallery");
+  const zoomTrigger = useRef<HTMLButtonElement>(null);
+  const viewerOpen = zoomPhoto !== null;
+  useEffect(() => {
+    if (!viewerOpen) return;
+    // This history entry represents an overlay, not a new scroll destination.
+    const restoration = window.history.scrollRestoration;
+    const position = { left: window.scrollX, top: window.scrollY };
+    window.history.scrollRestoration = "manual";
+    return () => {
+      window.scrollTo({ ...position, behavior: "instant" });
+      window.history.scrollRestoration = restoration;
+    };
+  }, [viewerOpen]);
   const count = slides.length;
   const videoIndex = slides.findIndex(slide => slide.type === "video");
   const active = preview ?? slides[activeIndex] ?? slides[0];
@@ -50,6 +64,15 @@ export function ProductDetailGallery({
   const zoomEnabled = zoomImages && !!active && active.type !== "video";
 
   const overlayCaption = !!(active?.shownColor || active?.shownStyle);
+
+  const zoomableSlides = slides.map((slide, index) => ({ slide, index })).filter(({ slide }) => slide.type !== "video");
+  function navigateZoom(direction: number) {
+    const current = zoomableSlides.findIndex(({ slide }) => slide.src === zoomPhoto);
+    const target = zoomableSlides[(Math.max(0, current) + direction + zoomableSlides.length) % zoomableSlides.length];
+    if (!target) return;
+    onSelect(target.index);
+    setZoomPhoto(target.slide.src);
+  }
 
   const prev = () => onSelect((activeIndex - 1 + count) % count);
   const next = () => onSelect((activeIndex + 1) % count);
@@ -70,13 +93,7 @@ export function ProductDetailGallery({
     else prev();
   }
 
-  const arrowClass = cn(
-    "absolute top-1/2 z-10 h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow transition-colors hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black",
-    pinOnMobile
-      ? "flex max-md:h-11 max-md:w-11 md:opacity-0 md:group-hover:opacity-100"
-      : "hidden fine-pointer:flex fine-pointer:opacity-0 fine-pointer:transition-opacity fine-pointer:group-hover:opacity-100",
-    keyboardNavigation && "focus-visible:opacity-100",
-  );
+  const arrowClass = "inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full text-black hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-black";
 
   return (
     <div className={cn("flex flex-col gap-3", pinOnMobile && "max-md:contents", className)}>
@@ -107,15 +124,15 @@ export function ProductDetailGallery({
           />
         ) : active && zoomEnabled ? (
           <Dialog open={zoomPhoto === active.src} onOpenChange={open => setZoomPhoto(open ? active.src : null)}>
-            <DialogTrigger aria-label={`Zoom image: ${active.alt}`} className="absolute inset-0 block cursor-zoom-in focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" onClick={event => {
+            <DialogTrigger ref={zoomTrigger} aria-label={`Zoom image: ${active.alt}`} style={{ cursor: productZoomInCursor }} className="absolute inset-0 block cursor-zoom-in focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" onClick={event => {
               if (event.detail !== 0 && movedTouch.current) event.preventDefault();
             }}>
               <GallerySlideImage src={active.src} alt={active.alt} priority sizes="(max-width: 768px) 100vw, 50vw" galleryMatteInset={active.galleryMatteInset} />
               <span aria-hidden="true" className="pointer-events-none absolute right-3 top-3 inline-flex size-11 items-center justify-center rounded-full bg-white text-black shadow-sm md:right-4 md:top-4">
-                <Plus className="size-5" />
+                <ZoomIn className="size-5" />
               </span>
             </DialogTrigger>
-            {zoomPhoto === active.src && <ArtImageViewer photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" />}
+            <ArtImageViewer returnFocusRef={zoomTrigger} photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" galleryImages={zoomableSlides.map(({ slide }) => ({ src: slide.src, alt: slide.alt }))} onSelectImage={src => { const index = slides.findIndex(slide => slide.src === src); if (index !== -1) { onSelect(index); setZoomPhoto(src); } }} onPrevious={zoomableSlides.length > 1 ? () => navigateZoom(-1) : undefined} onNext={zoomableSlides.length > 1 ? () => navigateZoom(1) : undefined} />
           </Dialog>
         ) : active && (
           <GallerySlideImage
@@ -135,7 +152,7 @@ export function ProductDetailGallery({
         )}
 
         {overlayCaption && (
-          <figcaption className={cn("pointer-events-none absolute right-3 left-3 z-10 flex justify-end md:right-4 md:left-4", active?.type === "video" ? "bottom-16" : count > 1 ? "bottom-10" : "bottom-3 md:bottom-4")}>
+          <figcaption className={cn("pointer-events-none absolute right-3 left-3 z-10 flex justify-end md:right-4 md:left-4", active?.type === "video" ? "bottom-[124px]" : count > 1 ? "bottom-[76px] md:bottom-20" : "bottom-3 md:bottom-4")}>
             <span className="max-w-full rounded-[8px] bg-white px-3 py-2 text-left text-sm leading-5 text-[#595959] [overflow-wrap:anywhere]">
               <span className="text-black">{[active.shownColor && sentenceCaseColorName(active.shownColor), active.shownStyle].filter(Boolean).join(" · ")}</span>
             </span>
@@ -144,13 +161,15 @@ export function ProductDetailGallery({
 
         {count > 1 && (
           <>
-            <button type="button" aria-label="Previous gallery item" onClick={prev} className={`${arrowClass} left-3`}>
-              <ChevronLeft className="h-5 w-5" />
+            <div role="group" aria-label="Browse gallery" className={cn("absolute right-3 z-10 flex items-center rounded-full bg-white p-1 shadow-sm md:right-4", active?.type === "video" ? "bottom-16" : "bottom-3 md:bottom-4")}>
+            <button type="button" aria-label="Previous gallery item" onClick={prev} className={arrowClass}>
+              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
-            <button type="button" aria-label="Next gallery item" onClick={next} className={`${arrowClass} right-3`}>
-              <ChevronRight className="h-5 w-5" />
+            <button type="button" aria-label="Next gallery item" onClick={next} className={arrowClass}>
+              <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
-            <div className={cn("absolute left-1/2 z-10 flex -translate-x-1/2 gap-2", active?.type === "video" ? "top-4" : "bottom-4")}>
+            </div>
+            <div className={cn("absolute left-3 right-32 z-10 flex flex-wrap gap-2 md:left-4", active?.type === "video" ? "top-4" : "bottom-4")}>
               {slides.map((slide, i) => (
                 <button
                   key={slide.src}
