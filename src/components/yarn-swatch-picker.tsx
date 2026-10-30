@@ -224,7 +224,17 @@ export function YarnSwatchPicker({
       ) : null}
 
       <div
-        className={cn("grid gap-1.5", cols)}
+        className={cn("grid gap-1.5 max-md:grid-flow-col max-md:auto-cols-[56px] max-md:grid-cols-none max-md:overflow-x-auto max-md:overscroll-x-contain max-md:p-1 max-md:-m-1 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden", cols)}
+        onFocus={event => {
+          if (window.innerWidth >= 768) return;
+          const rail = event.currentTarget;
+          const item = (event.target as HTMLElement).closest("button");
+          if (!item) return;
+          const bounds = rail.getBoundingClientRect();
+          const rect = item.getBoundingClientRect();
+          if (rect.left < bounds.left + 4) rail.scrollBy({ left: rect.left - bounds.left - 4, behavior: "instant" });
+          else if (rect.right > bounds.right - 4) rail.scrollBy({ left: rect.right - bounds.right + 4, behavior: "instant" });
+        }}
         role={keyboardNavigation ? "radiogroup" : undefined}
         aria-label={keyboardNavigation ? "Yarn color" : undefined}
         onKeyDown={keyboardNavigation ? (e) => {
@@ -234,7 +244,7 @@ export function YarnSwatchPicker({
           if (current < 0 || !buttons.length) return;
           e.preventDefault();
           const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (current + (["ArrowRight", "ArrowDown"].includes(e.key) ? 1 : -1) + buttons.length) % buttons.length;
-          buttons[index].focus();
+          buttons[index].focus({ preventScroll: true });
           buttons[index].click();
         } : undefined}
         onPointerLeave={(e) => {
