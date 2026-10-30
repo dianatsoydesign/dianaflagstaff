@@ -132,7 +132,7 @@ export function ProductDetailGallery({
                 <ZoomIn className="size-5" />
               </span>
             </DialogTrigger>
-            <ArtImageViewer returnFocusRef={zoomTrigger} photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" galleryImages={zoomableSlides.map(({ slide }) => ({ src: slide.src, alt: slide.alt }))} onSelectImage={src => { const index = slides.findIndex(slide => slide.src === src); if (index !== -1) { onSelect(index); setZoomPhoto(src); } }} onPrevious={zoomableSlides.length > 1 ? () => navigateZoom(-1) : undefined} onNext={zoomableSlides.length > 1 ? () => navigateZoom(1) : undefined} />
+            <ArtImageViewer showFitButton={false} returnFocusRef={zoomTrigger} photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" galleryImages={zoomableSlides.map(({ slide }) => ({ src: slide.src, alt: slide.alt }))} onSelectImage={src => { const index = slides.findIndex(slide => slide.src === src); if (index !== -1) { onSelect(index); setZoomPhoto(src); } }} onPrevious={zoomableSlides.length > 1 ? () => navigateZoom(-1) : undefined} onNext={zoomableSlides.length > 1 ? () => navigateZoom(1) : undefined} />
           </Dialog>
         ) : active && (
           <GallerySlideImage

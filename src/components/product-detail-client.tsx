@@ -216,9 +216,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
                 priceTbd={priceTbd}
                 variant="detail"
               />
-              {product.id === "coasters" && (
-                <SharePage title={product.name} path={`/shop/p/${product.id}`} compact />
-              )}
+              <SharePage title={product.name} path={`/shop/p/${product.id}`} compact />
               </div>
               {product.id === "cat-cave" && (
                 <p className="mt-3 max-w-[700px] text-sm leading-snug text-ink">

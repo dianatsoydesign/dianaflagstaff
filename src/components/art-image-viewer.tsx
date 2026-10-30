@@ -13,7 +13,8 @@ type Point = { x: number; y: number };
 type View = Point & { scale: number };
 const initialView: View = { scale: 1, x: 0, y: 0 };
 
-export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevious, onNext, galleryImages, onSelectImage, returnFocusRef }: {
+export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevious, onNext, galleryImages, onSelectImage, returnFocusRef, showFitButton = true }: {
+  showFitButton?: boolean;
   returnFocusRef?: React.RefObject<HTMLButtonElement | null>;
   photo: Photo;
   viewerLabel?: string;
@@ -261,7 +262,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
         <span className="min-w-12 text-center text-sm tabular-nums" role="status" aria-live="polite" aria-atomic="true">{Math.round(view.scale * 100)}%</span>
         <Button variant="ghost" size="icon" className="size-11" aria-label="Zoom in" disabled={view.scale >= 5} onClick={() => zoom(view.scale * 1.5)}><Plus aria-hidden="true" /></Button>
         </>}
-        <Button variant="ghost" className="h-11 gap-2" onClick={() => update(initialView)}><RotateCcw aria-hidden="true" />Fit</Button>
+        {showFitButton && <Button variant="ghost" className="h-11 gap-2" onClick={() => update(initialView)}><RotateCcw aria-hidden="true" />Fit</Button>}
         <DialogClose render={<Button variant="ghost" size="icon" className="size-11" />} aria-label="Close image viewer"><X aria-hidden="true" /></DialogClose>
       </div>
       {(onPrevious || onNext) && (

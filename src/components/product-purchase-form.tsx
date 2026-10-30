@@ -34,7 +34,6 @@ import { useInquiryCart } from "@/lib/inquiry-cart";
 import { yarnLineName } from "@/data/yarns";
 import { isSelectable, usesLiveSupplier } from "@/lib/yarn-stock";
 import { MushroomStylePicker } from "@/components/mushroom-style-picker";
-import { SharePage } from "@/components/share-page";
 import { QuantityPicker } from "@/components/quantity-picker";
 import { ProductPickupEstimate } from "@/components/product-pickup-estimate";
 import { productionDaysForProduct, productsWithPickupEstimates, type PickupTiming } from "@/lib/pickup-estimate";
@@ -492,7 +491,6 @@ export function ProductPurchaseForm({
           </span>
         </Button>
         </div>
-        {product.id !== "coasters" && <SharePage title={product.name} path={`/shop/p/${product.id}`} />}
       </div>
     </div>
   );
