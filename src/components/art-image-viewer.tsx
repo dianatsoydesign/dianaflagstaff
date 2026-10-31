@@ -4,7 +4,7 @@ import Image from "next/image";
 import { productZoomInCursor, productZoomOutCursor } from "@/lib/zoom-cursor";
 import { ZoomGalleryStrip } from "@/components/zoom-gallery-strip";
 import { useCallback, useEffect, useEffectEvent, useRef, useState, type PointerEvent } from "react";
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Minus, Plus, RotateCcw, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Minus, Plus, RotateCcw, X } from "lucide-react";
 import { DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
@@ -49,8 +49,6 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
   const fittedWidth = imageSize.width * fit;
   const fittedHeight = imageSize.height * fit;
 
-  const panLimitX = Math.max(0, (fittedWidth * view.scale - size.width) / 2);
-  const panLimitY = Math.max(0, (fittedHeight * view.scale - size.height) / 2);
 
   function update(next: View) {
     const scale = Math.max(1, Math.min(5, next.scale));
@@ -291,7 +289,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
       {hasThumbnails && !showThumbnails && <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-3 z-20 rounded-full bg-black/[0.54] px-3 py-1 text-sm tabular-nums text-white" role="status" aria-live="polite" aria-atomic="true">
         {galleryImages!.findIndex(image => image.src === photo.original) + 1} of {galleryImages!.length}
       </div>}
-      <div ref={attachViewport} tabIndex={0} role="region" aria-label={`${viewerLabel}. ${hasThumbnails ? "Tap, click, or pinch to zoom" : "Click, pinch, or double-tap to zoom"}; drag or use arrow keys to move when zoomed.`} className={`relative min-h-0 flex-1 overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${hasThumbnails && showThumbnails ? "max-md:mb-24" : ""} ${hasThumbnails && view.scale === 1 ? "touch-pan-x" : "touch-none"}`} style={{ cursor: dragging ? "grabbing" : handTool ? "grab" : view.scale > 1 ? (hasThumbnails ? productZoomOutCursor : "zoom-out") : (hasThumbnails ? productZoomInCursor : "zoom-in"), marginBottom: "env(safe-area-inset-bottom)" }}
+      <div ref={attachViewport} data-image-copy-protected tabIndex={0} role="region" aria-label={`${viewerLabel}. ${hasThumbnails ? "Tap, click, or pinch to zoom" : "Click, pinch, or double-tap to zoom"}; drag or use arrow keys to move when zoomed.`} className={`relative min-h-0 flex-1 overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${hasThumbnails && showThumbnails ? "max-md:mb-24" : ""} ${hasThumbnails && view.scale === 1 ? "touch-pan-x" : "touch-none"}`} style={{ cursor: dragging ? "grabbing" : handTool ? "grab" : view.scale > 1 ? (hasThumbnails ? productZoomOutCursor : "zoom-out") : (hasThumbnails ? productZoomInCursor : "zoom-in"), marginBottom: "env(safe-area-inset-bottom)" }}
         onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={pointerUp} onLostPointerCapture={pointerUp}
         onDoubleClick={event => event.preventDefault()}
         onContextMenu={event => event.preventDefault()}
@@ -349,14 +347,6 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
           </button>)}
         </div>
       )}
-        {view.scale > 1 && (
-          <div className={`absolute ${hasThumbnails ? "bottom-44 md:bottom-20" : onNext || onPrevious ? "bottom-20" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"} right-3 z-10 flex flex-wrap rounded-[8px] border bg-background p-1 shadow-sm`} role="group" aria-label="Move around image">
-            <Button variant="ghost" size="icon" className="size-11" aria-label="Move view left" disabled={view.x >= panLimitX - 0.5} onClick={() => update({ ...currentView.current, x: currentView.current.x + 80 })}><ArrowLeft aria-hidden="true" /></Button>
-            <Button variant="ghost" size="icon" className="size-11" aria-label="Move view up" disabled={view.y >= panLimitY - 0.5} onClick={() => update({ ...currentView.current, y: currentView.current.y + 80 })}><ArrowUp aria-hidden="true" /></Button>
-            <Button variant="ghost" size="icon" className="size-11" aria-label="Move view down" disabled={view.y <= -panLimitY + 0.5} onClick={() => update({ ...currentView.current, y: currentView.current.y - 80 })}><ArrowDown aria-hidden="true" /></Button>
-            <Button variant="ghost" size="icon" className="size-11" aria-label="Move view right" disabled={view.x <= -panLimitX + 0.5} onClick={() => update({ ...currentView.current, x: currentView.current.x - 80 })}><ArrowRight aria-hidden="true" /></Button>
-          </div>
-        )}
     </DialogContent>
   );
 }

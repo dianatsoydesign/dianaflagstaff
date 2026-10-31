@@ -290,3 +290,13 @@
 .product-gallery-video::-webkit-media-controls-volume-slider {
   display: none;
 }
+
+/* Discourage native image save/copy gestures; text selection stays unchanged. */
+img, picture, [data-image-copy-protected] {
+  -webkit-touch-callout: none;
+}
+img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SITE_NAME } from "@/lib/site";
 import { OfflineNotice } from "@/components/offline-notice";
 import { SITE_URL } from "@/lib/social-sharing";
+import { ImageCopyProtection } from "@/components/image-copy-protection";
 import "./globals.css";
 
 /** Ventura Fluid uses Tenor Sans for titles/headings */
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col font-sans">
+        <ImageCopyProtection />
         <ThemeProvider>
           <InquiryCartProvider>
             <a href="#main-content" className="skip-link">Skip to content</a>
