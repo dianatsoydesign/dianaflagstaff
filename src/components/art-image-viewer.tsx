@@ -267,19 +267,19 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
     }} onTouchStart={event => event.stopPropagation()} onTouchEnd={event => event.stopPropagation()} className="inset-0 left-0 top-0 flex h-dvh max-h-dvh w-screen max-w-none translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden border-0 bg-background p-0 ring-0 sm:max-w-none data-open:animate-none data-closed:animate-none">
       <DialogTitle className="sr-only">{viewerLabel}</DialogTitle>
       <DialogDescription className="sr-only">{photo.alt}. {hasThumbnails ? "Tap or click an image to zoom in; tap or click again to fit. Pinch to adjust zoom." : "Click the image, use the zoom buttons, pinch, or double-tap to zoom."} Two-finger scroll or drag to pan. Hold Space and drag, or use the middle mouse button, to pan. Shift+1 fits the image. {(onNext || onPrevious) && " At fit view, swipe or use left and right arrows to change images. Page Up and Page Down change images at any zoom level."} Keyboard: plus or minus to zoom, arrow keys to move, zero to fit, Escape to close.</DialogDescription>
-      <div className="absolute right-[max(0.5rem,env(safe-area-inset-right))] top-[max(0.5rem,env(safe-area-inset-top))] z-10 flex max-w-[calc(100%-1rem)] flex-wrap items-center justify-end gap-1 rounded-[8px] border border-border/50 bg-background/85 p-1 shadow-sm backdrop-blur-md" role="group" aria-label="Image controls">
+      <div className={`absolute right-[max(0.5rem,env(safe-area-inset-right))] top-[max(0.5rem,env(safe-area-inset-top))] z-10 flex max-w-[calc(100%-1rem)] flex-wrap items-center justify-end gap-1 p-1 ${!showFitButton ? "rounded-full bg-black/[0.42] text-white" : "rounded-[8px] border border-border/50 bg-background/85 shadow-sm backdrop-blur-md"}`} role="group" aria-label="Image controls">
         {!hasThumbnails && <>
         <Button variant="ghost" size="icon" className="size-11" aria-label="Zoom out" disabled={view.scale <= 1} onClick={() => zoom(view.scale / 1.5)}><Minus aria-hidden="true" /></Button>
         <span className="min-w-12 text-center text-sm tabular-nums" role="status" aria-live="polite" aria-atomic="true">{Math.round(view.scale * 100)}%</span>
         <Button variant="ghost" size="icon" className="size-11" aria-label="Zoom in" disabled={view.scale >= 5} onClick={() => zoom(view.scale * 1.5)}><Plus aria-hidden="true" /></Button>
         </>}
         {showFitButton && <Button variant="ghost" className="h-11 gap-2" onClick={() => update(initialView)}><RotateCcw aria-hidden="true" />Fit</Button>}
-        <DialogClose render={<Button variant="ghost" size="icon" className="size-11" />} aria-label="Close image viewer"><X aria-hidden="true" /></DialogClose>
+        <DialogClose render={<Button variant="ghost" size="icon" className={`size-11 ${!showFitButton ? "text-white hover:bg-transparent hover:text-white dark:hover:bg-transparent focus-visible:ring-white focus-visible:ring-inset" : ""}`} />} aria-label="Close image viewer"><X aria-hidden="true" /></DialogClose>
       </div>
       {(onPrevious || onNext) && (
-        <div role="group" aria-label="Browse images" className={`absolute right-[max(0.75rem,env(safe-area-inset-right))] z-20 flex items-center rounded-full bg-background/90 p-1 shadow-sm backdrop-blur-md ${hasThumbnails && showThumbnails ? "bottom-28 md:bottom-3" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"}`}>
-          {<Button type="button" variant="ghost" size="icon" className="size-11" aria-label="Previous image" disabled={!onPrevious} onClick={onPrevious}><ArrowLeft className="size-5" aria-hidden="true" /></Button>}
-          {<Button type="button" variant="ghost" size="icon" className="size-11" aria-label="Next image" disabled={!onNext} onClick={onNext}><ArrowRight className="size-5" aria-hidden="true" /></Button>}
+        <div role="group" aria-label="Browse images" className={`absolute right-[max(0.75rem,env(safe-area-inset-right))] z-20 flex items-center rounded-full bg-black/[0.42] p-1 text-white ${hasThumbnails && showThumbnails ? "bottom-28 md:bottom-3" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"}`}>
+          {<Button type="button" variant="ghost" size="icon" className="size-11 text-white hover:bg-transparent hover:text-white dark:hover:bg-transparent focus-visible:ring-white focus-visible:ring-inset" aria-label="Previous image" disabled={!onPrevious} onClick={onPrevious}><ArrowLeft className="size-5" aria-hidden="true" /></Button>}
+          {<Button type="button" variant="ghost" size="icon" className="size-11 text-white hover:bg-transparent hover:text-white dark:hover:bg-transparent focus-visible:ring-white focus-visible:ring-inset" aria-label="Next image" disabled={!onNext} onClick={onNext}><ArrowRight className="size-5" aria-hidden="true" /></Button>}
         </div>
       )}
       {hasThumbnails && !showThumbnails && <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-3 right-32 z-20">

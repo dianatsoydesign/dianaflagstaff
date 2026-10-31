@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useInquiryCart } from "@/lib/inquiry-cart";
 import {
@@ -59,6 +59,25 @@ function isNavActive(pathname: string, href: string) {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const previousPath = useRef(pathname);
+  const shopScroll = useRef(0);
+  useLayoutEffect(() => {
+    const returning = pathname === "/" && previousPath.current.startsWith("/shop/p/");
+    previousPath.current = pathname;
+    if (pathname !== "/") return;
+    let frame: number | null = null;
+    if (returning) {
+      const top = shopScroll.current;
+      window.scrollTo({ top, behavior: "instant" });
+      frame = requestAnimationFrame(() => window.scrollTo({ top, behavior: "instant" }));
+    }
+    const remember = () => { shopScroll.current = window.scrollY; };
+    window.addEventListener("scroll", remember, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", remember);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
+  }, [pathname]);
   const { itemCount, openCheckoutDrawer } = useInquiryCart();
   const [open, setOpen] = useState(false);
   const heroHeader = pathname === "/welcome";
@@ -138,6 +157,7 @@ export function SiteHeader() {
                   <Link
                     key={item.href}
                     href={item.href}
+                scroll={item.href === "/" && pathname.startsWith("/shop/p/") ? false : undefined}
                     onClick={() => setOpen(false)}
                     aria-current={isNavActive(pathname, item.href) ? "page" : undefined}
                     className={cn(
@@ -160,6 +180,7 @@ export function SiteHeader() {
 
           <Link
             href="/"
+            scroll={pathname.startsWith("/shop/p/") ? false : undefined}
             className={cn(
               "min-w-0 justify-self-center text-center font-display text-[length:clamp(0.875rem,4vw,1.25rem)] leading-[1.15] tracking-[-0.04em] transition-opacity hover:opacity-70 min-[1100px]:text-[length:min(calc(1.05vw_+_0.95rem),34px)]",
               heroHeader ? "text-white" : "text-ink"
@@ -183,6 +204,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                scroll={item.href === "/" && pathname.startsWith("/shop/p/") ? false : undefined}
                 aria-current={isNavActive(pathname, item.href) ? "page" : undefined}
                 className={cn(
                   navigationControlClass(heroHeader),

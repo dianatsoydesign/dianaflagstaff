@@ -132,7 +132,15 @@ export function ArtGallery() {
               chips[index]?.focus({ preventScroll: true });
             }}
             className="-ml-3 flex gap-2 overflow-x-auto px-2 py-2 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden md:pb-3 min-[1100px]:flex-wrap min-[1100px]:pb-2">
-            {collections.map(group => <a key={group.id} href={`#${group.id}`} aria-current={activeCollection === group.id ? "location" : undefined} className={`${navigationControlClass()} whitespace-nowrap border-2 ${activeCollection === group.id ? `border-ink ${careSurfaceClass} font-semibold` : "border-transparent"}`}>{group.title}<span className="ml-2 text-sm text-muted-foreground">{group.photos.length}</span></a>)}
+            {collections.map(group => <a key={group.id} href={`#${group.id}`} onClick={event => {
+              if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+              const section = document.getElementById(group.id);
+              if (!section) return;
+              event.preventDefault();
+              window.history.pushState(window.history.state, "", `#${group.id}`);
+              setActiveCollection(group.id);
+              section.scrollIntoView({ block: "start", behavior: "instant" });
+            }} aria-current={activeCollection === group.id ? "location" : undefined} className={`${navigationControlClass()} whitespace-nowrap border-2 ${activeCollection === group.id ? `border-ink ${careSurfaceClass} font-semibold` : "border-transparent"}`}>{group.title}<span className="ml-2 text-sm text-muted-foreground">{group.photos.length}</span></a>)}
           </div>
         </div>
       </nav>

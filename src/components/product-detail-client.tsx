@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { DimensionsCircle } from "@/components/dimensions-icon";
 import { MachineWashCircle } from "@/components/machine-wash-icon";
 import { Badge } from "@/components/ui/badge";
-import { SharePage } from "@/components/share-page";
 import { ProductNamePrice } from "@/components/product-name-price";
 import {
   getSizeUnitPrice,
@@ -214,7 +213,6 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
                 priceTbd={priceTbd}
                 variant="detail"
               />
-              <SharePage title={product.name} path={`/shop/p/${product.id}`} compact />
               </div>
               {product.id === "cat-cave" && (
                 <p className="mt-3 max-w-[700px] text-sm leading-snug text-ink">

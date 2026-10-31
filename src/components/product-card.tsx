@@ -77,7 +77,7 @@ export function ProductCard({
             <ProductImageBadge src={image.src} />
           </Link>)}
         </div>
-        {images.length > 1 && <div role="group" aria-label={`${product.name} photo navigation`} className="absolute bottom-2 left-2 flex max-w-[calc(100%-1rem)] flex-wrap rounded-full bg-black/15 px-1">
+        {images.length > 1 && <div role="group" aria-label={`${product.name} photo navigation`} className="absolute bottom-2 left-2 flex max-w-[calc(100%-1rem)] flex-wrap rounded-full bg-black/[0.42] px-1">
           {images.map((image, imageIndex) => <button key={image.src} type="button" aria-label={`View ${product.name} photo ${imageIndex + 1}`} aria-current={activeImage === imageIndex ? "true" : undefined}
             onClick={() => {
               const element = rail.current;
@@ -85,7 +85,7 @@ export function ProductCard({
               if (element && slide) element.scrollTo({ left: slide.offsetLeft, behavior: "instant" });
             }}
             className="inline-flex size-6 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white">
-            <span aria-hidden="true" className={cn("h-2 rounded-full transition-all motion-reduce:transition-none", activeImage === imageIndex ? "w-4 bg-white" : "w-2 bg-white/50")} />
+            <span aria-hidden="true" className={cn("h-2 rounded-full transition-all motion-reduce:transition-none", activeImage === imageIndex ? "w-4 bg-white" : "w-2 bg-white")} />
           </button>)}
         </div>}
       </div>

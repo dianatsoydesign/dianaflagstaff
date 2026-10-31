@@ -95,7 +95,7 @@ export function ProductDetailGallery({
   }, [activeIndex]);
   useEffect(() => () => { if (scrollFrame.current !== null) cancelAnimationFrame(scrollFrame.current); }, []);
 
-  const arrowClass = "inline-flex size-11 shrink-0 cursor-pointer disabled:cursor-default disabled:opacity-40 items-center justify-center rounded-full text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white";
+  const arrowClass = "inline-flex size-11 shrink-0 cursor-pointer disabled:cursor-default disabled:opacity-40 items-center justify-center rounded-full text-white focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white";
 
   return (
     <div className={cn("flex flex-col gap-3", pinOnMobile && "max-md:contents", className)}>
@@ -133,7 +133,7 @@ export function ProductDetailGallery({
               ) : <GallerySlideImage src={slide.src} alt={slide.alt} sizes="(max-width: 768px) 100vw, 50vw" galleryMatteInset={slide.galleryMatteInset} />}
             </div>)}
           </div>
-          {zoomImages && active && active.type !== "video" && !preview && <button type="button" aria-label="Zoom current image" onClick={() => setZoomPhoto(active.src)} className="absolute right-3 top-3 z-10 size-11 rounded-full bg-black/70 text-white hover:bg-[linear-gradient(rgb(255_255_255_/_15%),rgb(255_255_255_/_15%))] hover:text-white inline-flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-white md:right-4 md:top-4"><ZoomIn aria-hidden="true" className="size-5" /></button>}
+          {zoomImages && active && active.type !== "video" && !preview && <button type="button" aria-label="Zoom current image" onClick={() => setZoomPhoto(active.src)} className="absolute right-3 top-3 z-10 size-11 rounded-full bg-black/[0.42] text-white hover:text-white inline-flex fine-pointer:hidden items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-white md:right-4 md:top-4"><ZoomIn aria-hidden="true" className="size-5" /></button>}
           {active && active.type !== "video" && <ArtImageViewer showFitButton={false} returnFocusRef={zoomTrigger} photo={{ original: active.src, alt: active.alt, width: 1024, height: 1024 }} viewerLabel="Product image viewer" galleryImages={zoomableSlides.map(({ slide }) => ({ src: slide.src, alt: slide.alt }))} onSelectImage={src => { const index = slides.findIndex(slide => slide.src === src); if (index !== -1) { onSelect(index); setZoomPhoto(src); } }} onPrevious={zoomableSlides.findIndex(({ slide }) => slide.src === active.src) > 0 ? () => navigateZoom(-1) : undefined} onNext={zoomableSlides.findIndex(({ slide }) => slide.src === active.src) < zoomableSlides.length - 1 ? () => navigateZoom(1) : undefined} />}
         </Dialog>
         {preview && <GallerySlideImage src={preview.src} alt={preview.alt} sizes="(max-width: 768px) 100vw, 50vw" galleryMatteInset={preview.galleryMatteInset} />}
@@ -154,7 +154,7 @@ export function ProductDetailGallery({
 
         {count > 1 && (
           <>
-            <div role="group" aria-label="Browse gallery" className={cn("absolute right-3 z-10 flex items-center rounded-full bg-black/70 p-1 md:right-4", active?.type === "video" ? "bottom-16" : "bottom-3 md:bottom-4")}>
+            <div role="group" aria-label="Browse gallery" className={cn("absolute right-3 z-10 flex items-center rounded-full bg-black/[0.42] p-1 md:right-4", active?.type === "video" ? "bottom-16" : "bottom-3 md:bottom-4")}>
             <button type="button" aria-label="Previous gallery item" disabled={activeIndex <= 0} onClick={prev} className={arrowClass}>
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
