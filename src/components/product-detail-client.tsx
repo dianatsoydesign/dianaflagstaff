@@ -160,9 +160,9 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   const previewProductPhoto = previewYarn ? productImages.find((image) =>
     image.type !== "video" && image.shownColor?.toLowerCase() === previewYarn.name.toLowerCase()
   ) : null;
-  const preview = previewProductPhoto ?? (previewSrc
+  const preview = previewSrc
     ? { src: previewSrc, shownColor: previewYarn!.name, alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
-    : null);
+    : previewProductPhoto;
 
   const materialYarn = selectedYarn ?? product.yarns[0];
   const material = materialYarn ? yarnMaterial(materialYarn) : yarnMaterial(product.yarns[0]);
@@ -171,16 +171,14 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   function handleYarnChange(yarn: YarnColor | null, pickedByUser: boolean) {
     setSelectedYarn(yarn);
     if (pickedByUser && yarn) {
-      const finishedPhoto = slides.findIndex((image) =>
-        image.type !== "video" &&
-        image.shownColor?.toLowerCase() === yarn.name.toLowerCase() &&
-        productIndexOf(image.src) !== -1
-      );
-      if (finishedPhoto !== -1) setActiveIndex(finishedPhoto);
-      else if (!hasColorImages(yarn)) setActiveIndex(0);
-      else {
-        const existing = slides.findIndex((image) => image.src === colorSrcs(yarn)[0]);
+      const colorName = yarn.name.toLowerCase();
+      if (hasColorImages(yarn)) {
+        const existing = slides.findIndex(image => image.src === colorSrcs(yarn)[0]);
         setActiveIndex(existing === -1 ? productImages.length : existing);
+      } else {
+        const finishedPhoto = productImages.findIndex(image => image.type !== "video" && image.shownColor?.toLowerCase() === colorName);
+        const photo = finishedPhoto === -1 ? null : productImages[finishedPhoto];
+        setActiveIndex(photo ? Math.max(0, slides.findIndex(image => image.src === photo.src)) : 0);
       }
     } else setActiveIndex((i) => Math.min(i, productImages.length - 1));
   }

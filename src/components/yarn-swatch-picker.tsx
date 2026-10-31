@@ -194,7 +194,7 @@ export function YarnSwatchPicker({
                   )
             )}
           >
-            All colors
+            All
           </button>
           {groupOptions.map((group) => {
             const isSelected = groupFilter === group.id;

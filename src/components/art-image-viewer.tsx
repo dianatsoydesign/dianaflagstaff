@@ -1,5 +1,6 @@
 "use client";
 
+import { GalleryDots } from "@/components/gallery-dots";
 import Image from "next/image";
 import { productZoomInCursor, productZoomOutCursor } from "@/lib/zoom-cursor";
 import { ZoomGalleryStrip } from "@/components/zoom-gallery-strip";
@@ -13,7 +14,9 @@ type Point = { x: number; y: number };
 type View = Point & { scale: number };
 const initialView: View = { scale: 1, x: 0, y: 0 };
 
-export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevious, onNext, galleryImages, onSelectImage, returnFocusRef, showFitButton = true }: {
+export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevious, onNext, galleryImages, onSelectImage, returnFocusRef, showFitButton = true, showThumbnails = true, fitGalleryImages = false }: {
+  showThumbnails?: boolean;
+  fitGalleryImages?: boolean;
   showFitButton?: boolean;
   returnFocusRef?: React.RefObject<HTMLButtonElement | null>;
   photo: Photo;
@@ -263,7 +266,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
       if (navigate) { event.preventDefault(); event.stopPropagation(); navigate(); }
     }} onTouchStart={event => event.stopPropagation()} onTouchEnd={event => event.stopPropagation()} className="inset-0 left-0 top-0 flex h-dvh max-h-dvh w-screen max-w-none translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden border-0 bg-background p-0 ring-0 sm:max-w-none data-open:animate-none data-closed:animate-none">
       <DialogTitle className="sr-only">{viewerLabel}</DialogTitle>
-      <DialogDescription className="sr-only">{photo.alt}. {hasThumbnails ? "Tap or click an image to zoom in; tap or click again to fit. Pinch to adjust zoom." : "Click the image, use the zoom buttons, pinch, or double-tap to zoom."} Two-finger scroll or drag to pan. Hold Space and drag, or use the middle mouse button, to pan. Shift+1 fits the image. {onNext && " At fit view, swipe or use left and right arrows to change images. Page Up and Page Down change images at any zoom level."} Keyboard: plus or minus to zoom, arrow keys to move, zero to fit, Escape to close.</DialogDescription>
+      <DialogDescription className="sr-only">{photo.alt}. {hasThumbnails ? "Tap or click an image to zoom in; tap or click again to fit. Pinch to adjust zoom." : "Click the image, use the zoom buttons, pinch, or double-tap to zoom."} Two-finger scroll or drag to pan. Hold Space and drag, or use the middle mouse button, to pan. Shift+1 fits the image. {(onNext || onPrevious) && " At fit view, swipe or use left and right arrows to change images. Page Up and Page Down change images at any zoom level."} Keyboard: plus or minus to zoom, arrow keys to move, zero to fit, Escape to close.</DialogDescription>
       <div className="absolute right-[max(0.5rem,env(safe-area-inset-right))] top-[max(0.5rem,env(safe-area-inset-top))] z-10 flex max-w-[calc(100%-1rem)] flex-wrap items-center justify-end gap-1 rounded-[8px] border border-border/50 bg-background/85 p-1 shadow-sm backdrop-blur-md" role="group" aria-label="Image controls">
         {!hasThumbnails && <>
         <Button variant="ghost" size="icon" className="size-11" aria-label="Zoom out" disabled={view.scale <= 1} onClick={() => zoom(view.scale / 1.5)}><Minus aria-hidden="true" /></Button>
@@ -274,12 +277,15 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
         <DialogClose render={<Button variant="ghost" size="icon" className="size-11" />} aria-label="Close image viewer"><X aria-hidden="true" /></DialogClose>
       </div>
       {(onPrevious || onNext) && (
-        <div role="group" aria-label="Browse images" className={`absolute right-[max(0.75rem,env(safe-area-inset-right))] z-20 flex items-center rounded-full bg-background/90 p-1 shadow-sm backdrop-blur-md ${hasThumbnails ? "bottom-28 md:bottom-3" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"}`}>
-          {onPrevious && <Button type="button" variant="ghost" size="icon" className="size-11" aria-label="Previous image" onClick={onPrevious}><ArrowLeft className="size-5" aria-hidden="true" /></Button>}
-          {onNext && <Button type="button" variant="ghost" size="icon" className="size-11" aria-label="Next image" onClick={onNext}><ArrowRight className="size-5" aria-hidden="true" /></Button>}
+        <div role="group" aria-label="Browse images" className={`absolute right-[max(0.75rem,env(safe-area-inset-right))] z-20 flex items-center rounded-full bg-background/90 p-1 shadow-sm backdrop-blur-md ${hasThumbnails && showThumbnails ? "bottom-28 md:bottom-3" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"}`}>
+          {<Button type="button" variant="ghost" size="icon" className="size-11" aria-label="Previous image" disabled={!onPrevious} onClick={onPrevious}><ArrowLeft className="size-5" aria-hidden="true" /></Button>}
+          {<Button type="button" variant="ghost" size="icon" className="size-11" aria-label="Next image" disabled={!onNext} onClick={onNext}><ArrowRight className="size-5" aria-hidden="true" /></Button>}
         </div>
       )}
-      <div ref={attachViewport} tabIndex={0} role="region" aria-label={`${viewerLabel}. ${hasThumbnails ? "Tap, click, or pinch to zoom" : "Click, pinch, or double-tap to zoom"}; drag or use arrow keys to move when zoomed.`} className={`relative min-h-0 flex-1 overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${hasThumbnails ? "max-md:mb-24" : ""} ${hasThumbnails && view.scale === 1 ? "touch-pan-x" : "touch-none"}`} style={{ cursor: dragging ? "grabbing" : handTool ? "grab" : view.scale > 1 ? (hasThumbnails ? productZoomOutCursor : "zoom-out") : (hasThumbnails ? productZoomInCursor : "zoom-in"), marginBottom: "env(safe-area-inset-bottom)" }}
+      {hasThumbnails && !showThumbnails && <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-3 right-32 z-20">
+        <GalleryDots labels={galleryImages!.map((image, index) => `View image ${index + 1}: ${image.alt}`)} activeIndex={galleryImages!.findIndex(image => image.src === photo.original)} onSelect={index => onSelectImage?.(galleryImages![index].src)} />
+      </div>}
+      <div ref={attachViewport} tabIndex={0} role="region" aria-label={`${viewerLabel}. ${hasThumbnails ? "Tap, click, or pinch to zoom" : "Click, pinch, or double-tap to zoom"}; drag or use arrow keys to move when zoomed.`} className={`relative min-h-0 flex-1 overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${hasThumbnails && showThumbnails ? "max-md:mb-24" : ""} ${hasThumbnails && view.scale === 1 ? "touch-pan-x" : "touch-none"}`} style={{ cursor: dragging ? "grabbing" : handTool ? "grab" : view.scale > 1 ? (hasThumbnails ? productZoomOutCursor : "zoom-out") : (hasThumbnails ? productZoomInCursor : "zoom-in"), marginBottom: "env(safe-area-inset-bottom)" }}
         onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={pointerUp} onLostPointerCapture={pointerUp}
         onDoubleClick={event => event.preventDefault()}
         onContextMenu={event => event.preventDefault()}
@@ -305,7 +311,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
           else if (event.key === "ArrowUp") update({ ...old, y: old.y + 80 });
           else if (event.key === "ArrowDown") update({ ...old, y: old.y - 80 });
         }}>
-        {hasThumbnails && <div className={`absolute inset-0 ${view.scale > 1 ? "pointer-events-none opacity-0" : ""}`} aria-hidden={view.scale > 1 || undefined}><ZoomGalleryStrip images={galleryImages!} selected={photo.original} onSelect={src => onSelectImage?.(src)} onZoom={src => {
+        {hasThumbnails && <div className={`absolute inset-0 ${view.scale > 1 ? "pointer-events-none opacity-0" : ""}`} aria-hidden={view.scale > 1 || undefined}><ZoomGalleryStrip fitImages={fitGalleryImages} images={galleryImages!} selected={photo.original} onSelect={src => onSelectImage?.(src)} onZoom={src => {
           if (src === photo.original) zoom(2);
           else { pendingImageZoom.current = true; onSelectImage?.(src); }
         }} /></div>}
@@ -320,7 +326,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
           }
         }} className={`pointer-events-none absolute left-1/2 top-1/2 max-w-none touch-none select-none ${hasThumbnails && view.scale === 1 ? "opacity-0" : ""}`} style={{ width: fittedWidth || "100%", height: fittedHeight || "100%", objectFit: "contain", transform: `translate(-50%, -50%) translate(${view.x}px, ${view.y}px) scale(${view.scale})` }} />
       </div>
-      {hasThumbnails && (
+      {hasThumbnails && showThumbnails && (
         <div ref={thumbnails} role="group" aria-label="Image thumbnails" className="absolute bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-2 right-2 z-20 flex gap-2 overflow-x-auto p-1 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden md:bottom-3 md:left-3 md:right-auto md:top-20 md:w-[72px] md:flex-col md:overflow-x-hidden md:overflow-y-auto"
           onKeyDown={event => {
             if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) return;
@@ -328,7 +334,7 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
             const current = buttons.indexOf(event.target as HTMLButtonElement);
             if (current < 0) return;
             event.preventDefault(); event.stopPropagation();
-            const index = event.key === "Home" ? 0 : event.key === "End" ? buttons.length - 1 : (current + (["ArrowRight", "ArrowDown"].includes(event.key) ? 1 : -1) + buttons.length) % buttons.length;
+            const index = event.key === "Home" ? 0 : event.key === "End" ? buttons.length - 1 : Math.max(0, Math.min(buttons.length - 1, current + (["ArrowRight", "ArrowDown"].includes(event.key) ? 1 : -1)));
             buttons[index]?.focus({ preventScroll: true });
             buttons[index]?.click();
           }}>

@@ -9,7 +9,7 @@ export const CHARISMA_COLOR_GROUPS = [
   { id: "blues", label: "Blues" },
   { id: "browns", label: "Browns" },
   { id: "neutrals", label: "Neutrals" },
-  { id: "multis", label: "Multicolor" },
+  { id: "multis", label: "Multi" },
 ] as const;
 
 export type CharismaColorGroupId = (typeof CHARISMA_COLOR_GROUPS)[number]["id"];

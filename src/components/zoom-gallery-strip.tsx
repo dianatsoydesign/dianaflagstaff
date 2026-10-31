@@ -7,7 +7,8 @@ import { useEffect, useRef } from "react";
 type GalleryImage = { src: string; alt: string };
 
 /** Native momentum scrolling follows touch and trackpad input continuously. */
-export function ZoomGalleryStrip({ images, selected, onSelect, onZoom }: {
+export function ZoomGalleryStrip({ images, selected, onSelect, onZoom, fitImages = false }: {
+  fitImages?: boolean;
   images: GalleryImage[];
   selected: string;
   onSelect: (src: string) => void;
@@ -96,8 +97,8 @@ export function ZoomGalleryStrip({ images, selected, onSelect, onZoom }: {
       }
     }}
     onPointerCancel={event => { drag.current = null; suppressClick.current = true; event.currentTarget.style.scrollSnapType = ""; }}
-  >{images.map(image => <button key={image.src} data-src={image.src} style={{ cursor: productZoomInCursor }} type="button" tabIndex={-1} aria-label={`Zoom image: ${image.alt}`} className="relative m-0 flex h-full max-md:w-full shrink-0 snap-start cursor-zoom-in items-stretch border-0 bg-transparent p-0 leading-none" onClick={() => {
+  >{images.map(image => <button key={image.src} data-src={image.src} style={{ cursor: productZoomInCursor }} type="button" tabIndex={-1} aria-label={`Zoom image: ${image.alt}`} className={`relative m-0 flex h-full max-md:w-full shrink-0 snap-start cursor-zoom-in items-stretch border-0 bg-transparent p-0 leading-none ${fitImages ? "w-full" : ""}`} onClick={() => {
     if (!suppressClick.current) onZoom(image.src);
     suppressClick.current = false;
-  }}><Image src={image.src} alt={image.alt} width={1024} height={1024} unoptimized draggable={false} className="block h-full w-auto max-w-none select-none max-md:w-full max-md:object-contain" /></button>)}</div>;
+  }}><Image src={image.src} alt={image.alt} width={1024} height={1024} unoptimized draggable={false} className={`block h-full w-auto max-w-none select-none max-md:w-full max-md:object-contain ${fitImages ? "w-full! object-contain" : ""}`} /></button>)}</div>;
 }

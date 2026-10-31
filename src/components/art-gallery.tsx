@@ -11,6 +11,14 @@ import { navigationControlClass } from "@/lib/navigation-styles";
 
 export function ArtGallery() {
   const [openPhoto, setOpenPhoto] = useViewerHistory("art-gallery");
+  const photos = collections.flatMap(group => group.photos);
+  function navigatePhoto(direction: number) {
+    const index = photos.findIndex(photo => photo.src === openPhoto);
+    if (index < 0 || photos.length < 2) return;
+    setOpenPhoto(photos[Math.max(0, Math.min(photos.length - 1, index + direction))].src);
+  }
+  const selectedPhoto = photos.find(photo => photo.src === openPhoto);
+  const openedTrigger = useRef<HTMLButtonElement>(null);
   const filtersRef = useRef<HTMLElement>(null);
   const [activeCollection, setActiveCollection] = useState(collections[0]?.id ?? "");
   const chipRowRef = useRef<HTMLDivElement>(null);
@@ -42,13 +50,26 @@ export function ArtGallery() {
       const visibleBottom = window.innerHeight;
       const visibleSections = sections.map(section => {
         const bounds = section.getBoundingClientRect();
-        return { id: section.id, height: Math.max(0, Math.min(bounds.bottom, visibleBottom) - Math.max(bounds.top, visibleTop)) };
+        return { id: section.id, totalHeight: bounds.height, height: Math.max(0, Math.min(bounds.bottom, visibleBottom) - Math.max(bounds.top, visibleTop)) };
       });
       const totalVisibleGallery = visibleSections.reduce((total, section) => total + section.height, 0);
-      // Tall collections need to fill most of the visible gallery, not reveal
-      // half of their entire scroll length. Keep the current chip at a tie.
-      const majority = visibleSections.find(section => section.height > totalVisibleGallery / 2);
-      if (totalVisibleGallery > 0 && majority) setActiveCollection(majority.id);
+      // Compare short collections with their own height so a single row can
+      // become active. Tall collections still use the visible gallery height.
+      // Prefer the greatest coverage and keep the current chip at a tie.
+      setActiveCollection(current => {
+        let selected = current;
+        let bestCoverage = 0.5;
+        const ranked = [...visibleSections].sort((a, b) => Number(b.id === current) - Number(a.id === current));
+        for (const section of ranked) {
+          const availableHeight = Math.min(section.totalHeight, totalVisibleGallery);
+          const coverage = availableHeight > 0 ? section.height / availableHeight : 0;
+          if (coverage > bestCoverage) {
+            selected = section.id;
+            bestCoverage = coverage;
+          }
+        }
+        return selected;
+      });
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     const observer = new ResizeObserver(schedule);
@@ -86,6 +107,7 @@ export function ArtGallery() {
   }, [activeCollection]);
 
   return (
+    <Dialog open={!!selectedPhoto} onOpenChange={open => { if (!open) setOpenPhoto(null); }}>
     <div className="pb-8 text-left">
       <div className="site-gutter pb-4 pt-10 sm:pt-16">
         <div className="site-width">
@@ -118,16 +140,18 @@ export function ArtGallery() {
         {collections.map((group, groupIndex) => (
           <section key={group.id} id={group.id} aria-label={group.title} style={{ scrollMarginTop: offsets.header + offsets.filters + 8 }} className="grid grid-cols-1 items-start gap-1 md:grid-cols-3 xl:grid-cols-4">
           {group.photos.map((photo, index) => (
-              <Dialog key={photo.src} open={openPhoto === photo.src} onOpenChange={open => setOpenPhoto(open ? photo.src : null)}>
-                <DialogTrigger className="relative block w-full cursor-zoom-in overflow-hidden rounded-[8px] align-top focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" aria-label={`Open ${photo.title}: ${photo.alt}`}>
+              <div key={photo.src}>
+                <DialogTrigger onClick={event => { openedTrigger.current = event.currentTarget; setOpenPhoto(photo.src); }} className="relative block w-full cursor-zoom-in overflow-hidden rounded-[8px] align-top focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" aria-label={`Open ${photo.title}: ${photo.alt}`}>
                   <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} unoptimized loading={groupIndex === 0 && index < 4 ? "eager" : "lazy"} className="block h-auto w-full" />
                 </DialogTrigger>
-                {openPhoto === photo.src && <ArtImageViewer photo={photo} />}
-              </Dialog>
+
+              </div>
           ))}
           </section>
         ))}
       </div>
     </div>
+                {selectedPhoto && <ArtImageViewer showFitButton={false} photo={selectedPhoto} returnFocusRef={openedTrigger} galleryImages={photos.map(item => ({ src: item.original, alt: item.alt }))} onSelectImage={src => { const photo = photos.find(item => item.original === src); if (photo) setOpenPhoto(photo.src); }} showThumbnails={false} fitGalleryImages onPrevious={openPhoto !== photos[0]?.src ? () => navigatePhoto(-1) : undefined} onNext={openPhoto !== photos.at(-1)?.src ? () => navigatePhoto(1) : undefined} />}
+    </Dialog>
   );
 }
