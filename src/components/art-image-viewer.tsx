@@ -1,6 +1,5 @@
 "use client";
 
-import { GalleryDots } from "@/components/gallery-dots";
 import Image from "next/image";
 import { productZoomInCursor, productZoomOutCursor } from "@/lib/zoom-cursor";
 import { ZoomGalleryStrip } from "@/components/zoom-gallery-strip";
@@ -14,10 +13,11 @@ type Point = { x: number; y: number };
 type View = Point & { scale: number };
 const initialView: View = { scale: 1, x: 0, y: 0 };
 
-export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevious, onNext, galleryImages, onSelectImage, returnFocusRef, showFitButton = true, showThumbnails = true, fitGalleryImages = false }: {
+export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevious, onNext, galleryImages, onSelectImage, returnFocusRef, showFitButton = true, showThumbnails = true, fitGalleryImages = false, scrollToReturnFocus = false }: {
   showThumbnails?: boolean;
   fitGalleryImages?: boolean;
   showFitButton?: boolean;
+  scrollToReturnFocus?: boolean;
   returnFocusRef?: React.RefObject<HTMLButtonElement | null>;
   photo: Photo;
   viewerLabel?: string;
@@ -256,7 +256,13 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
 
   return (
     <DialogContent showCloseButton={false} finalFocus={returnFocusRef ? () => {
-      returnFocusRef.current?.focus({ preventScroll: true });
+      const target = returnFocusRef.current;
+      if (scrollToReturnFocus) {
+        requestAnimationFrame(() => {
+          target?.focus({ preventScroll: true });
+          target?.scrollIntoView({ block: "center", inline: "nearest", behavior: "instant" });
+        });
+      } else target?.focus({ preventScroll: true });
       return false;
     } : undefined} onKeyDown={event => {
       if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
@@ -282,8 +288,8 @@ export function ArtImageViewer({ photo, viewerLabel = "Artwork viewer", onPrevio
           {<Button type="button" variant="ghost" size="icon" className="size-11 text-white hover:bg-transparent hover:text-white dark:hover:bg-transparent focus-visible:ring-white focus-visible:ring-inset" aria-label="Next image" disabled={!onNext} onClick={onNext}><ArrowRight className="size-5" aria-hidden="true" /></Button>}
         </div>
       )}
-      {hasThumbnails && !showThumbnails && <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-3 right-32 z-20">
-        <GalleryDots labels={galleryImages!.map((image, index) => `View image ${index + 1}: ${image.alt}`)} activeIndex={galleryImages!.findIndex(image => image.src === photo.original)} onSelect={index => onSelectImage?.(galleryImages![index].src)} />
+      {hasThumbnails && !showThumbnails && <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-3 z-20 rounded-full bg-black/[0.54] px-3 py-1 text-sm tabular-nums text-white" role="status" aria-live="polite" aria-atomic="true">
+        {galleryImages!.findIndex(image => image.src === photo.original) + 1} of {galleryImages!.length}
       </div>}
       <div ref={attachViewport} tabIndex={0} role="region" aria-label={`${viewerLabel}. ${hasThumbnails ? "Tap, click, or pinch to zoom" : "Click, pinch, or double-tap to zoom"}; drag or use arrow keys to move when zoomed.`} className={`relative min-h-0 flex-1 overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${hasThumbnails && showThumbnails ? "max-md:mb-24" : ""} ${hasThumbnails && view.scale === 1 ? "touch-pan-x" : "touch-none"}`} style={{ cursor: dragging ? "grabbing" : handTool ? "grab" : view.scale > 1 ? (hasThumbnails ? productZoomOutCursor : "zoom-out") : (hasThumbnails ? productZoomInCursor : "zoom-in"), marginBottom: "env(safe-area-inset-bottom)" }}
         onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={pointerUp} onLostPointerCapture={pointerUp}

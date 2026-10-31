@@ -19,6 +19,10 @@ export function ArtGallery() {
   }
   const selectedPhoto = photos.find(photo => photo.src === openPhoto);
   const openedTrigger = useRef<HTMLButtonElement>(null);
+  const photoTriggers = useRef(new Map<string, HTMLButtonElement>());
+  useEffect(() => {
+    if (openPhoto) openedTrigger.current = photoTriggers.current.get(openPhoto) ?? null;
+  }, [openPhoto]);
   const filtersRef = useRef<HTMLElement>(null);
   const [activeCollection, setActiveCollection] = useState(collections[0]?.id ?? "");
   const chipRowRef = useRef<HTMLDivElement>(null);
@@ -149,7 +153,7 @@ export function ArtGallery() {
           <section key={group.id} id={group.id} aria-label={group.title} style={{ scrollMarginTop: offsets.header + offsets.filters + 8 }} className="grid grid-cols-1 items-start gap-1 md:grid-cols-3 xl:grid-cols-4">
           {group.photos.map((photo, index) => (
               <div key={photo.src}>
-                <DialogTrigger onClick={event => { openedTrigger.current = event.currentTarget; setOpenPhoto(photo.src); }} className="relative block w-full cursor-zoom-in overflow-hidden rounded-[8px] align-top focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" aria-label={`Open ${photo.title}: ${photo.alt}`}>
+                <DialogTrigger ref={element => { if (element) photoTriggers.current.set(photo.src, element); else photoTriggers.current.delete(photo.src); }} onClick={event => { openedTrigger.current = event.currentTarget; setOpenPhoto(photo.src); }} className="relative block w-full cursor-zoom-in overflow-hidden rounded-[8px] align-top focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground" aria-label={`Open ${photo.title}: ${photo.alt}`}>
                   <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} unoptimized loading={groupIndex === 0 && index < 4 ? "eager" : "lazy"} className="block h-auto w-full" />
                 </DialogTrigger>
 
@@ -159,7 +163,7 @@ export function ArtGallery() {
         ))}
       </div>
     </div>
-                {selectedPhoto && <ArtImageViewer showFitButton={false} photo={selectedPhoto} returnFocusRef={openedTrigger} galleryImages={photos.map(item => ({ src: item.original, alt: item.alt }))} onSelectImage={src => { const photo = photos.find(item => item.original === src); if (photo) setOpenPhoto(photo.src); }} showThumbnails={false} fitGalleryImages onPrevious={openPhoto !== photos[0]?.src ? () => navigatePhoto(-1) : undefined} onNext={openPhoto !== photos.at(-1)?.src ? () => navigatePhoto(1) : undefined} />}
+                {selectedPhoto && <ArtImageViewer showFitButton={false} photo={selectedPhoto} returnFocusRef={openedTrigger} scrollToReturnFocus galleryImages={photos.map(item => ({ src: item.original, alt: item.alt }))} onSelectImage={src => { const photo = photos.find(item => item.original === src); if (photo) setOpenPhoto(photo.src); }} showThumbnails={false} fitGalleryImages onPrevious={openPhoto !== photos[0]?.src ? () => navigatePhoto(-1) : undefined} onNext={openPhoto !== photos.at(-1)?.src ? () => navigatePhoto(1) : undefined} />}
     </Dialog>
   );
 }
