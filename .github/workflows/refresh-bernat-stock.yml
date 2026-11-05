@@ -5,6 +5,8 @@ on:
     paths:
       - 'src/lib/stock-refresh-auth.mjs'
       - 'scripts/stock-refresh-auth.test.mjs'
+      - 'scripts/stock-request.mjs'
+      - 'scripts/stock-request.test.mjs'
       - '.github/workflows/refresh-bernat-stock.yml'
       - 'scripts/push-bernat-stock.mjs'
       - 'scripts/bernat-inventory.test.mjs'
@@ -39,7 +41,7 @@ jobs:
         with:
           node-version: '22'
       - name: Test stock rules
-        run: node --test scripts/stock-refresh-auth.test.mjs scripts/bernat-inventory.test.mjs
+        run: node --test scripts/stock-request.test.mjs scripts/stock-refresh-auth.test.mjs scripts/bernat-inventory.test.mjs
       - name: Verify Flagstaff pickup counts and save stock
         env:
           STOCK_REFRESH_SECRET: ${{ github.event_name != 'pull_request' && secrets.STOCK_REFRESH_SECRET || '' }}

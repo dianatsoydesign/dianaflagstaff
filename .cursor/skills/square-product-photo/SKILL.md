@@ -130,4 +130,11 @@ When nail polish is visible in the frame, recolor **only the polish pixels** to 
 
 * **Fallback Protocol**: If the result is square but the product looks squashed, stretched, or a different shape than the reference, regenerate once with the exact same ruleset. If it still fails square verification, stop execution immediately and show the user.
 
-* **Catalog Data Targeting**: Update only the image the user named. Point `imageSrc` or the gallery entry in `src/data/products.ts` at the new file *only* after it completely passes all validation steps.
+* **Catalog Data Targeting**: Update only the image the user named. Point `imageSrc` or the gallery entry in `src/data/products.ts` at the new file *only* after it completely passes all validation steps **and Diana explicitly approves it following her local review**.
+
+## Diana’s image review workflow
+
+- Save new versioned image candidates in a local review folder outside the website’s public assets. Keep originals and current website files untouched.
+- Inspect candidates internally for framing, color, resolution, labels, and stitch fidelity. Give Diana local file/folder paths; do not post inline previews unless requested.
+- Wait for Diana’s explicit approval before updating website image references, covers, gallery order, or social previews, or deploying the new images. Rendering/editing instructions alone do not authorize switching the website to the candidates.
+- Save revisions as new versions and repeat review. Diana can explicitly waive this review for a particular task.

@@ -83,3 +83,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Selected size pricing
 
 - Follow `.cursor/rules/size-price-summary.mdc`: shared site size selectors show the selected size and price beside Size, with wording matching the options, including applicable “each” suffixes.
+
+## Image review before website updates
+
+- Follow `.cursor/rules/product-photo-review.mdc`: save versioned image candidates for Diana to inspect locally, do not post previews unless requested, and wait for explicit approval before switching website images or publishing them.

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // node scripts/push-charisma-flagstaff-stock.mjs --check-only verifies stock without publishing.
 import { readFile, writeFile } from 'node:fs/promises';
+import { stockRequest } from './stock-request.mjs';
 import { stockRefreshSecret } from '../src/lib/stock-refresh-auth.mjs';
 import { FLAGSTAFF_STORE_ID, MIN_SKEINS, pickupQuantities } from '../src/lib/charisma-inventory.mjs';
 
@@ -19,27 +20,14 @@ const skus = [...new Set(MICHAELS_HAT_CATALOG.map(yarn => {
 }))];
 if (!skus.length) throw new Error('Empty Charisma catalog');
 
-async function request(url, options = {}) {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    try {
-      const response = await fetch(url, { ...options, redirect: 'error', signal: AbortSignal.timeout(30000) });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return await response.json();
-    } catch (error) {
-      if (attempt === 2) throw error;
-      await new Promise(resolve => setTimeout(resolve, (attempt + 1) * 2000));
-    }
-  }
-}
-
 const checkedAt = Date.now();
 const quantities = {};
 for (let offset = 0; offset < skus.length; offset += 25) {
   const batch = skus.slice(offset, offset + 25);
   const query = new URLSearchParams({ skuNumbers: batch.join(','), michaelsStoreId: FLAGSTAFF_STORE_ID, fields: 'inventory', source: 'pdpPage' });
-  const rows = await request(`https://www.michaels.com/api/product/v2/sub-skus?${query}`, {
+  const rows = await stockRequest(`https://www.michaels.com/api/product/v2/sub-skus?${query}`, {
     headers: { Accept: 'application/json', 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36' },
-  });
+  }, { service: 'Michaels inventory' });
   Object.assign(quantities, pickupQuantities(rows, batch));
 }
 const snapshot = { storeId: FLAGSTAFF_STORE_ID, checkedAt, quantities };
@@ -49,11 +37,11 @@ if (writeBootstrap) {
   console.log('Initial verified stock snapshot saved.');
 }
 if (!checkOnly) {
-  const saved = await request(`${siteUrl.replace(/\/$/, '')}/api/cron/charisma-flagstaff-stock`, {
+  const saved = await stockRequest(`${siteUrl.replace(/\/$/, '')}/api/cron/charisma-flagstaff-stock`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(snapshot),
-  });
+  }, { service: 'Website stock save' });
   if (saved?.ok !== true) throw new Error('Website did not confirm saved stock');
   console.log('Flagstaff stock saved successfully.');
 }

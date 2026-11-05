@@ -1,0 +1,15 @@
+---
+description: Save edited image candidates for Diana’s review before changing website images
+alwaysApply: true
+---
+
+# Image editing and approval
+
+- For all new or edited website images, finish editing and quality checks, then save new versioned candidates in a clearly named local review folder outside `public/`.
+- Preserve originals and currently used website files. Do not overwrite them.
+- Give Diana concise local file/folder paths. Do not post inline image previews or contact sheets in chat unless she asks; internal visual inspection is still required.
+- Wait for Diana to inspect and explicitly approve the candidate images before replacing website image references, changing covers or gallery order, rebuilding social previews from the candidates, or deploying them.
+- An instruction to create, render, re-render, retouch, or regenerate images authorizes producing review candidates, not updating the website to use them.
+- If revisions are requested, save a new version and repeat the review step. Do not interpret silence or elapsed time as approval.
+- After approval, move/copy approved assets into the appropriate project folders and update only the approved website images. Preserve source files and edited masters.
+- Diana may explicitly authorize skipping review for a particular task; otherwise this workflow applies automatically.
