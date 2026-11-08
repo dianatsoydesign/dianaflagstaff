@@ -1,5 +1,8 @@
 "use client";
 
+import { remainingProductQuantity } from "@/lib/cart-quantity-limit.mjs";
+import { cartProductPhoto } from "@/lib/cart-product-photo";
+
 import sweetSnugglesBootstrapStock from "@/data/sweet-snuggles-stock-bootstrap.json";
 import { availableForSweetSnuggles } from "@/lib/sweet-snuggles-inventory.mjs";
 import bobbinyBootstrapStock from "@/data/bobbiny-stock-bootstrap.json";
@@ -97,7 +100,7 @@ export function ProductPurchaseForm({
   onYarnPreview,
   onPriceChange,
 }: Props) {
-  const { addItem, openAddedDrawer } = useInquiryCart();
+  const { items, addItem, openAddedDrawer } = useInquiryCart();
   const [sizeId, setSizeId] = useState<string | null>(() =>
     defaultCatalogSizeId(product.sizes, product.defaultSizeId)
   );
@@ -364,6 +367,11 @@ export function ProductPurchaseForm({
       ? "in_stock"
       : (liveStock[yarn.id] ?? yarn.stockStatus);
     if (!isSelectable(status)) { setMessage("That yarn is out of stock. Pick another color."); return; }
+    const remaining = remainingProductQuantity({ productId: product.id }, items);
+    if ((qtyConfig ? quantity : 1) > remaining) {
+      setMessage("Maximum 20 per product across colors, sizes, and styles. Reduce the quantity or update your cart.");
+      return;
+    }
     const tag = getProductTag(tagId);
     const pomPom = product.showPomPomPicker
       ? getHatPomPom(pomPomId)
@@ -381,7 +389,7 @@ export function ProductPurchaseForm({
       tagLabel: tag.label,
       pomPomId: pomPom?.id,
       pomPomLabel: pomPom?.label,
-      productImageSrc: product.imageSrc,
+      productImageSrc: cartProductPhoto(product, yarn.name, product.id === "mushroom-hat" ? (selectedHatStyle === "short-tip" ? "Short tip" : "Slouchy, long tip") : undefined),
       quantity: qtyConfig ? quantity : 1,
       quantityMax: qtyConfig?.max,
       unitPrice: priceTbd ? 0 : unitPrice,
@@ -408,6 +416,7 @@ export function ProductPurchaseForm({
         <PomPomPicker value={pomPomId} onChange={setPomPomId} />
       ) : null}
       {hasCachedSupplierStock && stockMessage && <p role="status" className="text-sm text-muted-foreground">{stockMessage}</p>}
+      {!product.hideColorPicker && (
       <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
       <YarnSwatchPicker
         allowHolidayFilter={product.id === "christmas-stockings"}
@@ -426,6 +435,7 @@ export function ProductPurchaseForm({
         legend={yarnLineName(yarns.find(yarn => yarn.id === yarnId) ?? product.yarns[0]) ?? "Yarn color"}
       />
       </PickerValidation>
+      )}
       {!product.hideSizePicker && (
         <PickerValidation error={message && !/yarn|color/i.test(message) ? message : null}>
         <SizePicker

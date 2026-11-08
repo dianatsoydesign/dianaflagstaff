@@ -81,6 +81,8 @@ export type Product = {
   defaultSizeId?: string;
   /** Hide size UI when there is nothing meaningful to choose (still uses sizes[0] for orders). */
   hideSizePicker?: boolean;
+  /** Fixed colorway; no shopper color choice. */
+  hideColorPicker?: boolean;
   /** Extra chip after preset sizes to enter custom dimensions (hotpads). */
   allowRequestDifferentSize?: boolean;
   /** Scale `price` by area vs this reference size (dimension chips and custom). */
@@ -303,7 +305,7 @@ export const products: Product[] = [
     dimensions: {
       lines: ['4.5" × 4.5"'],
     },
-    quantityPicker: { min: 4, max: 12 },
+    quantityPicker: { min: 4, max: 20 },
     yarns: BOBBINY_PREMIUM_5MM_YARNS,
   },
   {
@@ -323,12 +325,13 @@ export const products: Product[] = [
     dimensions: {
       lines: ['16" × 10"'],
     },
-    quantityPicker: { max: 12 },
+    quantityPicker: { max: 20 },
     defaultYarnId: "bobbiny-5mm-golden-natural",
     yarns: BOBBINY_PREMIUM_5MM_YARNS,
   },
   {
     id: "elf-hat",
+    hideColorPicker: true,
     name: "Elf hat",
     price: 45,
     category: "Holiday",
@@ -352,6 +355,7 @@ export const products: Product[] = [
   },
   {
     id: "mushroom-hat",
+    hideColorPicker: true,
     name: "Mushroom hat",
     price: 65,
     category: "Holiday",
@@ -411,7 +415,7 @@ export const products: Product[] = [
       referenceHeightInches: 7,
     },
     customSizeLimits: { minInches: 7, maxInches: 10 },
-    quantityPicker: { min: 2, max: 10 },
+    quantityPicker: { min: 2, max: 20 },
     yarns: BOBBINY_PREMIUM_5MM_YARNS,
   },
   {

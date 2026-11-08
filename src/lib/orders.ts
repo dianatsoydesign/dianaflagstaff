@@ -123,6 +123,8 @@ export async function createOrder(
     customerName: input.customerName,
     customerEmail: input.customerEmail,
     customerPhone: input.customerPhone,
+    customerVenmoHandle: input.customerVenmoHandle,
+    customerPaypalHandle: input.customerPaypalHandle,
     customerNote: input.customerNote,
     venmoHandle: input.venmoHandle,
     pickupPreference: input.pickupPreference,

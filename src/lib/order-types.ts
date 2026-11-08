@@ -28,6 +28,8 @@ export type Order = {
   customerName: string;
   customerEmail?: string;
   customerPhone?: string;
+  customerVenmoHandle?: string;
+  customerPaypalHandle?: string;
   customerNote?: string;
   venmoHandle?: string;
   pickupPreference?: string;

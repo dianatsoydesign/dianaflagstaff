@@ -15,7 +15,7 @@ import { Trash2, X } from "lucide-react";
 import { QuantityStepper } from "@/components/quantity-stepper";
 import { VENMO_HANDLE, formatPriceOrTbd } from "@/data/products";
 import { cartQuantityMin, cartQuantityMax, useInquiryCart, type InquiryItem } from "@/lib/inquiry-cart";
-import { formatLineOptions, productShowsSize } from "@/lib/line-options";
+import { formatLineOptions } from "@/lib/line-options";
 import { formFieldInputClass } from "@/components/picker-styles";
 import { productPhotoBgClass } from "@/lib/product-photo-bg";
 import { Button } from "@/components/ui/button";
@@ -44,14 +44,31 @@ export function InquiryDrawer() {
   } = useInquiryCart();
   const router = useRouter();
 
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const detailsHeading = useRef<HTMLHeadingElement>(null);
+  const reviewHeading = useRef<HTMLHeadingElement>(null);
+  const stepChanged = useRef(false);
+  useLayoutEffect(() => {
+    if (!stepChanged.current) return;
+    (detailsOpen ? detailsHeading : reviewHeading).current?.focus();
+    stepChanged.current = false;
+  }, [detailsOpen]);
+  function changeStep(showDetails: boolean) {
+    stepChanged.current = true;
+    setDetailsOpen(showDetails);
+    setError(null);
+  }
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  type CartField = "name" | "email" | "pickup" | "note";
+  const [venmo, setVenmo] = useState("");
+  const [paypal, setPaypal] = useState("");
+  type CartField = "name" | "email" | "venmo" | "paypal" | "pickup" | "note";
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<CartField, string>>>({});
   const [validationAttempt, setValidationAttempt] = useState(0);
   const invalidField = useRef<CartField | null>(null);
   function showFieldErrors(errors: Partial<Record<CartField, string>>) {
-    invalidField.current = (["name", "email", "pickup", "note"] as const).find((field) => errors[field]) ?? null;
+    invalidField.current = (["name", "email", "venmo", "paypal", "pickup", "note"] as const).find((field) => errors[field]) ?? null;
     setFieldErrors(errors);
     setValidationAttempt((attempt) => attempt + 1);
   }
@@ -152,6 +169,8 @@ export function InquiryDrawer() {
     for (const [field, value, limit] of [
       ["name", name, CART_FIELD_LIMITS.customerName],
       ["email", email, CART_FIELD_LIMITS.customerEmail],
+      ["venmo", venmo, CART_FIELD_LIMITS.customerVenmoHandle],
+      ["paypal", paypal, CART_FIELD_LIMITS.customerPaypalHandle],
       ["pickup", pickup, CART_FIELD_LIMITS.pickupPreference],
       ["note", note, CART_FIELD_LIMITS.customerNote],
     ] as const) {
@@ -174,6 +193,8 @@ export function InquiryDrawer() {
         body: JSON.stringify({
           customerName: name.trim(),
           customerEmail: email.trim(),
+          customerVenmoHandle: venmo.trim() || undefined,
+          customerPaypalHandle: paypal.trim() || undefined,
           customerNote: note.trim() || undefined,
           pickupPreference: pickup.trim() || undefined,
           venmoHandle: VENMO_HANDLE,
@@ -203,7 +224,7 @@ export function InquiryDrawer() {
           error?: string;
           field?: string;
         } | null;
-        const fieldMap: Record<string, CartField> = { customerName: "name", customerEmail: "email", pickupPreference: "pickup", customerNote: "note" };
+        const fieldMap: Record<string, CartField> = { customerName: "name", customerEmail: "email", customerVenmoHandle: "venmo", customerPaypalHandle: "paypal", pickupPreference: "pickup", customerNote: "note" };
         if (data?.field && fieldMap[data.field]) {
           showFieldErrors({ [fieldMap[data.field]]: data.error || "Check this field." });
           return;
@@ -214,8 +235,6 @@ export function InquiryDrawer() {
       setRemovedItems([]);
       setRestoreError(null);
       setDone(true);
-      setName("");
-      setEmail("");
       setNote("");
       setPickup("");
     } catch (e) {
@@ -232,7 +251,10 @@ export function InquiryDrawer() {
 
   function handleOpenChange(next: boolean) {
     setDrawerOpen(next);
-    if (!next) setDone(false);
+    if (!next) {
+      setDone(false);
+      setDetailsOpen(false);
+    }
   }
 
   const itemWord = itemCount === 1 ? "item" : "items";
@@ -247,7 +269,7 @@ export function InquiryDrawer() {
       >
         <SheetHeader className="shrink-0 border-b border-border/60 px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] pr-16 sm:px-5">
           <SheetTitle id="cart-heading" tabIndex={-1} className="font-display text-2xl tracking-[-0.04em] text-ink">
-            Your cart
+            {detailsOpen && !done ? "Your details" : "Your cart"}
           </SheetTitle>
           <SheetDescription className="sr-only">
             Review your items and submit an order request.
@@ -258,8 +280,7 @@ export function InquiryDrawer() {
           <OfflineNotice compact />
           {done ? (
             <RequestConfirmation onContinue={() => {
-              setDone(false);
-              setDrawerOpen(false);
+              handleOpenChange(false);
               router.push("/");
             }} />
           ) : items.length === 0 ? (
@@ -283,6 +304,8 @@ export function InquiryDrawer() {
               </Button>
             </div>
           ) : (
+            <>
+            <h2 ref={reviewHeading} tabIndex={-1} className="sr-only">Review your cart</h2>
             <ul className="flex flex-col gap-4">
               {items.map((item) => (
                 <li
@@ -318,11 +341,9 @@ export function InquiryDrawer() {
                     <p className="mt-1 text-sm tabular-nums">
                       {formatPriceOrTbd(!!item.priceTbd, item.unitPrice)}
                     </p>
-                    {item.quantityMax == null && item.quantity >= cartQuantityMax(item, items) && (
+                    {item.quantity >= cartQuantityMax(item, items) && (
                       <p className="mt-1 text-xs text-muted-foreground">
-                        {productShowsSize(item.productId, item.kind)
-                          ? "Maximum 2 per size across colors and options."
-                          : "Maximum 2 across colors and options."}
+                        Maximum 20 per product across colors, sizes, and styles.
                       </p>
                     )}
                     {cartQuantityMin(item) > 1 && (
@@ -357,13 +378,46 @@ export function InquiryDrawer() {
                 </li>
               ))}
             </ul>
+            </>
           )}
 
-          {!done && items.length > 0 && (
+          {!done && items.length > 0 && detailsOpen && (
             <div className="mt-6 flex flex-col gap-5">
+              <div>
+                <h2 ref={detailsHeading} tabIndex={-1} className="font-medium text-ink">Details for your order</h2>
+                <p className="mt-2 text-sm text-muted-foreground">Enter your details once for everything in your cart.</p>
+              </div>
               <CustomerContactFields idPrefix="cart" name={name} email={email} fieldErrors={fieldErrors}
                 onNameChange={value => { setName(value); clearFieldError("name"); }}
                 onEmailChange={value => { setEmail(value); clearFieldError("email"); }} />
+              <div data-cart-field="venmo" className="flex scroll-my-4 flex-col gap-3 text-sm">
+                <label htmlFor="cart-venmo" className="font-medium">Your Venmo handle (optional)</label>
+                <input id="cart-venmo" value={venmo}
+                  onChange={event => { setVenmo(event.target.value); clearFieldError("venmo"); }}
+                  maxLength={CART_FIELD_LIMITS.customerVenmoHandle}
+                  autoCapitalize="none" autoCorrect="off" spellCheck={false}
+                  placeholder="@your-username"
+                  aria-invalid={!!fieldErrors.venmo || undefined}
+                  aria-describedby={`cart-venmo-help${fieldErrors.venmo ? " cart-venmo-error" : ""}`}
+                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px]")}
+                />
+                <p id="cart-venmo-help" className="text-sm text-muted-foreground">Helps me match your payment to your order.</p>
+                {fieldErrors.venmo && <p id="cart-venmo-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">{fieldErrors.venmo}</p>}
+              </div>
+              <div data-cart-field="paypal" className="flex scroll-my-4 flex-col gap-3 text-sm">
+                <label htmlFor="cart-paypal" className="font-medium">Your PayPal email or handle (optional)</label>
+                <input id="cart-paypal" value={paypal}
+                  onChange={event => { setPaypal(event.target.value); clearFieldError("paypal"); }}
+                  maxLength={CART_FIELD_LIMITS.customerPaypalHandle}
+                  autoCapitalize="none" autoCorrect="off" spellCheck={false}
+                  placeholder="Email or @your-username"
+                  aria-invalid={!!fieldErrors.paypal || undefined}
+                  aria-describedby={`cart-paypal-help${fieldErrors.paypal ? " cart-paypal-error" : ""}`}
+                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px]")}
+                />
+                <p id="cart-paypal-help" className="text-sm text-muted-foreground">Helps me match your payment to your order.</p>
+                {fieldErrors.paypal && <p id="cart-paypal-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">{fieldErrors.paypal}</p>}
+              </div>
               <div data-cart-field="pickup" className="flex scroll-my-4 flex-col gap-3 text-sm">
                 <label htmlFor="cart-pickup" className="font-medium">Flagstaff pickup location (optional)</label>
                 <div className="relative">
@@ -460,18 +514,18 @@ export function InquiryDrawer() {
                 type="button"
                 variant="outline"
                 className="h-auto min-h-12 min-w-0 whitespace-normal rounded-full px-2 py-3 text-sm sm:text-base"
-                onClick={() => handleOpenChange(false)}
+                onClick={() => detailsOpen ? changeStep(false) : handleOpenChange(false)}
               >
-                Keep shopping
+                {detailsOpen ? "Back to cart" : "Keep shopping"}
               </Button>
               <Button
                 type="button"
                 aria-describedby="cart-payment-note"
                 className="h-auto min-h-12 min-w-0 whitespace-normal rounded-full bg-button px-2 py-3 text-sm text-button-foreground hover:bg-button-hover sm:text-base"
                 disabled={submitting}
-                onClick={submit}
+                onClick={() => detailsOpen ? void submit() : changeStep(true)}
               >
-                {submitting ? "Sending…" : "Send request"}
+                {submitting ? "Sending…" : detailsOpen ? "Send request" : "Continue to details"}
               </Button>
             </div>
           </SheetFooter>

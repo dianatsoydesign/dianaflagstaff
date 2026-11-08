@@ -1,5 +1,7 @@
 "use client";
 
+import { remainingProductQuantity } from "@/lib/cart-quantity-limit.mjs";
+
 import {
   createContext,
   useCallback,
@@ -45,21 +47,12 @@ export function cartQuantityMin(item: Pick<InquiryItem, "kind" | "productId">): 
   return item.kind === "catalog" ? getProduct(item.productId)?.quantityPicker?.min ?? 1 : 1;
 }
 
-/** Default limits apply across colors and other options of the same product size. */
+/** Limit each product across all colors, sizes, and styles. */
 export function cartQuantityMax(
   item: Omit<InquiryItem, "id"> & { id?: string },
   items: InquiryItem[]
 ): number {
-  if (item.quantityMax != null) return item.quantityMax;
-  const otherQuantity = items.reduce((sum, other) => {
-    const sameSize =
-      other.kind === item.kind &&
-      other.productId === item.productId &&
-      other.sizeId === item.sizeId &&
-      (!isRequestDifferentSizeId(item.sizeId) || other.sizeLabel === item.sizeLabel);
-    return sameSize && other.id !== item.id ? sum + other.quantity : sum;
-  }, 0);
-  return Math.max(0, 2 - otherQuantity);
+  return Math.min(item.quantityMax ?? Infinity, remainingProductQuantity(item, items));
 }
 
 export type CartDrawerView = "closed" | "added" | "checkout";
@@ -127,6 +120,7 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
             : p
         );
       }
+      if (cartQuantityMax(item, prev) < cartQuantityMin(item)) return prev;
       const quantity = Math.min(Math.max(cartQuantityMin(item), Math.round(item.quantity)), cartQuantityMax(item, prev));
       if (quantity <= 0) return prev;
       const newItem = { ...item, quantity, id: resultId };

@@ -191,6 +191,12 @@ export function MakerOrdersClient({ initiallyAuthed }: { initiallyAuthed: boolea
                         <a href={`mailto:${order.customerEmail}`} className="underline underline-offset-2">{order.customerEmail}</a>
                       </p>
                     )}
+                    {order.customerVenmoHandle && (
+                      <p className="text-sm">Venmo: {order.customerVenmoHandle}</p>
+                    )}
+                    {order.customerPaypalHandle && (
+                      <p className="break-words text-sm">PayPal: {order.customerPaypalHandle}</p>
+                    )}
                     {order.customerPhone && (
                       <p className="mt-1 text-sm">
                         <a href={`tel:${order.customerPhone}`} className="underline underline-offset-2">{order.customerPhone}</a>

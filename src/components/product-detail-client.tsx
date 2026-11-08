@@ -159,7 +159,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   const previewProductPhoto = previewYarn ? productImages.find((image) =>
     image.type !== "video" && image.shownColor?.toLowerCase() === previewYarn.name.toLowerCase()
   ) : null;
-  const preview = previewSrc
+  const preview = product.id === "christmas-stockings" && previewProductPhoto ? previewProductPhoto : previewSrc
     ? { src: previewSrc, shownColor: previewYarn!.name, alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
     : previewProductPhoto;
 
@@ -171,7 +171,12 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
     setSelectedYarn(yarn);
     if (pickedByUser && yarn) {
       const colorName = yarn.name.toLowerCase();
-      if (hasColorImages(yarn)) {
+      const stockingPhoto = product.id === "christmas-stockings"
+        ? slides.findIndex(image => image.type !== "video" && productIndexOf(image.src) !== -1 && image.shownColor?.toLowerCase() === colorName)
+        : -1;
+      if (stockingPhoto !== -1) {
+        setActiveIndex(stockingPhoto);
+      } else if (hasColorImages(yarn)) {
         const existing = slides.findIndex(image => image.src === colorSrcs(yarn)[0]);
         setActiveIndex(existing === -1 ? productImages.length : existing);
       } else {

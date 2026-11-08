@@ -3,6 +3,8 @@ export const CART_FIELD_LIMITS = {
   customerName: 100,
   customerEmail: 254,
   customerPhone: 40,
+  customerVenmoHandle: 100,
+  customerPaypalHandle: 254,
   pickupPreference: 200,
   customerNote: 1000,
 } as const;

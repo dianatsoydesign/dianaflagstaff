@@ -1,3 +1,4 @@
+import { PRODUCT_QUANTITY_LIMIT } from "@/lib/cart-quantity-limit.mjs";
 import { hasBulkYarnSource } from "@/lib/bulk-yarn-availability.mjs";
 import { readSweetSnugglesStock } from "@/lib/sweet-snuggles-stock";
 import { availableForSweetSnuggles } from "@/lib/sweet-snuggles-inventory.mjs";
@@ -28,6 +29,8 @@ export async function POST(request: Request) {
       customerName?: string;
       customerEmail?: string;
       customerPhone?: string;
+      customerVenmoHandle?: string;
+      customerPaypalHandle?: string;
       customerNote?: string;
       pickupPreference?: string;
       venmoHandle?: string;
@@ -37,7 +40,7 @@ export async function POST(request: Request) {
     for (const [field, limit] of Object.entries(CART_FIELD_LIMITS)) {
       const value = body[field as keyof typeof CART_FIELD_LIMITS];
       if (value != null && (typeof value !== "string" || value.length > limit)) {
-        const label = field === "customerName" ? "Your name" : field === "pickupPreference" ? "Flagstaff pickup location" : field === "customerEmail" ? "Email address" : field === "customerPhone" ? "Phone number" : "Note";
+        const label = field === "customerName" ? "Your name" : field === "pickupPreference" ? "Flagstaff pickup location" : field === "customerEmail" ? "Email address" : field === "customerPhone" ? "Phone number" : field === "customerVenmoHandle" ? "Venmo handle" : field === "customerPaypalHandle" ? "PayPal email or handle" : "Note";
         return NextResponse.json(
           { error: `${label} must be ${limit} characters or fewer.`, field },
           { status: 400 }
@@ -89,6 +92,18 @@ export async function POST(request: Request) {
       designerName: line.designerName,
       patternUrl: line.patternUrl ?? null,
     }));
+
+    const productQuantities = new Map<string, number>();
+    for (const line of lines) {
+      if (!Number.isSafeInteger(line.quantity) || line.quantity < 1) {
+        return NextResponse.json({ error: "Enter a whole-number quantity of at least 1." }, { status: 400 });
+      }
+      const total = (productQuantities.get(line.productId) ?? 0) + line.quantity;
+      if (total > PRODUCT_QUANTITY_LIMIT) {
+        return NextResponse.json({ error: `Order no more than ${PRODUCT_QUANTITY_LIMIT} of each product across colors, sizes, and styles.` }, { status: 400 });
+      }
+      productQuantities.set(line.productId, total);
+    }
 
     for (const line of lines) {
       if (line.kind === "catalog" && !getProduct(line.productId)) {
@@ -202,6 +217,8 @@ export async function POST(request: Request) {
       customerName: body.customerName.trim(),
       customerEmail: body.customerEmail.trim(),
       customerPhone: body.customerPhone?.trim() || undefined,
+      customerVenmoHandle: body.customerVenmoHandle?.trim() || undefined,
+      customerPaypalHandle: body.customerPaypalHandle?.trim() || undefined,
       customerNote: body.customerNote?.trim(),
       pickupPreference: body.pickupPreference?.trim(),
       venmoHandle: body.venmoHandle,
