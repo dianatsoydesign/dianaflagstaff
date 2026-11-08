@@ -94,5 +94,281 @@
   "charisma-heather-orchid": {
     "multicolor": false,
     "colorGroup": "purples"
+  },
+  "caron-slice-of-anniversary-cakes-mango-tango": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-slice-of-anniversary-cakes-golden": {
+    "multicolor": false,
+    "colorGroup": "yellows"
+  },
+  "caron-slice-of-anniversary-cakes-solid-birch": {
+    "multicolor": false,
+    "colorGroup": "browns"
+  },
+  "caron-slice-of-anniversary-cakes-birch-bark": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-slice-of-anniversary-cakes-birthday-cake-edition": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-slice-of-anniversary-cakes-cherry": {
+    "multicolor": false,
+    "colorGroup": "reds"
+  },
+  "caron-slice-of-anniversary-cakes-hocus-crocus": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-slice-of-anniversary-cakes-book-club": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-slice-of-anniversary-cakes-prismatic": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-slice-of-anniversary-cakes-crocus": {
+    "multicolor": false,
+    "colorGroup": "purples"
+  },
+  "caron-slice-of-anniversary-cakes-cotton-candy": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-slice-of-anniversary-cakes-wave": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "caron-slice-of-anniversary-cakes-play-group": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-chunky-cakes-rice-pudding": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-chunky-cakes-turquoise-swirl": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-chunky-cakes-ballet-sorbet": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "caron-chunky-cakes-rainbow-jellys": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "charisma-tweed-white": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "charisma-tweed-cream": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "charisma-tweed-taupe": {
+    "multicolor": false,
+    "colorGroup": "browns"
+  },
+  "charisma-tweed-forest": {
+    "multicolor": false,
+    "colorGroup": "greens"
+  },
+  "charisma-tweed-navy": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "charisma-tweed-black": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "charisma-sorbet-blossom": {
+    "multicolor": false,
+    "colorGroup": "pinks"
+  },
+  "charisma-sorbet-silver": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "big-twist-winter-super-bulky-holiday-sweater-stripe": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "big-twist-winter-super-bulky-cozy-sweater-stripe": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "big-twist-winter-super-bulky-red-sparkle": {
+    "multicolor": false,
+    "colorGroup": "reds"
+  },
+  "big-twist-winter-super-bulky-peppermint-tidings-stripe": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "big-twist-winter-super-bulky-white-sparkle": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "big-twist-winter-super-bulky-green-sparkle": {
+    "multicolor": false,
+    "colorGroup": "greens"
+  },
+  "lion-brand-hometown-navy": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "lion-brand-hometown-sleepy-hollow-spirit": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "lion-brand-hometown-white": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "lion-brand-hometown-riverdale-tweed": {
+    "multicolor": false,
+    "colorGroup": "greens"
+  },
+  "lion-brand-hometown-charcoal": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "lion-brand-hometown-stowe-sugar-maple": {
+    "multicolor": false,
+    "colorGroup": "browns"
+  },
+  "lion-brand-hometown-mustard": {
+    "multicolor": false,
+    "colorGroup": "yellows"
+  },
+  "lion-brand-hometown-cream": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "lion-brand-hometown-wine": {
+    "multicolor": false,
+    "colorGroup": "purples"
+  },
+  "lion-brand-hometown-red": {
+    "multicolor": false,
+    "colorGroup": "reds"
+  },
+  "lion-brand-hometown-light-pink": {
+    "multicolor": false,
+    "colorGroup": "pinks"
+  },
+  "lion-brand-hometown-peacock": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "lion-brand-hometown-everglades": {
+    "multicolor": false,
+    "colorGroup": "greens"
+  },
+  "lion-brand-hometown-hoboken-honey": {
+    "multicolor": false,
+    "colorGroup": "browns"
+  },
+  "lion-brand-hometown-dillon-quartz": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "lion-brand-hometown-black": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "lion-brand-hometown-spice": {
+    "multicolor": false,
+    "colorGroup": "oranges"
+  },
+  "lion-brand-hometown-huntington-foliage": {
+    "multicolor": true,
+    "colorGroup": "multis"
+  },
+  "grande-ombre-windsurfer": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "grande-ombre-mojave-desert": {
+    "multicolor": false,
+    "colorGroup": "browns"
+  },
+  "grande-ombre-canyon-sunset": {
+    "multicolor": false,
+    "colorGroup": "oranges"
+  },
+  "grande-ombre-cashmere-rose": {
+    "multicolor": false,
+    "colorGroup": "pinks"
+  },
+  "grande-ombre-naval-academy": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "grande-ombre-lavender-fog": {
+    "multicolor": false,
+    "colorGroup": "purples"
+  },
+  "grande-ombre-sage-green": {
+    "multicolor": false,
+    "colorGroup": "greens"
+  },
+  "grande-ombre-pineapple-slice": {
+    "multicolor": false,
+    "colorGroup": "yellows"
+  },
+  "bernat-fluffee-teal-appeal": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "bernat-fluffee-sunshine-yellow": {
+    "multicolor": false,
+    "colorGroup": "yellows"
+  },
+  "bernat-fluffee-vivid-pink": {
+    "multicolor": false,
+    "colorGroup": "pinks"
+  },
+  "bernat-fluffee-granite": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "bernat-fluffee-amethyst-awe": {
+    "multicolor": false,
+    "colorGroup": "purples"
+  },
+  "bernat-fluffee-forest": {
+    "multicolor": false,
+    "colorGroup": "greens"
+  },
+  "bernat-fluffee-quartzite": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
+  },
+  "bernat-fluffee-rose-dawn": {
+    "multicolor": false,
+    "colorGroup": "pinks"
+  },
+  "bernat-fluffee-mineral-red": {
+    "multicolor": false,
+    "colorGroup": "reds"
+  },
+  "bernat-fluffee-purple-dusk": {
+    "multicolor": false,
+    "colorGroup": "purples"
+  },
+  "bernat-fluffee-ocean-depths": {
+    "multicolor": false,
+    "colorGroup": "blues"
+  },
+  "bernat-fluffee-cream": {
+    "multicolor": false,
+    "colorGroup": "neutrals"
   }
 }

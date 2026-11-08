@@ -413,6 +413,7 @@ export function ProductPurchaseForm({
         allowHolidayFilter={product.id === "christmas-stockings"}
         keyboardNavigation
         yarns={yarns}
+        labelYarns={product.yarns}
         value={yarnId}
         onChange={handleYarnChange}
         onPreview={(id) => {

@@ -1,5 +1,6 @@
 "use client";
 
+import { yarnColorLabel } from "@/lib/yarn-color-label";
 import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -22,12 +23,10 @@ import {
 import {
   CHARISMA_SOFT_PALETTE_YARN_ID,
   CHARISMA_SOFT_PALETTE_SLICE_COLORS,
-  charismaHasSoftPaletteYarns,
 } from "@/data/charisma-soft-palette";
 import {
   CHARISMA_WARM_PALETTE_YARN_ID,
   CHARISMA_WARM_PALETTE_SLICE_COLORS,
-  charismaHasWarmPaletteYarns,
 } from "@/data/charisma-warm-palette";
 import { YarnPizzaSwatch } from "@/components/yarn-pizza-swatch";
 import { isSelectable } from "@/lib/yarn-stock";
@@ -61,6 +60,7 @@ type CatalogGroupId = BobbinyColorGroupId | CharismaPickerGroupId | BernatColorG
 type Props = {
   allowHolidayFilter?: boolean;
   keyboardNavigation?: boolean;
+  labelYarns?: YarnColor[];
   yarns: (YarnColor & { liveStatus?: StockStatus })[];
   value: string | null;
   onChange: (yarnId: string) => void;
@@ -71,6 +71,7 @@ type Props = {
 
 export function YarnSwatchPicker({
   yarns,
+  labelYarns = yarns,
   allowHolidayFilter = false,
   keyboardNavigation = true,
   value,
@@ -96,12 +97,17 @@ export function YarnSwatchPicker({
   const [groupFilter, setGroupFilter] = useState<CatalogGroupId | null>(allowHolidayFilter ? "holiday" : null);
 
   const showHolidayChip = allowHolidayFilter && useCharismaGroups && charismaHasHolidayYarns(yarns);
-  const showSoftPaletteSwatch =
-    useCharismaGroups && charismaHasSoftPaletteYarns(yarns);
-  const showWarmPaletteSwatch =
-    useCharismaGroups && charismaHasWarmPaletteYarns(yarns);
+  // Palette entries are added by the purchase form only after stock validation.
+  const paletteAvailable = (id: string) => useCharismaGroups && yarns.some(
+    yarn => yarn.id === id && isSelectable(yarn.liveStatus ?? yarn.stockStatus)
+  );
+  const showClassicPaletteSwatch = paletteAvailable(CHARISMA_HOLIDAY_PIZZA_YARN_ID);
+  const showSoftPaletteSwatch = paletteAvailable(CHARISMA_SOFT_PALETTE_YARN_ID);
+  const showWarmPaletteSwatch = paletteAvailable(CHARISMA_WARM_PALETTE_YARN_ID);
 
-  const displayedYarns = useGroupFilter
+  const displayedYarns = allowHolidayFilter
+    ? filterCharismaYarnsForPicker(yarns, "holiday")
+    : useGroupFilter
     ? useCharismaGroups
       ? filterCharismaYarnsForPicker(yarns, groupFilter as CharismaPickerGroupId | null)
       : useBernatGroups
@@ -140,7 +146,7 @@ export function YarnSwatchPicker({
             <span className="sr-only">{legend}: </span>
             Color:{" "}
             <span className="font-medium text-foreground">
-              {sentenceCaseColorName(shown.name)}
+              {yarnColorLabel(shown, labelYarns)}
             </span>
           </>
         ) : (
@@ -150,7 +156,7 @@ export function YarnSwatchPicker({
 
       {readOnlyColor ? null : (
       <>
-      {useGroupFilter && (showHolidayChip || groupOptions.length > 0) ? (
+      {!allowHolidayFilter && useGroupFilter && (showHolidayChip || groupOptions.length > 0) ? (
         <div
           className={cn(pickerChipGroupClass, "mb-3 items-center")}
           role="group"
@@ -267,10 +273,10 @@ export function YarnSwatchPicker({
               }}
               role={keyboardNavigation ? "radio" : undefined}
               aria-checked={keyboardNavigation ? isSelected : undefined}
-              tabIndex={keyboardNavigation ? (isSelected || (!(showHolidayChip && groupFilter === "holiday" && (value === CHARISMA_HOLIDAY_PIZZA_YARN_ID || (showSoftPaletteSwatch && value === CHARISMA_SOFT_PALETTE_YARN_ID) || (showWarmPaletteSwatch && value === CHARISMA_WARM_PALETTE_YARN_ID))) && !displayedYarns.some((y) => y.id === value && isSelectable(y.liveStatus ?? y.stockStatus)) && yarn.id === displayedYarns.find((y) => isSelectable(y.liveStatus ?? y.stockStatus))?.id) ? 0 : -1) : undefined}
+              tabIndex={keyboardNavigation ? (isSelected || (!(showHolidayChip && groupFilter === "holiday" && ((showClassicPaletteSwatch && value === CHARISMA_HOLIDAY_PIZZA_YARN_ID) || (showSoftPaletteSwatch && value === CHARISMA_SOFT_PALETTE_YARN_ID) || (showWarmPaletteSwatch && value === CHARISMA_WARM_PALETTE_YARN_ID))) && !displayedYarns.some((y) => y.id === value && isSelectable(y.liveStatus ?? y.stockStatus)) && yarn.id === displayedYarns.find((y) => isSelectable(y.liveStatus ?? y.stockStatus))?.id) ? 0 : -1) : undefined}
               aria-pressed={keyboardNavigation ? undefined : isSelected}
-              aria-label={sentenceCaseColorName(yarn.name)}
-              title={sentenceCaseColorName(yarn.name)}
+              aria-label={yarnColorLabel(yarn, labelYarns)}
+              title={yarnColorLabel(yarn, labelYarns)}
               className={cn(
                 "relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
@@ -320,7 +326,7 @@ export function YarnSwatchPicker({
             />
           </button>
         ) : null}
-        {showHolidayChip && groupFilter === "holiday" ? (
+        {showHolidayChip && groupFilter === "holiday" && showClassicPaletteSwatch ? (
           <button
             type="button"
             onClick={() => onChange(CHARISMA_HOLIDAY_PIZZA_YARN_ID)}

@@ -1,3 +1,4 @@
+import { compareYarnLightness } from "@/lib/yarn-color-order";
 import type { YarnColor } from "@/data/products";
 import catalog from "@/data/bernat-blanket-big.json";
 
@@ -22,9 +23,8 @@ export function bernatColorGroupId(yarn: YarnColor): BernatColorGroupId | null {
 
 function compareBernatYarns(a: YarnColor, b: YarnColor) {
   const family = (yarn: YarnColor) => BERNAT_COLOR_GROUPS.findIndex((g) => g.id === bernatColorGroupId(yarn));
-  const yellowFirst = (yarn: YarnColor) => yarn.colorGroup === "yellows" ? 0 : 1;
   return family(a) - family(b)
-    || yellowFirst(a) - yellowFirst(b)
+    || compareYarnLightness(a, b)
     || ((a.sortRank ?? 0) % 1000) - ((b.sortRank ?? 0) % 1000)
     || a.name.localeCompare(b.name);
 }

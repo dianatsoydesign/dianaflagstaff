@@ -11,8 +11,14 @@ const reviewed = JSON.parse(await readFile(join(root, 'src/data/hat-yarn-color-f
 const slug = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 async function request(url) { const response = await fetch(url, { signal: AbortSignal.timeout(30000) }); if (!response.ok) throw new Error(`Michaels HTTP ${response.status}`); return response; }
 async function download(url, path) { try { await access(path); return; } catch {} await writeFile(path, Buffer.from(await (await request(url)).arrayBuffer())); }
+const selectedLine = process.argv.find(arg => arg.startsWith("--line="))?.slice(7);
+if (selectedLine && !catalog.lines.some(line => line.id === selectedLine)) throw new Error("Unknown yarn line");
 const yarns = [];
 for (const line of catalog.lines) {
+  if (line.hidden || (selectedLine && line.id !== selectedLine)) {
+    yarns.push(...catalog.yarns.filter(yarn => yarn.lineId === line.id));
+    continue;
+  }
   const [master] = await (await request(`https://www.michaels.com/api/product/v2/skus?skuNumbers=${line.masterSku}`)).json();
   const skus = Object.values(master?.variantSkus ?? {});
   if (!skus.length) throw new Error(`Empty catalog: ${line.name}`);

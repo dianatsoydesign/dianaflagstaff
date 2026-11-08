@@ -1,3 +1,4 @@
+import { hasBulkYarnSource } from "@/lib/bulk-yarn-availability.mjs";
 import { readSweetSnugglesStock } from "@/lib/sweet-snuggles-stock";
 import { availableForSweetSnuggles } from "@/lib/sweet-snuggles-inventory.mjs";
 import { CART_FIELD_LIMITS, isValidOrderEmail, isValidOrderPhone } from "@/lib/cart-field-limits";
@@ -5,7 +6,7 @@ import { readBobbinyStock } from "@/lib/bobbiny-stock";
 import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
 import { readCharismaFlagstaffStock } from "@/lib/charisma-flagstaff-stock";
 import { charismaRecipe } from "@/lib/charisma-stock-options";
-import { availableForCharisma, availableForCharismaHat } from "@/lib/charisma-inventory.mjs";
+import { availableForCharisma, availableForCharismaHat, minimumForHatSku } from "@/lib/charisma-inventory.mjs";
 import { readBernatStock } from "@/lib/bernat-stock";
 import { availableForCatCave, MIN_SKEINS } from "@/lib/bernat-inventory.mjs";
 import { NextResponse } from "next/server";
@@ -169,12 +170,13 @@ export async function POST(request: Request) {
           return NextResponse.json({ error: "Please choose an available yarn color." }, { status: 409 });
         }
         for (const color of colors) {
+          if (hasBulkYarnSource(line.productId, color)) continue;
           const yarn = getProduct(line.productId)?.yarns.find(yarn => yarn.id === color);
           const sku = yarn?.supplierSku?.split(":")[1];
           if (!sku || !(line.productId === "hats" ? availableForCharismaHat(snapshot, sku) : availableForCharisma(snapshot, sku, minimum))) {
             return NextResponse.json({ error: "That yarn is no longer available for this item. Please choose another color." }, { status: 409 });
           }
-          requested.set(sku, (requested.get(sku) ?? 0) + line.quantity * minimum);
+          requested.set(sku, (requested.get(sku) ?? 0) + line.quantity * (line.productId === "hats" ? minimumForHatSku(sku) : minimum));
         }
       }
       for (const [sku, needed] of requested) {

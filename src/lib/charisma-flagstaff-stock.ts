@@ -1,3 +1,4 @@
+import { hasBulkYarnSource } from "@/lib/bulk-yarn-availability.mjs";
 import { charismaStockStatuses, CHARISMA_PALETTES } from '@/lib/charisma-stock-options';
 import { MICHAELS_HAT_CATALOG } from '@/data/michaels-hat-catalog.mjs';
 import bootstrapStock from '@/data/charisma-stock-bootstrap.json';
@@ -97,7 +98,7 @@ export async function charismaFlagstaffAvailability(minimum: 2 | 3) {
     yarnId: yarn.id,
     supplierSku: yarn.supplierSku,
     status: statuses[yarn.id],
-    source: 'supplier_live' as const,
+    source: minimum === 3 && hasBulkYarnSource('christmas-stockings', yarn.id) ? 'catalog' as const : 'supplier_live' as const,
     checkedAt: snapshot ? new Date(snapshot.checkedAt).toISOString() : '',
   }));
 }

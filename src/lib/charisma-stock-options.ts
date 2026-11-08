@@ -1,3 +1,4 @@
+import { hasBulkYarnSource } from "@/lib/bulk-yarn-availability.mjs";
 import { MICHAELS_HAT_CATALOG } from '@/data/michaels-hat-catalog.mjs';
 import type { StockStatus } from '@/data/products';
 import { CHARISMA_HOLIDAY_PIZZA_YARN_ID, CHARISMA_HOLIDAY_YARN_IDS } from '@/data/charisma-holiday-colors';
@@ -19,7 +20,7 @@ export function charismaRecipe(yarnId: string): readonly string[] {
 export function charismaStockStatuses(snapshot: {storeId:string;checkedAt:number;quantities:Record<string,number|null>} | null, minimum: 2 | 3): Record<string, StockStatus> {
   const statuses: Record<string, StockStatus> = {};
   for (const yarn of MICHAELS_HAT_CATALOG) {
-    statuses[yarn.id] = (minimum === 2 ? availableForCharismaHat(snapshot, yarn.supplierSku.split(':')[1]) : availableForCharisma(snapshot, yarn.supplierSku.split(':')[1], minimum)) ? 'in_stock' : 'out_of_stock';
+    statuses[yarn.id] = (minimum === 3 && hasBulkYarnSource('christmas-stockings', yarn.id)) ? 'in_stock' : (minimum === 2 ? availableForCharismaHat(snapshot, yarn.supplierSku.split(':')[1]) : availableForCharisma(snapshot, yarn.supplierSku.split(':')[1], minimum)) ? 'in_stock' : 'out_of_stock';
   }
   for (const [id, colors] of Object.entries(CHARISMA_PALETTES)) {
     statuses[id] = colors.every(color => statuses[color] === 'in_stock') ? 'in_stock' : 'out_of_stock';

@@ -1,3 +1,4 @@
+import { compareYarnLightness } from "@/lib/yarn-color-order";
 /** Display order: rainbow from green, then beiges/browns, then grayscale (grey → black → white). */
 export const BOBBINY_COLOR_GROUPS = [
   {
@@ -104,7 +105,10 @@ function rank(id: string): number {
 }
 
 export function sortByColorGroup<T extends { id: string }>(yarns: T[]): T[] {
-  return [...yarns].sort((a, b) => rank(a.id) - rank(b.id));
+  return [...yarns].sort((a, b) => {
+    const family = (yarn: T) => BOBBINY_COLOR_GROUPS.findIndex(group => group.id === bobbinyColorGroupId(yarn.id));
+    return family(a) - family(b) || compareYarnLightness(a, b) || rank(a.id) - rank(b.id);
+  });
 }
 
 export function bobbinyColorGroupId(yarnId: string): BobbinyColorGroupId | null {

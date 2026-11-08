@@ -48,3 +48,22 @@ test('hats require two skeins and stockings require three from the same snapshot
   assert.equal(availableForCharisma(shared, '100', 3, now), false);
   assert.equal(availableForCharisma(shared, '101', 3, now), true);
 });
+
+// Caron Slice is a larger cake and has an explicit two-skein minimum.
+test('Caron Slice accepts two pickup skeins but not one', () => {
+  const caron = { ...snapshot, quantities: { '10783486': 2 } };
+  assert.equal(availableForCharismaHat(caron, '10783486', now), true);
+  assert.equal(availableForCharismaHat({ ...caron, quantities: { '10783486': 1 } }, '10783486', now), false);
+});
+
+test('Chunky Cakes accepts two pickup skeins but not one', () => {
+  const chunky = { ...snapshot, quantities: { '10532738': 2 } };
+  assert.equal(availableForCharismaHat(chunky, '10532738', now), true);
+  assert.equal(availableForCharismaHat({ ...chunky, quantities: { '10532738': 1 } }, '10532738', now), false);
+});
+
+test('Bernat Fluffee accepts two pickup skeins but not one', () => {
+  const fluffee = { ...snapshot, quantities: { '10750444': 2 } };
+  assert.equal(availableForCharismaHat(fluffee, '10750444', now), true);
+  assert.equal(availableForCharismaHat({ ...fluffee, quantities: { '10750444': 1 } }, '10750444', now), false);
+});

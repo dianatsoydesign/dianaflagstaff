@@ -3,7 +3,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { stockRequest } from './stock-request.mjs';
 import { stockRefreshSecret } from '../src/lib/stock-refresh-auth.mjs';
-import { FLAGSTAFF_STORE_ID, MIN_SKEINS, pickupQuantities } from '../src/lib/charisma-inventory.mjs';
+import { FLAGSTAFF_STORE_ID, minimumForHatSku, pickupQuantities } from '../src/lib/charisma-inventory.mjs';
 
 const checkOnly = process.argv.includes('--check-only');
 const writeBootstrap = process.argv.includes('--write-bootstrap');
@@ -31,7 +31,7 @@ for (let offset = 0; offset < skus.length; offset += 25) {
   Object.assign(quantities, pickupQuantities(rows, batch));
 }
 const snapshot = { storeId: FLAGSTAFF_STORE_ID, checkedAt, quantities };
-console.log(`Checked ${skus.length} colors at Flagstaff #${FLAGSTAFF_STORE_ID}; ${Object.values(quantities).filter(qty => qty !== null && qty >= MIN_SKEINS).length} qualify for hats (3+ skeins; excludes Limited Quantity), ${baseCatalog.yarns.filter(yarn => (quantities[yarn.supplierSku.split(":")[1]] ?? 0) >= 3).length} qualify for stockings (3+ skeins); ${Object.values(quantities).filter(qty => qty === null).length} have no verified pickup count and stay hidden.`);
+console.log(`Checked ${skus.length} colors at Flagstaff #${FLAGSTAFF_STORE_ID}; ${Object.entries(quantities).filter(([sku, qty]) => qty !== null && qty >= minimumForHatSku(sku)).length} qualify for hats (per-line skein minimum), ${baseCatalog.yarns.filter(yarn => (quantities[yarn.supplierSku.split(":")[1]] ?? 0) >= 3).length} qualify for stockings (3+ skeins); ${Object.values(quantities).filter(qty => qty === null).length} have no verified pickup count and stay hidden.`);
 if (writeBootstrap) {
   await writeFile(new URL('../src/data/charisma-stock-bootstrap.json', import.meta.url), JSON.stringify(snapshot, null, 2) + '\n');
   console.log('Initial verified stock snapshot saved.');

@@ -1,3 +1,4 @@
+import { compareYarnLightness } from "@/lib/yarn-color-order";
 import type { YarnColor } from "@/data/products";
 import charismaGroupOverrides from "@/data/charisma-group-overrides.json";
 
@@ -32,7 +33,7 @@ export function isCharismaMulticolorYarn(yarn: {
   multicolor?: boolean;
   sortRank?: number;
 }): boolean {
-  if (yarn.id && !/^(charisma-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-)/.test(yarn.id)) return false;
+  if (yarn.id && !/^(charisma-|bernat-fluffee-|grande-ombre-|big-twist-winter-super-bulky-|lion-brand-hometown-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-|caron-slice-of-anniversary-cakes-|caron-chunky-cakes-)/.test(yarn.id)) return false;
   return Boolean(yarn.multicolor || (yarn.sortRank ?? 0) >= 2000);
 }
 
@@ -61,7 +62,7 @@ export function inferCharismaColorGroupId(yarn: {
 export function charismaColorGroupId(
   yarn: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">
 ): CharismaColorGroupId | null {
-  if (!/^(charisma-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-)/.test(yarn.id)) return null;
+  if (!/^(charisma-|bernat-fluffee-|grande-ombre-|big-twist-winter-super-bulky-|lion-brand-hometown-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-|caron-slice-of-anniversary-cakes-|caron-chunky-cakes-)/.test(yarn.id)) return null;
   if (isCharismaMulticolorYarn(yarn)) return "multis";
   const forced = charismaGroupOverrides[
     yarn.id as keyof typeof charismaGroupOverrides
@@ -110,7 +111,7 @@ function charismaSubgroupSortIndex(
   }
 }
 
-/** Catalog order: display group, original family, then existing shade order. */
+/** Catalog order: display group, original family, then shared light-to-dark shade order. */
 export function compareCharismaYarnCatalogOrder(
   a: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">,
   b: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">
@@ -118,8 +119,14 @@ export function compareCharismaYarnCatalogOrder(
   const ga = charismaColorGroupSortIndex(a);
   const gb = charismaColorGroupSortIndex(b);
   if (ga !== gb) return ga - gb;
+  if (isCharismaMulticolorYarn(a) && isCharismaMulticolorYarn(b)) {
+    const lightness = compareYarnLightness(a, b);
+    if (lightness !== 0) return lightness;
+  }
   const subgroup = charismaSubgroupSortIndex(a) - charismaSubgroupSortIndex(b);
   if (subgroup !== 0) return subgroup;
+  const shade = compareYarnLightness(a, b);
+  if (shade !== 0) return shade;
   return (
     (a.sortRank ?? Number.MAX_SAFE_INTEGER) -
     (b.sortRank ?? Number.MAX_SAFE_INTEGER)
