@@ -30,6 +30,8 @@ export type InquiryItem = {
   tagLabel?: string;
   pomPomId?: string;
   pomPomLabel?: string;
+  personalizationText?: string;
+  personalizationPlacement?: string;
   /** Hero product photo for cart confirmation panel */
   productImageSrc?: string;
   quantity: number;
@@ -102,7 +104,9 @@ export function InquiryCartProvider({ children }: { children: ReactNode }) {
             : true) &&
           p.yarnId === item.yarnId &&
           p.tagId === item.tagId &&
-          p.pomPomId === item.pomPomId
+          p.pomPomId === item.pomPomId &&
+          p.personalizationText === item.personalizationText &&
+          p.personalizationPlacement === item.personalizationPlacement
       );
       if (existing) {
         resultId = existing.id;

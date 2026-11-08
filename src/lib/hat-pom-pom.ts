@@ -1,5 +1,5 @@
 export const HAT_POM_POM_OPTIONS = [
-  { id: "no-pom-pom", label: "No pom pom", priceAddUsd: 0 },
+  { id: "no-pom-pom", label: "None", priceAddUsd: 0 },
   { id: "with-pom-pom", label: "Pom pom", priceAddUsd: 5 },
   { id: "snap-on-pom-pom", label: "Snap-on pom pom", priceAddUsd: 10 },
 ] as const;

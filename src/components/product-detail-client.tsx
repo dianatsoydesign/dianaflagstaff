@@ -18,6 +18,7 @@ import { ProductCard } from "@/components/product-card";
 import { ProductDetailGallery } from "@/components/product-detail-gallery";
 import { yarnLineName, yarnMaterial } from "@/data/yarns";
 import { isCharismaCuratedPaletteYarn } from "@/data/charisma-curated-palette-yarn";
+import { yarnColorLabel } from "@/lib/yarn-color-label";
 import { usesLiveSupplier } from "@/lib/yarn-stock";
 
 type Props = {
@@ -120,7 +121,10 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   const productImages = [
     { src: product.imageSrc, alt: product.imageAlt, shownColor: product.imageShownColor, shownStyle: product.imageShownStyle },
     ...(product.galleryImages ?? []),
-  ];
+  ].map(image => {
+    const yarn = product.yarns.find(yarn => yarn.name.toLowerCase() === image.shownColor?.toLowerCase());
+    return yarn ? { ...image, shownColorLabel: yarnColorLabel(yarn, product.yarns) } : image;
+  });
 
   // Supplier yarns get color photos; Diana's own colorways (e.g. "Multi") are the product photos.
   const hasColorImages = (yarn: YarnColor | null): yarn is YarnColor =>
@@ -140,6 +144,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   const yarnImages = yarnSrcs.map((src, i) => ({
     src,
     shownColor: selectedYarn!.name,
+    shownColorLabel: yarnColorLabel(selectedYarn!, product.yarns),
     alt: `${selectedYarn!.name}, ${yarnLineName(selectedYarn!) ?? "yarn"}${i ? ` (${i + 1})` : ""}`,
   }));
   const photos = productImages.filter(image => image.type !== "video");
@@ -160,7 +165,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
     image.type !== "video" && image.shownColor?.toLowerCase() === previewYarn.name.toLowerCase()
   ) : null;
   const preview = product.id === "christmas-stockings" && previewProductPhoto ? previewProductPhoto : previewSrc
-    ? { src: previewSrc, shownColor: previewYarn!.name, alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
+    ? { src: previewSrc, shownColor: previewYarn!.name, shownColorLabel: yarnColorLabel(previewYarn!, product.yarns), alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
     : previewProductPhoto;
 
   const materialYarn = selectedYarn ?? product.yarns[0];

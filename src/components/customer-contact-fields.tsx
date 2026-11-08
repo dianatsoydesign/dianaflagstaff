@@ -1,5 +1,6 @@
 "use client";
 
+import { FormTextInput } from "@/components/form-text-input";
 import { CART_FIELD_LIMITS } from "@/lib/cart-field-limits";
 import { formFieldInputClass } from "@/components/picker-styles";
 import { cn } from "@/lib/utils";
@@ -20,33 +21,20 @@ export function CustomerContactFields({ idPrefix, name, email, fieldErrors, onNa
   return <>
               <div data-cart-field="name" className="flex scroll-my-4 flex-col gap-3 text-sm">
                 <label htmlFor={`${idPrefix}-name`} className="font-medium">Your name (required)</label>
-                <div className="relative">
-                <input
+                <FormTextInput
                   id={`${idPrefix}-name`}
-                  required
-                  value={name}
-                  onChange={(e) => { onNameChange(e.target.value); }}
+                  required value={name}
+                  onChange={e => onNameChange(e.target.value)}
                   maxLength={CART_FIELD_LIMITS.customerName}
                   aria-invalid={!!fieldErrors.name || undefined}
-                  aria-describedby={`${idPrefix}-name-count${fieldErrors.name ? ` ${idPrefix}-name-error` : ""}`}
-                  autoComplete="name"
-                  className={cn(formFieldInputClass, "h-12 w-full rounded-[8px] pr-20")}
-                  placeholder={namePlaceholder}
+                  aria-describedby={fieldErrors.name ? `${idPrefix}-name-error` : undefined}
+                  autoComplete="name" placeholder={namePlaceholder}
                 />
-                  {name.length > 0 && (
-                <p id={`${idPrefix}-name-count`} className={cn("pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs tabular-nums", name.length >= CART_FIELD_LIMITS.customerName ? "text-red-700 dark:text-red-400" : "text-muted-foreground")}>
-                  {name.length} / {CART_FIELD_LIMITS.customerName}
-                </p>
-                  )}
-                </div>
                 {fieldErrors.name && (
                   <p id={`${idPrefix}-name-error`} role="alert" className="text-left text-sm text-red-700 dark:text-red-400">
                     {fieldErrors.name}
                   </p>
                 )}
-                <span className="sr-only" role="status">
-                  {name.length >= CART_FIELD_LIMITS.customerName ? "Character limit reached." : ""}
-                </span>
               </div>
               <div data-cart-field="email" className="flex scroll-my-4 flex-col gap-3 text-sm">
                 <label htmlFor={`${idPrefix}-email`} className="font-medium">Email address (required)</label>

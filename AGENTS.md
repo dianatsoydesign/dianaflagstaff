@@ -87,3 +87,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Image review before website updates
 
 - Follow `.cursor/rules/product-photo-review.mdc`: save versioned image candidates for Diana to inspect locally, do not post previews unless requested, and wait for explicit approval before switching website images or publishing them.
+
+## Consistent form inputs
+
+- Follow `.cursor/rules/form-input-consistency.mdc` for every new or edited text-entry field. Reuse the shared `FormTextInput`, `CustomerContactFields`, `RequestTextarea`, and `formFieldInputClass` so PDP, cart, checkout, and request fields retain consistent styling, counters, spacing, focus, and validation.

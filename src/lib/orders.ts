@@ -155,7 +155,7 @@ export function aggregateFulfillment(orders: Order[]): AggregatedLine[] {
   for (const order of orders) {
     if (order.status === "done") continue;
     for (const line of order.lines) {
-      const key = `${line.kind}::${line.productId}::${line.sizeId}::${line.yarnId}::${line.tagId ?? ""}::${line.pomPomId ?? ""}`;
+      const key = `${line.kind}::${line.productId}::${line.sizeId}::${line.yarnId}::${line.tagId ?? ""}::${line.pomPomId ?? ""}::${JSON.stringify([line.personalizationText, line.personalizationPlacement])}`;
       const existing = map.get(key);
       if (existing) {
         existing.quantity += line.quantity;
@@ -169,6 +169,8 @@ export function aggregateFulfillment(orders: Order[]): AggregatedLine[] {
           yarnName: line.yarnName,
           tagLabel: line.tagLabel,
           pomPomLabel: line.pomPomLabel,
+          personalizationText: line.personalizationText,
+          personalizationPlacement: line.personalizationPlacement,
           quantity: line.quantity,
           patternName: line.patternName,
           designerName: line.designerName,

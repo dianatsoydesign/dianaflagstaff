@@ -32,7 +32,7 @@ export function PomPomPicker({ value, onChange, className }: Props) {
       <legend className={pickerLegendClass}>
         <span className="sr-only">Pom pom: </span>
         Pom pom:{" "}
-        <span className="font-medium text-foreground">{selected.label}</span>
+        <span className="font-medium text-foreground">{selected.label}{selected.priceAddUsd > 0 ? ` +$${selected.priceAddUsd}` : ""}</span>
       </legend>
       <div
         className={pickerChipGroupClass}
@@ -71,7 +71,7 @@ export function PomPomPicker({ value, onChange, className }: Props) {
                     )
               )}
             >
-              {option.label}
+              {option.label}{option.priceAddUsd > 0 ? ` +$${option.priceAddUsd}` : ""}
             </button>
           );
         })}

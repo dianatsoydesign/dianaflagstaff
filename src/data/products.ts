@@ -46,6 +46,8 @@ export type ProductImage = {
   alt: string;
   /** Product color shown in this photo, displayed beneath the PDP image. */
   shownColor?: string;
+  /** Display label when duplicate color names need a yarn-line qualifier. */
+  shownColorLabel?: string;
   shownStyle?: string;
   /** Hide studio matte (fractions of image size); content is scaled with `object-contain`. */
   galleryMatteInset?: GalleryMatteInset;
@@ -155,7 +157,7 @@ export const products: Product[] = [
   {
     "id": "blanket",
     "name": "Chunky chenille blanket",
-    "price": 178,
+    "price": 223,
     "category": "Home",
     "imageSrc": "/products/Blanket/blanket 5.jpg",
     "imageAlt": "White blanket spread out with its ribbed border held in one hand",
@@ -203,57 +205,57 @@ export const products: Product[] = [
       {
         "id": "lovey",
         "label": "Lovey · 12 × 12 in",
-        "price": 18
+        "price": 23
       },
       {
         "id": "security",
         "label": "Security · 18 × 24 in",
-        "price": 36
+        "price": 45
       },
       {
         "id": "baby",
         "label": "Baby · 30 × 36 in",
-        "price": 71
+        "price": 89
       },
       {
         "id": "receiving",
         "label": "Receiving · 40 × 40 in",
-        "price": 89
+        "price": 111
       },
       {
         "id": "crib",
         "label": "Lap / crib · 36 × 52 in",
-        "price": 107
+        "price": 134
       },
       {
         "id": "throw",
         "label": "Throw · 50 × 60 in",
-        "price": 160
+        "price": 200
       },
       {
         "id": "large-throw",
         "label": "Large throw · 48 × 71 in",
-        "price": 178
+        "price": 223
       },
       {
         "id": "twin",
         "label": "Twin · 66 × 90 in",
-        "price": 320
+        "price": 400
       },
       {
         "id": "full",
         "label": "Full · 80 × 90 in",
-        "price": 391
+        "price": 489
       },
       {
         "id": "queen",
         "label": "Queen · 90 × 100 in",
-        "price": 480
+        "price": 600
       },
       {
         "id": "king",
         "label": "King · 108 × 100 in",
-        "price": 569
+        "price": 711
       }
     ],
     "defaultSizeId": "large-throw",
@@ -450,7 +452,7 @@ export const products: Product[] = [
   {
     id: "hats",
     name: "Hats",
-    price: 25,
+    price: 30,
     category: "Hats",
     imageSrc: "/products/hats/hats 1.jpg",
     imageAlt: "Two handmade pom-pom beanies in rust and speckled charcoal yarn",
@@ -462,11 +464,11 @@ export const products: Product[] = [
       },
     ],
     sizes: [
-      { id: "baby", label: "Baby", price: 19 },
-      { id: "toddler", label: "Toddler", price: 21 },
-      { id: "child", label: "Child", price: 22 },
-      { id: "teen", label: "Teen", price: 24 },
-      { id: "adult", label: "Adult", price: 25 },
+      { id: "baby", label: "Baby", price: 24 },
+      { id: "toddler", label: "Toddler", price: 26 },
+      { id: "child", label: "Child", price: 27 },
+      { id: "teen", label: "Teen", price: 29 },
+      { id: "adult", label: "Adult", price: 30 },
     ],
     defaultSizeId: "adult",
     showPomPomPicker: true,

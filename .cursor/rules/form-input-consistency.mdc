@@ -1,0 +1,15 @@
+---
+description: Keep text inputs consistent with shared cart form fields across the site
+alwaysApply: true
+---
+
+# Consistent form inputs
+
+- Apply this standard to every new or edited text-entry field across the site, including PDP personalization, cart, checkout, and request forms.
+- Reuse `FormTextInput` from `src/components/form-text-input.tsx` for single-line fields with character limits and counters. Reuse `CustomerContactFields` for customer name/email groups and `RequestTextarea` for multiline inputs. Extend shared components when necessary instead of copying their markup or introducing a one-off design.
+- Use `formFieldInputClass` from `src/components/picker-styles.ts` for input surfaces: the cart's ink border, white light-theme background, transparent dark-theme background, text/placeholder colors, and keyboard focus ring. Single-line fields use the shared 48px height, full width, 8px corners, and horizontal padding.
+- Keep persistent labels above inputs, left aligned, with 12px between label and control and 20px between field groups. Preserve the actual required/optional status and existing collection requirements.
+- For limited text inputs, use the shared inset counter on the right, shown after typing, with reserved input padding. Show the limit state in accessible red and announce when the limit is reached. Do not place a second counter below the input.
+- Preserve field-specific limits, placeholders, autocomplete, input mode, native required semantics, and validation. Associate visible helper text, counters, and errors with the input. Errors remain actionable red text with `aria-invalid` and an alert announcement.
+- Verify affected fields at mobile and desktop widths, in both themes, and with keyboard focus. Check that entered text and counters do not overlap and that labels/errors can wrap.
+- Example: a stocking personalization name uses `FormTextInput`, just like the cart name field, with its own seven-character limit and personalization-specific validation.

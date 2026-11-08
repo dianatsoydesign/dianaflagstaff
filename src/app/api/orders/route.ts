@@ -1,3 +1,4 @@
+import { personalizationError, isMulticolorStocking, stockingAddOnPrice } from "@/lib/stocking-personalization.mjs";
 import { PRODUCT_QUANTITY_LIMIT } from "@/lib/cart-quantity-limit.mjs";
 import { hasBulkYarnSource } from "@/lib/bulk-yarn-availability.mjs";
 import { readSweetSnugglesStock } from "@/lib/sweet-snuggles-stock";
@@ -85,6 +86,8 @@ export async function POST(request: Request) {
           ? line.pomPomId
           : undefined,
       pomPomLabel: line.pomPomLabel ? String(line.pomPomLabel) : undefined,
+      personalizationText: line.personalizationText,
+      personalizationPlacement: line.personalizationPlacement,
       quantity: Math.max(1, Number(line.quantity) || 1),
       unitPrice: line.priceTbd ? 0 : Number(line.unitPrice) || 0,
       priceTbd: !!line.priceTbd,
@@ -93,6 +96,21 @@ export async function POST(request: Request) {
       patternUrl: line.patternUrl ?? null,
     }));
 
+    for (const line of lines) {
+      const issue = personalizationError(line.productId, line.personalizationText, line.personalizationPlacement);
+      if (issue) return NextResponse.json({ error: issue }, { status: 400 });
+      if (line.personalizationText) line.personalizationText = line.personalizationText.trim();
+    }
+    for (const line of lines.filter(line => line.productId === "christmas-stockings")) {
+      const product = getProduct(line.productId)!;
+      const yarn = product.yarns.find(yarn => yarn.id === line.yarnId);
+      const multicolor = isMulticolorStocking(yarn) || ["charisma-holiday-pizza", "charisma-soft-palette", "charisma-warm-palette"].includes(line.yarnId);
+      if (multicolor && line.personalizationPlacement && line.personalizationPlacement !== "top") {
+        return NextResponse.json({ error: "Multicolored stockings can only be personalized at the top." }, { status: 400 });
+      }
+      line.priceTbd = false;
+      line.unitPrice = product.price + stockingAddOnPrice(multicolor, !!line.personalizationText);
+    }
     const productQuantities = new Map<string, number>();
     for (const line of lines) {
       if (!Number.isSafeInteger(line.quantity) || line.quantity < 1) {

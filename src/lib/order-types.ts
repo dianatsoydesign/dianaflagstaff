@@ -14,6 +14,8 @@ export type OrderLine = {
   tagLabel?: string;
   pomPomId?: string;
   pomPomLabel?: string;
+  personalizationText?: string;
+  personalizationPlacement?: string;
   quantity: number;
   unitPrice: number;
   priceTbd?: boolean;
@@ -47,6 +49,8 @@ export type AggregatedLine = {
   yarnName: string;
   tagLabel?: string;
   pomPomLabel?: string;
+  personalizationText?: string;
+  personalizationPlacement?: string;
   quantity: number;
   patternName?: string;
   designerName?: string;

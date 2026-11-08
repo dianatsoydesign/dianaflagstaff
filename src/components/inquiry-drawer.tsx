@@ -210,6 +210,8 @@ export function InquiryDrawer() {
             tagLabel: item.tagLabel,
             pomPomId: item.pomPomId,
             pomPomLabel: item.pomPomLabel,
+            personalizationText: item.personalizationText,
+            personalizationPlacement: item.personalizationPlacement,
             quantity: item.quantity,
             unitPrice: item.unitPrice,
             priceTbd: item.priceTbd,
@@ -398,10 +400,9 @@ export function InquiryDrawer() {
                   autoCapitalize="none" autoCorrect="off" spellCheck={false}
                   placeholder="@your-username"
                   aria-invalid={!!fieldErrors.venmo || undefined}
-                  aria-describedby={`cart-venmo-help${fieldErrors.venmo ? " cart-venmo-error" : ""}`}
+                  aria-describedby={fieldErrors.venmo ? "cart-venmo-error" : undefined}
                   className={cn(formFieldInputClass, "h-12 w-full rounded-[8px]")}
                 />
-                <p id="cart-venmo-help" className="text-sm text-muted-foreground">Helps me match your payment to your order.</p>
                 {fieldErrors.venmo && <p id="cart-venmo-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">{fieldErrors.venmo}</p>}
               </div>
               <div data-cart-field="paypal" className="flex scroll-my-4 flex-col gap-3 text-sm">
@@ -412,10 +413,9 @@ export function InquiryDrawer() {
                   autoCapitalize="none" autoCorrect="off" spellCheck={false}
                   placeholder="Email or @your-username"
                   aria-invalid={!!fieldErrors.paypal || undefined}
-                  aria-describedby={`cart-paypal-help${fieldErrors.paypal ? " cart-paypal-error" : ""}`}
+                  aria-describedby={fieldErrors.paypal ? "cart-paypal-error" : undefined}
                   className={cn(formFieldInputClass, "h-12 w-full rounded-[8px]")}
                 />
-                <p id="cart-paypal-help" className="text-sm text-muted-foreground">Helps me match your payment to your order.</p>
                 {fieldErrors.paypal && <p id="cart-paypal-error" role="alert" className="text-left text-sm text-red-700 dark:text-red-400">{fieldErrors.paypal}</p>}
               </div>
               <div data-cart-field="pickup" className="flex scroll-my-4 flex-col gap-3 text-sm">

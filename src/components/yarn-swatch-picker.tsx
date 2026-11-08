@@ -41,7 +41,6 @@ import {
 } from "@/components/picker-styles";
 import { bernatColorGroupId, bernatGroupsForYarns, type BernatColorGroupId } from "@/data/bernat-blanket-big";
 import { HolidayPizzaSwatch } from "@/components/holiday-pizza-swatch";
-import { sentenceCaseColorName } from "@/lib/color-name";
 import { isBobbinyYarnId, productPhotoBgClass } from "@/lib/product-photo-bg";
 
 function colorThumbSrc(yarn: {
@@ -289,7 +288,7 @@ export function YarnSwatchPicker({
             >
               <Image
                 src={colorThumbSrc(yarn)}
-                alt={sentenceCaseColorName(yarn.name)}
+                alt={yarnColorLabel(yarn, labelYarns)}
                 fill
                 className={yarnSwatchCircleImageClass}
                 sizes="60px"

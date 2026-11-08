@@ -147,7 +147,7 @@ export function ProductDetailGallery({
         {overlayCaption && (
           <figcaption className={cn("pointer-events-none absolute right-3 left-3 z-10 flex justify-end md:right-4 md:left-4", active?.type === "video" ? "bottom-[124px]" : count > 1 ? "bottom-[76px] md:bottom-20" : "bottom-3 md:bottom-4")}>
             <span className="max-w-full rounded-[8px] bg-white px-3 py-2 text-left text-sm leading-5 text-[#595959] [overflow-wrap:anywhere]">
-              <span className="text-black">{[active.shownColor && sentenceCaseColorName(active.shownColor), active.shownStyle].filter(Boolean).join(" · ")}</span>
+              <span className="text-black">{[active.shownColorLabel ?? (active.shownColor && sentenceCaseColorName(active.shownColor)), active.shownStyle].filter(Boolean).join(" · ")}</span>
             </span>
           </figcaption>
         )}

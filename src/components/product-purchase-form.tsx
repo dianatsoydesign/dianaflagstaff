@@ -1,5 +1,8 @@
 "use client";
 
+import { StockingPersonalizationPicker } from "@/components/stocking-personalization-picker";
+import { personalizationError, STOCKING_NAME_LIMIT, isMulticolorStocking, stockingAddOnPrice } from "@/lib/stocking-personalization.mjs";
+
 import { remainingProductQuantity } from "@/lib/cart-quantity-limit.mjs";
 import { cartProductPhoto } from "@/lib/cart-product-photo";
 
@@ -72,6 +75,7 @@ import {
   getProductTag,
   type ProductTagId,
 } from "@/lib/product-tags";
+import { FormTextInput } from "@/components/form-text-input";
 import { pickerSectionGapClass } from "@/components/picker-styles";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -107,6 +111,9 @@ export function ProductPurchaseForm({
   const [customDimensions, setCustomDimensions] = useState<CustomSizeDimensions>(
     { width: "", height: "" }
   );
+  const [personalizationPlacement, setPersonalizationPlacement] = useState("none");
+  const [personalizationText, setPersonalizationText] = useState("");
+  const [nameError, setNameError] = useState<string | null>(null);
   const [tagId, setTagId] = useState<ProductTagId>(DEFAULT_PRODUCT_TAG_ID);
   const [pomPomId, setPomPomId] = useState<HatPomPomId>(DEFAULT_HAT_POM_POM_ID);
   const isCatCave = product.id === "cat-cave";
@@ -205,7 +212,10 @@ export function ProductPurchaseForm({
     ? hatPomPomPriceAdd(pomPomId)
     : 0;
 
-  const unitPrice = baseUnitPrice + pomPomAddUsd;
+  const multicolorStocking = isMulticolorStocking(resolveYarn(yarnId));
+  const stockingAddUsd = product.id === "christmas-stockings"
+    ? stockingAddOnPrice(multicolorStocking, personalizationPlacement !== "none") : 0;
+  const unitPrice = baseUnitPrice + pomPomAddUsd + stockingAddUsd;
   const pricedSizes = visibleSizes.map(size => {
     const dimensions = product.customSizePricing ? parseLabeledCustomSize(size.label) : null;
     const price = dimensions && product.customSizePricing
@@ -300,13 +310,6 @@ export function ProductPurchaseForm({
     return product.yarns.find((y) => y.id === id) ?? null;
   }
 
-  const selectedTimingYarn = resolveYarn(yarnId);
-  const multicolorStocking = selectedTimingYarn
-    ? Boolean(selectedTimingYarn.multicolor
-      || (selectedTimingYarn.sortRank ?? 0) >= 2000
-      || selectedTimingYarn.id === "stockings-multi"
-      || isCharismaCuratedPaletteYarn(selectedTimingYarn.id))
-    : null;
   const productionDays = productionDaysForProduct({
     productId: product.id,
     quantity: qtyConfig ? quantity : 1,
@@ -320,6 +323,9 @@ export function ProductPurchaseForm({
   };
 
   function handleYarnChange(id: string) {
+    if (product.id === "christmas-stockings" && isMulticolorStocking(resolveYarn(id)) && personalizationPlacement !== "none") {
+      setPersonalizationPlacement("top");
+    }
     userPickedYarn.current = true;
     yarnIdRef.current = id;
     setYarnId(id);
@@ -329,6 +335,9 @@ export function ProductPurchaseForm({
 
   function add() {
     setMessage(null);
+    const personalizationIssue = personalizationError(product.id, personalizationPlacement === "none" ? undefined : personalizationText, personalizationPlacement === "none" ? undefined : personalizationPlacement);
+    setNameError(personalizationIssue);
+    if (personalizationIssue) { document.getElementById("stocking-name")?.focus(); return; }
     const customSize =
       sizeId != null && isRequestDifferentSizeId(sizeId);
     const size = customSize
@@ -389,6 +398,8 @@ export function ProductPurchaseForm({
       tagLabel: tag.label,
       pomPomId: pomPom?.id,
       pomPomLabel: pomPom?.label,
+      personalizationText: product.id === "christmas-stockings" && personalizationPlacement !== "none" ? personalizationText.trim() : undefined,
+      personalizationPlacement: product.id === "christmas-stockings" && personalizationPlacement !== "none" ? personalizationPlacement : undefined,
       productImageSrc: cartProductPhoto(product, yarn.name, product.id === "mushroom-hat" ? (selectedHatStyle === "short-tip" ? "Short tip" : "Slouchy, long tip") : undefined),
       quantity: qtyConfig ? quantity : 1,
       quantityMax: qtyConfig?.max,
@@ -464,6 +475,22 @@ export function ProductPurchaseForm({
           customSizePrice={customSizeSelected && !priceTbd ? unitPrice : undefined}
         />
         </PickerValidation>
+      )}
+      {product.id === "christmas-stockings" && (
+        <>
+          <StockingPersonalizationPicker topOnly={multicolorStocking} value={personalizationPlacement} onChange={value => { setPersonalizationPlacement(value); setNameError(null); }} />
+          {multicolorStocking && <p className="text-sm text-muted-foreground">Multicolor +$5. Personalization available at the top only.</p>}
+          {personalizationPlacement !== "none" && (
+            <div className="flex scroll-my-4 flex-col gap-3 text-sm">
+              <label htmlFor="stocking-name" className="font-medium">Name, initials, or nickname (required)</label>
+              <FormTextInput id="stocking-name" required value={personalizationText} maxLength={STOCKING_NAME_LIMIT} characterWidth={STOCKING_NAME_LIMIT}
+                onChange={event => { setPersonalizationText(event.target.value); setNameError(null); }}
+                aria-invalid={!!nameError || undefined} aria-describedby={nameError ? "stocking-name-error" : undefined}
+                placeholder="Olivia" />
+              {nameError && <p id="stocking-name-error" role="alert" className="text-red-700 dark:text-red-400">{nameError}</p>}
+            </div>
+          )}
+        </>
       )}
       <TagPicker
         keyboardNavigation
