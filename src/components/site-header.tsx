@@ -50,6 +50,34 @@ function BrandName({ className, inline = false }: { className?: string; inline?:
   );
 }
 
+function DrawerBrandName() {
+  const container = useRef<HTMLSpanElement>(null);
+  useLayoutEffect(() => {
+    const element = container.current;
+    if (!element) return;
+    let disposed = false;
+    const fit = () => {
+      if (disposed) return;
+      const brand = element.firstElementChild as HTMLElement | null;
+      if (!brand || !element.clientWidth) return;
+      const size = parseFloat(getComputedStyle(element).fontSize);
+      const width = brand.getBoundingClientRect().width;
+      if (width) element.style.fontSize = `${size * element.clientWidth / width}px`;
+    };
+    const observer = new ResizeObserver(fit);
+    observer.observe(element);
+    fit();
+    void document.fonts.ready.then(fit);
+    document.fonts.addEventListener("loadingdone", fit);
+    return () => {
+      disposed = true;
+      observer.disconnect();
+      document.fonts.removeEventListener("loadingdone", fit);
+    };
+  }, []);
+  return <span ref={container} className="block w-full text-2xl"><BrandName inline className="w-max" /></span>;
+}
+
 function isNavActive(pathname: string, href: string) {
   if (href === "/") {
     return pathname === "/" || pathname.startsWith("/shop/p/");
@@ -144,9 +172,9 @@ export function SiteHeader() {
               <Menu className="size-5" />
             </SheetTrigger>
             <SheetContent side="left" className="w-[min(100%,20rem)]">
-              <SheetHeader>
-                <SheetTitle className="font-display text-left text-2xl tracking-[-0.04em]">
-                  <BrandName className="items-start" />
+              <SheetHeader className="pt-16">
+                <SheetTitle className="min-w-0 w-full font-display text-left tracking-[-0.04em]">
+                  <DrawerBrandName />
                 </SheetTitle>
               </SheetHeader>
               <nav
@@ -161,19 +189,15 @@ export function SiteHeader() {
                     onClick={() => setOpen(false)}
                     aria-current={isNavActive(pathname, item.href) ? "page" : undefined}
                     className={cn(
-                      "rounded-sm px-3 py-3.5 text-base transition-colors",
-                      isNavActive(pathname, item.href)
-                        ? "bg-wash text-ink underline decoration-2 underline-offset-8"
-                        : "text-ink hover:bg-wash active:bg-wash"
+                      navigationControlClass(),
+                      "justify-start py-3.5",
+                      isNavActive(pathname, item.href) && "underline decoration-1 underline-offset-8"
                     )}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <div className="mt-4 flex items-center justify-between px-3 py-2">
-                  <span className="text-sm text-muted-foreground">Theme</span>
-                  <ThemeToggle />
-                </div>
+                <ThemeToggle label="Theme" className="mt-4" />
               </nav>
             </SheetContent>
           </Sheet>
@@ -193,6 +217,7 @@ export function SiteHeader() {
           <div className="relative z-10 hidden min-[1100px]:flex">
             <ThemeToggle
               lightOnDark={heroHeader}
+              className="w-auto rounded-full px-5"
             />
           </div>
 
@@ -208,7 +233,8 @@ export function SiteHeader() {
                 aria-current={isNavActive(pathname, item.href) ? "page" : undefined}
                 className={cn(
                   navigationControlClass(heroHeader),
-                  isNavActive(pathname, item.href) && "underline decoration-2 underline-offset-8"
+                  "rounded-full px-5",
+                  isNavActive(pathname, item.href) && "underline decoration-1 underline-offset-8"
                 )}
               >
                 {item.label}
@@ -222,7 +248,7 @@ export function SiteHeader() {
                 type="button"
                 className={cn(
                   navigationControlClass(heroHeader),
-                  "gap-2 whitespace-nowrap px-2 min-[1100px]:px-3"
+                  "gap-2 whitespace-nowrap px-2 min-[1100px]:rounded-full min-[1100px]:px-5"
                 )}
                 onClick={() => openCheckoutDrawer()}
                 aria-label={`Your cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}

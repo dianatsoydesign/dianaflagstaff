@@ -34,10 +34,16 @@ export function productionDaysForProduct(options: {
   const { productId, quantity, pomPomId, multicolor, customSize } = options;
   if (customSize) return null;
   switch (productId) {
+    case "koozie":
     case "coasters": return Math.ceil(quantity / 4);
     case "hotpads": return Math.ceil(quantity / 2);
     case "placemats": return quantity;
-    case "hats": return ({ "no-pom-pom": 1, "with-pom-pom": 2, "snap-on-pom-pom": 3 } as Record<string, number>)[pomPomId] ?? null;
+    case "ribbed-hat":
+    case "ribbed-headband":
+    case "hats": {
+      const days = ({ "no-pom-pom": 1, "with-pom-pom": 2, "snap-on-pom-pom": 3 } as Record<string, number>)[pomPomId];
+      return days === undefined ? null : days + (productId === "hats" ? 0 : 1);
+    }
     case "elf-hat":
     case "mushroom-hat": return 5;
     case "christmas-stockings": return multicolor === null ? null : multicolor ? 5 : 3;
@@ -47,5 +53,5 @@ export function productionDaysForProduct(options: {
 }
 
 export const productsWithPickupEstimates = new Set([
-  "coasters", "hotpads", "placemats", "hats", "elf-hat", "mushroom-hat", "christmas-stockings", "cat-cave",
+  "koozie", "ribbed-hat", "ribbed-headband", "coasters", "hotpads", "placemats", "hats", "elf-hat", "mushroom-hat", "christmas-stockings", "cat-cave",
 ]);

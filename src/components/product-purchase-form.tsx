@@ -486,7 +486,7 @@ export function ProductPurchaseForm({
         <>
           <StockingPersonalizationPicker topOnly={multicolorStocking} value={personalizationPlacement} onChange={value => { setPersonalizationPlacement(value); setNameError(null); }} />
           {personalizationPlacement !== "none" && (
-            <div className="flex scroll-my-4 flex-col gap-3 text-sm">
+            <div className="flex scroll-my-4 flex-col gap-[9px] text-sm">
               <label htmlFor="stocking-name" className="font-medium">Name, initials, or nickname (required)</label>
               <FormTextInput id="stocking-name" required value={personalizationText} maxLength={STOCKING_NAME_LIMIT} characterWidth={STOCKING_NAME_LIMIT}
                 onChange={event => { setPersonalizationText(event.target.value); setNameError(null); }}

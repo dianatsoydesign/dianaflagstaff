@@ -47,7 +47,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Website text alignment
 
-- Follow `.cursor/rules/left-align-text.mdc` for website work. Left-align content text by default, including headings, helper text, notices, and forms. Keep button labels centered and numeric totals aligned for readability where appropriate.
+- Follow `.cursor/rules/left-align-text.mdc` for website work. Left-align content text by default, including headings, helper text, notices, and forms. Keep button labels centered and numeric totals aligned for readability where appropriate. Hard rule: never horizontally center content text, including product names/descriptions. Follow `.cursor/rules/product-text-centering.mdc` to vertically center mixed fonts or sizes on the same line while preserving left alignment.
 
 ## Product image corners
 
@@ -116,3 +116,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Supplier yarn color galleries
 
 - Follow `.cursor/rules/yarn-color-galleries.mdc` for all current and future PDPs and yarn imports. Every swatch must display all available reviewed yarn-only supplier photos for its exact color. Never import only the first yarn image, and never import supplier finished-product or modeled-project photos. Preserve Diana's own product photos and videos. Enforce the shared reviewed-image policy before imports and gallery display.
+
+## Hard rule: vertical alignment of mixed-font text
+
+- Across all current and future pages, vertically center the visible text when fonts or sizes differ on the same line. Reuse `ProductNamePrice` with matching cap-to-baseline bounds, `items-center`, and `justify-start text-left`.
+- Never horizontally center product names, descriptions, or other content text. Earlier product horizontal-centering instructions were corrected by Diana and are superseded. Verify rendered vertical alignment at desktop and mobile sizes.

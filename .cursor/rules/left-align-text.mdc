@@ -10,3 +10,6 @@ alwaysApply: true
 - Keep button labels centered within their controls and numeric totals aligned for readability where appropriate.
 - Apply this rule when editing existing areas without broadly restyling unrelated pages.
 - Example: cart payment helper text above the action row uses `text-left`, aligned with the subtotal label and form fields.
+
+
+- Never horizontally center product names or descriptions. Follow `product-text-centering.mdc` for vertical centering of mixed-font text while preserving left alignment.

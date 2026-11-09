@@ -40,7 +40,7 @@ export function ProductPickupEstimate({ timing, customSize }: Props) {
             <ChevronDown aria-hidden="true" className="size-4 group-open:rotate-180 motion-safe:transition-transform" />
           </span>
         </summary>
-        <div className="space-y-2 px-4 pb-4 pt-4 text-muted-foreground">
+        <div className="space-y-1.5 px-4 pb-3 pt-3 text-muted-foreground">
           <p><strong className="font-medium">Order processing:</strong> Accepted within 24 hours.</p>
           <p><strong className="font-medium">Timing:</strong> {customSize ? "Custom-size timing is confirmed when your request is accepted." : "Includes material delivery and crafting."}</p>
           <p className="italic">Dates are estimates and may shift due to supplier or holiday delays.</p>

@@ -58,7 +58,7 @@ export function TagPicker({ value, onChange, className, keyboardNavigation = tru
               onClick={() => onChange(tag.id)}
               className={cn(
                 pickerChipBase,
-                "relative w-56 flex-col gap-1 rounded-[12px] p-2",
+                "relative w-56 flex-col gap-[3px] rounded-[12px] p-2",
                 isSelected
                   ? cn("border-ink font-medium", careSurfaceClass)
                   : cn(
@@ -95,7 +95,7 @@ export function TagPicker({ value, onChange, className, keyboardNavigation = tru
         })}
       </div>
       {description ? (
-        <p id={descriptionId} className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        <p id={descriptionId} className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
           {description}
         </p>
       ) : null}

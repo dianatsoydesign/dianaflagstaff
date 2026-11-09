@@ -1,0 +1,18 @@
+---
+description: Hard rule, left-align content and vertically center mixed-font text on every page
+alwaysApply: true
+---
+
+# Hard rule: left-aligned text with vertical alignment
+
+- Never horizontally center content text. Product names and descriptions remain left-aligned across Shop, PDPs, featured products, recommendations, and all other current and future pages.
+- When different fonts or font sizes share a line, vertically center their visible text on the same horizontal centerline. This applies to names, descriptors such as unisex, separators, prices, and all other mixed-font rows.
+- Reuse `ProductNamePrice` for product rows. Keep `justify-start text-left` and `items-center`. Never change the row to `justify-center text-center` to address vertical alignment.
+- `items-center` alone is insufficient when text boxes use different font bounds. Names, descriptors, and prices must share `text-box-trim: trim-both` and `text-box-edge: cap alphabetic`. Do not mix `cap text` with `cap alphabetic` in the same row. Keep descenders visible without clipping.
+- Preserve vertical alignment during font-size, font-family, pricing, and responsive changes, including wrapped rows and increased text zoom. Preserve accessible reading order.
+- Verify actual rendered vertical alignment on desktop and mobile. Lint alone does not establish visual alignment.
+- This rule corrects and supersedes earlier instructions to horizontally center product text. Existing centered button labels remain governed by the button rules.
+
+- Product rows use equal font sizes for names, prices, and secondary info, with `font-size-adjust: cap-height 0.7` to equalize visible capital height across the display and sans fonts. Prices, descriptors, and separators use the shared readable `text-muted-foreground` token for lower prominence. Do not reintroduce per-string canvas measurements or vertical translations. This replaces the previous glyph-measurement approach.
+
+- Keep the approved product and PDP heading sizes in rem across mobile, tablet, and desktop. Never shrink these fonts using viewport width/height or smaller-screen overrides. Preserve browser text enlargement and natural wrapping.

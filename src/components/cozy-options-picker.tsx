@@ -29,7 +29,7 @@ export function CozyOptionsPicker({ sizes, value, basePrice, onChange }: {
     return `${option.label}${extra > 0 ? ` +${formatPrice(extra)}` : ""}`;
   }
 
-  return <div className="flex min-w-0 flex-col gap-8">
+  return <div className="flex min-w-0 flex-col gap-6">
     {groups.map(group => <fieldset key={group.label} className={pickerFieldsetClass}>
       <legend className={pickerLegendClass}>{group.label}: <span className="font-medium text-foreground">{optionLabel(group, group.options.find(option => option.id === group.value) ?? group.options[0])}</span></legend>
       <div className={pickerChipGroupClass}>

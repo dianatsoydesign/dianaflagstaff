@@ -4,19 +4,16 @@ import { cn } from "@/lib/utils";
 const rowClass =
   "flex w-full flex-wrap items-center justify-start text-left text-ink";
 
-/** Shop grid: fixed price size; name keeps fluid display scale. */
-const cardNameClass =
-  "font-display text-[length:calc(0.0072*min(100vh,900px)_+_1rem)] leading-none tracking-[-0.04em] md:text-[length:min(calc(0.72vw_+_1rem),28.96px)]";
-
+/** Shared card text scale; Shop supplies its own row size. */
 const cardNameFontSizeClass =
-  "text-[length:calc(0.0072*min(100vh,900px)_+_1rem)] md:text-[length:min(calc(0.72vw_+_1rem),28.96px)]";
+  "text-[1.307725rem]";
 
 const cardPriceClass =
-  "self-center font-sans text-[1.125rem] leading-none tabular-nums";
+  "self-center font-tagline font-light text-ink leading-none tabular-nums";
 
 /** PDP + welcome: shared line box (em) for vertical alignment. */
 const nameSizeByVariant = {
-  detail: "text-[clamp(1.75rem,2.3vw,2.3rem)]",
+  detail: "text-[1.4021015625rem]",
   featured: "text-[1.32rem]",
 } as const;
 
@@ -25,13 +22,14 @@ const nameTypeByVariant = {
   featured: "font-sans leading-none",
 } as const;
 
-// Keep name descenders inside its alignment box; price digits use cap-to-baseline bounds.
-const textCellClass = "block [text-box-trim:trim-both] [text-box-edge:cap_alphabetic]";
-const nameCellClass = "block [text-box-trim:trim-both] [text-box-edge:cap_text]";
+// Equal nominal sizes plus normalized cap heights keep both fonts equally tall.
+// Center matching cap-to-baseline boxes; let descenders remain visible.
+const textCellClass = "block [font-size-adjust:cap-height_0.7] [text-box-trim:trim-both] [text-box-edge:cap_alphabetic]";
+const nameCellClass = textCellClass;
 
 const priceClassByVariant = {
-  detail: "self-center font-sans text-[1.4375rem] leading-none tabular-nums",
-  featured: "self-center font-sans text-[1.125rem] leading-none tabular-nums",
+  detail: "self-center font-tagline font-light text-ink leading-none tabular-nums",
+  featured: "self-center font-sans font-normal text-muted-foreground leading-none tabular-nums",
 } as const;
 
 function NamePriceDot({
@@ -45,7 +43,7 @@ function NamePriceDot({
     <span
       aria-hidden
       className={cn(
-        "mx-[0.65em] inline-flex h-[0.18em] shrink-0 self-center items-center justify-center leading-none",
+        "text-muted-foreground mx-[0.65em] inline-flex h-[0.18em] shrink-0 self-center items-center justify-center leading-none",
         cellHeight,
         fontSizeClass
       )}
@@ -91,15 +89,15 @@ export function ProductNamePrice({
 
   if (variant === "card") {
     return (
-      <p className={cn(rowClass, "gap-y-1", className)}>
-        <span className={cn(nameCellClass, cardNameClass, nameClassName)}>
+      <p className={cn(rowClass, cardNameFontSizeClass, nameClassName, "gap-y-1", className)}>
+        <span className={cn(nameCellClass, "font-display leading-none tracking-[-0.04em]")}>
           {displayName}
         </span>
         {isUnisex && <>
-          <NamePriceDot fontSizeClass={cardNameFontSizeClass} />
+          <NamePriceDot />
           <span className={cn(textCellClass, cardPriceClass)}>unisex</span>
         </>}
-        <NamePriceDot fontSizeClass={cardNameFontSizeClass} />
+        <NamePriceDot />
         <span className={cn(textCellClass, cardPriceClass)}>
           {cardRange ? (
             <>

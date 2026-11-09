@@ -1,13 +1,14 @@
+import { productDetailHeadingClass } from "@/lib/product-typography";
 import { cn } from "@/lib/utils";
 
 /** Shared vertical rhythm for PDP purchase options (size, color, tag, quantity, CTA). */
-export const pickerSectionGapClass = "gap-8";
+export const pickerSectionGapClass = "gap-[18px]";
 
 export const pickerFieldsetClass =
   "m-0 min-w-0 border-0 p-0";
 
 export const pickerLegendClass =
-  "mb-3 block w-full text-[calc(0.875rem*1.5)] leading-snug text-muted-foreground";
+  cn("mb-[9px] block w-full leading-snug text-muted-foreground", productDetailHeadingClass);
 
 /** Machine-wash icon circle; selected tag chips use the same fill. */
 export const careSurfaceClass = "bg-[#e8e8e8] dark:bg-[#141414]";
@@ -15,7 +16,7 @@ export const careSurfaceHoverClass =
   "hover:bg-[#e8e8e8] dark:hover:bg-[#141414]";
 
 /** All PDP chip groups wrap only when their available width is exhausted. */
-export const pickerChipGroupClass = "flex flex-wrap items-start gap-2";
+export const pickerChipGroupClass = "flex flex-wrap items-start gap-x-2 gap-y-1.5";
 
 /** Tag and size option pills (selected = ink border + care surface). */
 export const pickerChipBase =

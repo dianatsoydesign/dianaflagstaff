@@ -128,7 +128,7 @@ export function SizePicker({
       </legend>
       <div
         ref={chipsRef}
-        className={cn(pickerChipGroupClass, "relative z-10 -m-1.5 flex-nowrap overflow-x-auto p-1.5 pb-3")}
+        className={cn(pickerChipGroupClass, "relative z-10 -m-1.5 flex-nowrap overflow-x-auto p-1.5 pb-[9px]")}
         onFocus={event => {
           const container = event.currentTarget;
           const chip = (event.target as HTMLElement).getBoundingClientRect();
@@ -201,9 +201,9 @@ export function SizePicker({
         ) : null}
       </div>
       {showCustomChip && customSelected ? (
-        <div className="mt-3">
-          <div className="grid grid-cols-2 gap-3">
-            <label className="flex min-w-0 flex-col gap-3 text-sm">
+        <div className="mt-[9px]">
+          <div className="grid grid-cols-2 gap-x-3 gap-y-[9px]">
+            <label className="flex min-w-0 flex-col gap-[9px] text-sm">
               <span className="text-muted-foreground">Width (inches)</span>
               <input
                 type="text"
@@ -222,7 +222,7 @@ export function SizePicker({
                 placeholder="7–10"
               />
             </label>
-            <label className="flex min-w-0 flex-col gap-3 text-sm">
+            <label className="flex min-w-0 flex-col gap-[9px] text-sm">
               <span className="text-muted-foreground">Height (inches)</span>
               <input
                 type="text"
@@ -243,7 +243,7 @@ export function SizePicker({
             </label>
           </div>
           {rangeError && rangeMessage ? (
-            <p id="custom-size-range" className="mt-2 text-sm text-destructive">
+            <p id="custom-size-range" className="mt-1.5 text-sm text-destructive">
               {rangeMessage} Use up to two decimal places.
             </p>
           ) : null}

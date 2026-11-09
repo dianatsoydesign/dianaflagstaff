@@ -175,7 +175,7 @@ export function YarnSwatchPicker({
       <>
       {!allowHolidayFilter && useGroupFilter && (showHolidayChip || groupOptions.length > 0) ? (
         <div
-          className={cn(pickerChipGroupClass, "mb-3 items-center")}
+          className={cn(pickerChipGroupClass, "mb-[9px] items-center")}
           role="group"
           aria-label="Color filters"
         >
@@ -247,7 +247,7 @@ export function YarnSwatchPicker({
       ) : null}
 
       <div
-        className={cn("grid gap-1.5 max-md:grid-flow-col max-md:auto-cols-[56px] max-md:grid-cols-none max-md:overflow-x-auto max-md:overscroll-x-contain max-md:p-1 max-md:-m-1 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden", cols)}
+        className={cn("grid gap-x-1.5 gap-y-[4.5px] max-md:grid-flow-col max-md:auto-cols-[56px] max-md:grid-cols-none max-md:overflow-x-auto max-md:overscroll-x-contain max-md:p-1 max-md:-m-1 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden", cols)}
         onFocus={event => {
           if (window.innerWidth >= 768) return;
           const rail = event.currentTarget;

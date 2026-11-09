@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { DimensionsCircle } from "@/components/dimensions-icon";
 import { MachineWashCircle } from "@/components/machine-wash-icon";
 import { Badge } from "@/components/ui/badge";
+import { productDetailHeadingClass } from "@/lib/product-typography";
 import { ProductNamePrice } from "@/components/product-name-price";
 import {
   getSizeUnitPrice,
@@ -205,7 +206,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   return (
     <div className="site-gutter bg-background pb-20 pt-8 max-md:pb-[calc(7rem+env(safe-area-inset-bottom))]">
       <div className="site-width">
-        <div ref={configurationRef} className="grid grid-cols-1 items-start gap-y-6 gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px] max-md:[&_button]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_input]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_button]:scroll-mb-28 max-md:[&_input]:scroll-mb-28">
+        <div ref={configurationRef} className="grid grid-cols-1 items-start gap-y-[13.5px] gap-x-[11px] md:grid-cols-2 md:gap-x-[5.5px] md:gap-y-[11px] max-md:[&_button]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_input]:scroll-mt-[var(--preview-clearance,16px)] max-md:[&_button]:scroll-mb-28 max-md:[&_input]:scroll-mb-28">
           <div
             ref={galleryContainerRef}
             className="max-md:contents md:col-start-1 md:row-start-1 min-w-0 md:sticky md:top-[var(--desktop-gallery-top,100px)] md:self-start"
@@ -222,7 +223,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
           />
           </div>
 
-          <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-8 md:self-start md:py-2 md:pl-[2vw] lg:pl-[3vw]">
+          <div className="contents md:col-start-2 md:row-start-1 md:flex md:flex-col md:gap-[18px] md:self-start md:py-2 md:pl-[2vw] lg:pl-[3vw]">
             <div className="order-1 md:order-none">
               <div className="flex items-start gap-3">
               <ProductNamePrice
@@ -302,12 +303,12 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
 
         {recommendations.length > 0 && (
           <section
-            className="mt-20 border-t border-border pt-16"
+            className="mt-[45px] border-t border-border pt-9"
             aria-labelledby="related-heading"
           >
             <h2
               id="related-heading"
-              className="font-display mb-10 text-[clamp(1.75rem,2.3vw,2.3rem)] tracking-[-0.04em] text-ink"
+              className={`mb-[30px] tracking-[-0.04em] ${productDetailHeadingClass}`}
             >
               You might also like
             </h2>

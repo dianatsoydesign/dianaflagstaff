@@ -26,7 +26,7 @@ export function QuantityPicker({
   return (
     <fieldset className={cn(pickerFieldsetClass, className)}>
       <legend className={pickerLegendClass}>{label}:</legend>
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-[9px]">
         <QuantityStepper
           className="shrink-0"
           value={value}
