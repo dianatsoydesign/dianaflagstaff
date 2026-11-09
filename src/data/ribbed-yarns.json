@@ -126,7 +126,7 @@
       ],
       "stockStatus": "in_stock",
       "pickupMinimum": 1,
-      "colorGroup": "reds",
+      "colorGroup": "browns",
       "multicolor": false,
       "sortRank": 78.61244452842902,
       "supplierImages": [
@@ -2057,8 +2057,8 @@
       ],
       "stockStatus": "in_stock",
       "pickupMinimum": 1,
-      "colorGroup": "browns",
-      "multicolor": false,
+      "colorGroup": "multis",
+      "multicolor": true,
       "sortRank": 36.84250279187745,
       "supplierImages": [
         "https://imgs.michaels.com/88e591d8-f487-4d72-9df3-f1813540f4c8.jpg",

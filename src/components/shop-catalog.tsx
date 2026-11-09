@@ -10,6 +10,8 @@ import { ProductCard } from "@/components/product-card";
 /** Set to true when pattern-request makes are ready to show on the shop page. */
 const showRequestAMake = false;
 
+const shopNameClassName = "text-[length:calc(0.006156*min(100vh,900px)_+_0.855rem)] md:text-[length:min(calc(0.6156vw_+_0.855rem),24.7608px)]";
+
 const shopProducts = sortShopProducts(listedProducts);
 
 export function ShopCatalog() {
@@ -25,12 +27,12 @@ export function ShopCatalog() {
                 index={i}
                 animate
                 dimInDark
-                nameClassName="text-[length:calc(0.006156*min(100vh,900px)_+_0.855rem)] md:text-[length:min(calc(0.6156vw_+_0.855rem),24.7608px)]"
+                nameClassName={shopNameClassName}
                 showMinimumPurchase
               />
             </li>
           ))}
-          <li><CustomRequestTile /></li>
+          <li><CustomRequestTile nameClassName={shopNameClassName} /></li>
         </ul>
       </section>
 

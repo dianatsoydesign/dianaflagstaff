@@ -121,6 +121,10 @@ export function compareCharismaYarnCatalogOrder(
   const gb = charismaColorGroupSortIndex(b);
   if (ga !== gb) return ga - gb;
   if (isCharismaMulticolorYarn(a) && isCharismaMulticolorYarn(b)) {
+    // Reviewed palette groups keep visually similar multicolors together.
+    const palettes = ribbedColorFamilies as Record<string, { multiPaletteOrder?: number }>;
+    const palette = (palettes[a.id]?.multiPaletteOrder ?? 100) - (palettes[b.id]?.multiPaletteOrder ?? 100);
+    if (palette !== 0) return palette;
     const lightness = compareYarnLightness(a, b);
     if (lightness !== 0) return lightness;
   }

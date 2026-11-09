@@ -14,7 +14,7 @@ type Field = "name" | "email" | "idea" | "photos";
 const initialValues = { name: "", email: "", idea: "" };
 const photoLimit = 2 * 1024 * 1024;
 
-export function CustomRequestTile() {
+export function CustomRequestTile({ nameClassName }: { nameClassName?: string }) {
   const [values, setValues] = useState(initialValues);
   const [photos, setPhotos] = useState<File[]>([]);
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
@@ -53,7 +53,7 @@ export function CustomRequestTile() {
         <div className="@container relative flex aspect-square w-full flex-col justify-center overflow-hidden rounded-[8px] bg-wash dark:bg-[#292929] dark:fine-pointer:group-hover:bg-[#3b3b3b] dark:group-focus-visible:bg-[#3b3b3b] p-7 text-foreground ring-1 ring-inset ring-transparent transition-colors duration-200 fine-pointer:group-hover:bg-[#eeeeee] fine-pointer:group-hover:ring-foreground group-focus-visible:bg-[#eeeeee] group-focus-visible:ring-foreground motion-reduce:transition-none sm:p-9">
           <ShopRequestCat />
         </div>
-        <ProductNamePrice name="Custom idea" price={0} priceLabel="TBD price" />
+        <ProductNamePrice nameClassName={nameClassName} name="Custom idea" price={0} priceLabel="TBD price" />
       </SheetTrigger>
       <SheetContent side="right" overlayClassName="bg-black/45 supports-backdrop-filter:backdrop-blur-[2px]" className="flex !h-dvh !w-full !max-w-none flex-col gap-0 overflow-hidden p-0 motion-reduce:transition-none sm:!w-xl sm:!max-w-xl lg:!w-2xl lg:!max-w-2xl [&>[data-slot=sheet-close]]:size-11">
         <SheetHeader className="shrink-0 border-b border-border px-5 py-5 pr-16">

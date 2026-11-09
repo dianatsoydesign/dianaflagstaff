@@ -8,7 +8,7 @@
     "multicolor": false
   },
   "caron-simply-soft-chocolate": {
-    "colorGroup": "reds",
+    "colorGroup": "browns",
     "multicolor": false
   },
   "caron-simply-soft-plum-perfect": {
@@ -194,87 +194,108 @@
   },
   "caron-groovy-cloud-cakes-raspberry-rollup": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 4
   },
   "caron-groovy-cloud-cakes-maple-glaze": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 1
   },
   "caron-groovy-cloud-cakes-ice-pop": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 9
   },
   "caron-groovy-cloud-cakes-candy-bowl": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 6
   },
   "caron-groovy-cloud-cakes-icy-lime": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 8
   },
   "caron-cloud-cakes-lagoon": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 11
   },
   "caron-cloud-cakes-sunflare": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 2
   },
   "caron-cloud-cakes-sandbar": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 0
   },
   "caron-cloud-cakes-lava": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 4
   },
   "caron-cloud-cakes-kelp": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 11
   },
   "caron-cinnamon-swirl-cakes-oyster": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 1
   },
   "caron-cinnamon-swirl-cakes-marble": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 1
   },
   "caron-cinnamon-swirl-cakes-cookie-cream-swirl": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 0
   },
   "caron-cinnamon-swirl-cakes-spearmint-swirl": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 7
   },
   "caron-cinnamon-swirl-cakes-twilight-surf": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 10
   },
   "caron-cinnamon-swirl-cakes-latte": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 0
   },
   "caron-cinnamon-swirl-cakes-oceana": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 11
   },
   "caron-cinnamon-swirl-cakes-berry-ripple": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 4
   },
   "caron-cinnamon-swirl-cakes-snow-cone": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 9
   },
   "caron-cinnamon-swirl-cakes-bay": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 8
   },
   "caron-cinnamon-swirl-cakes-heat-wave": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 2
   },
   "caron-cinnamon-swirl-cakes-cookie-mint": {
     "colorGroup": "multis",
@@ -282,35 +303,43 @@
   },
   "caron-cinnamon-swirl-cakes-opal": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 7
   },
   "caron-cinnamon-swirl-cakes-lollipop": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 6
   },
   "caron-cinnamon-swirl-cakes-mai-tai": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 3
   },
   "caron-cinnamon-swirl-cakes-beach-towel": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 3
   },
   "caron-cinnamon-swirl-cakes-chocolate-swirl": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 0
   },
   "caron-cinnamon-swirl-cakes-tropical-breeze": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 3
   },
   "caron-cinnamon-swirl-cakes-green-flash": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 8
   },
   "caron-sweetie-cakes-aqua-splash": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 7
   },
   "caron-sweetie-cakes-whipped-cream": {
     "colorGroup": "neutrals",
@@ -318,11 +347,13 @@
   },
   "caron-sweetie-cakes-waterpark": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 10
   },
   "caron-sweetie-cakes-jelly-bean": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 10
   },
   "caron-sweetie-cakes-blue-sky": {
     "colorGroup": "blues",
@@ -330,15 +361,18 @@
   },
   "caron-sweetie-cakes-confetti": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 10
   },
   "caron-sweetie-cakes-sweet-tart": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 3
   },
   "caron-sweetie-cakes-taffy": {
-    "colorGroup": "browns",
-    "multicolor": false
+    "colorGroup": "multis",
+    "multicolor": true,
+    "multiPaletteOrder": 1
   },
   "caron-sweetie-cakes-lilypad": {
     "colorGroup": "greens",
@@ -350,23 +384,28 @@
   },
   "caron-baby-cakes-pool-party": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 8
   },
   "caron-baby-cakes-petals": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 5
   },
   "caron-baby-cakes-retro": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 6
   },
   "caron-baby-cakes-sky-gazing": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 9
   },
   "caron-baby-cakes-candy-hearts": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 6
   },
   "big-twist-living-regal-blue": {
     "colorGroup": "blues",
@@ -374,7 +413,8 @@
   },
   "big-twist-living-charcoal-variegated": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 0
   },
   "big-twist-living-spa": {
     "colorGroup": "blues",
@@ -394,7 +434,8 @@
   },
   "big-twist-living-serenity": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 12
   },
   "big-twist-living-soft-peach": {
     "colorGroup": "pinks",
@@ -410,7 +451,8 @@
   },
   "big-twist-living-inclusivity": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 13
   },
   "big-twist-living-really-red": {
     "colorGroup": "reds",
@@ -430,7 +472,8 @@
   },
   "big-twist-living-confidence": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 12
   },
   "big-twist-living-mustard": {
     "colorGroup": "yellows",
@@ -450,15 +493,18 @@
   },
   "big-twist-living-community": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 13
   },
   "big-twist-living-spirit": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 2
   },
   "big-twist-living-life": {
     "colorGroup": "multis",
-    "multicolor": true
+    "multicolor": true,
+    "multiPaletteOrder": 5
   },
   "big-twist-living-light-gray": {
     "colorGroup": "neutrals",
@@ -676,7 +722,8 @@
       "top": 440,
       "width": 140,
       "height": 140
-    }
+    },
+    "multiPaletteOrder": 11
   },
   "yarn-bee-soft-sleek-purple-gray-multi": {
     "colorGroup": "multis",
@@ -686,7 +733,8 @@
       "top": 440,
       "width": 140,
       "height": 140
-    }
+    },
+    "multiPaletteOrder": 13
   },
   "yarn-bee-soft-sleek-berry-mix": {
     "colorGroup": "multis",
@@ -696,7 +744,8 @@
       "top": 440,
       "width": 140,
       "height": 140
-    }
+    },
+    "multiPaletteOrder": 12
   },
   "yarn-bee-soft-sleek-mustard": {
     "colorGroup": "yellows",
@@ -739,7 +788,7 @@
     }
   },
   "yarn-bee-soft-sleek-teal-green": {
-    "colorGroup": "greens",
+    "colorGroup": "blues",
     "multicolor": false,
     "crop": {
       "left": 100,
@@ -886,7 +935,8 @@
       "top": 440,
       "width": 140,
       "height": 140
-    }
+    },
+    "tweed": true
   },
   "yarn-bee-soft-sleek-purple-haze": {
     "colorGroup": "purples",
@@ -966,7 +1016,8 @@
       "top": 440,
       "width": 140,
       "height": 140
-    }
+    },
+    "multiPaletteOrder": 2
   },
   "yarn-bee-soft-sleek-turquoise": {
     "colorGroup": "blues",

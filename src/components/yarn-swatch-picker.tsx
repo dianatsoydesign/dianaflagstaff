@@ -1,5 +1,7 @@
 "use client";
 
+import ribbedColorFamilies from "@/data/ribbed-yarn-color-families.json";
+import { yarnLineName } from "@/data/yarns";
 import { yarnColorLabel } from "@/lib/yarn-color-label";
 import Image from "next/image";
 import { useState } from "react";
@@ -12,6 +14,7 @@ import {
 } from "@/data/bobbiny-color-order";
 import {
   isCharismaColorCatalog,
+  charismaColorGroupId,
   charismaGroupsForYarns,
 } from "@/data/charisma-color-groups";
 import {
@@ -54,10 +57,16 @@ function colorThumbSrc(yarn: {
   return yarn.detailSwatchSrc ?? yarn.swatchSrc;
 }
 
-type CatalogGroupId = BobbinyColorGroupId | CharismaPickerGroupId | BernatColorGroupId;
+type CatalogGroupId = BobbinyColorGroupId | CharismaPickerGroupId | BernatColorGroupId | "tweed" | "solid";
+
+function isTweedYarn(yarn: YarnColor) {
+  const reviewed = ribbedColorFamilies as Record<string, { tweed?: boolean }>;
+  return reviewed[yarn.id]?.tweed === true || /^(?:Tweed I Love This Yarn|Charisma.*Tweed)/i.test(yarnLineName(yarn) ?? "");
+}
 
 type Props = {
   allowHolidayFilter?: boolean;
+  showSolidFilter?: boolean;
   keyboardNavigation?: boolean;
   labelYarns?: YarnColor[];
   yarns: (YarnColor & { liveStatus?: StockStatus })[];
@@ -67,20 +76,19 @@ type Props = {
   onPreview?: (yarnId: string | null) => void;
   legend?: string;
   priceAddUsdForYarn?: (yarn: YarnColor) => number;
-  unselectedPriceNote?: string;
 };
 
 export function YarnSwatchPicker({
   yarns,
   labelYarns = yarns,
   allowHolidayFilter = false,
+  showSolidFilter = false,
   keyboardNavigation = true,
   value,
   onChange,
   onPreview,
   legend = "Yarn color",
   priceAddUsdForYarn,
-  unselectedPriceNote,
 }: Props) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
@@ -89,14 +97,16 @@ export function YarnSwatchPicker({
   const useBobbinyGroups =
     !useCharismaGroups && yarns.length > 20 && isBobbinyColorCatalog(yarns);
   const useBernatGroups = yarns.length > 0 && yarns.every((y) => y.id.startsWith("bernat-blanket-big-"));
-  const useGroupFilter = useCharismaGroups || useBobbinyGroups || useBernatGroups;
+  const hasTweed = yarns.some(isTweedYarn);
+  const useGroupFilter = useCharismaGroups || useBobbinyGroups || useBernatGroups || hasTweed || showSolidFilter;
 
   // Keep family sorting, but expose only the approved special filters.
-  const groupOptions = useCharismaGroups
+  const multiOptions = useCharismaGroups
     ? charismaGroupsForYarns(yarns).filter((group) => group.id === "multis")
     : useBernatGroups
       ? bernatGroupsForYarns(yarns).filter((group) => group.id === "multis")
       : [];
+  const groupOptions = [...(showSolidFilter ? [{ id: "solid" as const, label: "Solid" }] : []), ...(hasTweed ? [{ id: "tweed" as const, label: "Tweed" }] : []), ...multiOptions];
   const [groupFilter, setGroupFilter] = useState<CatalogGroupId | null>(allowHolidayFilter ? "holiday" : null);
 
   const showHolidayChip = allowHolidayFilter && useCharismaGroups && charismaHasHolidayYarns(yarns);
@@ -110,6 +120,10 @@ export function YarnSwatchPicker({
 
   const displayedYarns = allowHolidayFilter
     ? filterCharismaYarnsForPicker(yarns, "holiday")
+    : groupFilter === "solid"
+    ? filterCharismaYarnsForPicker(yarns, null).filter(yarn => !isTweedYarn(yarn) && !/\btweed\b/i.test(yarn.name) && charismaColorGroupId(yarn) !== "multis")
+    : groupFilter === "tweed"
+    ? yarns.filter(isTweedYarn)
     : useGroupFilter
     ? useCharismaGroups
       ? filterCharismaYarnsForPicker(yarns, groupFilter as CharismaPickerGroupId | null)
@@ -153,7 +167,7 @@ export function YarnSwatchPicker({
             </span>
           </>
         ) : (
-          <>Color: <span className="font-medium text-foreground">Choose a color</span>{unselectedPriceNote ? ` · ${unselectedPriceNote}` : ""}</>
+          <>Color: <span className="font-medium text-foreground">Choose a color</span></>
         )}
       </legend>
 

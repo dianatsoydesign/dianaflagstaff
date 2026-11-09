@@ -77,6 +77,9 @@ export function ProductNamePrice({
   nameClassName,
   variant = "card",
 }: Props) {
+  const isUnisex = /\s*\(unisex\)\s*$/i.test(name);
+  const displayName = isUnisex ? name.replace(/\s*\(unisex\)\s*$/i, "") : name;
+
   const cardRange = !priceTbd && priceLabel?.match(/^(\$[\d,.]+)\u2013(\$[\d,.]+)$/);
 
   const quantityPrice = !priceTbd && priceLabel?.match(/^(\d+) for (\$[\d,.]+)$/);
@@ -90,8 +93,12 @@ export function ProductNamePrice({
     return (
       <p className={cn(rowClass, "gap-y-1", className)}>
         <span className={cn(nameCellClass, cardNameClass, nameClassName)}>
-          {name}
+          {displayName}
         </span>
+        {isUnisex && <>
+          <NamePriceDot fontSizeClass={cardNameFontSizeClass} />
+          <span className={cn(textCellClass, cardPriceClass)}>unisex</span>
+        </>}
         <NamePriceDot fontSizeClass={cardNameFontSizeClass} />
         <span className={cn(textCellClass, cardPriceClass)}>
           {cardRange ? (
@@ -113,7 +120,11 @@ export function ProductNamePrice({
 
   const content = (
     <>
-      <span className={cn(nameCellClass, "leading-none", nameTypeByVariant[variant])}>{name}</span>
+      <span className={cn(nameCellClass, "leading-none", nameTypeByVariant[variant])}>{displayName}</span>
+      {isUnisex && <>
+        <NamePriceDot />
+        <span className={cn(cellClass, priceClassByVariant[variant])}>unisex</span>
+      </>}
       <NamePriceDot />
       <span className={cn(cellClass, priceClassByVariant[variant])}>
         {priceTbd ? "TBD" : (quantityPriceContent ?? priceLabel ?? formatPrice(price))}
