@@ -1,3 +1,4 @@
+import { availableForRibbed, isRibbedProduct, RIBBED_SKEINS_PER_ITEM } from "@/lib/ribbed-inventory.mjs";
 import { personalizationError, isMulticolorStocking, stockingAddOnPrice } from "@/lib/stocking-personalization.mjs";
 import { PRODUCT_QUANTITY_LIMIT } from "@/lib/cart-quantity-limit.mjs";
 import { hasBulkYarnSource } from "@/lib/bulk-yarn-availability.mjs";
@@ -192,13 +193,17 @@ export async function POST(request: Request) {
       }
     }
 
-    const charismaLines = lines.filter(line => line.productId === "hats" || line.productId === "christmas-stockings");
+    const charismaLines = lines.filter(line => line.productId === "hats" || line.productId === "christmas-stockings" || isRibbedProduct(line.productId));
     if (charismaLines.length) {
       const snapshot = await readCharismaFlagstaffStock();
       const requested = new Map<string, number>();
       for (const line of charismaLines) {
+        const ribbed = isRibbedProduct(line.productId);
+        const selectedYarn = getProduct(line.productId)?.yarns.find(yarn => yarn.id === line.yarnId);
+        // Hobby Lobby uses catalog availability by Diana's request, without supplier inventory checks.
+        if (ribbed && selectedYarn && (!selectedYarn.supplierSku || selectedYarn.supplierSku.startsWith("hobbylobby:")) && selectedYarn.stockStatus === "in_stock") continue;
         const minimum = line.productId === "hats" ? 2 : 3;
-        const colors = charismaRecipe(line.yarnId);
+        const colors = ribbed ? (selectedYarn ? [line.yarnId] : []) : charismaRecipe(line.yarnId);
         if (!colors.length || (line.productId === "hats" && line.yarnId === "stockings-multi") || !Number.isSafeInteger(line.quantity)) {
           return NextResponse.json({ error: "Please choose an available yarn color." }, { status: 409 });
         }
@@ -206,10 +211,10 @@ export async function POST(request: Request) {
           if (hasBulkYarnSource(line.productId, color)) continue;
           const yarn = getProduct(line.productId)?.yarns.find(yarn => yarn.id === color);
           const sku = yarn?.supplierSku?.split(":")[1];
-          if (!sku || !(line.productId === "hats" ? availableForCharismaHat(snapshot, sku) : availableForCharisma(snapshot, sku, minimum))) {
+          if (!sku || !(ribbed ? availableForRibbed(snapshot, sku) : line.productId === "hats" ? availableForCharismaHat(snapshot, sku) : availableForCharisma(snapshot, sku, minimum))) {
             return NextResponse.json({ error: "That yarn is no longer available for this item. Please choose another color." }, { status: 409 });
           }
-          requested.set(sku, (requested.get(sku) ?? 0) + line.quantity * (line.productId === "hats" ? minimumForHatSku(sku) : minimum));
+          requested.set(sku, (requested.get(sku) ?? 0) + line.quantity * (ribbed ? RIBBED_SKEINS_PER_ITEM : line.productId === "hats" ? minimumForHatSku(sku) : minimum));
         }
       }
       for (const [sku, needed] of requested) {

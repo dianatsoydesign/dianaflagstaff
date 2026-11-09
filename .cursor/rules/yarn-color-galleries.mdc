@@ -1,0 +1,18 @@
+---
+description: Import every reviewed yarn-only supplier photo for each color, never finished products
+alwaysApply: true
+---
+
+# Yarn color galleries
+
+- Apply to every current and future product, yarn catalog, supplier importer, and PDP.
+- Selecting a yarn swatch must show every available reviewed yarn-only supplier photo for that exact color in the shared product gallery. Keep skeins, cakes, cones, loose yarn, texture details, and material swatch samples.
+- Never import or show supplier finished-item photos, modeled garments, blankets, bags, baskets, macrame decor, or project-inspiration photos in a color gallery. A matching color does not make a finished-product photo eligible.
+- Diana's own product photos and videos are separate and must be preserved unchanged. This rule filters supplier color-gallery images only.
+- Apply `src/lib/yarn-gallery-image-policy.mjs` before supplier-image imports and at the shared gallery boundary. Unknown supplier photos must be visually reviewed before importing; known rejected photos stay rejected. Persist decisions in `src/data/yarn-gallery-image-review.json`.
+- Import the complete eligible yarn-only image list in supplier order. Never keep only `media[0]`, `items[0]`, or a one-photo slice. Remove exact duplicate image URLs, not distinct views.
+- Michaels: use every image entry in the selected SKU's media list. Hobby Lobby: resolve the variant's Amplience image-set JSON and import every image item.
+- Retain original supplier files, cache local WebPs, and save the source URL manifest beside each catalog record. Crop only the separate picker swatch.
+- Keep product photos and videos first, then append the selected color's complete supplier gallery. Reuse shared gallery, zoom, keyboard, and mobile controls.
+- Verify the eligible reviewed source count equals gallery count for every color. Check representative multi-photo selections on every affected PDP before finishing.
+- This applies independently of inventory: Hobby Lobby catalog-only colors still receive complete galleries and never enter Michaels inventory jobs.

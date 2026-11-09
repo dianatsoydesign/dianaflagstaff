@@ -3,9 +3,14 @@ import { getAllYarns, yarnLineName } from "@/data/yarns";
 import { sentenceCaseColorName } from "@/lib/color-name";
 
 /** Distinguish duplicate supplier color names without changing canonical names or IDs. */
-export function yarnColorLabel(yarn: YarnColor, catalog: YarnColor[]): string {
+export function yarnColorLabel(
+  yarn: YarnColor,
+  catalog: YarnColor[],
+  scope: "library" | "catalog" = "library",
+): string {
   const color = sentenceCaseColorName(yarn.name);
-  const allYarns = [...getAllYarns(), ...catalog];
+  // Gallery tags only need to distinguish choices available on the current PDP.
+  const allYarns = scope === "catalog" ? catalog : [...getAllYarns(), ...catalog];
   const duplicate = allYarns.some(other => other.id !== yarn.id && other.name.trim().toLowerCase() === yarn.name.trim().toLowerCase());
   if (!duplicate) return color;
   const line = yarnLineName(yarn)?.replace(/[®™]/g, "").replace(/\s+Yarn.*$/i, "").replace(/\s+by Loops & Threads.*$/i, "");

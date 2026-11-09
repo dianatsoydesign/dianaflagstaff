@@ -3,6 +3,7 @@ import { HAT_POM_POM_OPTIONS } from "@/lib/hat-pom-pom";
 import { BOBBINY_PREMIUM_5MM_YARNS } from "@/data/bobbiny-premium-5mm";
 import { BERNAT_BLANKET_BIG_YARNS } from "@/data/bernat-blanket-big";
 import { CHARISMA_YARNS } from "@/data/charisma";
+import { RIBBED_YARNS, RIBBED_COLORS_APPROVED } from "@/data/ribbed-yarns";
 import { HAT_YARNS } from "@/data/hat-yarns";
 import type { GalleryMatteInset } from "@/lib/gallery-matte-inset";
 
@@ -161,7 +162,7 @@ export const products: Product[] = [
     name: "Ribbed headband",
     price: 30,
     category: "Hats",
-    hideColorPicker: true,
+    hideColorPicker: !RIBBED_COLORS_APPROVED,
     imageSrc: "/products/ribbed headband/ribbed-headband-1-v4.jpg",
     imageAlt: "Burgundy ribbed crochet headband with a twisted front and Handmade by Diana label, shown in the 6-inch width",
     imageShownColor: "Burgundy",
@@ -176,8 +177,8 @@ export const products: Product[] = [
     ],
     defaultSizeId: "width-6",
     defaultYarnId: "red-heart-super-saver-burgundy",
-    // Pictured yarn only; Diana will add color choices later.
-    yarns: [{
+    // Keep the pictured color until the supplier catalog is approved.
+    yarns: RIBBED_COLORS_APPROVED ? RIBBED_YARNS : [{
       id: "red-heart-super-saver-burgundy",
       name: "Burgundy",
       swatchSrc: "/products/ribbed headband/ribbed-headband-3-v2.jpg",
@@ -189,12 +190,13 @@ export const products: Product[] = [
     name: "Ribbed beanie (unisex)",
     price: 30,
     category: "Hats",
-    hideColorPicker: true,
+    hideColorPicker: !RIBBED_COLORS_APPROVED,
     imageSrc: "/products/ribbed-hat/ribbed hat 1-v1.png",
     imageAlt: "Man wearing a cream tweed ribbed beanie in profile beside a pond at sunset",
     imageShownColor: "Ivory Tweed",
     galleryImages: [
-      { src: "/products/ribbed-hat/ribbed hat 5-v3.png", alt: "Cream tweed ribbed beanie laid flat with its folded cuff", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 5-v4.png", alt: "Cream tweed ribbed beanie laid flat with its folded cuff", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed beanie 11-v3.png", alt: "Ivory Tweed ribbed beanie laid flat with its cuff unfolded and Handmade by Diana label", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 3-v1.png", alt: "Front view of a man wearing a cream tweed ribbed beanie with a pond and trees behind him", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 2-v1.png", alt: "Back view of a cream tweed ribbed beanie showing the gathered crown beside a pond", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 7-v3.png", alt: "Close-up of the folded cream tweed hat cuff and ribbed stitches", shownColor: "Ivory Tweed" },
@@ -209,13 +211,9 @@ export const products: Product[] = [
       { id: "adult", label: "Adult", price: 30 },
     ],
     defaultSizeId: "adult",
-    // Fixed pictured yarn; no color picker until Diana requests additional colors.
-    yarns: [{
-      id: "i-love-this-yarn-ivory-tweed",
-      name: "Ivory Tweed",
-      swatchSrc: "/products/ribbed-hat/ribbed hat 1-v1.png",
-      stockStatus: "in_stock",
-    }],
+    defaultYarnId: "i-love-this-yarn-ivory-tweed",
+    // The supplier catalog retains the pictured Ivory Tweed under its existing ID.
+    yarns: RIBBED_YARNS,
   },
   {
     id: "koozie",
@@ -225,11 +223,11 @@ export const products: Product[] = [
     hideColorPicker: true,
     imageSrc: "/products/koozie/koozie 2-v1.jpg",
     imageAlt: "White crochet koozie lying flat on wood, showing the green tree and wooden bead",
-    imageShownColor: "White and green",
+    imageShownStyle: "Short, with bottom",
     galleryImages: [
-      { src: "/products/koozie/koozie 4-v1.jpg", alt: "Hand holding a white and green tree koozie with its Handmade by Diana label", shownColor: "White and green" },
-      { src: "/products/koozie/koozie 1-v1.jpg", alt: "White crochet can koozie with a green tree and wooden bead on a wooden table", shownColor: "White and green" },
-      { src: "/products/koozie/koozie 3-v1.jpg", alt: "Close-up of the green yarn tree and white crochet stitches on a wooden table", shownColor: "White and green" },
+      { src: "/products/koozie/koozie 4-v1.jpg", alt: "Hand holding a white and green tree koozie with its Handmade by Diana label", shownStyle: "Short, with bottom" },
+      { src: "/products/koozie/koozie 1-v1.jpg", alt: "White crochet can koozie with a green tree and wooden bead on a wooden table", shownStyle: "Short, with bottom" },
+      { src: "/products/koozie/koozie 3-v1.jpg", alt: "Close-up of the green yarn tree and white crochet stitches on a wooden table", shownStyle: "Short, with bottom" },
     ],
     sizes: [
       { id: "short-bottomless", label: "Short, bottomless", price: 10 },

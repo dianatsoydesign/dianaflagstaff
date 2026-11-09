@@ -1,5 +1,7 @@
 "use client";
 
+import { filterReviewedYarnGalleryImages } from "@/lib/yarn-gallery-image-policy.mjs";
+
 import { useEffect, useRef, useState } from "react";
 import { DimensionsCircle } from "@/components/dimensions-icon";
 import { MachineWashCircle } from "@/components/machine-wash-icon";
@@ -122,8 +124,10 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
     { src: product.imageSrc, alt: product.imageAlt, shownColor: product.imageShownColor, shownStyle: product.imageShownStyle },
     ...(product.galleryImages ?? []),
   ].map(image => {
-    const yarn = product.yarns.find(yarn => yarn.name.toLowerCase() === image.shownColor?.toLowerCase());
-    return yarn ? { ...image, shownColorLabel: yarnColorLabel(yarn, product.yarns) } : image;
+    const matchesShownColor = (yarn: YarnColor) => yarn.name.toLowerCase() === image.shownColor?.toLowerCase();
+    const picturedYarn = product.yarns.find(yarn => yarn.id === product.defaultYarnId && matchesShownColor(yarn));
+    const yarn = picturedYarn ?? product.yarns.find(matchesShownColor);
+    return yarn ? { ...image, shownColorLabel: yarnColorLabel(yarn, product.yarns, "catalog") } : image;
   });
 
   // Supplier yarns get color photos; Diana's own colorways (e.g. "Multi") are the product photos.
@@ -133,8 +137,10 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
     !!yarn.supplierSku &&
     (usesLiveSupplier(product.yarns) || !!yarn.colorImages?.length);
 
-  const colorSrcs = (yarn: YarnColor) =>
-    yarn.colorImages?.length ? yarn.colorImages : [yarn.detailSwatchSrc ?? yarn.swatchSrc];
+  const colorSrcs = (yarn: YarnColor) => {
+    const photos = filterReviewedYarnGalleryImages(yarn.colorImages ?? []);
+    return photos.length ? photos : [yarn.detailSwatchSrc ?? yarn.swatchSrc];
+  };
   const productIndexOf = (src: string) => productImages.findIndex((img) => img.src === src);
 
   // Color photos already in the product gallery are jumped to, not appended again.
@@ -144,7 +150,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
   const yarnImages = yarnSrcs.map((src, i) => ({
     src,
     shownColor: selectedYarn!.name,
-    shownColorLabel: yarnColorLabel(selectedYarn!, product.yarns),
+    shownColorLabel: yarnColorLabel(selectedYarn!, product.yarns, "catalog"),
     alt: `${selectedYarn!.name}, ${yarnLineName(selectedYarn!) ?? "yarn"}${i ? ` (${i + 1})` : ""}`,
   }));
   const photos = productImages.filter(image => image.type !== "video");
@@ -165,7 +171,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
     image.type !== "video" && image.shownColor?.toLowerCase() === previewYarn.name.toLowerCase()
   ) : null;
   const preview = product.id === "christmas-stockings" && previewProductPhoto ? previewProductPhoto : previewSrc
-    ? { src: previewSrc, shownColor: previewYarn!.name, shownColorLabel: yarnColorLabel(previewYarn!, product.yarns), alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
+    ? { src: previewSrc, shownColor: previewYarn!.name, shownColorLabel: yarnColorLabel(previewYarn!, product.yarns, "catalog"), alt: `${previewYarn!.name}, ${yarnLineName(previewYarn!) ?? "yarn"}` }
     : previewProductPhoto;
 
   const materialYarn = selectedYarn ?? product.yarns[0];

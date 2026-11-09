@@ -1,5 +1,6 @@
 import { compareYarnLightness } from "@/lib/yarn-color-order";
 import type { YarnColor } from "@/data/products";
+import ribbedColorFamilies from "@/data/ribbed-yarn-color-families.json";
 import charismaGroupOverrides from "@/data/charisma-group-overrides.json";
 
 /** Rainbow from green, then browns, neutrals (grey/black/white). Multicolor yarns follow the solid families. */
@@ -33,7 +34,7 @@ export function isCharismaMulticolorYarn(yarn: {
   multicolor?: boolean;
   sortRank?: number;
 }): boolean {
-  if (yarn.id && !/^(charisma-|bernat-fluffee-|grande-ombre-|big-twist-winter-super-bulky-|lion-brand-hometown-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-|caron-slice-of-anniversary-cakes-|caron-chunky-cakes-)/.test(yarn.id)) return false;
+  if (yarn.id && !/^(big-twist-living-|i-love-this-yarn-|yarn-bee-soft-sleek-|caron-simply-soft-|bernat-softee-baby-|red-heart-super-saver-|caron-groovy-cloud-cakes-|caron-cloud-cakes-|caron-cinnamon-swirl-cakes-|caron-sweetie-cakes-|caron-baby-cakes-|charisma-|bernat-fluffee-|grande-ombre-|big-twist-winter-super-bulky-|lion-brand-hometown-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-|caron-slice-of-anniversary-cakes-|caron-chunky-cakes-)/.test(yarn.id)) return false;
   return Boolean(yarn.multicolor || (yarn.sortRank ?? 0) >= 2000);
 }
 
@@ -62,7 +63,7 @@ export function inferCharismaColorGroupId(yarn: {
 export function charismaColorGroupId(
   yarn: Pick<YarnColor, "id" | "colorGroup" | "sortRank" | "multicolor">
 ): CharismaColorGroupId | null {
-  if (!/^(charisma-|bernat-fluffee-|grande-ombre-|big-twist-winter-super-bulky-|lion-brand-hometown-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-|caron-slice-of-anniversary-cakes-|caron-chunky-cakes-)/.test(yarn.id)) return null;
+  if (!/^(big-twist-living-|i-love-this-yarn-|yarn-bee-soft-sleek-|caron-simply-soft-|bernat-softee-baby-|red-heart-super-saver-|caron-groovy-cloud-cakes-|caron-cloud-cakes-|caron-cinnamon-swirl-cakes-|caron-sweetie-cakes-|caron-baby-cakes-|charisma-|bernat-fluffee-|grande-ombre-|big-twist-winter-super-bulky-|lion-brand-hometown-|big-twist-winter-bulky-stripes-|caron-birthday-cupcakes-|caron-slice-of-anniversary-cakes-|caron-chunky-cakes-)/.test(yarn.id)) return null;
   if (isCharismaMulticolorYarn(yarn)) return "multis";
   const forced = charismaGroupOverrides[
     yarn.id as keyof typeof charismaGroupOverrides
@@ -125,7 +126,14 @@ export function compareCharismaYarnCatalogOrder(
   }
   const subgroup = charismaSubgroupSortIndex(a) - charismaSubgroupSortIndex(b);
   if (subgroup !== 0) return subgroup;
-  const shade = compareYarnLightness(a, b);
+  // Preserve Diana's explicit adjacency choices across stock refreshes.
+  const ordering = ribbedColorFamilies as Record<string, { after?: string }>;
+  const aAfter = ordering[a.id]?.after;
+  const bAfter = ordering[b.id]?.after;
+  const shadeA = aAfter ? { id: aAfter } : a;
+  const shadeB = bAfter ? { id: bAfter } : b;
+  if (shadeA.id === shadeB.id && a.id !== b.id) return aAfter ? 1 : -1;
+  const shade = compareYarnLightness(shadeA, shadeB);
   if (shade !== 0) return shade;
   return (
     (a.sortRank ?? Number.MAX_SAFE_INTEGER) -
@@ -135,7 +143,7 @@ export function compareCharismaYarnCatalogOrder(
 
 export function isCharismaColorCatalog(yarns: { id: string }[]): boolean {
   const charisma = yarns.filter((y) => y.id.startsWith("charisma-"));
-  return charisma.length > 20;
+  return charisma.length > 20 || yarns.filter(y => /^(big-twist-living-|i-love-this-yarn-|yarn-bee-soft-sleek-|caron-simply-soft-|bernat-softee-baby-|red-heart-super-saver-|caron-groovy-cloud-cakes-|caron-cloud-cakes-|caron-cinnamon-swirl-cakes-|caron-sweetie-cakes-|caron-baby-cakes-)/.test(y.id)).length > 0;
 }
 
 export function filterCharismaYarnsByGroup<T extends YarnColor>(

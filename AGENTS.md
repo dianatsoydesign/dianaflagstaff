@@ -112,3 +112,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Matching product names
 
 - Product names on Shop cards and PDPs must always match. Use the shared catalog name, without page-specific overrides.
+
+## Supplier yarn color galleries
+
+- Follow `.cursor/rules/yarn-color-galleries.mdc` for all current and future PDPs and yarn imports. Every swatch must display all available reviewed yarn-only supplier photos for its exact color. Never import only the first yarn image, and never import supplier finished-product or modeled-project photos. Preserve Diana's own product photos and videos. Enforce the shared reviewed-image policy before imports and gallery display.

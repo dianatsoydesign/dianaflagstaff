@@ -1,0 +1,1021 @@
+{
+  "caron-simply-soft-white": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "caron-simply-soft-neon-pink": {
+    "colorGroup": "pinks",
+    "multicolor": false
+  },
+  "caron-simply-soft-chocolate": {
+    "colorGroup": "reds",
+    "multicolor": false
+  },
+  "caron-simply-soft-plum-perfect": {
+    "colorGroup": "purples",
+    "multicolor": false
+  },
+  "caron-simply-soft-pumpkin": {
+    "colorGroup": "oranges",
+    "multicolor": false
+  },
+  "caron-simply-soft-soft-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "caron-simply-soft-sienna": {
+    "colorGroup": "browns",
+    "multicolor": false
+  },
+  "caron-simply-soft-dark-sage": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "caron-simply-soft-off-white": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "caron-simply-soft-black": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "caron-simply-soft-robin-s-egg": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "caron-simply-soft-royal-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "caron-simply-soft-gold": {
+    "colorGroup": "yellows",
+    "multicolor": false
+  },
+  "caron-simply-soft-soft-pink": {
+    "colorGroup": "pinks",
+    "multicolor": false
+  },
+  "caron-simply-soft-pagoda": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "caron-simply-soft-army-green": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "caron-simply-soft-peach": {
+    "colorGroup": "oranges",
+    "multicolor": false
+  },
+  "caron-simply-soft-burgundy": {
+    "colorGroup": "reds",
+    "multicolor": false
+  },
+  "caron-simply-soft-plum-wine": {
+    "colorGroup": "purples",
+    "multicolor": false
+  },
+  "caron-simply-soft-harvest-red": {
+    "colorGroup": "reds",
+    "multicolor": false
+  },
+  "caron-simply-soft-autumn-red": {
+    "colorGroup": "reds",
+    "multicolor": false
+  },
+  "caron-simply-soft-periwinkle": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "caron-simply-soft-feather-gray": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "caron-simply-soft-pistachio": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "caron-simply-soft-purple": {
+    "colorGroup": "purples",
+    "multicolor": false
+  },
+  "caron-simply-soft-blue-mint": {
+    "colorGroup": "blues",
+    "multicolor": false,
+    "after": "caron-simply-soft-robin-s-egg"
+  },
+  "caron-simply-soft-light-country-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "caron-simply-soft-bone": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "caron-simply-soft-orchid": {
+    "colorGroup": "purples",
+    "multicolor": false
+  },
+  "caron-simply-soft-dark-country-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "bernat-softee-baby-little-mouse": {
+    "colorGroup": "browns",
+    "multicolor": false
+  },
+  "bernat-softee-baby-grass-green": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "bernat-softee-baby-soft-red": {
+    "colorGroup": "reds",
+    "multicolor": false
+  },
+  "bernat-softee-baby-lavender": {
+    "colorGroup": "purples",
+    "multicolor": false
+  },
+  "bernat-softee-baby-baby-mint": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "red-heart-super-saver-bright-yellow": {
+    "colorGroup": "yellows",
+    "multicolor": false
+  },
+  "red-heart-super-saver-white": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "red-heart-super-saver-light-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "red-heart-super-saver-cafe": {
+    "colorGroup": "browns",
+    "multicolor": false
+  },
+  "red-heart-super-saver-black": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "red-heart-super-saver-spring-green": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "red-heart-super-saver-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "red-heart-super-saver-hunter-green": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "red-heart-super-saver-soft-navy": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "red-heart-super-saver-burgundy": {
+    "colorGroup": "reds",
+    "multicolor": false
+  },
+  "red-heart-super-saver-country-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "red-heart-super-saver-cherry-red": {
+    "colorGroup": "reds",
+    "multicolor": false
+  },
+  "red-heart-super-saver-carrot": {
+    "colorGroup": "oranges",
+    "multicolor": false
+  },
+  "caron-groovy-cloud-cakes-raspberry-rollup": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-groovy-cloud-cakes-maple-glaze": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-groovy-cloud-cakes-ice-pop": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-groovy-cloud-cakes-candy-bowl": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-groovy-cloud-cakes-icy-lime": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cloud-cakes-lagoon": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cloud-cakes-sunflare": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cloud-cakes-sandbar": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cloud-cakes-lava": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cloud-cakes-kelp": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-oyster": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-marble": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-cookie-cream-swirl": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-spearmint-swirl": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-twilight-surf": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-latte": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-oceana": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-berry-ripple": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-snow-cone": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-bay": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-heat-wave": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-cookie-mint": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-opal": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-lollipop": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-mai-tai": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-beach-towel": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-chocolate-swirl": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-tropical-breeze": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-cinnamon-swirl-cakes-green-flash": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-sweetie-cakes-aqua-splash": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-sweetie-cakes-whipped-cream": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "caron-sweetie-cakes-waterpark": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-sweetie-cakes-jelly-bean": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-sweetie-cakes-blue-sky": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "caron-sweetie-cakes-confetti": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-sweetie-cakes-sweet-tart": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-sweetie-cakes-taffy": {
+    "colorGroup": "browns",
+    "multicolor": false
+  },
+  "caron-sweetie-cakes-lilypad": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "caron-sweetie-cakes-raspberry": {
+    "colorGroup": "pinks",
+    "multicolor": false
+  },
+  "caron-baby-cakes-pool-party": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-baby-cakes-petals": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-baby-cakes-retro": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-baby-cakes-sky-gazing": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "caron-baby-cakes-candy-hearts": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "big-twist-living-regal-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "big-twist-living-charcoal-variegated": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "big-twist-living-spa": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "big-twist-living-orange": {
+    "colorGroup": "oranges",
+    "multicolor": false
+  },
+  "big-twist-living-fuchsia": {
+    "colorGroup": "pinks",
+    "multicolor": false
+  },
+  "big-twist-living-meerkat": {
+    "colorGroup": "browns",
+    "multicolor": false
+  },
+  "big-twist-living-serenity": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "big-twist-living-soft-peach": {
+    "colorGroup": "pinks",
+    "multicolor": false
+  },
+  "big-twist-living-pine-green": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "big-twist-living-purple-magic": {
+    "colorGroup": "purples",
+    "multicolor": false
+  },
+  "big-twist-living-inclusivity": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "big-twist-living-really-red": {
+    "colorGroup": "reds",
+    "multicolor": false
+  },
+  "big-twist-living-black": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "big-twist-living-new-lavender": {
+    "colorGroup": "purples",
+    "multicolor": false
+  },
+  "big-twist-living-sunshine": {
+    "colorGroup": "yellows",
+    "multicolor": false
+  },
+  "big-twist-living-confidence": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "big-twist-living-mustard": {
+    "colorGroup": "yellows",
+    "multicolor": false
+  },
+  "big-twist-living-white-snow": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "big-twist-living-sage": {
+    "colorGroup": "greens",
+    "multicolor": false
+  },
+  "big-twist-living-cream": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "big-twist-living-community": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "big-twist-living-spirit": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "big-twist-living-life": {
+    "colorGroup": "multis",
+    "multicolor": true
+  },
+  "big-twist-living-light-gray": {
+    "colorGroup": "neutrals",
+    "multicolor": false
+  },
+  "big-twist-living-twilight-blue": {
+    "colorGroup": "blues",
+    "multicolor": false
+  },
+  "i-love-this-yarn-navy-tweed": {
+    "colorGroup": "blues",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "i-love-this-yarn-ivory-tweed": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "i-love-this-yarn-pastels-tweed": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "i-love-this-yarn-sweet-dijon": {
+    "colorGroup": "yellows",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "i-love-this-yarn-black": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "i-love-this-yarn-oats-tweed": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "i-love-this-yarn-brown": {
+    "colorGroup": "browns",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "i-love-this-yarn-forest": {
+    "colorGroup": "greens",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-white": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-black": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-ivory": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-brownie": {
+    "colorGroup": "browns",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-light-gray": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-burgundy": {
+    "colorGroup": "reds",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-pale-yellow": {
+    "colorGroup": "yellows",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-soft-pink": {
+    "colorGroup": "pinks",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-dark-gray": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-navy": {
+    "colorGroup": "blues",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-purple": {
+    "colorGroup": "purples",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-red": {
+    "colorGroup": "reds",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-denim-blues": {
+    "colorGroup": "multis",
+    "multicolor": true,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-purple-gray-multi": {
+    "colorGroup": "multis",
+    "multicolor": true,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-berry-mix": {
+    "colorGroup": "multis",
+    "multicolor": true,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-mustard": {
+    "colorGroup": "yellows",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-french-lilac": {
+    "colorGroup": "purples",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-silver-gray": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-linen": {
+    "colorGroup": "browns",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-teal-green": {
+    "colorGroup": "greens",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-kale": {
+    "colorGroup": "greens",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-green-apple": {
+    "colorGroup": "greens",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-teal-blue": {
+    "colorGroup": "blues",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-light-blue": {
+    "colorGroup": "blues",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-pumpkin-spice": {
+    "colorGroup": "oranges",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-plum": {
+    "colorGroup": "purples",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-hot-pink": {
+    "colorGroup": "pinks",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-mauve": {
+    "colorGroup": "pinks",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-spice": {
+    "colorGroup": "reds",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-blush": {
+    "colorGroup": "pinks",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-chili-red": {
+    "colorGroup": "reds",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-tobacco": {
+    "colorGroup": "browns",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-dark-heather-gray": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-oatmeal": {
+    "colorGroup": "browns",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-purple-haze": {
+    "colorGroup": "purples",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-sage": {
+    "colorGroup": "greens",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-clay": {
+    "colorGroup": "browns",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-viridescent": {
+    "colorGroup": "greens",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-crisp-air": {
+    "colorGroup": "blues",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-bruschetta": {
+    "colorGroup": "reds",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-olive": {
+    "colorGroup": "greens",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-auburn-delight": {
+    "colorGroup": "multis",
+    "multicolor": true,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-turquoise": {
+    "colorGroup": "blues",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-forest": {
+    "colorGroup": "greens",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-brown": {
+    "colorGroup": "browns",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-dark-country-blue": {
+    "colorGroup": "blues",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  },
+  "yarn-bee-soft-sleek-ivory-tweed": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "crop": {
+      "left": 100,
+      "top": 440,
+      "width": 140,
+      "height": 140
+    }
+  }
+}

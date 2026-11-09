@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { reviewedSupplierYarnImages } from '../src/lib/yarn-gallery-image-policy.mjs';
 // Refresh the Bernat catalog and photos. Store availability is intentionally not filtered.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -35,6 +36,7 @@ async function worker() {
   const sub=subs[index++];
   const name=(sub.variantAttr ?? '').replace(/^\d+:\s*/,'').trim();
   const photos=(sub.media??[]).filter(m=>m.mediaType===0 && m.fullSizeUrl).sort((a,b)=>a.sort-b.sort).map(m=>m.fullSizeUrl);
+  photos.splice(0, photos.length, ...reviewedSupplierYarnImages(photos));
   if(!name || !photos.length) throw new Error(`Missing Bernat photo/name for ${sub.skuNumber}`);
   const id=`bernat-blanket-big-${slug(name)}`;
   let hero;

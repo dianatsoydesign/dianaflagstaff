@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { reviewedSupplierYarnImages } from '../src/lib/yarn-gallery-image-policy.mjs';
 /**
  * Refresh src/data/bobbiny-premium-5mm.json from Bobbiny's Premium 5mm collection.
  * Keeps only variants that are in stock at bobbinycords.us.
@@ -27,7 +28,6 @@ const outPath = join(root, "src/data/bobbiny-premium-5mm.json");
 /** Same matte as product photos (src/lib/product-photo-bg.ts). */
 const MATTE = "#f3efe8";
 const SAMPLE = 48;
-const MAX_COLOR_IMAGES = 6;
 // Store-wide graphics repeat on 30+ colors; similar pale spools only match a handful.
 const GENERIC_MIN_OTHER_COLORS = 10;
 const MIN_OTHER_MATCH = 0.3;
@@ -159,7 +159,6 @@ function pickColorImages(images) {
 
   return [...lead, ...others]
     .filter(Boolean)
-    .slice(0, MAX_COLOR_IMAGES)
     .map((img) => img.src);
 }
 
@@ -177,7 +176,8 @@ const inStock = data.products.filter((p) =>
 const analyzed = [];
 for (const p of inStock) {
   const images = [];
-  for (const im of p.images ?? []) {
+  const approvedSources = new Set(reviewedSupplierYarnImages((p.images ?? []).map(image => image.src)));
+  for (const im of (p.images ?? []).filter(image => approvedSources.has(image.src))) {
     try {
       images.push({ ...(await analyze(im.src)), pos: im.position });
     } catch (err) {
@@ -217,7 +217,7 @@ for (const { product: p, images } of analyzed) {
       );
   }
   const picked = pickColorImages(images);
-  const colorImages = picked.length ? picked : [p.images?.[0]?.src ?? ""];
+  const colorImages = reviewedSupplierYarnImages(picked.length ? picked : [p.images?.[0]?.src ?? ""]);
   console.log(
     `${p.title.padEnd(22)} ${colorImages.length} image(s): positions ${colorImages
       .map((src) => images.find((i) => i.src === src)?.pos ?? 1)
@@ -245,7 +245,7 @@ writeFileSync(outPath, `${JSON.stringify(payload, null, 2)}\n`);
 console.log(`Wrote ${yarns.length} in-stock colors to ${outPath}`);
 
 const TILE = 110;
-const cols = MAX_COLOR_IMAGES + 1;
+const cols = Math.max(1, ...yarns.map(yarn => yarn.colorImages.length)) + 1;
 const composites = [];
 for (const [row, yarn] of yarns.entries()) {
   const label = Buffer.from(

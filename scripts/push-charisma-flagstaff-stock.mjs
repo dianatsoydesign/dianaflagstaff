@@ -13,8 +13,8 @@ const secret = stockRefreshSecret(process.env, 'CHARISMA_STOCK_SECRET');
 if (!checkOnly && !secret) throw new Error('Set STOCK_REFRESH_SECRET (or CHARISMA_STOCK_SECRET) before publishing stock');
 if (!checkOnly && new URL(siteUrl).protocol !== 'https:') throw new Error('SITE_URL must use HTTPS');
 const baseCatalog = JSON.parse(await readFile(new URL('../src/data/charisma.json', import.meta.url), 'utf8'));
-const { MICHAELS_HAT_CATALOG } = await import('../src/data/michaels-hat-catalog.mjs');
-const skus = [...new Set(MICHAELS_HAT_CATALOG.map(yarn => {
+const { MICHAELS_FLAGSTAFF_CATALOG } = await import('../src/data/michaels-hat-catalog.mjs');
+const skus = [...new Set(MICHAELS_FLAGSTAFF_CATALOG.map(yarn => {
   if (!/^michaels:\d+$/.test(yarn.supplierSku)) throw new Error('Invalid Charisma SKU');
   return yarn.supplierSku.split(':')[1];
 }))];
@@ -31,7 +31,7 @@ for (let offset = 0; offset < skus.length; offset += 25) {
   Object.assign(quantities, pickupQuantities(rows, batch));
 }
 const snapshot = { storeId: FLAGSTAFF_STORE_ID, checkedAt, quantities };
-console.log(`Checked ${skus.length} colors at Flagstaff #${FLAGSTAFF_STORE_ID}; ${Object.entries(quantities).filter(([sku, qty]) => qty !== null && qty >= minimumForHatSku(sku)).length} qualify for hats (per-line skein minimum), ${baseCatalog.yarns.filter(yarn => (quantities[yarn.supplierSku.split(":")[1]] ?? 0) >= 3).length} qualify for stockings (3+ skeins); ${Object.values(quantities).filter(qty => qty === null).length} have no verified pickup count and stay hidden.`);
+console.log(`Checked ${skus.length} colors at Flagstaff #${FLAGSTAFF_STORE_ID}; ${Object.entries(quantities).filter(([sku, qty]) => qty !== null && qty >= minimumForHatSku(sku)).length} qualify for hats and headbands (per-line stock minimum), ${baseCatalog.yarns.filter(yarn => (quantities[yarn.supplierSku.split(":")[1]] ?? 0) >= 3).length} qualify for stockings (3+ skeins); ${Object.values(quantities).filter(qty => qty === null).length} have no verified pickup count and stay hidden.`);
 if (writeBootstrap) {
   await writeFile(new URL('../src/data/charisma-stock-bootstrap.json', import.meta.url), JSON.stringify(snapshot, null, 2) + '\n');
   console.log('Initial verified stock snapshot saved.');

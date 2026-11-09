@@ -21,6 +21,7 @@ type Props = {
   animate?: boolean;
   dimInDark?: boolean;
   showMinimumPurchase?: boolean;
+  nameClassName?: string;
 };
 
 export function ProductCard({
@@ -29,6 +30,7 @@ export function ProductCard({
   animate = false,
   dimInDark = false,
   showMinimumPurchase = false,
+  nameClassName,
 }: Props) {
   const [activeImage, setActiveImage] = useState(0);
   const rail = useRef<HTMLDivElement>(null);
@@ -92,6 +94,7 @@ export function ProductCard({
       <Link href={`/shop/p/${product.id}`} className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
       <ProductNamePrice
         name={product.name}
+        nameClassName={nameClassName}
         price={unitPrice * minimum}
         priceLabel={minimum > 1 ? `${minimum} for ${formatPrice(unitPrice * minimum)}` : formatProductListPrice(product)}
       />

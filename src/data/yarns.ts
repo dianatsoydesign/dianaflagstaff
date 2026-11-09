@@ -1,3 +1,5 @@
+import hobbyLobbyCatalog from "@/data/ribbed-hobby-lobby-yarns.json";
+import ribbedCatalog from "@/data/ribbed-yarns.json";
 import hatCatalog from "@/data/hat-yarns.json";
 import { PATTERN_BOARD_YARNS, products, type YarnColor } from "@/data/products";
 import { BOBBINY_PREMIUM_5MM_YARNS } from "@/data/bobbiny-premium-5mm";
@@ -33,6 +35,8 @@ export function yarnLineName(yarn: YarnColor): string | null {
   if (yarn.id.startsWith("red-heart-super-saver-")) return "Red Heart Super Saver";
   if (yarn.id === "i-love-this-yarn-ivory-tweed") return "Tweed I Love This Yarn";
   if (yarn.id.startsWith("sweet-snuggles-")) return "Sweet Snuggles by Loops & Threads";
+  const ribbed = [...ribbedCatalog.yarns, ...hobbyLobbyCatalog.yarns].find(color => color.id === yarn.id);
+  if (ribbed) return ribbed.lineName;
   const additional = hatCatalog.yarns.find(color => color.id === yarn.id);
   if (additional) return additional.lineName;
   if (yarn.supplierSku?.startsWith("bobbiny:")) return "Bobbiny Premium 5mm";
@@ -60,6 +64,16 @@ const CHARISMA_MATERIAL: YarnMaterial = {
 
 /** Fiber content from each supplier's product page (bobbinycords.us, michaels.com). */
 export function yarnMaterial(yarn: YarnColor): YarnMaterial {
+  const hobbyLobby = hobbyLobbyCatalog.yarns.find(color => color.id === yarn.id);
+  if (hobbyLobby) return { fiber: hobbyLobby.fiber, washCare: MACHINE_WASH_COLD, dryCare: AIR_DRY, detail: "" };
+  const ribbed = ribbedCatalog.yarns.find(color => color.id === yarn.id);
+  if (ribbed) {
+    const fiber = ribbed.lineId.includes("cloud-cakes") ? "100% polyester"
+      : ribbed.lineId === "caron-sweetie-cakes" ? "75% acrylic, 25% nylon"
+      : ribbed.lineId === "caron-baby-cakes" ? "82% acrylic, 18% nylon"
+      : ribbed.lineId === "big-twist-living" ? "100% anti-pilling acrylic" : "100% acrylic";
+    return { fiber, washCare: MACHINE_WASH_COLD, dryCare: AIR_DRY, detail: "" };
+  }
   // Acrylic care follows Diana's instructions: machine wash cold and air dry.
   if (yarn.id.startsWith("red-heart-super-saver-")) return {
     fiber: "100% acrylic",

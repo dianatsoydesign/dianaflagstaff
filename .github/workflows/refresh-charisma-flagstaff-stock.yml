@@ -1,4 +1,4 @@
-name: Refresh Flagstaff Charisma stock for hats and stockings
+name: Refresh Flagstaff yarn stock for hats, headbands, and stockings
 
 on:
   pull_request:
@@ -17,6 +17,12 @@ on:
       - 'src/lib/yarn-stock.ts'
       - 'src/data/charisma.json'
       - 'src/data/hat-yarns.json'
+      - 'src/data/ribbed-yarns.json'
+      - 'src/lib/ribbed-inventory.mjs'
+      - 'scripts/ribbed-inventory.test.mjs'
+      - 'scripts/yarn-gallery-image-policy.test.mjs'
+      - 'src/data/yarn-gallery-image-review.json'
+      - 'src/lib/yarn-gallery-image-policy.mjs'
       - 'src/data/michaels-hat-catalog.mjs'
       - 'src/data/charisma-stock-bootstrap.json'
       - 'src/lib/charisma-flagstaff-stock.ts'
@@ -48,7 +54,7 @@ jobs:
         with:
           node-version: '22'
       - name: Test stock rules
-        run: node --test scripts/stock-request.test.mjs scripts/stock-refresh-auth.test.mjs scripts/charisma-flagstaff-inventory.test.mjs
+        run: node --test scripts/stock-request.test.mjs scripts/stock-refresh-auth.test.mjs scripts/charisma-flagstaff-inventory.test.mjs scripts/ribbed-inventory.test.mjs scripts/yarn-gallery-image-policy.test.mjs
       - name: Verify Flagstaff pickup counts and save stock
         env:
           STOCK_REFRESH_SECRET: ${{ github.event_name != 'pull_request' && secrets.STOCK_REFRESH_SECRET || '' }}

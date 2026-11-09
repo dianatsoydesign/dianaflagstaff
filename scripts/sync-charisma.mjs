@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { reviewedSupplierYarnImages } from '../src/lib/yarn-gallery-image-policy.mjs';
 /**
  * Refresh src/data/charisma.json from Michaels' Charisma® Yarn by Loops & Threads®:
  * https://www.michaels.com/product/charisma-yarn-by-loops-threads-10133751
@@ -81,6 +82,7 @@ for (const sub of subs) {
     .filter((m) => m.mediaType === 0 && m.fullSizeUrl)
     .sort((a, b) => a.sort - b.sort)
     .map((m) => m.fullSizeUrl);
+  photos.splice(0, photos.length, ...reviewedSupplierYarnImages(photos));
   if (!name || !photos.length) {
     console.warn(`  skip ${sub.skuNumber}: missing color name or photo`);
     continue;

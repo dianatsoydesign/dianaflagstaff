@@ -10,6 +10,7 @@ import sweetSnugglesBootstrapStock from "@/data/sweet-snuggles-stock-bootstrap.j
 import { availableForSweetSnuggles } from "@/lib/sweet-snuggles-inventory.mjs";
 import bobbinyBootstrapStock from "@/data/bobbiny-stock-bootstrap.json";
 import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
+import { isRibbedProduct, ribbedStockStatuses } from "@/lib/ribbed-inventory.mjs";
 import charismaBootstrapStock from "@/data/charisma-stock-bootstrap.json";
 import { charismaStockStatuses } from "@/lib/charisma-stock-options";
 
@@ -119,12 +120,13 @@ export function ProductPurchaseForm({
   const [pomPomId, setPomPomId] = useState<HatPomPomId>(DEFAULT_HAT_POM_POM_ID);
   const isCatCave = product.id === "cat-cave";
   const isHats = product.id === "hats";
+  const isRibbed = isRibbedProduct(product.id);
   const hasCharismaStock = isHats || product.id === "christmas-stockings";
   const hasBobbinyStock = product.yarns.some(yarn => yarn.supplierSku?.startsWith("bobbiny:"));
   const hasSweetSnugglesStock = product.id === "blanket";
-  const hasCachedSupplierStock = isCatCave || hasCharismaStock || hasBobbinyStock || hasSweetSnugglesStock;
+  const hasCachedSupplierStock = isRibbed || isCatCave || hasCharismaStock || hasBobbinyStock || hasSweetSnugglesStock;
   const [liveStock, setLiveStock] = useState<Record<string, StockStatus>>(() =>
-    hasSweetSnugglesStock ? Object.fromEntries(product.yarns.map(yarn => [yarn.id, availableForSweetSnuggles(sweetSnugglesBootstrapStock, yarn.supplierSku?.split(":")[1] ?? "") ? "in_stock" : "out_of_stock"])) : isCatCave ? Object.fromEntries(product.yarns.map(yarn => [
+    isRibbed ? ribbedStockStatuses(charismaBootstrapStock, product.yarns) : hasSweetSnugglesStock ? Object.fromEntries(product.yarns.map(yarn => [yarn.id, availableForSweetSnuggles(sweetSnugglesBootstrapStock, yarn.supplierSku?.split(":")[1] ?? "") ? "in_stock" : "out_of_stock"])) : isCatCave ? Object.fromEntries(product.yarns.map(yarn => [
       yarn.id,
       availableForCatCave(bootstrapStock, yarn.supplierSku?.split(":")[1] ?? "") ? "in_stock" : "out_of_stock",
     ])) : hasCharismaStock ? charismaStockStatuses(charismaBootstrapStock, isHats ? 2 : 3) : hasBobbinyStock ? Object.fromEntries(product.yarns.map(yarn => [

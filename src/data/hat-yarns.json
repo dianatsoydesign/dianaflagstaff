@@ -1066,7 +1066,6 @@
       "swatchSrc": "/yarn-images/hat-yarns/lion-brand-hometown-charcoal/swatch.webp",
       "colorImages": [
         "/yarn-images/hat-yarns/lion-brand-hometown-charcoal/photo-1.webp",
-        "/yarn-images/hat-yarns/lion-brand-hometown-charcoal/photo-2.webp",
         "/yarn-images/hat-yarns/lion-brand-hometown-charcoal/photo-3.webp"
       ],
       "stockStatus": "out_of_stock",
@@ -1114,7 +1113,6 @@
       "swatchSrc": "/yarn-images/hat-yarns/lion-brand-hometown-cream/swatch.webp",
       "colorImages": [
         "/yarn-images/hat-yarns/lion-brand-hometown-cream/photo-1.webp",
-        "/yarn-images/hat-yarns/lion-brand-hometown-cream/photo-2.webp",
         "/yarn-images/hat-yarns/lion-brand-hometown-cream/photo-3.webp"
       ],
       "stockStatus": "out_of_stock",
@@ -1131,8 +1129,7 @@
       "swatchSrc": "/yarn-images/hat-yarns/lion-brand-hometown-wine/swatch.webp",
       "colorImages": [
         "/yarn-images/hat-yarns/lion-brand-hometown-wine/photo-1.webp",
-        "/yarn-images/hat-yarns/lion-brand-hometown-wine/photo-2.webp",
-        "/yarn-images/hat-yarns/lion-brand-hometown-wine/photo-3.webp"
+        "/yarn-images/hat-yarns/lion-brand-hometown-wine/photo-2.webp"
       ],
       "stockStatus": "out_of_stock",
       "multicolor": false,
@@ -1257,7 +1254,6 @@
       "swatchSrc": "/yarn-images/hat-yarns/lion-brand-hometown-spice/swatch.webp",
       "colorImages": [
         "/yarn-images/hat-yarns/lion-brand-hometown-spice/photo-1.webp",
-        "/yarn-images/hat-yarns/lion-brand-hometown-spice/photo-2.webp",
         "/yarn-images/hat-yarns/lion-brand-hometown-spice/photo-3.webp"
       ],
       "stockStatus": "out_of_stock",

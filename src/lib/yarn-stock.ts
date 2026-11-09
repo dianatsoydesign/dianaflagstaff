@@ -1,3 +1,6 @@
+import ribbedCatalog from "@/data/ribbed-yarns.json";
+import { isRibbedProduct, ribbedStockStatuses } from "@/lib/ribbed-inventory.mjs";
+import { readCharismaFlagstaffStock } from "@/lib/charisma-flagstaff-stock";
 import { sweetSnugglesAvailability } from "@/lib/sweet-snuggles-stock";
 import { charismaFlagstaffAvailability } from "@/lib/charisma-flagstaff-stock";
 /**
@@ -69,6 +72,11 @@ function findYarnBySku(sku: string): YarnColor | undefined {
 export async function checkSupplierStock(
   supplierSku: string
 ): Promise<YarnStockResult> {
+  if (supplierSku.startsWith("hobbylobby:")) {
+    const yarn = findYarnBySku(supplierSku);
+    return { yarnId: yarn?.id ?? supplierSku, supplierSku,
+      status: yarn?.stockStatus ?? "out_of_stock", source: "catalog", checkedAt: "" };
+  }
   if (supplierSku.startsWith("michaels-sweet-snuggles:")) {
     const results = await sweetSnugglesAvailability();
     const result = results.find(yarn => yarn.supplierSku === supplierSku);
@@ -84,6 +92,13 @@ export async function checkSupplierStock(
   const yarn = findYarnBySku(supplierSku);
   const checkedAt = new Date().toISOString();
 
+  if (ribbedCatalog.yarns.some(color => color.supplierSku === supplierSku)) {
+    const snapshot = await readCharismaFlagstaffStock();
+    const statuses = ribbedStockStatuses(snapshot, yarn ? [yarn] : []);
+    return { yarnId: yarn?.id ?? supplierSku, supplierSku,
+      status: (yarn ? statuses[yarn.id] : "out_of_stock") as StockStatus,
+      source: "supplier_live", checkedAt: snapshot ? new Date(snapshot.checkedAt).toISOString() : "" };
+  }
   const live = liveSupplierFor(supplierSku);
   if (live) {
     try {
@@ -151,6 +166,13 @@ export async function getProductYarnStock(
 ): Promise<YarnStockResult[]> {
   const product = products.find((p) => p.id === productId);
   if (!product) return [];
+  if (isRibbedProduct(productId)) {
+    const snapshot = await readCharismaFlagstaffStock();
+    const statuses = ribbedStockStatuses(snapshot, product.yarns);
+    return product.yarns.map(yarn => ({ yarnId: yarn.id, supplierSku: yarn.supplierSku,
+      status: statuses[yarn.id] as StockStatus, source: yarn.supplierSku?.startsWith("michaels:") ? "supplier_live" as const : "catalog" as const,
+      checkedAt: yarn.supplierSku?.startsWith("michaels:") && snapshot ? new Date(snapshot.checkedAt).toISOString() : "" }));
+  }
   if (productId === "blanket") return sweetSnugglesAvailability();
   if (productId === "cat-cave") return bernatAvailability();
   if (productId === "hats") return charismaFlagstaffAvailability(2);

@@ -25,8 +25,9 @@ const nameTypeByVariant = {
   featured: "font-sans leading-none",
 } as const;
 
-// Trim font whitespace so different font sizes align by visible letter height.
+// Keep name descenders inside its alignment box; price digits use cap-to-baseline bounds.
 const textCellClass = "block [text-box-trim:trim-both] [text-box-edge:cap_alphabetic]";
+const nameCellClass = "block [text-box-trim:trim-both] [text-box-edge:cap_text]";
 
 const priceClassByVariant = {
   detail: "self-center font-sans text-[1.4375rem] leading-none tabular-nums",
@@ -63,6 +64,7 @@ type Props = {
   priceLabel?: string;
   priceTbd?: boolean;
   className?: string;
+  nameClassName?: string;
   variant?: Variant;
 };
 
@@ -72,6 +74,7 @@ export function ProductNamePrice({
   priceLabel,
   priceTbd = false,
   className,
+  nameClassName,
   variant = "card",
 }: Props) {
   const cardRange = !priceTbd && priceLabel?.match(/^(\$[\d,.]+)\u2013(\$[\d,.]+)$/);
@@ -86,7 +89,7 @@ export function ProductNamePrice({
   if (variant === "card") {
     return (
       <p className={cn(rowClass, "gap-y-1", className)}>
-        <span className={cn(textCellClass, cardNameClass)}>
+        <span className={cn(nameCellClass, cardNameClass, nameClassName)}>
           {name}
         </span>
         <NamePriceDot fontSizeClass={cardNameFontSizeClass} />
@@ -110,7 +113,7 @@ export function ProductNamePrice({
 
   const content = (
     <>
-      <span className={cn(cellClass, nameTypeByVariant[variant])}>{name}</span>
+      <span className={cn(nameCellClass, "leading-none", nameTypeByVariant[variant])}>{name}</span>
       <NamePriceDot />
       <span className={cn(cellClass, priceClassByVariant[variant])}>
         {priceTbd ? "TBD" : (quantityPriceContent ?? priceLabel ?? formatPrice(price))}

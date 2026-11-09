@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { reviewedSupplierYarnImages, assertYarnImageDestination } from '../src/lib/yarn-gallery-image-policy.mjs';
 // Additional hat-only yarn lines. Base Charisma retains its separate importer.
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -28,9 +29,12 @@ for (const line of catalog.lines) {
     if (!settings) throw new Error(`Review the new color before import: ${id}`);
     const media = row.media.filter(image => image.mediaType === 0 && image.fullSizeUrl).sort((a,b) => a.sort-b.sort);
     if (!media.length || !media[0].swatchImageUrl) throw new Error(`Missing supplier photos for ${id}`);
+    const approved = new Set(reviewedSupplierYarnImages(media.map(image => image.fullSizeUrl)));
     const directory = join(root, 'public/yarn-images/hat-yarns', id); await mkdir(directory, { recursive:true });
     const colorImages = [];
     for (const [i,image] of media.entries()) {
+      if (!approved.has(image.fullSizeUrl)) continue;
+      assertYarnImageDestination(`/yarn-images/hat-yarns/${id}/photo-${i+1}.webp`);
       const original = join(directory, `original-${i+1}.jpg`); await download(image.fullSizeUrl.split('?')[0], original);
       await sharp(original).resize({width:1400,height:1400,fit:'inside',withoutEnlargement:true}).webp({quality:88}).toFile(join(directory,`photo-${i+1}.webp`));
       colorImages.push(`/yarn-images/hat-yarns/${id}/photo-${i+1}.webp`);

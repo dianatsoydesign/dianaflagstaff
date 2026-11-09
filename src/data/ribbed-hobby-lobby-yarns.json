@@ -1,0 +1,1772 @@
+{
+  "syncedAt": "2026-11-09T08:08:37.647Z",
+  "inventoryPolicy": "catalog_only_no_inventory_checks",
+  "lines": [
+    {
+      "id": "i-love-this-yarn-tweed",
+      "name": "Tweed I Love This Yarn",
+      "productKey": "TY201889"
+    },
+    {
+      "id": "yarn-bee-soft-sleek",
+      "name": "Yarn Bee Soft & Sleek Yarn",
+      "productKey": "SS42114"
+    }
+  ],
+  "yarns": [
+    {
+      "id": "i-love-this-yarn-navy-tweed",
+      "name": "Navy Tweed",
+      "lineId": "i-love-this-yarn-tweed",
+      "lineName": "Tweed I Love This Yarn",
+      "supplierSku": "hobbylobby:652222",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/9001-navy-tweed---tweed-i-love-this-yarn/p/36494",
+      "fiber": "97% acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Acrylic &amp; 3% Viscose</li>\n<li>Color: Navy, Yellow, Green &amp; Orange</li>\n<li>Color Code: 9001 Navy Tweed</li>\n<li>Yarn Weight:&nbsp;4 - Medium</li>\n<li>Recommended Knitting Needles:&nbsp;5mm (USA Size: 8 - UK Size: 6)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hook:&nbsp;5.5mm (USA Size: I-9 - UK Size: 5)</li>\n<li>Crochet Gauge:&nbsp;12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight:&nbsp;5 Ounces</li>\n<li>Skein Yardage:&nbsp;252 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Warm</li>\n<li>Tumble Dry, Normal</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/i-love-this-yarn-navy-tweed/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-navy-tweed/photo-1.webp",
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-navy-tweed/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "multicolor": false,
+      "sortRank": 87.18575916643113,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/652222-36494-02172025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/652222-36494-02172025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": []
+    },
+    {
+      "id": "i-love-this-yarn-ivory-tweed",
+      "name": "Ivory Tweed",
+      "lineId": "i-love-this-yarn-tweed",
+      "lineName": "Tweed I Love This Yarn",
+      "supplierSku": "hobbylobby:652594",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/2001-ivory-tweed---tweed-i-love-this-yarn/p/36496",
+      "fiber": "97% acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Acrylic &amp; 3% Viscose</li>\n<li>Color: Ivory, Brown &amp; Black</li>\n<li>Color Code: 2001 Ivory Tweed</li>\n<li>Yarn Weight:&nbsp;4 - Medium</li>\n<li>Recommended Knitting Needles:&nbsp;5mm (USA Size: 8 - UK Size: 6)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hook:&nbsp;5.5mm (USA Size: I-9 - UK Size: 5)</li>\n<li>Crochet Gauge:&nbsp;12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight:&nbsp;5 Ounces</li>\n<li>Skein Yardage:&nbsp;252 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Warm</li>\n<li>Tumble Dry, Normal</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/i-love-this-yarn-ivory-tweed/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-ivory-tweed/photo-1.webp",
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-ivory-tweed/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 14.545717926964244,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/652594-36496-02172025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/652594-36496-02172025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/652594-36496-02172025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "i-love-this-yarn-pastels-tweed",
+      "name": "Pastels Tweed",
+      "lineId": "i-love-this-yarn-tweed",
+      "lineName": "Tweed I Love This Yarn",
+      "supplierSku": "hobbylobby:451864",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/1002-pastels-tweed---tweed-i-love-this-yarn/p/36571",
+      "fiber": "97% acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Acrylic &amp; 3% Viscose</li>\n<li>Color: White, Blue, Pink &amp; Yellow</li>\n<li>Color Code: 1002 Pastels Tweed</li>\n<li>Yarn Weight:&nbsp;4 - Medium</li>\n<li>Recommended Knitting Needles:&nbsp;5mm (USA Size: 8 - UK Size: 6)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hook:&nbsp;5.5mm (USA Size: I-9 - UK Size: 5)</li>\n<li>Crochet Gauge:&nbsp;12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight:&nbsp;5 Ounces</li>\n<li>Skein Yardage:&nbsp;252 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Warm</li>\n<li>Tumble Dry, Normal</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/i-love-this-yarn-pastels-tweed/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-pastels-tweed/photo-1.webp",
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-pastels-tweed/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 10.77012661594199,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/451864-36571-02172025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/451864-36571-02172025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/451864-36571-02172025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "i-love-this-yarn-sweet-dijon",
+      "name": "Sweet Dijon",
+      "lineId": "i-love-this-yarn-tweed",
+      "lineName": "Tweed I Love This Yarn",
+      "supplierSku": "hobbylobby:2095099",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/2006-sweet-dijon---tweed-i-love-this-yarn/p/81040490",
+      "fiber": "97% acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Acrylic &amp; 3% Viscose</li>\n<li>Color: Yellow, Black &amp; Brown</li>\n<li>Color Code: 2006 Sweet Dijon</li>\n<li>Yarn Weight:&nbsp;4 - Medium</li>\n<li>Recommended Knitting Needles:&nbsp;5mm (USA Size: 8 - UK Size: 6)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hook:&nbsp;5.5mm (USA Size: I-9 - UK Size: 5)</li>\n<li>Crochet Gauge:&nbsp;12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight:&nbsp;5 Ounces</li>\n<li>Skein Yardage:&nbsp;252 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Warm</li>\n<li>Tumble Dry, Normal</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/i-love-this-yarn-sweet-dijon/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-sweet-dijon/photo-1.webp",
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-sweet-dijon/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "yellows",
+      "multicolor": false,
+      "sortRank": 31.87821353313302,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2095099-81040490-02172025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2095099-81040490-02172025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2095099-81040490-02172025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "i-love-this-yarn-black",
+      "name": "Black",
+      "lineId": "i-love-this-yarn-tweed",
+      "lineName": "Tweed I Love This Yarn",
+      "supplierSku": "hobbylobby:2685832",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/30-black---tweed-i-love-this-yarn/p/81286100",
+      "fiber": "97% acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Acrylic &amp; 3% Viscose</li>\n<li>Color: Black, Cream &amp; Beige</li>\n<li>Color Code: 130 Black</li>\n<li>Yarn Weight:&nbsp;4 - Medium</li>\n<li>Recommended Knitting Needles:&nbsp;5mm (USA Size: 8 - UK Size: 6)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hook:&nbsp;5.5mm (USA Size: I-9 - UK Size: 5)</li>\n<li>Crochet Gauge:&nbsp;12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight:&nbsp;5 Ounces</li>\n<li>Skein Yardage:&nbsp;252 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Warm</li>\n<li>Tumble Dry, Normal</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/i-love-this-yarn-black/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-black/photo-1.webp",
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-black/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 92.8197094227462,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2685832-81286100-06292026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2685832-81286100-06292026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2685832-81286100-06292026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "i-love-this-yarn-oats-tweed",
+      "name": "Oats Tweed",
+      "lineId": "i-love-this-yarn-tweed",
+      "lineName": "Tweed I Love This Yarn",
+      "supplierSku": "hobbylobby:2685717",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/oats-tweed---tweed-i-love-this-yarn/p/81286090",
+      "fiber": "97% acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Acrylic &amp; 3% Viscose</li>\n<li>Color: Cream, Black &amp; Brown</li>\n<li>Color Code: Oats Tweed</li>\n<li>Yarn Weight:&nbsp;4 - Medium</li>\n<li>Recommended Knitting Needles:&nbsp;5mm (USA Size: 8 - UK Size: 6)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hook:&nbsp;5.5mm (USA Size: I-9 - UK Size: 5)</li>\n<li>Crochet Gauge:&nbsp;12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight:&nbsp;5 Ounces</li>\n<li>Skein Yardage:&nbsp;252 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Warm</li>\n<li>Tumble Dry, Normal</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/i-love-this-yarn-oats-tweed/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-oats-tweed/photo-1.webp",
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-oats-tweed/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 21.379589977812884,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2685717-81286090-06292026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2685717-81286090-06292026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2685717-81286090-06292026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "i-love-this-yarn-brown",
+      "name": "Brown",
+      "lineId": "i-love-this-yarn-tweed",
+      "lineName": "Tweed I Love This Yarn",
+      "supplierSku": "hobbylobby:2685808",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/160-brown---tweed-i-love-this-yarn/p/81286097",
+      "fiber": "97% acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Acrylic &amp; 3% Viscose</li>\n<li>Color: Brown, Cream &amp; Black</li>\n<li>Color Code: 160 Brown</li>\n<li>Yarn Weight:&nbsp;4 - Medium</li>\n<li>Recommended Knitting Needles:&nbsp;5mm (USA Size: 8 - UK Size: 6)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hook:&nbsp;5.5mm (USA Size: I-9 - UK Size: 5)</li>\n<li>Crochet Gauge:&nbsp;12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight:&nbsp;5 Ounces</li>\n<li>Skein Yardage:&nbsp;252 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Warm</li>\n<li>Tumble Dry, Normal</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/i-love-this-yarn-brown/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-brown/photo-1.webp",
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-brown/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "browns",
+      "multicolor": false,
+      "sortRank": 70.29672733695406,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2685808-81286097-06292026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2685808-81286097-06292026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2685808-81286097-06292026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "i-love-this-yarn-forest",
+      "name": "Forest",
+      "lineId": "i-love-this-yarn-tweed",
+      "lineName": "Tweed I Love This Yarn",
+      "supplierSku": "hobbylobby:2685782",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/180-forest---tweed-i-love-this-yarn/p/81286095",
+      "fiber": "97% acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Acrylic &amp; 3% Viscose</li>\n<li>Color: Green, Cream, Black &amp; Brown</li>\n<li>Color Code: 180 Forest</li>\n<li>Yarn Weight:&nbsp;4 - Medium</li>\n<li>Recommended Knitting Needles:&nbsp;5mm (USA Size: 8 - UK Size: 6)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hook:&nbsp;5.5mm (USA Size: I-9 - UK Size: 5)</li>\n<li>Crochet Gauge:&nbsp;12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight:&nbsp;5 Ounces</li>\n<li>Skein Yardage:&nbsp;252 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Warm</li>\n<li>Tumble Dry, Normal</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/i-love-this-yarn-forest/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-forest/photo-1.webp",
+        "/yarn-images/ribbed-yarns/i-love-this-yarn-forest/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "multicolor": false,
+      "sortRank": 69.41027050434752,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2685782-81286095-06292026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2685782-81286095-06292026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2685782-81286095-06292026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-white",
+      "name": "White",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345693",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787633",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: White</li>\n<li>Color Code: 100 White</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-white/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-white/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-white/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 13.499764216265248,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345693-80787633-02172025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345693-80787633-02172025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": []
+    },
+    {
+      "id": "yarn-bee-soft-sleek-black",
+      "name": "Black",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345701",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787634",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Black</li>\n<li>Color Code: 1 Black</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-black/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-black/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-black/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 92.75267949183126,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345701-80787634-02282025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345701-80787634-02282025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345701-80787634-02282025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-ivory",
+      "name": "Ivory",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345719",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787635",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Ivory</li>\n<li>Color Code: 101 Ivory</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-ivory/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-ivory/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-ivory/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 12.249432730494846,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345719-80787635-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345719-80787635-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": []
+    },
+    {
+      "id": "yarn-bee-soft-sleek-brownie",
+      "name": "Brownie",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345727",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787636",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Brown</li>\n<li>Color Code: 200 Brownie</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-brownie/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-brownie/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-brownie/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "browns",
+      "multicolor": false,
+      "sortRank": 46.48141426399707,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345727-80787636-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345727-80787636-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345727-80787636-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-light-gray",
+      "name": "Light Gray",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345735",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787637",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Light Gray</li>\n<li>Color Code: 30 Light Gray</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-light-gray/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-light-gray/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-light-gray/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 12.112220456299838,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345735-80787637-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345735-80787637-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345735-80787637-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-burgundy",
+      "name": "Burgundy",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345743",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787638",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Burgundy</li>\n<li>Color Code: 605 Burgundy</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-burgundy/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-burgundy/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-burgundy/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "reds",
+      "multicolor": false,
+      "sortRank": 81.79824302154157,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345743-80787638-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345743-80787638-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345743-80787638-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-pale-yellow",
+      "name": "Pale Yellow",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345750",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787639",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Yellow</li>\n<li>Color Code: 700 Pale Yellow</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-pale-yellow/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-pale-yellow/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-pale-yellow/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "yellows",
+      "multicolor": false,
+      "sortRank": 14.99761704764012,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345750-80787639-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345750-80787639-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345750-80787639-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-soft-pink",
+      "name": "Soft Pink",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345776",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787641",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Pink</li>\n<li>Color Code: 645 Soft Pink</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-soft-pink/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-soft-pink/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-soft-pink/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "pinks",
+      "multicolor": false,
+      "sortRank": 18.089426901741717,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345776-80787641-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345776-80787641-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345776-80787641-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-dark-gray",
+      "name": "Dark Gray",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345792",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787653",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Gray</li>\n<li>Color Code: 40 Dark Gray</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-gray/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-gray/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-gray/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 53.009035031237545,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345792-80787653-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345792-80787653-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345792-80787653-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-navy",
+      "name": "Navy",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345818",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787660",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Navy</li>\n<li>Color Code: 405 Navy</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-navy/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-navy/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-navy/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "multicolor": false,
+      "sortRank": 91.50055907677688,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345818-80787660-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345818-80787660-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345818-80787660-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-purple",
+      "name": "Purple",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345826",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787665",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Purple</li>\n<li>Color Code: 500 Purple</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "purples",
+      "multicolor": false,
+      "sortRank": 66.60425954736183,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345826-80787665-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345826-80787665-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345826-80787665-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-red",
+      "name": "Red",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345834",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787675",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Red</li>\n<li>Color Code: 600 Red</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-red/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-red/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-red/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "reds",
+      "multicolor": false,
+      "sortRank": 60.408600965403366,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345834-80787675-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345834-80787675-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345834-80787675-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-denim-blues",
+      "name": "Denim Blues",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345875",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787718",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Blue, Navy &amp; White</li>\n<li>Color Code: 906 Denim Blues</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 4 Ounces</li>\n<li>Skein Yardage: 186 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-denim-blues/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-denim-blues/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-denim-blues/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 55.463964435836715,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345875-80787718-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345875-80787718-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345875-80787718-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-purple-gray-multi",
+      "name": "Purple & Gray Multi",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345883",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787720",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Purple, White, Gray &amp; Black</li>\n<li>Color Code: 908 Purple &amp; Gray Multi</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 4 Ounces</li>\n<li>Skein Yardage: 186 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple-gray-multi/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple-gray-multi/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple-gray-multi/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 39.57894690582725,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345883-80787720-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345883-80787720-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345883-80787720-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-berry-mix",
+      "name": "Berry Mix",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1345925",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80787724",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Purple, Brown &amp; Magenta</li>\n<li>Color Code: 916 Berry Mix</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 4 Ounces</li>\n<li>Skein Yardage: 186 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-berry-mix/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-berry-mix/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-berry-mix/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 61.09469935835432,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345925-80787724-05192026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1345925-80787724-05192026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1345925-80787724-05192026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-mustard",
+      "name": "Mustard",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625201",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880182",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Yellow</li>\n<li>Color Code: 710 Mustard</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-mustard/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-mustard/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-mustard/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "yellows",
+      "multicolor": false,
+      "sortRank": 34.48455432537685,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625201-80880182-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625201-80880182-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625201-80880182-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-french-lilac",
+      "name": "French Lilac",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625219",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880185",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Mauve</li>\n<li>Color Code: 505 French Lilac</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-french-lilac/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-french-lilac/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-french-lilac/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "purples",
+      "multicolor": false,
+      "sortRank": 74.43821093876795,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625219-80880185-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625219-80880185-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625219-80880185-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-silver-gray",
+      "name": "Silver Gray",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625227",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880186",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Gray</li>\n<li>Color Code: 35 Silver Gray</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-silver-gray/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-silver-gray/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-silver-gray/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 18.61858283030506,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625227-80880186-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625227-80880186-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625227-80880186-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-linen",
+      "name": "Linen",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625235",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880187",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Beige</li>\n<li>Color Code: 202 Linen</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-linen/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-linen/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-linen/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "browns",
+      "multicolor": false,
+      "sortRank": 31.767885077706524,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625235-80880187-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625235-80880187-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625235-80880187-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-teal-green",
+      "name": "Teal Green",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625243",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880188",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Teal</li>\n<li>Color Code: 325 Teal Green</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-teal-green/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-teal-green/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-teal-green/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "multicolor": false,
+      "sortRank": 57.35013660920204,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625243-80880188-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625243-80880188-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625243-80880188-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-kale",
+      "name": "Kale",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625250",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880189",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Green</li>\n<li>Color Code: 305 Kale</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-kale/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-kale/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-kale/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "multicolor": false,
+      "sortRank": 50.52760953513857,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625250-80880189-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625250-80880189-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625250-80880189-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-green-apple",
+      "name": "Green Apple",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625268",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880190",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Yellow-Green</li>\n<li>Color Code: 310 Green Apple</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-green-apple/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-green-apple/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-green-apple/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "multicolor": false,
+      "sortRank": 36.82421413704727,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625268-80880190-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625268-80880190-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625268-80880190-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-teal-blue",
+      "name": "Teal Blue",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625276",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880191",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Teal</li>\n<li>Color Code: 415 Teal Blue</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-teal-blue/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-teal-blue/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-teal-blue/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "multicolor": false,
+      "sortRank": 57.3623000201486,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625276-80880191-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625276-80880191-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625276-80880191-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-light-blue",
+      "name": "Light Blue",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625284",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880192",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Light Blue</li>\n<li>Color Code: 410 Light Blue</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-light-blue/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-light-blue/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-light-blue/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "multicolor": false,
+      "sortRank": 8.610897292135633,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625284-80880192-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625284-80880192-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625284-80880192-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-pumpkin-spice",
+      "name": "Pumpkin Spice",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625292",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880193",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Orange</li>\n<li>Color Code: 805 Pumpkin Spice</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-pumpkin-spice/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-pumpkin-spice/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-pumpkin-spice/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "oranges",
+      "multicolor": false,
+      "sortRank": 44.54371869547981,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625292-80880193-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625292-80880193-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625292-80880193-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-plum",
+      "name": "Plum",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625300",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880194",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Purple</li>\n<li>Color Code: 515 Plum</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-plum/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-plum/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-plum/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "purples",
+      "multicolor": false,
+      "sortRank": 77.04667515949131,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625300-80880194-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625300-80880194-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625300-80880194-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-hot-pink",
+      "name": "Hot Pink",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625318",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880195",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Hot Pink</li>\n<li>Color Code: 650 Hot Pink</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-hot-pink/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-hot-pink/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-hot-pink/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "pinks",
+      "multicolor": false,
+      "sortRank": 52.21250302436283,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625318-80880195-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625318-80880195-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625318-80880195-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-mauve",
+      "name": "Mauve",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625334",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880197",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Mauve</li>\n<li>Color Code: 635 Mauve</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-mauve/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-mauve/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-mauve/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "pinks",
+      "multicolor": false,
+      "sortRank": 41.82062476350802,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625334-80880197-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625334-80880197-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625334-80880197-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-spice",
+      "name": "Spice",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1625342",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80880198",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Dark Peach</li>\n<li>Color Code: 620 Spice</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-spice/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-spice/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-spice/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "reds",
+      "multicolor": false,
+      "sortRank": 54.58463155881236,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625342-80880198-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1625342-80880198-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1625342-80880198-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-blush",
+      "name": "Blush",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1671221",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80891081",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Pale Pink</li>\n<li>Color Code: 630 Blush</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-blush/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-blush/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-blush/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "pinks",
+      "multicolor": false,
+      "sortRank": 22.65955658739631,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1671221-80891081-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1671221-80891081-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1671221-80891081-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-chili-red",
+      "name": "Chili Red",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1671239",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80891083",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Red</li>\n<li>Color Code: 610 Chili Red</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-chili-red/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-chili-red/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-chili-red/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "reds",
+      "multicolor": false,
+      "sortRank": 67.65658738643788,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1671239-80891083-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1671239-80891083-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1671239-80891083-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-tobacco",
+      "name": "Tobacco",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1671247",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80891084",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Tan</li>\n<li>Color Code: 210 Tobacco</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-tobacco/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-tobacco/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-tobacco/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "browns",
+      "multicolor": false,
+      "sortRank": 64.2556444700499,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1671247-80891084-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1671247-80891084-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1671247-80891084-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-dark-heather-gray",
+      "name": "Dark Heather Gray",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1682855",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80896078",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Dark Gray</li>\n<li>Color Code: 42 Dark Heather Gray</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-heather-gray/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-heather-gray/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-heather-gray/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 77.64098504620142,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1682855-80896078-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1682855-80896078-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1682855-80896078-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-oatmeal",
+      "name": "Oatmeal",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1682863",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80896080",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Brown &amp; Beige</li>\n<li>Color Code: 204 Oatmeal</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 4 Ounces</li>\n<li>Skein Yardage: 186 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-oatmeal/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-oatmeal/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-oatmeal/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "browns",
+      "multicolor": false,
+      "sortRank": 32.429909545394366,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1682863-80896080-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1682863-80896080-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1682863-80896080-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-purple-haze",
+      "name": "Purple Haze",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1964501",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80990788",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Pale Purple</li>\n<li>Color Code: 510 Purple Haze</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple-haze/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple-haze/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-purple-haze/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "purples",
+      "multicolor": false,
+      "sortRank": 52.12907269790685,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1964501-80990788-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1964501-80990788-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1964501-80990788-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-sage",
+      "name": "Sage",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1964519",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80990789",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Green</li>\n<li>Color Code: 302 Sage</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-sage/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-sage/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-sage/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "multicolor": false,
+      "sortRank": 35.65455864641848,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1964519-80990789-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1964519-80990789-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1964519-80990789-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-clay",
+      "name": "Clay",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:1964527",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/80990790",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Orange</li>\n<li>Color Code: 690 Clay</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-clay/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-clay/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-clay/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "browns",
+      "multicolor": false,
+      "sortRank": 54.61718097575522,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1964527-80990790-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/1964527-80990790-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/1964527-80990790-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-viridescent",
+      "name": "Viridescent",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2088821",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81038844",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Green</li>\n<li>Color Code: 304 Viridescent</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-viridescent/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-viridescent/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-viridescent/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "multicolor": false,
+      "sortRank": 42.11280709714629,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088821-81038844-06042026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2088821-81038844-06042026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088821-81038844-06042026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-crisp-air",
+      "name": "Crisp Air",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2088839",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81038848",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Pale Blue</li>\n<li>Color Code: 404 Crisp Air</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cool</li>\n<li>Tumble Dry, Low</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-crisp-air/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-crisp-air/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-crisp-air/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "multicolor": false,
+      "sortRank": 48.13741916907293,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088839-81038848-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2088839-81038848-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088839-81038848-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-bruschetta",
+      "name": "Bruschetta",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2088847",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81038849",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Rust</li>\n<li>Color Code: 695 Bruschetta</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-bruschetta/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-bruschetta/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-bruschetta/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "reds",
+      "multicolor": false,
+      "sortRank": 65.27574693029374,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088847-81038849-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2088847-81038849-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088847-81038849-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-olive",
+      "name": "Olive",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2088862",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81038851",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Green</li>\n<li>Color Code: 315 Olive</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Gentle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-olive/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-olive/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-olive/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "multicolor": false,
+      "sortRank": 83.21632940545577,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088862-81038851-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2088862-81038851-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088862-81038851-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-auburn-delight",
+      "name": "Auburn Delight",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2088870",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81038855",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Red, Green, Blue &amp; White</li>\n<li>Color Code: 956 Auburn Delight</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 4 Ounces</li>\n<li>Skein Yardage: 186 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cool, Gentle Cycle</li>\n<li>Dry Flat</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-auburn-delight/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-auburn-delight/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-auburn-delight/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 61.07544634621718,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088870-81038855-02142025-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2088870-81038855-02142025-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2088870-81038855-02142025-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-turquoise",
+      "name": "Turquoise",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2553683",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81234965",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Blue</li>\n<li>Color Code: Turquoise</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommenced Knitting Needles: 5mm (US: Size 8)</li>\n<li>Knit Gauge: 18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks: 6mm (US: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cool, Gentle Cycle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-turquoise/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-turquoise/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-turquoise/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "multicolor": false,
+      "sortRank": 35.675015013262055,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2553683-81234965-05192026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2553683-81234965-05192026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2553683-81234965-05192026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-forest",
+      "name": "Forest",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2553691",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81234968",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Dark Green</li>\n<li>Color Code: Forest</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommenced Knitting Needles: 5mm (US: Size 8)</li>\n<li>Knit Gauge: 18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks: 6mm (US: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cool, Gentle Cycle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-forest/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-forest/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-forest/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "greens",
+      "multicolor": false,
+      "sortRank": 88.68846477833267,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2553691-81234968-05192026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2553691-81234968-05192026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2553691-81234968-05192026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-brown",
+      "name": "Brown",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2553709",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81234970",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Dark Brown</li>\n<li>Color Code: Brown</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommenced Knitting Needles: 5mm (US: Size 11)</li>\n<li>Knit Gauge: 18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks: 9mm (US: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cool, Gentle Cycle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-brown/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-brown/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-brown/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "browns",
+      "multicolor": false,
+      "sortRank": 90.27850471082911,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2553709-81234970-05192026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2553709-81234970-05192026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2553709-81234970-05192026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-dark-country-blue",
+      "name": "Dark Country Blue",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2554533",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/yarn-bee-soft-sleek-yarn/p/81235133",
+      "fiber": "100% low pill acrylic",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 100% Low Pill Acrylic</li>\n<li>Color: Dark Blue</li>\n<li>Color Code: Dark Country Blue</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommenced Knitting Needles: 5mm (US: Size 8)</li>\n<li>Knit Gauge: 18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks: 6mm (US: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cool, Gentle Cycle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-country-blue/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-country-blue/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-dark-country-blue/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "blues",
+      "multicolor": false,
+      "sortRank": 79.21612841091337,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2554533-81235133-05192026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2554533-81235133-05192026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2554533-81235133-05192026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    },
+    {
+      "id": "yarn-bee-soft-sleek-ivory-tweed",
+      "name": "Ivory Tweed",
+      "lineId": "yarn-bee-soft-sleek",
+      "lineName": "Yarn Bee Soft & Sleek Yarn",
+      "supplierSku": "hobbylobby:2688802",
+      "supplierUrl": "https://www.hobbylobby.com/yarn-needle-art/yarn-tools/yarn/ivory-tweed---yarn-bee-soft-sleek-yarn/p/81286615",
+      "fiber": "97% low pill acrylic & 3% viscose",
+      "supplierDescription": "<ul style=\"list-style-type: circle;\">\n<li>Content: 97% Low Pill Acrylic &amp; 3% Viscose</li>\n<li>Color: Cream &amp; Brown</li>\n<li>Color Code: Ivory Tweed</li>\n<li>Yarn Weight: 4 - Medium</li>\n<li>Recommended Knitting Needles: 5mm (USA: Size 8)</li>\n<li>Knit Gauge:&nbsp;18 Stitches x 23 Rows = 4\" x 4\"</li>\n<li>Recommended Crochet Hooks:&nbsp;6mm (USA: Size J-10)</li>\n<li>Crochet Gauge: 12 Single Crochet x 15 Rows = 4\" x 4\"</li>\n<li>Skein Weight: 5 Ounces</li>\n<li>Skein Yardage: 232 Yards</li>\n<li>Quantity: 1</li>\n</ul>\n<p>&nbsp;</p>\n<p>Care:</p>\n<ul style=\"list-style-type: circle;\">\n<li>Machine Wash, Cold</li>\n<li>Tumble Dry, Low, Gentle Cycle</li>\n<li>Do Not Iron</li>\n<li>Do Not Bleach</li>\n<li>Dry Clean, Any Solvent Except Trichloroethylene</li>\n</ul>",
+      "swatchSrc": "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-ivory-tweed/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-ivory-tweed/photo-1.webp",
+        "/yarn-images/ribbed-yarns/yarn-bee-soft-sleek-ivory-tweed/photo-2.webp"
+      ],
+      "crop": {
+        "left": 100,
+        "top": 440,
+        "width": 140,
+        "height": 140
+      },
+      "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 10.240315388567069,
+      "supplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2688802-81286615-06292026-a?fmt=jpg&w=1400&h=1400",
+        "https://cdn.media.amplience.net/i/hobbylobby/2688802-81286615-06292026-b?fmt=jpg&w=1400&h=1400"
+      ],
+      "rejectedSupplierImages": [
+        "https://cdn.media.amplience.net/i/hobbylobby/2688802-81286615-06292026-c?fmt=jpg&w=1400&h=1400"
+      ]
+    }
+  ]
+}

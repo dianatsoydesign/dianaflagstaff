@@ -25,6 +25,7 @@ export function ShopCatalog() {
                 index={i}
                 animate
                 dimInDark
+                nameClassName="text-[length:calc(0.006156*min(100vh,900px)_+_0.855rem)] md:text-[length:min(calc(0.6156vw_+_0.855rem),24.7608px)]"
                 showMinimumPurchase
               />
             </li>

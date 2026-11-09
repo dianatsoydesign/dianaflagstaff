@@ -3,7 +3,7 @@ import path from 'node:path';
 import {createRequire} from 'node:module';
 const root=process.cwd(); const require=createRequire(path.join(root,'package.json')); const sharp=require('sharp');
 const yarns=new Map();
-for(const name of ['charisma','hat-yarns','bernat-blanket-big','sweet-snuggles','bobbiny-premium-5mm']) for(const y of JSON.parse(fs.readFileSync(`src/data/${name}.json`)).yarns??[]) yarns.set(y.id, name === "bobbiny-premium-5mm" ? {...y, swatchSrc: `/yarn-swatches/bobbiny/${y.id}.webp`} : y);
+for(const name of ['charisma','hat-yarns','ribbed-yarns','bernat-blanket-big','sweet-snuggles','bobbiny-premium-5mm']) for(const y of JSON.parse(fs.readFileSync(`src/data/${name}.json`)).yarns??[]) yarns.set(y.id, name === "bobbiny-premium-5mm" ? {...y, swatchSrc: `/yarn-swatches/bobbiny/${y.id}.webp`} : y);
 const entries=[];
 for(const y of yarns.values()) {
  const {data,info}=await sharp(path.join(root,'public',y.swatchSrc)).resize(32,32).removeAlpha().raw().toBuffer({resolveWithObject:true});
