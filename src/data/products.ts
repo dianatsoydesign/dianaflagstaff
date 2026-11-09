@@ -196,7 +196,7 @@ export const products: Product[] = [
     imageShownColor: "Ivory Tweed",
     galleryImages: [
       { src: "/products/ribbed-hat/ribbed hat 5-v4.png", alt: "Cream tweed ribbed beanie laid flat with its folded cuff", shownColor: "Ivory Tweed" },
-      { src: "/products/ribbed-hat/ribbed beanie 11-v3.png", alt: "Ivory Tweed ribbed beanie laid flat with its cuff unfolded and Handmade by Diana label", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed beanie 11-v4.png", alt: "Ivory Tweed ribbed beanie laid flat with its cuff unfolded and Handmade by Diana label", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 3-v1.png", alt: "Front view of a man wearing a cream tweed ribbed beanie with a pond and trees behind him", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 2-v1.png", alt: "Back view of a cream tweed ribbed beanie showing the gathered crown beside a pond", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 7-v3.png", alt: "Close-up of the folded cream tweed hat cuff and ribbed stitches", shownColor: "Ivory Tweed" },

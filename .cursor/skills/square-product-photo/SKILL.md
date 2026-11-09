@@ -39,6 +39,15 @@ Standardize image exposure, background appearance, and white balance across all 
 
 * **Hue Locking**: The physical crocheted product's true-to-life hue and stitch clarity must remain identical and unaltered across all edited photos.
 
+### Tag, Logo, & Writing Preservation
+
+* **Full Tag Length & Attachment**: Never shorten, truncate, crop, shrink, or reshape a tag. Preserve its full original length, width, proportions, folded or wrapped section, rivet or stitching, and visible connection to the product. A tag must look physically attached exactly as in the original, never like a floating or cut-off label. Compare the entire tag and attachment against the original at readable magnification.
+* **Tag-only Repairs**: When Diana requests repairing a corrupted tag, use the original camera photo as the tag reference, never a previously generated label. Restore the original wording, artwork, orientation, perspective, full dimensions, and attachment. Change only the damaged tag area; preserve the current image’s white balance, yarn color, exposure, background, framing, stitch detail, and all other content. Do not guess illegible lettering or approve gibberish.
+
+* **Explicit Permission Required**: Never change any tag or label text, writing, logo, or their orientation unless Diana explicitly permits that specific change. Preserve the original wording, spelling, lettering, line breaks, logo artwork, placement, rotation, reading direction, and perspective exactly as photographed. Never rotate, flip, mirror, redraw, replace, translate, correct, or invent writing or branding, even when it is sideways, upside down, partially obscured, or hard to read.
+* **Protected During Every Edit**: Treat the tag, logo, and all writing as protected content during background replacement, white balance, cleanup, reframing, regeneration, and export. General image approval or a request to improve the photo does not authorize changing them. Include this preservation constraint in every image-edit prompt involving a visible tag or logo.
+* **Review Against the Original**: Inspect tags and logos against the original at readable magnification before saving a review candidate. Reject edits that change writing, artwork, or orientation. If exact preservation cannot be achieved, keep the original unchanged and report the limitation; do not substitute a reconstructed tag.
+
 ### Preserve Material Texture & Grounded Shadows
 
 * **Detail Preservation & Slight Sharpening**: Retain sharp definition of the Bobbiny Premium 5mm cotton stitch-work, natural knit patterns, ribbed edges, and pom-pom textures with gentle crochet-only sharpening during web export (see section 5).
