@@ -20,7 +20,7 @@ const featured = listedProducts.slice(0, 3);
 
 const landingPhotos = {
   hero: "/products/christmas-stockings/hero-studio-v6.jpg",
-  shop: "/products/hats/hats 1.jpg",
+  shop: "/products/chunky-hat/chunky hat 1.jpg",
   about: "/products/coasters/hero.jpg",
 } as const;
 

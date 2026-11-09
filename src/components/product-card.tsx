@@ -43,7 +43,7 @@ export function ProductCard({
   return (
     <div
       className={cn(
-        "group flex flex-col gap-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+        "group flex flex-col gap-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
         animate && "fade-up",
         animate && index < 3 && `fade-up-delay-${index}`
       )}

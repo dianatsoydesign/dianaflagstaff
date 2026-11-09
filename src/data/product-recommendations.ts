@@ -6,10 +6,10 @@ import { listedProducts, type Product } from "@/data/products";
  */
 export const recommendationGroups: Record<string, readonly string[]> = {
   blankets: ["blanket", "hotpads", "placemats"],
-  hats: ["hats", "elf-hat", "mushroom-hat"],
+  hats: ["hats", "elf-hat", "mushroom-hat", "ribbed-hat", "ribbed-headband"],
   holiday: ["christmas-stockings", "elf-hat", "mushroom-hat"],
   pets: ["cat-cave"],
-  kitchen: ["coasters", "hotpads", "placemats"],
+  kitchen: ["coasters", "hotpads", "placemats", "koozie"],
 };
 
 export function getRelatedProducts(productId: string, limit = 2): Product[] {

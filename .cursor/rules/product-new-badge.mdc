@@ -1,0 +1,10 @@
+---
+description: Do not add New product badges automatically
+alwaysApply: true
+---
+
+# Product New badge
+
+- Never add the New tag or set `isNew: true` automatically when adding a product or editing product photos.
+- Diana's explicit condition for adding that tag is that she says it is not her project and is someone else's photo. Do not infer this from a new product, a new page, or a recently added image.
+- The koozie must not have the New badge. Preserve other existing badges unless Diana asks to change them.

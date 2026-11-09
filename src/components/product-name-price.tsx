@@ -6,13 +6,13 @@ const rowClass =
 
 /** Shop grid: fixed price size; name keeps fluid display scale. */
 const cardNameClass =
-  "font-display text-[length:calc(0.0072*min(100vh,900px)_+_1rem)] leading-[1.2] tracking-[-0.04em] md:text-[length:min(calc(0.72vw_+_1rem),28.96px)]";
+  "font-display text-[length:calc(0.0072*min(100vh,900px)_+_1rem)] leading-none tracking-[-0.04em] md:text-[length:min(calc(0.72vw_+_1rem),28.96px)]";
 
 const cardNameFontSizeClass =
   "text-[length:calc(0.0072*min(100vh,900px)_+_1rem)] md:text-[length:min(calc(0.72vw_+_1rem),28.96px)]";
 
 const cardPriceClass =
-  "font-sans text-[1.125rem] leading-[1.2] tabular-nums";
+  "self-center font-sans text-[1.125rem] leading-none tabular-nums";
 
 /** PDP + welcome: shared line box (em) for vertical alignment. */
 const nameSizeByVariant = {
@@ -22,17 +22,15 @@ const nameSizeByVariant = {
 
 const nameTypeByVariant = {
   detail: "font-display tracking-[-0.04em]",
-  featured: "font-sans leading-[1.8]",
+  featured: "font-sans leading-none",
 } as const;
 
-const cellHeightByVariant = {
-  detail: "h-[1em]",
-  featured: "h-[1em]",
-} as const;
+// Trim font whitespace so different font sizes align by visible letter height.
+const textCellClass = "block [text-box-trim:trim-both] [text-box-edge:cap_alphabetic]";
 
 const priceClassByVariant = {
-  detail: "font-sans text-[1.4375rem] leading-[1.8] tabular-nums",
-  featured: "font-sans text-[1.125rem] leading-[1.8] tabular-nums",
+  detail: "self-center font-sans text-[1.4375rem] leading-none tabular-nums",
+  featured: "self-center font-sans text-[1.125rem] leading-none tabular-nums",
 } as const;
 
 function NamePriceDot({
@@ -46,7 +44,7 @@ function NamePriceDot({
     <span
       aria-hidden
       className={cn(
-        "mx-[0.65em] inline-flex shrink-0 items-center justify-center leading-none",
+        "mx-[0.65em] inline-flex h-[0.18em] shrink-0 self-center items-center justify-center leading-none",
         cellHeight,
         fontSizeClass
       )}
@@ -80,24 +78,19 @@ export function ProductNamePrice({
 
   const quantityPrice = !priceTbd && priceLabel?.match(/^(\d+) for (\$[\d,.]+)$/);
   const quantityPriceContent = quantityPrice ? (
-    <>
-      <span className="sr-only">{priceLabel}</span>
-      <span aria-hidden="true" className="inline-flex items-baseline whitespace-nowrap">
-        <span>{quantityPrice[1]}</span>
-        <span className="mx-[0.35em]">for</span>
-        <span>{quantityPrice[2]}</span>
-      </span>
-    </>
+    <span className="whitespace-nowrap">
+      {quantityPrice[1]}{" "}<span className="mx-[0.25em]">for</span>{" "}{quantityPrice[2]}
+    </span>
   ) : null;
 
   if (variant === "card") {
     return (
       <p className={cn(rowClass, "gap-y-1", className)}>
-        <span className={cn("inline-flex items-center", cardNameClass)}>
+        <span className={cn(textCellClass, cardNameClass)}>
           {name}
         </span>
         <NamePriceDot fontSizeClass={cardNameFontSizeClass} />
-        <span className={cn("inline-flex items-center", cardPriceClass)}>
+        <span className={cn(textCellClass, cardPriceClass)}>
           {cardRange ? (
             <>
               <span className="sr-only">{cardRange[1]} to {cardRange[2]}</span>
@@ -113,13 +106,12 @@ export function ProductNamePrice({
     );
   }
 
-  const cellHeight = cellHeightByVariant[variant];
-  const cellClass = cn("inline-flex items-center leading-none", cellHeight);
+  const cellClass = cn(textCellClass, "leading-none");
 
   const content = (
     <>
       <span className={cn(cellClass, nameTypeByVariant[variant])}>{name}</span>
-      <NamePriceDot cellHeight={cellHeight} />
+      <NamePriceDot />
       <span className={cn(cellClass, priceClassByVariant[variant])}>
         {priceTbd ? "TBD" : (quantityPriceContent ?? priceLabel ?? formatPrice(price))}
       </span>

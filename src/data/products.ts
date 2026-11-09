@@ -85,6 +85,8 @@ export type Product = {
   hideSizePicker?: boolean;
   /** Fixed colorway; no shopper color choice. */
   hideColorPicker?: boolean;
+  /** Product-specific instruction appended to the yarn washing guidance. */
+  washCareNote?: string;
   /** Extra chip after preset sizes to enter custom dimensions (hotpads). */
   allowRequestDifferentSize?: boolean;
   /** Scale `price` by area vs this reference size (dimension chips and custom). */
@@ -154,6 +156,97 @@ export const PATTERN_BOARD_YARNS: YarnColor[] = [
 ];
 
 export const products: Product[] = [
+  {
+    id: "ribbed-headband",
+    name: "Ribbed headband",
+    price: 30,
+    category: "Hats",
+    hideColorPicker: true,
+    imageSrc: "/products/ribbed headband/ribbed-headband-1-v4.jpg",
+    imageAlt: "Burgundy ribbed crochet headband with a twisted front and Handmade by Diana label, shown in the 6-inch width",
+    imageShownColor: "Burgundy",
+    galleryImages: [
+      { src: "/products/ribbed headband/ribbed-headband-2-v4.jpg", alt: "Hand holding the 6-inch burgundy ribbed headband, showing the front twist and leather label", shownColor: "Burgundy" },
+      { src: "/products/ribbed headband/ribbed-headband-3-v2.jpg", alt: "Close-up of burgundy crochet ribs and the headband's twisted front", shownColor: "Burgundy" },
+    ],
+    sizes: [
+      { id: "width-4", label: '4" wide', price: 20 },
+      { id: "width-5", label: '5" wide', price: 25 },
+      { id: "width-6", label: '6" wide', price: 30 },
+    ],
+    defaultSizeId: "width-6",
+    defaultYarnId: "red-heart-super-saver-burgundy",
+    // Pictured yarn only; Diana will add color choices later.
+    yarns: [{
+      id: "red-heart-super-saver-burgundy",
+      name: "Burgundy",
+      swatchSrc: "/products/ribbed headband/ribbed-headband-3-v2.jpg",
+      stockStatus: "in_stock",
+    }],
+  },
+  {
+    id: "ribbed-hat",
+    name: "Ribbed hat (unisex)",
+    price: 30,
+    category: "Hats",
+    hideColorPicker: true,
+    imageSrc: "/products/ribbed-hat/ribbed hat 1-v1.png",
+    imageAlt: "Man wearing a cream tweed ribbed hat in profile beside a pond at sunset",
+    imageShownColor: "Ivory Tweed",
+    galleryImages: [
+      { src: "/products/ribbed-hat/ribbed hat 3-v1.png", alt: "Front view of a man wearing a cream tweed ribbed hat with a pond and trees behind him", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 2-v1.png", alt: "Back view of a cream tweed ribbed hat showing the gathered crown beside a pond", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 5-v3.png", alt: "Cream tweed ribbed hat laid flat with its folded cuff", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 7-v3.png", alt: "Close-up of the folded cream tweed hat cuff and ribbed stitches", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 8-v3.png", alt: "Cream tweed ribbed hat showing its gathered crown", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 9-v3.png", alt: "Handmade by Diana leather label on the cream tweed ribbed hat cuff", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 10-v1.png", alt: "Close-up of cream ribbed crochet stitches with black and tan tweed flecks", shownColor: "Ivory Tweed" },
+    ],
+    sizes: [
+      { id: "baby", label: "Baby", price: 24 },
+      { id: "toddler", label: "Toddler", price: 26 },
+      { id: "child", label: "Child", price: 27 },
+      { id: "teen", label: "Teen", price: 29 },
+      { id: "adult", label: "Adult", price: 30 },
+    ],
+    defaultSizeId: "adult",
+    // Fixed pictured yarn; no color picker until Diana requests additional colors.
+    yarns: [{
+      id: "i-love-this-yarn-ivory-tweed",
+      name: "Ivory Tweed",
+      swatchSrc: "/products/ribbed-hat/ribbed hat 1-v1.png",
+      stockStatus: "in_stock",
+    }],
+  },
+  {
+    id: "koozie",
+    name: "Drink cozy",
+    price: 10,
+    category: "Kitchen",
+    hideColorPicker: true,
+    imageSrc: "/products/koozie/koozie 2-v1.jpg",
+    imageAlt: "White crochet koozie lying flat on wood, showing the green tree and wooden bead",
+    imageShownColor: "White and green",
+    galleryImages: [
+      { src: "/products/koozie/koozie 4-v1.jpg", alt: "Hand holding a white and green tree koozie with its Handmade by Diana label", shownColor: "White and green" },
+      { src: "/products/koozie/koozie 1-v1.jpg", alt: "White crochet can koozie with a green tree and wooden bead on a wooden table", shownColor: "White and green" },
+      { src: "/products/koozie/koozie 3-v1.jpg", alt: "Close-up of the green yarn tree and white crochet stitches on a wooden table", shownColor: "White and green" },
+    ],
+    sizes: [
+      { id: "short-bottomless", label: "Short, bottomless", price: 10 },
+      { id: "short-with-bottom", label: "Short, with bottom", price: 12 },
+      { id: "tall-bottomless", label: "Tall, bottomless", price: 12 },
+      { id: "tall-with-bottom", label: "Tall, with bottom", price: 15 },
+    ],
+    defaultSizeId: "short-bottomless",
+    quantityPicker: { min: 2, max: 20 },
+    yarns: [{
+      id: "koozie-white-green-tree",
+      name: "White and green tree",
+      swatchSrc: "/products/koozie/koozie 2-v1.jpg",
+      stockStatus: "in_stock",
+    }],
+  },
   {
     "id": "blanket",
     "name": "Chunky chenille blanket",
@@ -264,6 +357,7 @@ export const products: Product[] = [
   },
   {
     id: "christmas-stockings",
+    washCareNote: "Turn inside out to preserve the beads.",
     name: "Christmas stockings",
     price: 35,
     category: "Holiday",
@@ -334,7 +428,7 @@ export const products: Product[] = [
   {
     id: "elf-hat",
     hideColorPicker: true,
-    name: "Elf hat",
+    name: "Elf hat (unisex)",
     price: 45,
     category: "Holiday",
     imageSrc: "/products/elf-hat/elf hat 1.jpg",
@@ -358,15 +452,15 @@ export const products: Product[] = [
   {
     id: "mushroom-hat",
     hideColorPicker: true,
-    name: "Mushroom hat",
+    name: "Mushroom hat (unisex)",
     price: 65,
     category: "Holiday",
     imageSrc: "/products/mushroom hat/mushroom hat 1.jpg",
     imageShownStyle: "Slouchy, long tip",
     imageAlt: "Man wearing a red crochet mushroom hat with white spots and brim",
     galleryImages: [
+      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom hat 3-v1.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
       { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom hat 2.jpg", alt: "Side view of a red crochet mushroom hat with white spots and a leather tag" },
-      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom hat 3.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
       { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom hat 4.jpg", alt: "Short-tip red and white crochet mushroom hat on a black mannequin against a neutral studio background" },
       { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom hat 5.jpg", alt: "Short-tip mushroom hat on a black mannequin showing the raised brim and cream crochet underside" },
     ],
@@ -451,17 +545,14 @@ export const products: Product[] = [
   },
   {
     id: "hats",
-    name: "Hats",
+    name: "Chunky hat (unisex)",
     price: 30,
     category: "Hats",
-    imageSrc: "/products/hats/hats 1.jpg",
-    imageAlt: "Two handmade pom-pom beanies in rust and speckled charcoal yarn",
+    imageSrc: "/products/chunky-hat/chunky-hat-cover-v2-cooler.png",
+    imageAlt: "Close-up of two people wearing rust and speckled charcoal crochet pom-pom beanies",
     galleryImages: [
-      { src: "/products/hats/hats 2.jpg", alt: "Speckled charcoal crochet pom-pom beanie" },
-      {
-        src: "/products/hats/hats 3.jpg",
-        alt: "Two people wearing handmade crochet pom-pom beanies",
-      },
+      { src: "/products/chunky-hat/chunky hat 1.jpg", alt: "Two handmade pom-pom beanies in rust and speckled charcoal yarn" },
+      { src: "/products/chunky-hat/chunky hat 2.jpg", alt: "Speckled charcoal crochet pom-pom beanie" },
     ],
     sizes: [
       { id: "baby", label: "Baby", price: 24 },

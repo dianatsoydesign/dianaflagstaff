@@ -45,6 +45,7 @@ import { ProductPickupEstimate } from "@/components/product-pickup-estimate";
 import { productionDaysForProduct, productsWithPickupEstimates, type PickupTiming } from "@/lib/pickup-estimate";
 import { PickerValidation } from "@/components/picker-validation";
 import { SizePicker } from "@/components/size-picker";
+import { CozyOptionsPicker } from "@/components/cozy-options-picker";
 import { PomPomPicker } from "@/components/pom-pom-picker";
 import { TagPicker } from "@/components/tag-picker";
 import { isCharismaCuratedPaletteYarn } from "@/data/charisma-curated-palette-yarn";
@@ -431,6 +432,8 @@ export function ProductPurchaseForm({
       <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
       <YarnSwatchPicker
         allowHolidayFilter={product.id === "christmas-stockings"}
+        priceAddUsdForYarn={product.id === "christmas-stockings" ? yarn => isMulticolorStocking(yarn) ? 5 : 0 : undefined}
+        unselectedPriceNote={product.id === "christmas-stockings" ? "Multicolor +$5" : undefined}
         keyboardNavigation
         yarns={yarns}
         labelYarns={product.yarns}
@@ -449,7 +452,7 @@ export function ProductPurchaseForm({
       )}
       {!product.hideSizePicker && (
         <PickerValidation error={message && !/yarn|color/i.test(message) ? message : null}>
-        <SizePicker
+        {product.id === "koozie" ? <CozyOptionsPicker sizes={pricedSizes} value={sizeId} basePrice={product.price} onChange={id => { setSizeId(id); setMessage(null); }} /> : <SizePicker
           sizes={pricedSizes}
           basePrice={product.price + pomPomAddUsd}
           priceSuffix={qtyConfig ? " each" : ""}
@@ -473,13 +476,12 @@ export function ProductPurchaseForm({
           }}
           customSizeLimits={product.customSizeLimits}
           customSizePrice={customSizeSelected && !priceTbd ? unitPrice : undefined}
-        />
+        />}
         </PickerValidation>
       )}
       {product.id === "christmas-stockings" && (
         <>
           <StockingPersonalizationPicker topOnly={multicolorStocking} value={personalizationPlacement} onChange={value => { setPersonalizationPlacement(value); setNameError(null); }} />
-          {multicolorStocking && <p className="text-sm text-muted-foreground">Multicolor +$5. Personalization available at the top only.</p>}
           {personalizationPlacement !== "none" && (
             <div className="flex scroll-my-4 flex-col gap-3 text-sm">
               <label htmlFor="stocking-name" className="font-medium">Name, initials, or nickname (required)</label>

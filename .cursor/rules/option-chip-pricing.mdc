@@ -1,0 +1,12 @@
+---
+description: Match pom-pom chip patterns and show option pricing inside selection chips
+alwaysApply: true
+---
+
+# Option chip pricing
+
+- For product option groups such as Height, Bottom, Pom pom, and similar selections, reuse the established pom-pom picker pattern and shared chip styles, wrapping, selected state, focus, and keyboard behavior.
+- Reflect price differences inside the relevant chips and in the selected-choice legend. Use the pom-pom convention: a base option has its plain label, and a paid option includes its add-on, such as `Tall +$2` or `Closed +$2`.
+- When prices depend on another selected option, calculate each chip's add-on against the base choice in that same group with the other selections held fixed. Update labels when dependencies change, using the catalog variant prices as the source of truth.
+- Do not add a standalone unit-price line beneath option groups, such as `$10 each`. Keep the existing PDP heading and Add to cart totals synchronized with the selected combination.
+- Preserve the existing Size picker convention: full size prices belong inside its chips and selected-size summary. This rule does not remove those prices.

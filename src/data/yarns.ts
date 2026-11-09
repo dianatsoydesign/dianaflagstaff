@@ -30,6 +30,8 @@ export function getAllYarns(): YarnColor[] {
 
 /** Supplier yarn line shown as the picker heading and in gallery alt text. */
 export function yarnLineName(yarn: YarnColor): string | null {
+  if (yarn.id.startsWith("red-heart-super-saver-")) return "Red Heart Super Saver";
+  if (yarn.id === "i-love-this-yarn-ivory-tweed") return "Tweed I Love This Yarn";
   if (yarn.id.startsWith("sweet-snuggles-")) return "Sweet Snuggles by Loops & Threads";
   const additional = hatCatalog.yarns.find(color => color.id === yarn.id);
   if (additional) return additional.lineName;
@@ -58,11 +60,28 @@ const CHARISMA_MATERIAL: YarnMaterial = {
 
 /** Fiber content from each supplier's product page (bobbinycords.us, michaels.com). */
 export function yarnMaterial(yarn: YarnColor): YarnMaterial {
+  // Acrylic care follows Diana's instructions: machine wash cold and air dry.
+  if (yarn.id.startsWith("red-heart-super-saver-")) return {
+    fiber: "100% acrylic",
+    washCare: MACHINE_WASH_COLD,
+    dryCare: AIR_DRY,
+    detail: "",
+  };
+  if (yarn.id === "i-love-this-yarn-ivory-tweed") return {
+    fiber: "97% acrylic, 3% viscose",
+    washCare: MACHINE_WASH_COLD,
+    dryCare: AIR_DRY,
+    detail: "",
+  };
+  if (yarn.id === "koozie-white-green-tree") return {
+    ...CHARISMA_MATERIAL,
+    washCare: "machine wash cold; turn inside out to preserve the bead",
+  };
   if (yarn.id.startsWith("bernat-fluffee-")) return { ...CHARISMA_MATERIAL, fiber: "90% polyester, 10% nylon", dryCare: "tumble dry low" };
   if (yarn.id.startsWith("grande-ombre-")) return { ...CHARISMA_MATERIAL, fiber: "100% polyester" };
   if (yarn.id.startsWith("sweet-snuggles-")) return { fiber: "100% polyester", washCare: "machine wash warm", dryCare: "dry flat", detail: "" };
-  if (yarn.id.startsWith("big-twist-winter-super-bulky-")) return { ...CHARISMA_MATERIAL, fiber: yarn.id.endsWith("-sparkle") ? "99% acrylic, 1% metallic" : "100% acrylic", dryCare: "dry flat" };
-  if (yarn.id.startsWith("lion-brand-hometown-")) return { ...CHARISMA_MATERIAL, dryCare: "tumble dry low" };
+  if (yarn.id.startsWith("big-twist-winter-super-bulky-")) return { ...CHARISMA_MATERIAL, fiber: yarn.id.endsWith("-sparkle") ? "99% acrylic, 1% metallic" : "100% acrylic" };
+  if (yarn.id.startsWith("lion-brand-hometown-")) return CHARISMA_MATERIAL;
   if (yarn.id.startsWith("charisma-tweed-")) return { ...CHARISMA_MATERIAL, fiber: "97% acrylic, 3% viscose" };
   if (yarn.id.startsWith("bernat-blanket-big-")) {
     return {

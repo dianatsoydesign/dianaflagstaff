@@ -242,7 +242,7 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
                     </span>
                   ) : null}
                   <span className="block text-muted-foreground">
-                    {sentenceCase(material.washCare)}
+                    {sentenceCase(material.washCare)}{product.washCareNote ? `. ${product.washCareNote}` : ""}
                   </span>
                   <span className="block text-muted-foreground">
                     {sentenceCase(material.dryCare)}

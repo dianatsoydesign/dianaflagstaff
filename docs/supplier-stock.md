@@ -1,11 +1,11 @@
 # Shared supplier availability
 
 - Cat cave: Bernat Blanket Big, at least 3 skeins of a color at Michaels Flagstaff store 9608.
-- Hats: Charisma, at least 2 skeins per color at the same store.
+- Chunky hats: Charisma, at least 2 skeins per color at the same store.
 - Christmas stockings: Charisma, at least 3 skeins per color at the same store.
 - Coasters, placemats, hotpads, and wine bottle holders: Bobbiny Premium 5mm, at least 1 skein per color in the supplier's online stock.
 
-Hats and stockings share one raw Charisma quantity snapshot and one hourly GitHub run, then apply their separate thresholds. All Bobbiny products share one raw Bobbiny snapshot and one hourly GitHub run. Bernat has its own run. Every mixed Charisma palette requires all constituent colors to meet that product's threshold. Checkout combines yarn requirements across hats and stockings sharing a color and rejects colors reported unavailable by the saved snapshots.
+Chunky hats and stockings share one raw Charisma quantity snapshot and one hourly GitHub run, then apply their separate thresholds. All Bobbiny products share one raw Bobbiny snapshot and one hourly GitHub run. Bernat has its own run. Every mixed Charisma palette requires all constituent colors to meet that product's threshold. Checkout combines yarn requirements across hats and stockings sharing a color and rejects colors reported unavailable by the saved snapshots.
 
 The workflows run at minutes 17 (Bernat), 27 (Charisma), and 37 (Bobbiny). GitHub schedules can be delayed. Each workflow tests and verifies supplier access in check-only mode on pull requests; publishing runs only happen on the schedule or a manual run. There are no per-product supplier checks. Browser pickers poll the website's lightweight saved results once per minute.
 

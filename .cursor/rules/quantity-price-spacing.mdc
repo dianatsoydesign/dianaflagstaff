@@ -1,0 +1,11 @@
+---
+description: Keep extra balanced whitespace around for in quantity-price wording
+alwaysApply: true
+---
+
+# Quantity-price spacing
+
+- Website-wide quantity-price labels such as `2 for $20` must have clearly visible, equal extra space before and after `for`.
+- Reuse `ProductNamePrice` for Shop cards, PDP headings, featured products and recommendations. Its `for` span uses `mx-[0.25em]` in addition to normal word spaces so spacing scales with font size.
+- Preserve natural accessible text with a word space on both sides. Keep the whole quantity-price phrase together with `whitespace-nowrap`.
+- Do not collapse the label back to a plain tightly spaced string, add repeated HTML spaces, or change ordinary prose containing the word for.

@@ -1,6 +1,6 @@
 # Shared Flagstaff Charisma stock
 
-Hats require 2 skeins per color; Christmas stockings require 3. Both use the same exact pickup quantities from Michaels store 9608 (Varsity Shopping Center, Flagstaff), fetched once per hourly GitHub run. Shipping stock never qualifies. A color with two skeins can appear for hats while staying hidden for stockings.
+Chunky hats require 2 skeins per color; Christmas stockings require 3. Both use the same exact pickup quantities from Michaels store 9608 (Varsity Shopping Center, Flagstaff), fetched once per hourly GitHub run. Shipping stock never qualifies. A color with two skeins can appear for hats while staying hidden for stockings.
 
 All constituent colors in a mixed palette must meet the applicable product threshold. The pictured stockings Multi option uses the existing classic holiday palette (Off White, Pine, Red). Checkout aggregates quantities across hats, stockings, and palettes sharing a color: one hat plus one stocking in the same color needs five skeins in the saved snapshot.
 

@@ -1,0 +1,13 @@
+---
+description: Hard rule, local changes only; Diana always deploys manually
+alwaysApply: true
+---
+
+# Local changes only
+
+- Never deploy, publish, upload releases, or push this project to a remote service. Diana deploys manually, always.
+- Work only on local files and local previews. Local builds and checks are allowed. Do not run `git push`.
+- Never run `npm run cf`, `npm run deploy`, `npm run upload`, Wrangler deploy/upload commands, deployment scripts, hosting publish tools, or any equivalent remote release action.
+- Requests such as "put it up", "update the website", "ship", or image approval mean update the local website only. They do not authorize deployment.
+- Do not initiate a deployment approval flow. Finish local work and report that it is ready for Diana's manual deployment.
+- This explicit user rule overrides any skill or prior workflow that directs the agent to deploy, including the cf skill. Only a clear, explicit change to this standing rule can revoke it.

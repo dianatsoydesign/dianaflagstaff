@@ -1,3 +1,8 @@
+# Hard rule: local changes only, manual deployment
+
+- Follow `.cursor/rules/local-only-manual-deployment.mdc` for all work. Never deploy, publish, remotely upload, or run `git push`. Diana deploys manually, always.
+- Make and verify local changes only. "Update the website", "put it up", "ship", and image approval do not authorize deployment. Do not run deployment commands or tools, including the cf skill's deployment command. This rule overrides prior deployment workflows.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
@@ -91,3 +96,15 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Consistent form inputs
 
 - Follow `.cursor/rules/form-input-consistency.mdc` for every new or edited text-entry field. Reuse the shared `FormTextInput`, `CustomerContactFields`, `RequestTextarea`, and `formFieldInputClass` so PDP, cart, checkout, and request fields retain consistent styling, counters, spacing, focus, and validation.
+
+## Product New badge
+
+- Follow `.cursor/rules/product-new-badge.mdc`. Never add the New tag automatically. Diana only permits adding it when she explicitly says it is not her project and is someone else's photo. New products and new images alone do not authorize it.
+
+## Option chip pricing
+
+- Follow `.cursor/rules/option-chip-pricing.mdc`: option groups reuse the pom-pom picker pattern, reflect price differences inside chips and selected legends, and never add a separate unit-price line underneath. Keep dependent chip prices and PDP/cart totals synchronized.
+
+## Quantity-price spacing
+
+- Follow `.cursor/rules/quantity-price-spacing.mdc`. All quantity-price wording (for example, `2 for $20`) needs equal extra whitespace on both sides of `for`. Reuse the shared `ProductNamePrice` formatting.

@@ -66,6 +66,8 @@ type Props = {
   /** Mouse hover only, so a tap on touch screens doesn't leave a preview stuck. */
   onPreview?: (yarnId: string | null) => void;
   legend?: string;
+  priceAddUsdForYarn?: (yarn: YarnColor) => number;
+  unselectedPriceNote?: string;
 };
 
 export function YarnSwatchPicker({
@@ -77,6 +79,8 @@ export function YarnSwatchPicker({
   onChange,
   onPreview,
   legend = "Yarn color",
+  priceAddUsdForYarn,
+  unselectedPriceNote,
 }: Props) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
@@ -145,11 +149,11 @@ export function YarnSwatchPicker({
             <span className="sr-only">{legend}: </span>
             Color:{" "}
             <span className="font-medium text-foreground">
-              {yarnColorLabel(shown, labelYarns)}
+              {yarnColorLabel(shown, labelYarns)}{(priceAddUsdForYarn?.(shown) ?? 0) > 0 ? ` +$${priceAddUsdForYarn!(shown)}` : ""}
             </span>
           </>
         ) : (
-          <>Color: <span className="font-medium text-foreground">Choose a color</span></>
+          <>Color: <span className="font-medium text-foreground">Choose a color</span>{unselectedPriceNote ? ` · ${unselectedPriceNote}` : ""}</>
         )}
       </legend>
 
