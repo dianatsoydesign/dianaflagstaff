@@ -358,7 +358,7 @@ export const products: Product[] = [
   {
     id: "christmas-stockings",
     washCareNote: "Turn inside out to preserve the beads.",
-    name: "Christmas stockings",
+    name: "Stockings (personalizable)",
     price: 35,
     category: "Holiday",
     imageSrc: "/products/christmas-stockings/christmas stockings 1.jpg",

@@ -23,3 +23,5 @@ alwaysApply: true
 - When no shared component exists, extract the established implementation and use it in both places. Do not independently restyle equivalent controls unless Diana explicitly requests it.
 
 - Form spacing: use 20px (`gap-5`) between field groups and 12px (`gap-3` or `mb-3`) between a label and its control, leaving room for focus indicators. Reuse this spacing in cart and request forms.
+
+- Product names must always match across Shop cards, PDP headings, recommendations, and current cart displays. Use the catalog product name; do not introduce Shop-only name overrides.

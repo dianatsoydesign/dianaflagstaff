@@ -108,3 +108,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Quantity-price spacing
 
 - Follow `.cursor/rules/quantity-price-spacing.mdc`. All quantity-price wording (for example, `2 for $20`) needs equal extra whitespace on both sides of `for`. Reuse the shared `ProductNamePrice` formatting.
+
+## Matching product names
+
+- Product names on Shop cards and PDPs must always match. Use the shared catalog name, without page-specific overrides.
