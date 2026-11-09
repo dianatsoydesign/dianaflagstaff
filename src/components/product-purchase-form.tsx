@@ -39,6 +39,7 @@ import {
 import { initialProductYarn } from "@/lib/product-color-selection";
 import { useInquiryCart } from "@/lib/inquiry-cart";
 import { yarnLineName } from "@/data/yarns";
+import { sentenceCaseColorName } from "@/lib/color-name";
 import { isSelectable, usesLiveSupplier } from "@/lib/yarn-stock";
 import { MushroomStylePicker } from "@/components/mushroom-style-picker";
 import { QuantityPicker } from "@/components/quantity-picker";
@@ -448,7 +449,7 @@ export function ProductPurchaseForm({
           }
           onYarnPreview?.(product.yarns.find((y) => y.id === id) ?? null);
         }}
-        legend={yarnLineName(yarns.find(yarn => yarn.id === yarnId) ?? product.yarns[0]) ?? "Yarn color"}
+        legend={sentenceCaseColorName(yarnLineName(yarns.find(yarn => yarn.id === yarnId) ?? product.yarns[0]) ?? "Yarn color")}
       />
       </PickerValidation>
       )}

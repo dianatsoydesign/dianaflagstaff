@@ -21,7 +21,7 @@ type Props = {
   emphasizeVideo?: boolean;
   zoomImages?: boolean;
   keyboardNavigation?: boolean;
-  /** Only the full-size image pins on mobile; thumbnails stay in page flow. */
+  /** Pin the full-size image and thumbnail strip together when mobile space permits. */
   pinOnMobile?: boolean;
   activeIndex: number;
   onSelect: (index: number) => void;
@@ -170,7 +170,7 @@ export function ProductDetailGallery({
       </figure>
 
       {count > 1 && (
-        <div className={cn("flex min-w-0 gap-2 overflow-x-auto p-1 -m-1 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden", pinOnMobile && "max-md:order-3 max-md:-mt-3")} role={keyboardNavigation ? "group" : undefined} aria-label={keyboardNavigation ? "Product photos — use left and right arrows" : undefined}
+        <div className={cn("flex min-w-0 gap-2 overflow-x-auto p-1 -m-1 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden", pinOnMobile && "max-md:order-3 max-md:-mt-3 max-md:sticky max-md:top-[var(--mobile-thumbnail-top,0px)] max-md:z-20 max-md:bg-background")} data-product-thumbnails role={keyboardNavigation ? "group" : undefined} aria-label={keyboardNavigation ? "Product photos — use left and right arrows" : undefined}
           onKeyDown={keyboardNavigation ? (e) => {
             if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
             const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button"));

@@ -22,6 +22,8 @@ Show yarn colors in lowercase, except proper nouns: "Color: off white", "Italian
 - Wherever a color name is shown, wrap it in `colorName()` from `src/lib/color-name.ts`. Add new proper nouns to its `PROPER_WORDS` list.
 - In hand-written copy (like product descriptions), type colors in lowercase.
 
+- Yarn/color tags also sentence-case yarn-line qualifiers, including supplier line names. Example: "Burgundy · Red heart super saver", never "Burgundy · Red Heart Super Saver". Use the shared `yarnColorLabel()` formatter for gallery tags, swatch labels, tooltips, and accessible names; sentence-case the picker legend too. Preserve canonical supplier data and stock identifiers.
+
 ## Exceptions
 
 - Brand and proper names keep their own spelling: "Diana's art", "Flagstaff", "Charisma", "Loops & Threads", "Bobbiny", "Venmo", "Mountainaire General Store".

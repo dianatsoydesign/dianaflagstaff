@@ -40,21 +40,25 @@ export function ProductDetailClient({ product, related, randomRecommendationPool
 
   useEffect(() => {
     const gallery = galleryContainerRef.current?.querySelector("figure");
+    const thumbnails = galleryContainerRef.current?.querySelector<HTMLElement>("[data-product-thumbnails]");
     const configuration = configurationRef.current;
     if (!gallery || !configuration) return;
 
     function updateStickyGallery() {
       if (!gallery || !configuration) return;
       const galleryHeight = gallery.getBoundingClientRect().height;
+      const thumbnailHeight = thumbnails?.getBoundingClientRect().height ?? 0;
       const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
       // Preserve the full image size, and leave space to use the options below it.
-      const enabled = window.innerWidth < 768 && viewportHeight - galleryHeight >= 160;
+      const enabled = window.innerWidth < 768 && viewportHeight - galleryHeight - thumbnailHeight >= 160;
       gallery.dataset.sticky = String(enabled);
-      configuration.style.setProperty("--preview-clearance", enabled ? `${galleryHeight + 16}px` : "16px");
+      configuration.style.setProperty("--mobile-thumbnail-top", enabled ? `${galleryHeight}px` : "0px");
+      configuration.style.setProperty("--preview-clearance", `${(enabled ? galleryHeight : 0) + thumbnailHeight + 16}px`);
     }
 
     const observer = new ResizeObserver(updateStickyGallery);
     observer.observe(gallery);
+    if (thumbnails) observer.observe(thumbnails);
     window.addEventListener("resize", updateStickyGallery);
     window.visualViewport?.addEventListener("resize", updateStickyGallery);
     updateStickyGallery();

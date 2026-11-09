@@ -14,7 +14,7 @@ export function yarnColorLabel(
   const duplicate = allYarns.some(other => other.id !== yarn.id && other.name.trim().toLowerCase() === yarn.name.trim().toLowerCase());
   if (!duplicate) return color;
   const line = yarnLineName(yarn)?.replace(/[®™]/g, "").replace(/\s+Yarn.*$/i, "").replace(/\s+by Loops & Threads.*$/i, "");
-  const label = line ? `${color} · ${line}` : color;
+  const label = line ? `${color} · ${sentenceCaseColorName(line)}` : color;
   const sameLineDuplicate = allYarns.some(other => other.id !== yarn.id &&
     sentenceCaseColorName(other.name) === color && yarnLineName(other) === yarnLineName(yarn));
   return sameLineDuplicate ? `${label} · ${yarn.supplierSku ?? yarn.id}` : label;
