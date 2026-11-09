@@ -27,13 +27,13 @@ export function StockingPersonalizationPicker({ value, onChange, className, topO
   return (
     <fieldset className={cn(pickerFieldsetClass, className)}>
       <legend className={pickerLegendClass}>
-        Personalization (optional):{" "}
+        Personalization{" "}
         <span className="font-medium text-foreground">{selected.label}</span>
       </legend>
       <div
         className={pickerChipGroupClass}
         role="radiogroup"
-        aria-label="Personalization (optional)"
+        aria-label="Personalization"
         onKeyDown={(e) => {
           if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(e.key)) return;
           const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>('button[role="radio"]:not(:disabled)'));

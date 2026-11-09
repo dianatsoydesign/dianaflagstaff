@@ -186,19 +186,19 @@ export const products: Product[] = [
   },
   {
     id: "ribbed-hat",
-    name: "Ribbed hat (unisex)",
+    name: "Ribbed beanie (unisex)",
     price: 30,
     category: "Hats",
     hideColorPicker: true,
     imageSrc: "/products/ribbed-hat/ribbed hat 1-v1.png",
-    imageAlt: "Man wearing a cream tweed ribbed hat in profile beside a pond at sunset",
+    imageAlt: "Man wearing a cream tweed ribbed beanie in profile beside a pond at sunset",
     imageShownColor: "Ivory Tweed",
     galleryImages: [
-      { src: "/products/ribbed-hat/ribbed hat 5-v3.png", alt: "Cream tweed ribbed hat laid flat with its folded cuff", shownColor: "Ivory Tweed" },
-      { src: "/products/ribbed-hat/ribbed hat 3-v1.png", alt: "Front view of a man wearing a cream tweed ribbed hat with a pond and trees behind him", shownColor: "Ivory Tweed" },
-      { src: "/products/ribbed-hat/ribbed hat 2-v1.png", alt: "Back view of a cream tweed ribbed hat showing the gathered crown beside a pond", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 5-v3.png", alt: "Cream tweed ribbed beanie laid flat with its folded cuff", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 3-v1.png", alt: "Front view of a man wearing a cream tweed ribbed beanie with a pond and trees behind him", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 2-v1.png", alt: "Back view of a cream tweed ribbed beanie showing the gathered crown beside a pond", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 7-v3.png", alt: "Close-up of the folded cream tweed hat cuff and ribbed stitches", shownColor: "Ivory Tweed" },
-      { src: "/products/ribbed-hat/ribbed hat 9-v3.png", alt: "Handmade by Diana leather label on the cream tweed ribbed hat cuff", shownColor: "Ivory Tweed" },
+      { src: "/products/ribbed-hat/ribbed hat 9-v3.png", alt: "Handmade by Diana leather label on the cream tweed ribbed beanie cuff", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 10-v1.png", alt: "Close-up of cream ribbed crochet stitches with black and tan tweed flecks", shownColor: "Ivory Tweed" },
     ],
     sizes: [
@@ -249,7 +249,7 @@ export const products: Product[] = [
   {
     "id": "blanket",
     "name": "Chunky chenille blanket",
-    "price": 223,
+    "price": 200,
     "category": "Home",
     "imageSrc": "/products/Blanket/blanket 5.jpg",
     "imageAlt": "White blanket spread out with its ribbed border held in one hand",
@@ -297,57 +297,57 @@ export const products: Product[] = [
       {
         "id": "lovey",
         "label": "Lovey · 12 × 12 in",
-        "price": 23
+        "price": 21
       },
       {
         "id": "security",
         "label": "Security · 18 × 24 in",
-        "price": 45
+        "price": 40
       },
       {
         "id": "baby",
         "label": "Baby · 30 × 36 in",
-        "price": 89
+        "price": 80
       },
       {
         "id": "receiving",
         "label": "Receiving · 40 × 40 in",
-        "price": 111
+        "price": 100
       },
       {
         "id": "crib",
         "label": "Lap / crib · 36 × 52 in",
-        "price": 134
+        "price": 120
       },
       {
         "id": "throw",
         "label": "Throw · 50 × 60 in",
-        "price": 200
+        "price": 179
       },
       {
         "id": "large-throw",
         "label": "Large throw · 48 × 71 in",
-        "price": 223
+        "price": 200
       },
       {
         "id": "twin",
         "label": "Twin · 66 × 90 in",
-        "price": 400
+        "price": 359
       },
       {
         "id": "full",
         "label": "Full · 80 × 90 in",
-        "price": 489
+        "price": 439
       },
       {
         "id": "queen",
         "label": "Queen · 90 × 100 in",
-        "price": 600
+        "price": 538
       },
       {
         "id": "king",
         "label": "King · 108 × 100 in",
-        "price": 711
+        "price": 638
       }
     ],
     "defaultSizeId": "large-throw",
@@ -544,7 +544,7 @@ export const products: Product[] = [
   },
   {
     id: "hats",
-    name: "Chunky hat (unisex)",
+    name: "Chunky beanie (unisex)",
     price: 30,
     category: "Hats",
     imageSrc: "/products/chunky-hat/chunky-hat-cover-v2-cooler.png",
