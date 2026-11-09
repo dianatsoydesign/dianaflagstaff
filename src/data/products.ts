@@ -194,11 +194,10 @@ export const products: Product[] = [
     imageAlt: "Man wearing a cream tweed ribbed hat in profile beside a pond at sunset",
     imageShownColor: "Ivory Tweed",
     galleryImages: [
+      { src: "/products/ribbed-hat/ribbed hat 5-v3.png", alt: "Cream tweed ribbed hat laid flat with its folded cuff", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 3-v1.png", alt: "Front view of a man wearing a cream tweed ribbed hat with a pond and trees behind him", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 2-v1.png", alt: "Back view of a cream tweed ribbed hat showing the gathered crown beside a pond", shownColor: "Ivory Tweed" },
-      { src: "/products/ribbed-hat/ribbed hat 5-v3.png", alt: "Cream tweed ribbed hat laid flat with its folded cuff", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 7-v3.png", alt: "Close-up of the folded cream tweed hat cuff and ribbed stitches", shownColor: "Ivory Tweed" },
-      { src: "/products/ribbed-hat/ribbed hat 8-v3.png", alt: "Cream tweed ribbed hat showing its gathered crown", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 9-v3.png", alt: "Handmade by Diana leather label on the cream tweed ribbed hat cuff", shownColor: "Ivory Tweed" },
       { src: "/products/ribbed-hat/ribbed hat 10-v1.png", alt: "Close-up of cream ribbed crochet stitches with black and tan tweed flecks", shownColor: "Ivory Tweed" },
     ],
