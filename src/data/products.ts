@@ -457,9 +457,14 @@ export const products: Product[] = [
     imageAlt: "Man wearing a red crochet mushroom hat with white spots and brim",
     galleryImages: [
       { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom hat 3-v1.jpg", alt: "Woman wearing a red crochet mushroom hat with white spots and brim" },
+      { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom hat 3.5-v2.jpg", alt: "Tortoiseshell cat resting on a cream chair beneath a red and white crochet mushroom hat, with a softly blurred background" },
       { shownStyle: "Slouchy, long tip", src: "/products/mushroom hat/mushroom hat 2.jpg", alt: "Side view of a red crochet mushroom hat with white spots and a leather tag" },
       { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom hat 4.jpg", alt: "Short-tip red and white crochet mushroom hat on a black mannequin against a neutral studio background" },
       { shownStyle: "Short tip", src: "/products/mushroom hat/mushroom hat 5.jpg", alt: "Short-tip mushroom hat on a black mannequin showing the raised brim and cream crochet underside" },
+      { src: "/products/mushroom hat/mushroom hat 6-v1.jpg", alt: "Hand holding the mushroom hat open to show the white ribbed underside and burgundy crochet interior" },
+      { src: "/products/mushroom hat/mushroom hat 7-v1.jpg", alt: "Close-up of the mushroom hat's white ribbed brim and burgundy crochet stitches" },
+      { src: "/products/mushroom hat/mushroom hat 8-v1.jpg", alt: "Hand holding the mushroom hat brim edge to show its white and burgundy crochet layers" },
+      { src: "/products/mushroom hat/mushroom hat 9-v1.jpg", alt: "Close-up of a white crocheted mushroom spot attached to the burgundy hat" },
     ],
     sizes: [
       { id: "baby", hatStyle: "slouchy", label: "Baby", price: 40 },
