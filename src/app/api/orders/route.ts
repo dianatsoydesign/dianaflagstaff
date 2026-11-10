@@ -8,7 +8,7 @@ import { CART_FIELD_LIMITS, isValidOrderEmail, isValidOrderPhone } from "@/lib/c
 import { readBobbinyStock } from "@/lib/bobbiny-stock";
 import { availableBobbiny } from "@/lib/bobbiny-inventory.mjs";
 import { readCharismaFlagstaffStock } from "@/lib/charisma-flagstaff-stock";
-import { charismaRecipe } from "@/lib/charisma-stock-options";
+import { charismaRecipe, minimumForStockingColor } from "@/lib/charisma-stock-options";
 import { availableForCharisma, availableForCharismaHat, minimumForHatSku } from "@/lib/charisma-inventory.mjs";
 import { readBernatStock } from "@/lib/bernat-stock";
 import { availableForCatCave, MIN_SKEINS } from "@/lib/bernat-inventory.mjs";
@@ -211,7 +211,7 @@ export async function POST(request: Request) {
           if (hasBulkYarnSource(line.productId, color)) continue;
           const yarn = getProduct(line.productId)?.yarns.find(yarn => yarn.id === color);
           const sku = yarn?.supplierSku?.split(":")[1];
-          if (!sku || !(ribbed ? availableForRibbed(snapshot, sku) : line.productId === "hats" ? availableForCharismaHat(snapshot, sku) : availableForCharisma(snapshot, sku, minimum))) {
+          if (!sku || !(ribbed ? availableForRibbed(snapshot, sku) : line.productId === "hats" ? availableForCharismaHat(snapshot, sku) : availableForCharisma(snapshot, sku, minimumForStockingColor(color)))) {
             return NextResponse.json({ error: "That yarn is no longer available for this item. Please choose another color." }, { status: 409 });
           }
           requested.set(sku, (requested.get(sku) ?? 0) + line.quantity * (ribbed ? RIBBED_SKEINS_PER_ITEM : line.productId === "hats" ? minimumForHatSku(sku) : minimum));

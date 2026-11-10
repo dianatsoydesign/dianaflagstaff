@@ -435,7 +435,7 @@ export function ProductPurchaseForm({
       <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
       <YarnSwatchPicker
         allowHolidayFilter={product.id === "christmas-stockings"}
-        showSolidFilter={["hats", "ribbed-hat", "ribbed-headband"].includes(product.id)}
+        showSolidFilter={["hats", "ribbed-hat", "ribbed-headband", "christmas-stockings"].includes(product.id)}
         priceAddUsdForYarn={product.id === "christmas-stockings" ? yarn => isMulticolorStocking(yarn) ? 5 : 0 : undefined}
         keyboardNavigation
         yarns={yarns}
@@ -487,11 +487,11 @@ export function ProductPurchaseForm({
           <StockingPersonalizationPicker topOnly={multicolorStocking} value={personalizationPlacement} onChange={value => { setPersonalizationPlacement(value); setNameError(null); }} />
           {personalizationPlacement !== "none" && (
             <div className="flex scroll-my-4 flex-col gap-[9px] text-sm">
-              <label htmlFor="stocking-name" className="font-medium">Name, initials, or nickname (required)</label>
+              <label htmlFor="stocking-name" className="font-medium">Personalized text (required)</label>
               <FormTextInput id="stocking-name" required value={personalizationText} maxLength={STOCKING_NAME_LIMIT} characterWidth={STOCKING_NAME_LIMIT}
                 onChange={event => { setPersonalizationText(event.target.value); setNameError(null); }}
                 aria-invalid={!!nameError || undefined} aria-describedby={nameError ? "stocking-name-error" : undefined}
-                placeholder="Olivia" />
+                placeholder="" />
               {nameError && <p id="stocking-name-error" role="alert" className="text-red-700 dark:text-red-400">{nameError}</p>}
             </div>
           )}

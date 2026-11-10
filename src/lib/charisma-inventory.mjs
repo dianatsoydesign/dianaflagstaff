@@ -17,3 +17,8 @@ export function availableForCharismaHat(snapshot, sku, now = Date.now()) {
 export function availableForCharisma(snapshot, sku, minimum, now = Date.now()) {
   return validSnapshot(snapshot, now) && (snapshot.quantities[sku] ?? 0) >= minimum;
 }
+
+/** Bulk holiday colors keep their recipe; all other stocking colors require four local skeins. */
+export function minimumForStockingColor(yarnId) {
+  return ["charisma-pine", "charisma-red", "charisma-white", "charisma-off-white"].includes(yarnId) ? 3 : 4;
+}

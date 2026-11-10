@@ -2,7 +2,6 @@ import { BLANKET_YARNS } from "@/data/blanket";
 import { HAT_POM_POM_OPTIONS } from "@/lib/hat-pom-pom";
 import { BOBBINY_PREMIUM_5MM_YARNS } from "@/data/bobbiny-premium-5mm";
 import { BERNAT_BLANKET_BIG_YARNS } from "@/data/bernat-blanket-big";
-import { CHARISMA_YARNS } from "@/data/charisma";
 import { RIBBED_YARNS, RIBBED_COLORS_APPROVED } from "@/data/ribbed-yarns";
 import { HAT_YARNS } from "@/data/hat-yarns";
 import type { GalleryMatteInset } from "@/lib/gallery-matte-inset";
@@ -370,15 +369,7 @@ export const products: Product[] = [
     sizes: [{ id: "one", label: "One stocking" }],
     hideSizePicker: true,
     defaultColorGroupFilter: "holiday",
-    yarns: [
-      ...CHARISMA_YARNS,
-      {
-        id: "stockings-multi",
-        name: "Multi",
-        swatchSrc: "/yarn-swatches/stockings-multi-photo4.webp",
-        stockStatus: "in_stock",
-      },
-    ],
+    yarns: HAT_YARNS,
   },
   {
     id: "coasters",

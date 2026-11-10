@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { availableForCharismaHat, availableForCharisma, pickupQuantities, validSnapshot } from '../src/lib/charisma-inventory.mjs';
+import { availableForCharismaHat, availableForCharisma, minimumForStockingColor, pickupQuantities, validSnapshot } from '../src/lib/charisma-inventory.mjs';
 
 const now = Date.now();
 const snapshot = { storeId: '9608', checkedAt: now, quantities: { '100': 3, '104': 2, '101': 1, '102': 0, '103': null } };
@@ -66,4 +66,14 @@ test('Bernat Fluffee accepts two pickup skeins but not one', () => {
   const fluffee = { ...snapshot, quantities: { '10750444': 2 } };
   assert.equal(availableForCharismaHat(fluffee, '10750444', now), true);
   assert.equal(availableForCharismaHat({ ...fluffee, quantities: { '10750444': 1 } }, '10750444', now), false);
+});
+
+test('additional stocking colors require at least four Flagstaff pickup skeins', () => {
+  const minimum = minimumForStockingColor('charisma-sage');
+  assert.equal(minimum, 4);
+  for (const count of [0, 1, 2, 3, null]) {
+    assert.equal(availableForCharisma({ ...snapshot, quantities: { '100': count } }, '100', minimum, now), false);
+  }
+  assert.equal(availableForCharisma({ ...snapshot, quantities: { '100': 4 } }, '100', minimum, now), true);
+  assert.equal(availableForCharisma({ ...snapshot, storeId: '1234', quantities: { '100': 100 } }, '100', minimum, now), false);
 });

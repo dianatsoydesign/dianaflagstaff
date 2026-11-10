@@ -1,5 +1,5 @@
-// Diana confirmed a separate bulk source for red stocking yarn.
-// This does not represent Michaels store inventory or apply to Chunky hat.
+// Diana's bulk supply is independent of Michaels pickup counts and applies only to stockings.
 export function hasBulkYarnSource(productId, yarnId) {
-  return productId === "christmas-stockings" && yarnId === "charisma-red";
+  return productId === "christmas-stockings" &&
+    ["charisma-pine", "charisma-red", "charisma-white", "charisma-off-white"].includes(yarnId);
 }
