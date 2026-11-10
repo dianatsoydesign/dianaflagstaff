@@ -162,12 +162,12 @@ export function YarnSwatchPicker({
           <>
             <span className="sr-only">{legend}: </span>
             Color:{" "}
-            <span className="font-medium text-foreground">
+            <span className="font-light text-foreground">
               {yarnColorLabel(shown, labelYarns)}{(priceAddUsdForYarn?.(shown) ?? 0) > 0 ? ` +$${priceAddUsdForYarn!(shown)}` : ""}
             </span>
           </>
         ) : (
-          <>Color: <span className="font-medium text-foreground">Choose a color</span></>
+          <>Color:</>
         )}
       </legend>
 

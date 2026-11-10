@@ -3,4 +3,4 @@ export const productDetailTextSizeClass =
   "text-[1.2463125rem]";
 
 export const productDetailHeadingClass =
-  `${productDetailTextSizeClass} font-tagline font-light text-ink [font-size-adjust:cap-height_0.7]`;
+  `${productDetailTextSizeClass} font-tagline font-normal text-ink [font-size-adjust:cap-height_0.7]`;

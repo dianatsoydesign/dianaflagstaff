@@ -24,7 +24,7 @@ export function CompactSizePicker({ sizes, value, basePrice, priceSuffix = "", o
   const selected = sizes.find(size => size.id === value);
   return (
     <fieldset className={pickerFieldsetClass}>
-      <legend className={pickerLegendClass}>Size:{selected && <span className="font-medium text-foreground"> {sizeOptionLabel(selected, basePrice, priceSuffix)}</span>}</legend>
+      <legend className={pickerLegendClass}>Size:{selected && <span className="font-light text-foreground"> {sizeOptionLabel(selected, basePrice, priceSuffix)}</span>}</legend>
       <Dialog open={open !== null} onOpenChange={next => setOpen(next ? "sizes" : null)}>
         <DialogTrigger render={<Button variant="outline" />} className="min-h-14 w-full justify-between gap-3 whitespace-normal rounded-[8px] border-2 border-ink px-4 py-3 text-left text-base" aria-label={`Size: ${selected ? sizeOptionLabel(selected, basePrice, priceSuffix) : "Choose a size"}`}>
           <span className="min-w-0 flex-1">{selected?.label ?? "Choose a size"}</span>

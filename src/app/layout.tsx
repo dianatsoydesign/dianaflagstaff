@@ -27,7 +27,7 @@ const sans = Pontano_Sans({
 const tagline = Jost({
   variable: "--font-tagline",
   subsets: ["latin"],
-  weight: ["200", "300"],
+  weight: ["200", "300", "400"],
 });
 
 export const metadata: Metadata = {

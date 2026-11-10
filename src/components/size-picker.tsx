@@ -116,14 +116,14 @@ export function SizePicker({
       <legend className={pickerLegendClass}>
         Size:{" "}
         {customSelected ? (
-          <span className="font-medium text-foreground">{sizeOptionLabel({
+          <span className="font-light text-foreground">{sizeOptionLabel({
             id: REQUEST_DIFFERENT_SIZE_ID,
             label: customLabel ?? "Request different size",
             price: customLabel ? customSizePrice : undefined,
             priceTbd: !customLabel || customSizePrice === undefined,
           }, undefined, priceSuffix)}</span>
         ) : selected ? (
-          <span className="font-medium text-foreground">{sizeOptionLabel(selected, basePrice, priceSuffix)}</span>
+          <span className="font-light text-foreground">{sizeOptionLabel(selected, basePrice, priceSuffix)}</span>
         ) : null}
       </legend>
       <div

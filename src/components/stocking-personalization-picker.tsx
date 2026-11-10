@@ -28,7 +28,7 @@ export function StockingPersonalizationPicker({ value, onChange, className, topO
     <fieldset className={cn(pickerFieldsetClass, className)}>
       <legend className={pickerLegendClass}>
         Personalization{" "}
-        <span className="font-medium text-foreground">{selected.label}</span>
+        <span className="font-light text-foreground">{selected.label}</span>
       </legend>
       <div
         className={pickerChipGroupClass}
