@@ -164,7 +164,6 @@ export const products: Product[] = [
     hideColorPicker: !RIBBED_COLORS_APPROVED,
     imageSrc: "/products/ribbed headband/ribbed-headband-pair-v1.jpg",
     imageAlt: "6-inch Burgundy ribbed headband above a 3-inch Ivory Tweed ribbed headband, both with twisted fronts and Handmade by Diana labels",
-    imageShownStyle: "Burgundy: 6″ wide (top); Ivory Tweed: 3″ wide (bottom)",
     galleryImages: [
       { src: "/products/ribbed headband/ribbed-headband-ivory-front-v3.jpg", alt: "Front-facing portrait wearing an ivory tweed ribbed headband with a twisted front", shownColor: "Ivory Tweed", shownStyle: "3″ wide" },
       { src: "/products/ribbed headband/ribbed-headband-ivory-profile-v3.jpg", alt: "Side-profile portrait wearing an ivory tweed ribbed headband with its attached leather label", shownColor: "Ivory Tweed", shownStyle: "3″ wide" },
