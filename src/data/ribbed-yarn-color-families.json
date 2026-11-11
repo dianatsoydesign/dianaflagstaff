@@ -1068,5 +1068,10 @@
       "width": 140,
       "height": 140
     }
+  },
+  "red-heart-super-saver-aran-fleck": {
+    "colorGroup": "neutrals",
+    "multicolor": false,
+    "tweed": true
   }
 }

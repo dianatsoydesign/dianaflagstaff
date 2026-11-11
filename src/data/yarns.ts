@@ -68,7 +68,8 @@ export function yarnMaterial(yarn: YarnColor): YarnMaterial {
   if (hobbyLobby) return { fiber: hobbyLobby.fiber, washCare: MACHINE_WASH_COLD, dryCare: AIR_DRY, detail: "" };
   const ribbed = ribbedCatalog.yarns.find(color => color.id === yarn.id);
   if (ribbed) {
-    const fiber = ribbed.lineId.includes("cloud-cakes") ? "100% polyester"
+    const fiber = ribbed.lineId === "red-heart-super-saver-flecks" ? "96% acrylic, 4% other fibers"
+      : ribbed.lineId.includes("cloud-cakes") ? "100% polyester"
       : ribbed.lineId === "caron-sweetie-cakes" ? "75% acrylic, 25% nylon"
       : ribbed.lineId === "caron-baby-cakes" ? "82% acrylic, 18% nylon"
       : ribbed.lineId === "big-twist-living" ? "100% anti-pilling acrylic" : "100% acrylic";

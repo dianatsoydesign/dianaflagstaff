@@ -1,7 +1,7 @@
 {
   "syncedAt": "2026-11-09T07:53:25.022Z",
   "storeId": "9608",
-  "minimumStock": 3,
+  "minimumStock": 2,
   "skeinsPerItem": 1,
   "lines": [
     {
@@ -66,6 +66,13 @@
       "masterSku": "M300003255",
       "productUrl": "https://www.michaels.com/product/10806964",
       "description": "<p>Big Twist Living Yarn is a versatile yarn made with acrylic specially formulated to resist pilling, making it a fantastic choice for wearables that need to look good for years. Striking a balance between comfort and durability, this soft, worsted-weight yarn is available in an array of colors and prints perfect for stitching up beautiful sweaters, cardigans, scarves and so much more!</p><p><br></p><p>We understand the importance of dye lots and will try to match dye lots for your order, however, we cannot guarantee all skeins will be the same dye lot.</p><p><br></p><p><strong>Weight:</strong> Medium (4)</p><p><br></p><p><strong>Contents:</strong> 100% anti-pilling acrylic</p><p><strong>Skein Weight:</strong> 3.8 oz. (110 g)</p><p><strong>Yardage:</strong> 199 yd. (182 m)</p><p><br></p><p><strong>Knitting Gauge:</strong></p><p>18 sts - 24 rows = 4\" (10 cm)</p><p><strong>Crochet Gauge:</strong></p><p>13 sc - 14 rows = 4\" (10 cm)</p><p><br></p><p><strong>Suggested Knitting Needle:</strong></p><p>5 mm, US - 8</p><p><strong>Suggested Crochet Hook:</strong></p><p>5 mm, US - H/8</p>"
+    },
+    {
+      "id": "red-heart-super-saver-flecks",
+      "name": "Red Heart Super Saver Prints, Multis & Flecks Yarn",
+      "masterSku": "M10049606",
+      "productUrl": "https://www.michaels.com/product/10224492",
+      "description": "An easy-care, 100% acrylic all-purpose yarn that comes in a large assortment of colors including prints, multis, and flecks. This hugely popular yarn is solid and durable and has a traditional hand, making it ideal for afghans, sweaters, accessories and more.<br><br>We understand the importance of dye lots and will try to match dye lots for your order, however, we cannot guarantee all skeins will be the same dye lot.<div>&nbsp;</div><div><strong>Weight:&nbsp;</strong>Medium (4)</div><div>&nbsp;</div><div><strong>Prints &amp; Multis</strong></div><div><strong>Contents:</strong>&nbsp;100% acrylic</div><div><strong>Skein Weight:</strong> 5 oz. / 141 g</div><div><strong>Yardage:</strong> 244 yd. / 223 m</div><div>&nbsp;</div><div><strong>Flecks</strong></div><div><strong>Contents:&nbsp;</strong>96% acrylic, 4% other fibers</div><div><strong>Skein Weight:</strong> 5 oz. / 141 g</div><div><strong>Yardage:</strong> 260 yd. / 238 m</div><div>&nbsp;</div><div><strong>Knitting Gauge:</strong></div><div>17 sts - 23 rows = 4\" (10 cm)</div><div><strong>Crochet Gauge:</strong></div><div>12 sc - 15 rows = 4\" (10 cm)</div><div>&nbsp;</div><div><strong>Suggested Knitting Needle:</strong></div><div>5 mm, US - 8</div><div><strong>Suggested Crochet Hook:</strong></div><div>5.5 mm, US - I/9</div>"
     }
   ],
   "yarns": [
@@ -2760,6 +2767,30 @@
         "https://imgs.michaels.com/1c40c59e-b208-48e5-ad23-1e22b702fe92.jpg"
       ],
       "rejectedSupplierImages": []
+    },
+    {
+      "id": "red-heart-super-saver-aran-fleck",
+      "name": "Aran Fleck",
+      "lineId": "red-heart-super-saver-flecks",
+      "lineName": "Red Heart Super Saver Prints, Multis & Flecks Yarn",
+      "supplierSku": "michaels:10224492",
+      "swatchSrc": "/yarn-images/ribbed-yarns/red-heart-super-saver-aran-fleck/swatch.webp",
+      "colorImages": [
+        "/yarn-images/ribbed-yarns/red-heart-super-saver-aran-fleck/photo-1.webp",
+        "/yarn-images/ribbed-yarns/red-heart-super-saver-aran-fleck/photo-2.webp",
+        "/yarn-images/ribbed-yarns/red-heart-super-saver-aran-fleck/photo-3.webp"
+      ],
+      "supplierImages": [
+        "https://imgs.michaels.com/e6633aa5-a0d5-48ca-b8a8-4f87096ed467.jpg",
+        "https://imgs.michaels.com/4435a5e6-3a87-4ee1-915e-9a923077f2e2.jpg",
+        "https://imgs.michaels.com/b5e9db57-5bcd-44f5-a768-2a5caf4065de.jpg"
+      ],
+      "stockStatus": "in_stock",
+      "pickupMinimum": 1,
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "tweed": true,
+      "sortRank": 1004
     }
   ],
   "excluded": []

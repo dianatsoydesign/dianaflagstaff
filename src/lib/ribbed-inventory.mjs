@@ -1,5 +1,5 @@
 import { availableForCharisma } from './charisma-inventory.mjs';
-export const RIBBED_MIN_STOCK = 3;
+export const RIBBED_MIN_STOCK = 2;
 export const RIBBED_SKEINS_PER_ITEM = 1;
 export function isRibbedProduct(id) {
   return id === 'ribbed-hat' || id === 'ribbed-headband';

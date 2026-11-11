@@ -1,4 +1,4 @@
-export const STOCKING_NAME_LIMIT = 7;
+export const STOCKING_NAME_LIMIT = 10;
 export const STOCKING_PLACEMENTS = [
   { id: "none", label: "None" },
   { id: "top", label: "Top" },
@@ -13,7 +13,7 @@ export function personalizationError(productId, text, placement) {
   if (productId !== "christmas-stockings") return "Personalization is only available for stockings.";
   if (!STOCKING_PLACEMENTS.some(option => option.id === placement && option.id !== "none")) return "Choose a personalization placement.";
   if (typeof text !== "string" || !text.trim()) return "Enter a name, initials, or nickname.";
-  if (text.length > STOCKING_NAME_LIMIT) return "Use 7 characters or fewer. Try initials or a nickname.";
+  if (text.length > STOCKING_NAME_LIMIT) return `Use ${STOCKING_NAME_LIMIT} characters or fewer. Try initials or a nickname.`;
   return null;
 }
 
