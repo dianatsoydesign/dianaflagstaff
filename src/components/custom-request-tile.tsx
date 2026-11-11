@@ -50,7 +50,7 @@ export function CustomRequestTile({ nameClassName }: { nameClassName?: string })
   return (
     <Sheet>
       <SheetTrigger className="group flex w-full cursor-pointer flex-col gap-2 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground">
-        <div className="@container relative flex aspect-square w-full flex-col justify-center overflow-hidden rounded-[8px] bg-wash dark:bg-[#292929] dark:fine-pointer:group-hover:bg-[#3b3b3b] dark:group-focus-visible:bg-[#3b3b3b] p-7 text-foreground ring-1 ring-inset ring-transparent transition-colors duration-200 fine-pointer:group-hover:bg-[#eeeeee] fine-pointer:group-hover:ring-foreground group-focus-visible:bg-[#eeeeee] group-focus-visible:ring-foreground motion-reduce:transition-none sm:p-9">
+        <div className="@container relative flex aspect-square w-full flex-col justify-center overflow-hidden rounded-[8px] bg-wash dark:bg-[#292929] dark:fine-pointer:group-hover:bg-[#3b3b3b] dark:group-focus-visible:bg-[#3b3b3b] p-7 text-foreground ring-1 ring-inset ring-transparent transition-colors duration-200 fine-pointer:group-hover:bg-[#eeeeee] group-focus-visible:bg-[#eeeeee] group-focus-visible:ring-foreground motion-reduce:transition-none sm:p-9">
           <ShopRequestCat />
         </div>
         <ProductNamePrice nameClassName={nameClassName} name="Custom idea" price={0} priceLabel="TBD price" />
