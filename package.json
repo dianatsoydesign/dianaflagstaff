@@ -13,7 +13,9 @@
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "cf:kv:create": "wrangler kv namespace create diana-flagstaff-orders && wrangler kv namespace create diana-flagstaff-orders --preview",
-    "test:order-email": "node --test scripts/order-email-delivery.test.mjs"
+    "test:order-email": "node --test scripts/order-email-delivery.test.mjs",
+    "predev": "node scripts/generate-social-images.mjs --products-only",
+    "prebuild": "node scripts/generate-social-images.mjs --products-only"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

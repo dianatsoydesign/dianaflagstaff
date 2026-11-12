@@ -121,3 +121,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - Across all current and future pages, vertically center the visible text when fonts or sizes differ on the same line. Reuse `ProductNamePrice` with matching cap-to-baseline bounds, `items-center`, and `justify-start text-left`.
 - Never horizontally center product names, descriptions, or other content text. Earlier product horizontal-centering instructions were corrected by Diana and are superseded. Verify rendered vertical alignment at desktop and mobile sizes.
+
+## PDP share thumbnails
+
+- Follow `.cursor/rules/pdp-share-thumbnails.mdc`: every PDP share thumbnail must derive from the first gallery image (`product.imageSrc`). Keep generated assets and Open Graph/Twitter metadata synchronized through the shared helper and generator.

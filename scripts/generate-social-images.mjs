@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import ts from 'typescript';
 import sharp from 'sharp';
+import { productShareImagePath } from '../src/lib/product-share-image.mjs';
 
 // Read product literals through the TypeScript AST so cards track catalog names and hero photos.
 const source = ts.createSourceFile('products.ts', await fs.readFile('src/data/products.ts', 'utf8'), ts.ScriptTarget.Latest, true);
@@ -19,7 +20,7 @@ function visit(node) {
 }
 visit(source);
 await fs.mkdir('public/social', { recursive: true });
-async function card(id, photos, portrait = false) {
+async function card(id, photos, portrait = false, outputPath) {
   const layers = [];
   const gap = photos.length > 1 ? 12 : 0;
   const photoWidth = Math.floor((1200 - gap * (photos.length - 1)) / photos.length);
@@ -32,12 +33,12 @@ async function card(id, photos, portrait = false) {
     layers.push({ input, left: i * (photoWidth + gap), top: 0 });
   }
   await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#f6f3ed' } })
-    .composite(layers).jpeg({ quality: 88 }).toFile(`public/social/${id}-${id === 'blanket' ? 'v3' : 'v2'}.jpg`);
+    .composite(layers).jpeg({ quality: 88 }).toFile(outputPath ?? `public/social/${id}-${id === 'blanket' ? 'v3' : 'v2'}.jpg`);
 }
 const selectedId = process.argv.find(arg => arg.startsWith('--product='))?.split('=')[1];
 if (selectedId && !products.some(p => p.id === selectedId)) throw new Error(`Unknown product: ${selectedId}`);
-for (const p of products.filter(p => !selectedId || p.id === selectedId)) await card(p.id, [p.imageSrc]);
-if (selectedId) process.exit(0);
+for (const p of products.filter(p => !selectedId || p.id === selectedId)) await card(p.id, [p.imageSrc], false, `public${productShareImagePath(p)}`);
+if (selectedId || process.argv.includes('--products-only')) process.exit(0);
 await card('about', ['/about/portrait-v5.jpg'], true);
 await card('shop', products.filter(p => ['mushroom-hat', 'coasters'].includes(p.id)).map(p => p.imageSrc));
 console.log(`Generated ${products.length + 2} photography-only social preview cards.`);

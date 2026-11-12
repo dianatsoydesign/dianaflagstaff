@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { productShareImagePath } from "@/lib/product-share-image.mjs";
 import { shareMetadata } from "@/lib/social-sharing";
 import { notFound } from "next/navigation";
 import { getProduct, listedProducts } from "@/data/products";
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { productId } = await params;
   const product = getProduct(productId);
   if (!product) return {};
-  return shareMetadata(product.name, `${product.name}, handmade by Diana in Flagstaff, Arizona. Explore colors and sizes. Local pickup only.`, `/shop/p/${product.id}`, `/social/${product.id}-${product.id === "ribbed-headband" ? "v4" : product.id === "blanket" ? "v3" : "v2"}.jpg`);
+  return shareMetadata(product.name, `${product.name}, handmade by Diana in Flagstaff, Arizona. Explore colors and sizes. Local pickup only.`, `/shop/p/${product.id}`, productShareImagePath(product));
 }
 
 export default async function ProductPage({ params }: PageProps) {

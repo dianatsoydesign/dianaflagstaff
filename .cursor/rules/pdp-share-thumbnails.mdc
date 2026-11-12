@@ -1,0 +1,13 @@
+---
+description: PDP share thumbnails always follow the first gallery image
+alwaysApply: true
+---
+
+# PDP share thumbnails
+
+- Every current and future PDP uses its first gallery image (`product.imageSrc`) as the sole photo source for Open Graph and Twitter share thumbnails.
+- Reuse `productShareImagePath` for metadata and `scripts/generate-social-images.mjs` for generated assets. Never maintain separate per-product thumbnail version overrides.
+- Generate product share images before local dev and production builds. When changing a cover, use a new versioned image path so the share URL changes too.
+- Preserve the full photograph and proportions with contain sizing. Do not substitute another gallery photo, supplier swatch, or collage.
+- Verify all listed products have a generated thumbnail matching their current cover path, and check both Open Graph and Twitter metadata.
+- Work locally only. Thumbnail updates never authorize deployment; Diana deploys manually.
