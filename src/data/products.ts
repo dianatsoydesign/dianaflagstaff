@@ -227,11 +227,11 @@ export const products: Product[] = [
     hideColorPicker: true,
     imageSrc: "/products/koozie/koozie 2-v1.jpg",
     imageAlt: "White crochet koozie lying flat on wood, showing the green tree and wooden bead",
-    imageShownStyle: "Short, with bottom",
+    imageShownStyle: "Short, bottom closed",
     galleryImages: [
-      { src: "/products/koozie/koozie 4-v1.jpg", alt: "Hand holding a white and green tree koozie with its Handmade by Diana label", shownStyle: "Short, with bottom" },
-      { src: "/products/koozie/koozie 1-v1.jpg", alt: "White crochet can koozie with a green tree and wooden bead on a wooden table", shownStyle: "Short, with bottom" },
-      { src: "/products/koozie/koozie 3-v1.jpg", alt: "Close-up of the green yarn tree and white crochet stitches on a wooden table", shownStyle: "Short, with bottom" },
+      { src: "/products/koozie/koozie 4-v1.jpg", alt: "Hand holding a white and green tree koozie with its Handmade by Diana label", shownStyle: "Short, bottom closed" },
+      { src: "/products/koozie/koozie 1-v1.jpg", alt: "White crochet can koozie with a green tree and wooden bead on a wooden table", shownStyle: "Short, bottom closed" },
+      { src: "/products/koozie/koozie 3-v1.jpg", alt: "Close-up of the green yarn tree and white crochet stitches on a wooden table", shownStyle: "Short, bottom closed" },
     ],
     sizes: [
       { id: "short-bottomless", label: "Short, bottomless", price: 10 },
