@@ -5,13 +5,14 @@
 import { default as handler } from "./.open-next/worker.js";
 
 import { imageProtection } from "./src/lib/image-protection.mjs";
+import { fetchWithImageFallback } from "./src/lib/image-optimization-fallback.mjs";
 
 // Hourly supplier checks run in GitHub Actions and push validated snapshots.
 const worker = {
   async fetch(request: Request, env: CloudflareEnv, ctx: unknown) {
     const denied = await imageProtection(request, env);
     if (denied) return denied;
-    return handler.fetch(request, env, ctx);
+    return fetchWithImageFallback(request, env, ctx, handler);
   },
 };
 export default worker;
