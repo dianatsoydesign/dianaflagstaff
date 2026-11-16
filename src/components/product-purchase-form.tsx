@@ -435,7 +435,7 @@ export function ProductPurchaseForm({
       <PickerValidation error={message && /yarn|color/i.test(message) ? message : null}>
       <YarnSwatchPicker
         allowHolidayFilter={product.id === "christmas-stockings"}
-        showSolidFilter={["hats", "ribbed-hat", "ribbed-headband", "christmas-stockings"].includes(product.id)}
+        showSolidFilter={["hats", "ribbed-hat", "ribbed-headband", "christmas-stockings", "cat-cave"].includes(product.id)}
         priceAddUsdForYarn={product.id === "christmas-stockings" ? yarn => isMulticolorStocking(yarn) ? 5 : 0 : undefined}
         keyboardNavigation
         yarns={yarns}

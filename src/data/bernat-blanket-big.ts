@@ -1,6 +1,7 @@
 import { compareYarnLightness } from "@/lib/yarn-color-order";
 import type { YarnColor } from "@/data/products";
 import catalog from "@/data/bernat-blanket-big.json";
+import multicolorFamilies from "@/data/bernat-multicolor-families.json";
 
 export const BERNAT_COLOR_GROUPS = [
   { id: "greens", label: "Greens" },
@@ -22,7 +23,11 @@ export function bernatColorGroupId(yarn: YarnColor): BernatColorGroupId | null {
 }
 
 function compareBernatYarns(a: YarnColor, b: YarnColor) {
-  const family = (yarn: YarnColor) => BERNAT_COLOR_GROUPS.findIndex((g) => g.id === bernatColorGroupId(yarn));
+  // Keep the Multi filter independent from visual hue ordering in both views.
+  const reviewedFamilies: Record<string, string> = multicolorFamilies;
+  const family = (yarn: YarnColor) => BERNAT_COLOR_GROUPS.findIndex((g) =>
+    g.id === (yarn.multicolor ? reviewedFamilies[yarn.name] ?? "multis" : bernatColorGroupId(yarn))
+  );
   return family(a) - family(b)
     || compareYarnLightness(a, b)
     || ((a.sortRank ?? 0) % 1000) - ((b.sortRank ?? 0) % 1000)

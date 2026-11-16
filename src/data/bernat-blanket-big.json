@@ -1,7 +1,24 @@
 {
-  "syncedAt": "2026-10-22T04:04:51.664Z",
+  "syncedAt": "2026-11-16T19:07:29.451Z",
   "productUrl": "https://www.michaels.com/product/bernat-blanket-big-yarn-10750420",
   "masterSku": "M10519837",
+  "lines": [
+    {
+      "masterSku": "M10519837",
+      "key": "classic",
+      "lineName": "Bernat Blanket Big"
+    },
+    {
+      "masterSku": "M20038502",
+      "key": "mistical",
+      "lineName": "Bernat Blanket Big Mist-ical"
+    },
+    {
+      "masterSku": "M300003252",
+      "key": "hopscotch",
+      "lineName": "Bernat Blanket Big Hopscotch"
+    }
+  ],
   "availabilityMode": "catalog-unfiltered",
   "yarns": [
     {
@@ -681,6 +698,81 @@
       "sortRank": 8095.471281718441
     },
     {
+      "id": "bernat-blanket-big-hopscotch-buttercup",
+      "name": "Buttercup",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-buttercup-420807c93f.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/6e342798-3de0-48bd-bf08-4bceefb571f0.webp",
+        "/yarn-images/bernat-blanket-big/c8060377-8e8c-4635-9fcc-e14cc14f1abb.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805990",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/6e342798-3de0-48bd-bf08-4bceefb571f0.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/6e342798-3de0-48bd-bf08-4bceefb571f0.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/c8060377-8e8c-4635-9fcc-e14cc14f1abb.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/c8060377-8e8c-4635-9fcc-e14cc14f1abb.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9008.317763304218
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-lovely-lilac",
+      "name": "Lovely Lilac",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-lovely-lilac-a0d95841a7.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/9b1ecc58-6095-42a7-a7fc-80fa51de1124.webp",
+        "/yarn-images/bernat-blanket-big/d7d34a01-48f7-4b34-98d7-3fdd0a20fc8d.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805992",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/9b1ecc58-6095-42a7-a7fc-80fa51de1124.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/9b1ecc58-6095-42a7-a7fc-80fa51de1124.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/d7d34a01-48f7-4b34-98d7-3fdd0a20fc8d.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/d7d34a01-48f7-4b34-98d7-3fdd0a20fc8d.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9011.333687415938
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-cloudy-sky",
+      "name": "Cloudy Sky",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-cloudy-sky-9655912d64.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/d3c5cc1f-5d82-4ebb-baf0-0a8d7140d9c0.webp",
+        "/yarn-images/bernat-blanket-big/fe1dd341-863c-414e-be5f-bab3027cfd6d.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805994",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/d3c5cc1f-5d82-4ebb-baf0-0a8d7140d9c0.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/d3c5cc1f-5d82-4ebb-baf0-0a8d7140d9c0.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/fe1dd341-863c-414e-be5f-bab3027cfd6d.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/fe1dd341-863c-414e-be5f-bab3027cfd6d.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9012.483409531264
+    },
+    {
       "id": "bernat-blanket-big-sandy-cream",
       "name": "Sandy Cream",
       "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-sandy-cream-e7ad66e491.webp",
@@ -691,9 +783,109 @@
       ],
       "supplierSku": "michaels-bernat:10630095",
       "stockStatus": "in_stock",
+      "colorGroup": "neutrals",
+      "multicolor": false,
+      "sortRank": 8012.886365580733
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-mauve-haze",
+      "name": "Mauve Haze",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-mauve-haze-3d940ac72f.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/4572845e-26ed-45e5-ba98-535424a21d19.webp",
+        "/yarn-images/bernat-blanket-big/99482393-0cbb-4660-b1e6-3d91bdd3771d.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805991",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/4572845e-26ed-45e5-ba98-535424a21d19.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/4572845e-26ed-45e5-ba98-535424a21d19.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/99482393-0cbb-4660-b1e6-3d91bdd3771d.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/99482393-0cbb-4660-b1e6-3d91bdd3771d.webp"
+        }
+      ],
       "colorGroup": "multis",
       "multicolor": true,
-      "sortRank": 9012.886365580733
+      "sortRank": 9015.369482354796
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-dusk-blue",
+      "name": "Dusk Blue",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-dusk-blue-13cba5854f.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/375a5070-b2c8-4db3-b96c-97bde93b54bd.webp",
+        "/yarn-images/bernat-blanket-big/ddc61779-85b9-430b-933a-9118211ed7b8.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805988",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/375a5070-b2c8-4db3-b96c-97bde93b54bd.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/375a5070-b2c8-4db3-b96c-97bde93b54bd.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/ddc61779-85b9-430b-933a-9118211ed7b8.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/ddc61779-85b9-430b-933a-9118211ed7b8.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9015.988251980903
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-earth-and-sky",
+      "name": "Earth and Sky",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-earth-and-sky-f93200eb8f.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/c58a0c7f-d0f3-43bb-8906-134e19e38855.webp",
+        "/yarn-images/bernat-blanket-big/c666be98-39f8-4611-86d0-e1aa319a9115.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805986",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/c58a0c7f-d0f3-43bb-8906-134e19e38855.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/c58a0c7f-d0f3-43bb-8906-134e19e38855.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/c666be98-39f8-4611-86d0-e1aa319a9115.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/c666be98-39f8-4611-86d0-e1aa319a9115.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9017.443311596317
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-earthy",
+      "name": "Earthy",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-earthy-78977540c3.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/0806c3ab-c8d5-44ee-8b8e-2d1549f1baaf.webp",
+        "/yarn-images/bernat-blanket-big/676f9568-85f4-4cd6-9f41-7a39586c484e.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805995",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/0806c3ab-c8d5-44ee-8b8e-2d1549f1baaf.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/0806c3ab-c8d5-44ee-8b8e-2d1549f1baaf.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/676f9568-85f4-4cd6-9f41-7a39586c484e.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/676f9568-85f4-4cd6-9f41-7a39586c484e.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9017.691565554796
     },
     {
       "id": "bernat-blanket-big-mottled-taupe",
@@ -725,6 +917,56 @@
       "sortRank": 9019.447617990587
     },
     {
+      "id": "bernat-blanket-big-hopscotch-olive-tree",
+      "name": "Olive Tree",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-olive-tree-05336c3630.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/a52d3b0d-be5d-4f9e-b1cd-ecf0d67b593b.webp",
+        "/yarn-images/bernat-blanket-big/98d9d068-1783-40f4-b7e8-d7a65d8738f0.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805984",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/a52d3b0d-be5d-4f9e-b1cd-ecf0d67b593b.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/a52d3b0d-be5d-4f9e-b1cd-ecf0d67b593b.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/98d9d068-1783-40f4-b7e8-d7a65d8738f0.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/98d9d068-1783-40f4-b7e8-d7a65d8738f0.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9021.946454198482
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-cookie-crumble",
+      "name": "Cookie Crumble",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-cookie-crumble-d5693db376.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/32dc0362-cecb-489a-a28a-b28ae467edad.webp",
+        "/yarn-images/bernat-blanket-big/537798ee-49b4-491f-afed-9ddf65c8040b.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805993",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/32dc0362-cecb-489a-a28a-b28ae467edad.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/32dc0362-cecb-489a-a28a-b28ae467edad.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/537798ee-49b4-491f-afed-9ddf65c8040b.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/537798ee-49b4-491f-afed-9ddf65c8040b.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9023.6649664994
+    },
+    {
       "id": "bernat-blanket-big-gray-splash",
       "name": "Gray Splash",
       "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-gray-splash-85f78dcea7.webp",
@@ -737,6 +979,56 @@
       "colorGroup": "multis",
       "multicolor": true,
       "sortRank": 9025.270584238266
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-berry-pie",
+      "name": "Berry Pie",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-berry-pie-d5f0cd1dd9.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/7844c2ff-7919-416a-8590-d0265f1b590c.webp",
+        "/yarn-images/bernat-blanket-big/aa0d10a0-62eb-4409-9b85-da5e132bcba0.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805982",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/7844c2ff-7919-416a-8590-d0265f1b590c.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/7844c2ff-7919-416a-8590-d0265f1b590c.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/aa0d10a0-62eb-4409-9b85-da5e132bcba0.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/aa0d10a0-62eb-4409-9b85-da5e132bcba0.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9027.114361382577
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-leap-frog",
+      "name": "Leap Frog",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-leap-frog-cbcb99096e.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/1542ed7d-60d2-4df3-a0c0-10fefba3a58f.webp",
+        "/yarn-images/bernat-blanket-big/8c5dd415-1e49-4510-b6ab-906cda01340e.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805996",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/1542ed7d-60d2-4df3-a0c0-10fefba3a58f.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/1542ed7d-60d2-4df3-a0c0-10fefba3a58f.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/8c5dd415-1e49-4510-b6ab-906cda01340e.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/8c5dd415-1e49-4510-b6ab-906cda01340e.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9032.850574404369
     },
     {
       "id": "bernat-blanket-big-toasted-birch",
@@ -752,6 +1044,31 @@
       "colorGroup": "multis",
       "multicolor": true,
       "sortRank": 9033.974721225875
+    },
+    {
+      "id": "bernat-blanket-big-mistical-mottled-gold",
+      "name": "Mottled Gold",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-mottled-gold-3db8fb6fe0.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/295b4090-a21a-4b29-8b61-5b4701048524.webp",
+        "/yarn-images/bernat-blanket-big/4727b8da-fa7e-4e27-8165-41062d4eba62.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756239",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/295b4090-a21a-4b29-8b61-5b4701048524.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/295b4090-a21a-4b29-8b61-5b4701048524.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/4727b8da-fa7e-4e27-8165-41062d4eba62.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/4727b8da-fa7e-4e27-8165-41062d4eba62.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9034.509710681234
     },
     {
       "id": "bernat-blanket-big-plum-fest",
@@ -797,6 +1114,56 @@
       "sortRank": 9038.383706946519
     },
     {
+      "id": "bernat-blanket-big-mistical-loden-greens",
+      "name": "Loden Greens",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-loden-greens-39ea321b02.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/6299e52f-04a6-4467-9084-6cb4caf2c37a.webp",
+        "/yarn-images/bernat-blanket-big/05654d93-4718-4679-bf29-676eebf61526.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756240",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/6299e52f-04a6-4467-9084-6cb4caf2c37a.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/6299e52f-04a6-4467-9084-6cb4caf2c37a.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/05654d93-4718-4679-bf29-676eebf61526.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/05654d93-4718-4679-bf29-676eebf61526.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9038.527968168582
+    },
+    {
+      "id": "bernat-blanket-big-mistical-gray-cloud",
+      "name": "Gray Cloud",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-gray-cloud-c388df7af9.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/6120ab4e-256c-48f6-9be2-71b52bc27a02.webp",
+        "/yarn-images/bernat-blanket-big/0a5a27c4-e296-46c2-97a3-f348d2f67167.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756245",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/6120ab4e-256c-48f6-9be2-71b52bc27a02.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/6120ab4e-256c-48f6-9be2-71b52bc27a02.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/0a5a27c4-e296-46c2-97a3-f348d2f67167.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/0a5a27c4-e296-46c2-97a3-f348d2f67167.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9039.819671735124
+    },
+    {
       "id": "bernat-blanket-big-aqua-splash",
       "name": "Aqua Splash",
       "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-aqua-splash-609735615b.webp",
@@ -809,6 +1176,81 @@
       "colorGroup": "multis",
       "multicolor": true,
       "sortRank": 9041.809680196444
+    },
+    {
+      "id": "bernat-blanket-big-hopscotch-rose-garden",
+      "name": "Rose Garden",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-hopscotch-rose-garden-8d68ea9208.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/399e28de-9f16-4298-82a2-e066f1c30cd8.webp",
+        "/yarn-images/bernat-blanket-big/fcfcd5c7-3440-45b3-ab73-951cd188ee30.webp"
+      ],
+      "supplierSku": "michaels-bernat:10805981",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Hopscotch",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/399e28de-9f16-4298-82a2-e066f1c30cd8.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/399e28de-9f16-4298-82a2-e066f1c30cd8.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/fcfcd5c7-3440-45b3-ab73-951cd188ee30.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/fcfcd5c7-3440-45b3-ab73-951cd188ee30.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9042.156239512933
+    },
+    {
+      "id": "bernat-blanket-big-mistical-rainy-skies",
+      "name": "Rainy Skies",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-rainy-skies-07752673ea.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/a39aace6-382f-4193-80b4-a61b6c7fc34e.webp",
+        "/yarn-images/bernat-blanket-big/c9689def-06ec-409a-9d63-53085a6ffb52.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756243",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/a39aace6-382f-4193-80b4-a61b6c7fc34e.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/a39aace6-382f-4193-80b4-a61b6c7fc34e.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/c9689def-06ec-409a-9d63-53085a6ffb52.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/c9689def-06ec-409a-9d63-53085a6ffb52.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9042.162407400105
+    },
+    {
+      "id": "bernat-blanket-big-mistical-misty-teal",
+      "name": "Misty Teal",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-misty-teal-5a6d763125.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/985b30eb-6d01-42b2-91b1-90e4ed9cc336.webp",
+        "/yarn-images/bernat-blanket-big/356a4089-0090-4ca7-9552-1173f44e9fa9.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756241",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/985b30eb-6d01-42b2-91b1-90e4ed9cc336.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/985b30eb-6d01-42b2-91b1-90e4ed9cc336.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/356a4089-0090-4ca7-9552-1173f44e9fa9.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/356a4089-0090-4ca7-9552-1173f44e9fa9.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9043.603778778079
     },
     {
       "id": "bernat-blanket-big-blue-splash",
@@ -825,6 +1267,31 @@
       "sortRank": 9044.28734995081
     },
     {
+      "id": "bernat-blanket-big-mistical-foam",
+      "name": "Foam",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-foam-c406ac74dc.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/90c0d6fa-83a1-4803-ae83-d99f07dab2d0.webp",
+        "/yarn-images/bernat-blanket-big/ec9c0b42-819f-4510-938b-c282ec5d5653.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756246",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/90c0d6fa-83a1-4803-ae83-d99f07dab2d0.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/90c0d6fa-83a1-4803-ae83-d99f07dab2d0.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/ec9c0b42-819f-4510-938b-c282ec5d5653.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/ec9c0b42-819f-4510-938b-c282ec5d5653.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9045.250652146986
+    },
+    {
       "id": "bernat-blanket-big-green-splash",
       "name": "Green Splash",
       "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-green-splash-511e56916a.webp",
@@ -837,6 +1304,81 @@
       "colorGroup": "multis",
       "multicolor": true,
       "sortRank": 9046.123643766485
+    },
+    {
+      "id": "bernat-blanket-big-mistical-candy-pink",
+      "name": "Candy Pink",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-candy-pink-9166cd0554.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/63c60cc2-6987-4eb4-b9b7-9e6435892d73.webp",
+        "/yarn-images/bernat-blanket-big/aec34cf5-2320-43f9-abe4-0c5216d82e57.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756236",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/63c60cc2-6987-4eb4-b9b7-9e6435892d73.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/63c60cc2-6987-4eb4-b9b7-9e6435892d73.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/aec34cf5-2320-43f9-abe4-0c5216d82e57.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/aec34cf5-2320-43f9-abe4-0c5216d82e57.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9047.044076948834
+    },
+    {
+      "id": "bernat-blanket-big-mistical-canyon",
+      "name": "Canyon",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-canyon-c17d8cb733.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/8203aa62-f615-4a0c-afaa-5abe3cb2061e.webp",
+        "/yarn-images/bernat-blanket-big/ae7aa922-681d-4fce-be4c-ccf1afaa922b.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756237",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/8203aa62-f615-4a0c-afaa-5abe3cb2061e.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/8203aa62-f615-4a0c-afaa-5abe3cb2061e.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/ae7aa922-681d-4fce-be4c-ccf1afaa922b.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/ae7aa922-681d-4fce-be4c-ccf1afaa922b.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9050.03313749796
+    },
+    {
+      "id": "bernat-blanket-big-mistical-teal-io",
+      "name": "Teal-io",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-teal-io-047f09c6b3.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/31a4d645-dbb2-46e7-8bb2-13829b147e88.webp",
+        "/yarn-images/bernat-blanket-big/5a3696d6-0f2e-421a-909b-bf553a51ed04.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756242",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/31a4d645-dbb2-46e7-8bb2-13829b147e88.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/31a4d645-dbb2-46e7-8bb2-13829b147e88.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/5a3696d6-0f2e-421a-909b-bf553a51ed04.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/5a3696d6-0f2e-421a-909b-bf553a51ed04.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9051.47708636847
     },
     {
       "id": "bernat-blanket-big-icy-plum",
@@ -896,6 +1438,31 @@
       "sortRank": 9063.299713072722
     },
     {
+      "id": "bernat-blanket-big-mistical-grape-mix",
+      "name": "Grape Mix",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-grape-mix-e67ea44b31.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/6fb90451-d3df-4db7-af7f-522e89e22d50.webp",
+        "/yarn-images/bernat-blanket-big/7968016f-87df-491f-86a3-6283db6316fd.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756244",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/6fb90451-d3df-4db7-af7f-522e89e22d50.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/6fb90451-d3df-4db7-af7f-522e89e22d50.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/7968016f-87df-491f-86a3-6283db6316fd.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/7968016f-87df-491f-86a3-6283db6316fd.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9064.385007593837
+    },
+    {
       "id": "bernat-blanket-big-black-splash",
       "name": "Black Splash",
       "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-black-splash-d368e7534d.webp",
@@ -910,6 +1477,31 @@
       "sortRank": 9064.4242305914
     },
     {
+      "id": "bernat-blanket-big-mistical-cinder",
+      "name": "Cinder",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-cinder-3702c9e7ed.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/d42e7177-1c0e-4afc-8181-6fd4ae3edad9.webp",
+        "/yarn-images/bernat-blanket-big/3dfa992f-bd4c-4123-9355-4e7a9dd67be9.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756247",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/d42e7177-1c0e-4afc-8181-6fd4ae3edad9.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/d42e7177-1c0e-4afc-8181-6fd4ae3edad9.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/3dfa992f-bd4c-4123-9355-4e7a9dd67be9.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/3dfa992f-bd4c-4123-9355-4e7a9dd67be9.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9068.196095821411
+    },
+    {
       "id": "bernat-blanket-big-firewood",
       "name": "Firewood",
       "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-firewood-2602b53ffe.webp",
@@ -922,6 +1514,31 @@
       "colorGroup": "multis",
       "multicolor": true,
       "sortRank": 9069.530094482485
+    },
+    {
+      "id": "bernat-blanket-big-mistical-burgundy-blend",
+      "name": "Burgundy Blend",
+      "swatchSrc": "/yarn-swatches/bernat-blanket-big/bernat-blanket-big-mistical-burgundy-blend-98d414c681.webp",
+      "colorImages": [
+        "/yarn-images/bernat-blanket-big/2892746b-d72b-425e-a3b6-4bedd827c6f4.webp",
+        "/yarn-images/bernat-blanket-big/6e9ffd90-5e4c-4052-af27-63a74943a5d4.webp"
+      ],
+      "supplierSku": "michaels-bernat:10756235",
+      "stockStatus": "in_stock",
+      "lineName": "Bernat Blanket Big Mist-ical",
+      "sourceImages": [
+        {
+          "url": "https://imgs.michaels.com/2892746b-d72b-425e-a3b6-4bedd827c6f4.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/2892746b-d72b-425e-a3b6-4bedd827c6f4.webp"
+        },
+        {
+          "url": "https://imgs.michaels.com/6e9ffd90-5e4c-4052-af27-63a74943a5d4.jpg?fit=inside|540:540",
+          "local": "/yarn-images/bernat-blanket-big/6e9ffd90-5e4c-4052-af27-63a74943a5d4.webp"
+        }
+      ],
+      "colorGroup": "multis",
+      "multicolor": true,
+      "sortRank": 9072.120752914898
     }
   ]
 }

@@ -40,6 +40,8 @@ export function yarnLineName(yarn: YarnColor): string | null {
   const additional = hatCatalog.yarns.find(color => color.id === yarn.id);
   if (additional) return additional.lineName;
   if (yarn.supplierSku?.startsWith("bobbiny:")) return "Bobbiny Premium 5mm";
+  if (yarn.id.startsWith("bernat-blanket-big-mistical-")) return "Bernat Blanket Big Mist-ical";
+  if (yarn.id.startsWith("bernat-blanket-big-hopscotch-")) return "Bernat Blanket Big Hopscotch";
   if (yarn.id.startsWith("bernat-blanket-big-")) return "Bernat Blanket Big";
   if (yarn.supplierSku?.startsWith("michaels:")) return "Charisma by Loops & Threads";
   return null;

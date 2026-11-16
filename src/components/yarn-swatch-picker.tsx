@@ -105,7 +105,7 @@ export function YarnSwatchPicker({
     : useBernatGroups
       ? bernatGroupsForYarns(yarns).filter((group) => group.id === "multis")
       : [];
-  const groupOptions = [...(showSolidFilter ? [{ id: "solid" as const, label: allowHolidayFilter ? "Solid colors" : "Solid" }] : []), ...(hasTweed ? [{ id: "tweed" as const, label: "Tweed" }] : []), ...multiOptions];
+  const groupOptions = [...multiOptions, ...(hasTweed ? [{ id: "tweed" as const, label: "Tweed" }] : []), ...(showSolidFilter ? [{ id: "solid" as const, label: allowHolidayFilter ? "Solid colors" : "Solid" }] : [])];
   const [groupFilter, setGroupFilter] = useState<CatalogGroupId | null>(allowHolidayFilter ? "holiday" : null);
 
   const showHolidayChip = allowHolidayFilter;
@@ -118,7 +118,9 @@ export function YarnSwatchPicker({
   const showSoftPaletteSwatch = paletteAvailable(CHARISMA_SOFT_PALETTE_YARN_ID);
   const showWarmPaletteSwatch = paletteAvailable(CHARISMA_WARM_PALETTE_YARN_ID);
 
-  const displayedYarns = groupFilter === "solid"
+  const displayedYarns = groupFilter === "solid" && useBernatGroups
+    ? yarns.filter(yarn => !yarn.multicolor && bernatColorGroupId(yarn) !== "multis")
+    : groupFilter === "solid"
     ? filterCharismaYarnsForPicker(yarns, null).filter(yarn => yarn.id !== "stockings-multi" && !isTweedYarn(yarn) && !/\btweed\b/i.test(yarn.name) && charismaColorGroupId(yarn) !== "multis")
     : groupFilter === "tweed"
     ? yarns.filter(isTweedYarn)
@@ -198,29 +200,7 @@ export function YarnSwatchPicker({
           role="group"
           aria-label="Color filters"
         >
-          {showHolidayChip ? (
-            <button
-              type="button"
-              onClick={() => selectGroupFilter("holiday")}
-              aria-pressed={groupFilter === "holiday"}
-              className={cn(
-                pickerChipBase,
-                "gap-2",
-                groupFilter === "holiday"
-                  ? cn("border-ink font-medium", careSurfaceClass)
-                  : cn(
-                      "border-border bg-card/80",
-                      "hover:border-ink/40",
-                      careSurfaceHoverClass,
-                      "active:bg-[#e8e8e8] dark:active:bg-[#141414]"
-                    )
-              )}
-            >
-              <HolidayPizzaSwatch className="size-5" decorative fill={false} />
-              Holiday
-            </button>
-          ) : null}
-          {!allowHolidayFilter && allColorsFilter}
+          {allColorsFilter}
           {groupOptions.map((group) => {
             const isSelected = groupFilter === group.id;
             return (
@@ -245,7 +225,28 @@ export function YarnSwatchPicker({
               </button>
             );
           })}
-          {allowHolidayFilter && allColorsFilter}
+          {showHolidayChip ? (
+            <button
+              type="button"
+              onClick={() => selectGroupFilter("holiday")}
+              aria-pressed={groupFilter === "holiday"}
+              className={cn(
+                pickerChipBase,
+                "gap-2",
+                groupFilter === "holiday"
+                  ? cn("border-ink font-medium", careSurfaceClass)
+                  : cn(
+                      "border-border bg-card/80",
+                      "hover:border-ink/40",
+                      careSurfaceHoverClass,
+                      "active:bg-[#e8e8e8] dark:active:bg-[#141414]"
+                    )
+              )}
+            >
+              <HolidayPizzaSwatch className="size-5" decorative fill={false} />
+              Holiday
+            </button>
+          ) : null}
         </div>
       ) : null}
 
